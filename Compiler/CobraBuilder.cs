@@ -90,9 +90,10 @@ public class CobraBuilder
     /// <param name="filePath">The path to save the .ll file.</param>
     public void GenerateIR(string filePath)
     {
+        CobraLogger.Info($"Generating IR at: {filePath}");
         if (_module.TryPrintToFile(filePath, out string errorMessage))
         {
-            CobraLogger.Info($"Generated LLVM IR file at: {filePath}");
+            CobraLogger.Success($"Generated LLVM IR file at: {filePath}");
         }
         else
         {
@@ -108,6 +109,7 @@ public class CobraBuilder
     /// <param name="filePath">The path to save the .o file.</param>
     public void GenerateObjectFile(string filePath)
     {
+        CobraLogger.Info($"Generating object file at: {filePath}");
         LLVM.InitializeNativeTarget();
         LLVM.InitializeNativeAsmPrinter();
 
@@ -123,7 +125,7 @@ public class CobraBuilder
 
         if (targetMachine.TryEmitToFile(_module, filePath, LLVMCodeGenFileType.LLVMObjectFile, out string errorMessage))
         {
-            CobraLogger.Info($"Generated object file at: {filePath}");
+            CobraLogger.Success($"Generated object file at: {filePath}");
         }
         else
         {
@@ -136,26 +138,27 @@ public class CobraBuilder
     /// This uses the 'g++' command-line tool.
     /// </summary>
     /// <param name="outputDir">The directory where output files are stored.</param>
+    /// <param name="intermediateDir">The directory where intermediate files (like the C++ wrapper) are stored.</param>
     /// <param name="objectFiles">A list of paths to the object files (.o).</param>
     /// <param name="finalExecutablePath">The desired path for the final executable.</param>
-    // The new Build method signature
-    public static void Build(string outputDir, string intermediateDir, List<string> objectFiles,
-        string finalExecutablePath)
+    public static void Build(string outputDir, string intermediateDir, List<string> objectFiles, string finalExecutablePath)
     {
+        CobraLogger.Info("Starting final linking process...");
         string wrapperFile = Path.Combine(intermediateDir, "main.cpp");
 
         // Step 1: Create a small C++ wrapper file
+        CobraLogger.Info($"Creating C++ wrapper at: {wrapperFile}");
         File.WriteAllText(wrapperFile, @"
-    #include <stdio.h>
+#include <stdio.h>
 
-    extern ""C"" int __cobra_main__();
+extern ""C"" int __cobra_main__();
 
-    int main(int argc, char **argv) {
-        return __cobra_main__();
-    }
-    ");
+int main(int argc, char **argv) {
+    return __cobra_main__();
+}
+");
 
-        // Step 2: Prepare the arguments for g++
+        // Step 2: Prepare the arguments for the linker (g++)
         string objectFilesArg = string.Join(" ", objectFiles.Select(f => $"\"{f}\""));
         ProcessStartInfo psi = new ProcessStartInfo
         {
@@ -166,24 +169,54 @@ public class CobraBuilder
             UseShellExecute = false,
             CreateNoWindow = true
         };
+
+        CobraLogger.Info($"Executing linker command: {psi.FileName} {psi.Arguments}");
         
-        CobraLogger.Info($"Running command: {psi.FileName} {psi.Arguments}");
-
         using var process = Process.Start(psi);
-        var output = process?.StandardOutput.ReadToEnd();
-        var error = process?.StandardError.ReadToEnd();
-        process?.WaitForExit();
-
-        if (process is { ExitCode: 0 })
+        if (process == null)
         {
-            CobraLogger.Info($"Successfully created executable: {finalExecutablePath}");
-            CobraLogger.Info($"To run it, use: {finalExecutablePath}");
+            CobraLogger.Error("Failed to start the linker process. Is g++ installed and in your system's PATH?");
+            throw new Exception("Process.Start returned null.");
+        }
+        
+        // Wait for the process to exit and capture all output
+        process.WaitForExit();
+        string output = process.StandardOutput.ReadToEnd();
+        string error = process.StandardError.ReadToEnd();
+        
+        CobraLogger.Info($"Linker process completed with exit code: {process.ExitCode}");
+
+        if (process.ExitCode == 0)
+        {
+            CobraLogger.Success($"Successfully created executable: {finalExecutablePath}");
+            if (!string.IsNullOrWhiteSpace(output))
+            {
+                CobraLogger.Info("Linker output (stdout):");
+                Console.WriteLine(output);
+            }
+            CobraLogger.Success($"To run it, use: ./{Path.GetFileName(finalExecutablePath)}");
         }
         else
         {
-            CobraLogger.Error("Linking failed. Here is the error output:");
-            CobraLogger.Error(error);
-            throw new Exception("Linking failed. See console output for details.");
+            CobraLogger.Error("Linking failed. See error details below:");
+            
+            if (!string.IsNullOrWhiteSpace(output))
+            {
+                CobraLogger.Warn("Linker output (stdout):");
+                CobraLogger.Warn(output);
+            }
+
+            if (!string.IsNullOrWhiteSpace(error))
+            {
+                CobraLogger.Error("Linker error (stderr):");
+                CobraLogger.Error(error);
+            }
+            else
+            {
+                CobraLogger.Error("No specific error message was captured from stderr. Ensure g++ is installed and configured correctly.");
+            }
+            
+            throw new Exception($"Linking failed with exit code {process.ExitCode}. See console output for details.");
         }
     }
 }

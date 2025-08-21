@@ -88,7 +88,7 @@ public static class Runner
             // Link all generated object files to create the final executable
             CobraBuilder.Build(outputDir, intermediateDir, objectFiles, finalExecutablePath);
 
-            CobraLogger.Info($"Successfully compiled and linked to '{finalExecutablePath}'");
+            CobraLogger.Success($"Successfully compiled and linked to '{finalExecutablePath}'");
 
             // Clean up intermediate files if requested
             if (!options.KeepIntermediate)

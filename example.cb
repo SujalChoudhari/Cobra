@@ -1,9 +1,5 @@
 bool hello = true;
-
 int x = 10;
-
 string lol = "i hate strings";
-
 lol = "next programming language I make, will not have strings";
-
 hello = false;

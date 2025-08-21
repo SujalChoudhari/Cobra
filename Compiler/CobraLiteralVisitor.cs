@@ -3,9 +3,9 @@ using System.Text.RegularExpressions; // Added for processing escape sequences i
 
 namespace Cobra.Compiler;
 
-public class CobraPrimaryVisitor
+public class CobraLiteralVisitor
 {
-    public static LLVMValueRef VisitPrimary(CobraParser.PrimaryContext context, LLVMBuilderRef builder,
+    public static LLVMValueRef VisitLiteral(CobraParser.PrimaryContext context, LLVMBuilderRef builder,
         Dictionary<string, LLVMValueRef> namedValues)
     {
         // First, check if the primary expression is a literal value

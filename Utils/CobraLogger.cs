@@ -9,10 +9,11 @@ namespace Cobra.Utils;
 public enum LogLevel
 {
     Off,
-    Error,
+    Success,
     Warn,
     Info,
-    Success // Added for positive feedback
+    Error,
+
 }
 
 /// <summary>
@@ -84,7 +85,7 @@ public static class CobraLogger
         {
             // Assuming CobraVerboseRunnerHelper exists and contains this method.
             // This structure remains as you provided.
-            Cobra.Compiler.CobraVerboseRunnerHelper.AddPrintStatement(builder, module, PrintfFunction, message);
+            Cobra.Compiler.CobraVerboseRunnerHelper.AddPrintStatement(builder, module, PrintfFunction, $"[RUNTIME]  {message}");
         }
     }
 
@@ -93,10 +94,10 @@ public static class CobraLogger
     /// <summary>
     /// The core logging method that handles level checking and console color output.
     /// </summary>
-    private static void Log(LogLevel level, string message, ConsoleColor color)
+    private static void Log(LogLevel messageLevel, string message, ConsoleColor color)
     {
         // Only log if the specified level is at or above the class's current log level.
-        if (Level >= level)
+        if (Level >= messageLevel)
         {
             Console.ForegroundColor = color;
             Console.WriteLine(message);

@@ -1,7 +1,7 @@
+using Antlr4.Runtime.Tree;
 using Cobra.Utils;
 using LLVMSharp.Interop;
 // Assuming Antlr4.Runtime is used for the parser context objects
-using Antlr4.Runtime.Tree;
 
 namespace Cobra.Compiler;
 
@@ -23,7 +23,7 @@ public class CobraProgramVisitor(
         {
             // We ignore the final EOF token, which is represented as a terminal node.
             if (child is ITerminalNode) continue;
-            
+
             Visit(child);
         }
 
@@ -93,7 +93,8 @@ public class CobraProgramVisitor(
         }
 
         CobraLogger.Info($"Compiled declaration for variable: {variableName} with type {typeName}");
-        CobraLogger.Runtime(_builder, _module, $"Declared variable: {variableName}= {allocatedValue} of type {typeName}");
+        CobraLogger.Runtime(_builder, _module,
+            $"Declared variable: {variableName}= {allocatedValue} of type {typeName}");
         return allocatedValue;
     }
 
@@ -120,13 +121,13 @@ public class CobraProgramVisitor(
         _builder.BuildStore(valueToAssign, variableAddress);
         CobraLogger.Info($"Compiled assignment for variable: {variableName}");
         CobraLogger.Runtime(_builder, _module, $"Assigned value to variable: {variableName}= {valueToAssign}");
-        
+
         // Per language conventions, an assignment expression evaluates to the assigned value.
         return valueToAssign;
     }
 
     public override LLVMValueRef VisitPrimary(CobraParser.PrimaryContext context)
     {
-        return CobraPrimaryVisitor.VisitPrimary(context, _builder, namedValues);
+        return CobraLiteralVisitor.VisitLiteral(context, _builder, namedValues);
     }
 }
