@@ -25,8 +25,13 @@ public class CobraProgramVisitor(
 
     public override LLVMValueRef VisitStatement(CobraParser.StatementContext context)
     {
-        // We only care about assignment statements for now
-        if (context.assignmentStatement() != null)
+        // Check if the statement is a declaration statement
+        if (context.declarationStatement() != null)
+        {
+            return VisitDeclarationStatement(context.declarationStatement());
+        }
+        // Then check if it's an assignment statement
+        else if (context.assignmentStatement() != null)
         {
             return VisitAssignmentStatement(context.assignmentStatement());
         }
@@ -41,17 +46,25 @@ public class CobraProgramVisitor(
         string typeName = context.type().GetText();
 
         LLVMTypeRef varType;
-        if (typeName == "int")
+        switch (typeName)
         {
-            varType = LLVMTypeRef.Int32;
-        }
-        else if (typeName == "float")
-        {
-            varType = LLVMTypeRef.Float;
-        }
-        else
-        {
-            throw new Exception($"Unsupported type for declaration: {typeName}");
+            case "int":
+                varType = LLVMTypeRef.Int32;
+                break;
+            case "float":
+                varType = LLVMTypeRef.Float;
+                break;
+            case "string":
+                varType = LLVMTypeRef.CreatePointer(LLVMTypeRef.Int8, 0);
+                break;
+            case "bool":
+                varType = LLVMTypeRef.Int1;
+                break;
+            case "void":
+                varType = LLVMTypeRef.Void;
+                break;
+            default:
+                throw new Exception($"Invalid type specified: {typeName}");
         }
 
         // Check if the variable is already declared to prevent re-declaration
@@ -61,18 +74,19 @@ public class CobraProgramVisitor(
         }
 
         // Allocate memory for the new variable
-        LLVMValueRef alloca = _builder.BuildAlloca(varType, variableName);
-        namedValues[variableName] = alloca;
+        LLVMValueRef allocatedValue = _builder.BuildAlloca(varType, variableName);
+        namedValues[variableName] = allocatedValue;
 
         // If an initial value is provided, store it
         if (context.expression() != null)
         {
             LLVMValueRef initialValue = Visit(context.expression());
-            _builder.BuildStore(initialValue, alloca);
+            _builder.BuildStore(initialValue, allocatedValue);
         }
 
-        Console.WriteLine($"Compiled declaration for variable: {variableName} with type {typeName}");
-        return alloca;
+        CobraLogger.Info($"Compiled declaration for variable: {variableName} with type {typeName}");
+        CobraLogger.Runtime(_builder, _module, $"Declared variable: {variableName}= {allocatedValue} of type {typeName}");
+        return allocatedValue;
     }
 
 
@@ -91,6 +105,7 @@ public class CobraProgramVisitor(
         // Store the value in the allocated variable
         _builder.BuildStore(valueToAssign, namedValues[variableName]);
         CobraLogger.Info($"Compiled assignment for variable: {variableName}");
+        CobraLogger.Runtime(_builder, _module, $"Assigned value to variable: {variableName}= {valueToAssign}");
         return valueToAssign;
     }
 

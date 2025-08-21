@@ -8,6 +8,7 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        Runner.run(args);
+        // Run the compiler
+        Runner.Run(args);
     }
 }

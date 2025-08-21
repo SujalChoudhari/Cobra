@@ -4,13 +4,13 @@ using CommandLine;
 
 namespace Cobra.CLI;
 
-public class Runner
+public static class Runner
 {
-    public static void run(string[] args)
+    public static void Run(string[] args)
     {
         Parser.Default.ParseArguments<Options>(args)
-            .WithParsed(options => RunCompiler(options))
-            .WithNotParsed(errors => HandleParseError(errors));
+            .WithParsed(RunCompiler)
+            .WithNotParsed(HandleParseError);
     }
 
     private static void RunCompiler(Options options)

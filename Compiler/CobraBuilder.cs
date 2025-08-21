@@ -72,7 +72,7 @@ public class CobraBuilder
         LLVMTypeRef charPtrType = LLVMTypeRef.CreatePointer(LLVMTypeRef.Int8, 0);
         LLVMTypeRef printfFunctionType = LLVMTypeRef.CreateFunction(int32Type, new LLVMTypeRef[] { charPtrType }, true);
         LLVMValueRef printfFunction = _module.AddFunction("printf", printfFunctionType);
-        CobraLogger.printfFunction = printfFunction;
+        CobraLogger.PrintfFunction = printfFunction;
 
         // Step 4: Walking the parse tree and generating LLVM IR
         // The visitor pattern allows us to walk the tree and generate code for each node.

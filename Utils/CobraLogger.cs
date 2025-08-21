@@ -9,9 +9,9 @@ using LLVMSharp.Interop;
 public enum LogLevel
 {
     Off,
-    Error,
+    Info,
     Warn,
-    Info
+    Error,
 }
 
 public static class CobraLogger
@@ -21,9 +21,8 @@ public static class CobraLogger
 
     // A flag to enable or disable runtime logging in the generated code.
     public static bool EnableRuntime = false;
-
-    public static LLVMValueRef printfFunction = null;
-
+    
+    public static LLVMValueRef PrintfFunction = null;
     public static void Info(string message)
     {
         if (Level >= LogLevel.Info)
@@ -62,13 +61,16 @@ public static class CobraLogger
     /// <param name="module">The LLVM module.</param>
     /// <param name="printfFunction">The LLVM value for the printf function.</param>
     /// <param name="message">The string message to be printed at runtime.</param>
+    // Remove this line from your CobraLogger class:
+// public static LLVMValueRef printfFunction = null;
+
+// Replace your current Runtime function with this:
     public static void Runtime(LLVMBuilderRef builder, LLVMModuleRef module,
         string message)
     {
         if (EnableRuntime)
         {
-            // Use the CobraVerboseRunnerHelper to add a print statement to the IR
-            CobraVerboseRunnerHelper.AddPrintStatement(builder, module, printfFunction, message);
+            CobraVerboseRunnerHelper.AddPrintStatement(builder, module, PrintfFunction, message);
         }
     }
 }
