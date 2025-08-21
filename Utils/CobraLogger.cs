@@ -88,6 +88,22 @@ public static class CobraLogger
             Cobra.Compiler.CobraVerboseRunnerHelper.AddPrintStatement(builder, module, PrintfFunction, $"[RUNTIME]  {message}");
         }
     }
+    
+    /// <summary>
+    /// Injects a `printf` call into the LLVM IR to log a message when the compiled program is executed.
+    /// </summary>
+    /// <param name="builder">The LLVM IR builder.</param>
+    /// <param name="module">The LLVM module.</param>
+    /// <param name="message">The message to be printed at runtime.</param>
+    public static void RuntimeVariableValue(LLVMBuilderRef builder, LLVMModuleRef module, string message, LLVMValueRef variableValue)
+    {
+        if (EnableRuntime && PrintfFunction.Handle != IntPtr.Zero)
+        {
+            // Assuming CobraVerboseRunnerHelper exists and contains this method.
+            // This structure remains as you provided.
+            Cobra.Compiler.CobraVerboseRunnerHelper.AddPrintVariable(builder, module, PrintfFunction, $"[RUNTIME]  {message}", variableValue);
+        }
+    }
 
     // --- Private Core Logic ---
 

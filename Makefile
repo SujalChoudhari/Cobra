@@ -7,7 +7,7 @@ RELEASE_APP=$(RELEASE_OUTPUT)/build.app
 DEBUG_OUTPUT=/home/sujal/Code/Cobra/dist/debug
 DEBUG_APP=$(DEBUG_OUTPUT)/debug.app
 
-.PHONY: release debug run-release run-debug
+.PHONY: release debug run-release run-debug clean
 
 release:
 	@mkdir -p $(RELEASE_OUTPUT)
@@ -22,3 +22,6 @@ debug:
 
 run-debug: debug
 	$(DEBUG_APP)
+
+clean:
+	rm -rf $(RELEASE_OUTPUT) $(DEBUG_OUTPUT)

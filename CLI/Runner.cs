@@ -73,10 +73,10 @@ public static class Runner
                 CobraLogger.Info($"Compiling file: {file}");
 
                 string source = File.ReadAllText(file);
-                CobraBuilder builder = new CobraBuilder(source);
-                builder.Compile();
-
                 string baseFileName = Path.GetFileNameWithoutExtension(file);
+                CobraBuilder builder = new CobraBuilder(source);
+                builder.Compile(options.KeepIntermediate, intermediateDir, baseFileName);
+
                 string objectFile = Path.Combine(intermediateDir, baseFileName + ".o");
                 string irFile = Path.Combine(intermediateDir, baseFileName + ".ll");
 

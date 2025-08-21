@@ -81,7 +81,7 @@ public static class CobraVerboseRunnerHelper
             {
                 // print i64 as long long
                 spec = "%lld";
-                var fmt = builder.BuildGlobalStringPtr($"{message}: {spec}\n", "fmt_i64");
+                var fmt = builder.BuildGlobalStringPtr($"{message}:\t{spec}\n", "fmt_i64");
                 LLVMValueRef[] args = new[] { fmt, v };
                 builder.BuildCall2(printfFnTy, printfFunction, args, "call_printf_i64");
                 return;

@@ -46,7 +46,7 @@ public class CobraBuilder
     /// Compiles the Cobra source code into LLVM IR.
     /// This is the main compiler method.
     /// </summary>
-    public void Compile()
+    public void Compile(bool makeAST = false, String outputDir = "path/to/output/directory", String programName = "my_program")
     {
         // Step 1: Parsing the source code using ANTLR4
         // The lexer breaks the code into tokens, and the parser builds a tree (parse tree).
@@ -55,6 +55,13 @@ public class CobraBuilder
         var commonTokenStream = new CommonTokenStream(lexer);
         var parser = new CobraParser(commonTokenStream);
         var programContext = parser.program();
+
+        if (makeAST)
+        {
+            // Generate AST
+            var astGenerator = new CobraAstGenerator(programContext, programName);
+            astGenerator.GenerateAst(outputDir);
+        }
 
         // Step 2: Setting up the main function
         // All our code will live inside a function named "__cobra_main__".
