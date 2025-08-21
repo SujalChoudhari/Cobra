@@ -1,5 +1,29 @@
+# Rider project files
+.idea/
+*.iml
+workspace.xml
+shelf/
+httpRequests/
+
+# Rider-specific configs
+projectSettingsUpdater.xml
+modules.xml
+contentModel.xml
+
+# .NET build outputs
 bin/
 obj/
-/packages/
-riderModule.iml
-/_ReSharper.Caches/
+dist/
+
+# NuGet packages
+packages/
+
+# ReSharper caches
+_ReSharper.Caches/
+
+# User-specific settings
+Cobra.sln.DotSettings.user
+
+# Data source configs
+dataSources/
+dataSources.local.xml
