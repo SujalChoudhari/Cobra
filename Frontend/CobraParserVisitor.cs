@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from /home/sujal/Code/Cobra/Grammar/CobraParser.g4 by ANTLR 4.13.2
+// Generated from /home/sujal/Code/Cobra/Frontend/CobraParser.g4 by ANTLR 4.13.2
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -61,6 +61,12 @@ public interface ICobraParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitExpressionStatement([NotNull] CobraParser.ExpressionStatementContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.functionCallStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFunctionCallStatement([NotNull] CobraParser.FunctionCallStatementContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.expression"/>.
 	/// </summary>

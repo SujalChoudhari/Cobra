@@ -9,6 +9,11 @@
 
     <ItemGroup>
       <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
+      <PackageReference Include="LLVMSharp.Interop" Version="20.1.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="out\" />
     </ItemGroup>
 
 </Project>

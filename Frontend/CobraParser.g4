@@ -9,6 +9,7 @@ program : (importStatement | statement)* EOF;
 statement : declarationStatement
           | assignmentStatement
           | expressionStatement
+          | functionCallStatement
           | returnStatement
           | controlStatement
           | block
@@ -18,6 +19,7 @@ statement : declarationStatement
 declarationStatement : type ID (ASSIGN expression)? SEMICOLON;
 assignmentStatement : ID ASSIGN expression SEMICOLON;
 expressionStatement : expression SEMICOLON;
+functionCallStatement : functionCall SEMICOLON;
 
 // Expressions (for arithmetic, logical, and comparison)
 expression : logicalOrExpression;

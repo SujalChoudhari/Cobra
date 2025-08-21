@@ -13,7 +13,6 @@ WHILE : 'while';
 FOR : 'for';
 IN : 'in';
 RETURN : 'return';
-PRINT : 'print';
 
 // Operators
 PLUS : '+';

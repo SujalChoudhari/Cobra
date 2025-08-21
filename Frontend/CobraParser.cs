@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from /home/sujal/Code/Cobra/Grammar/CobraParser.g4 by ANTLR 4.13.2
+// Generated from /home/sujal/Code/Cobra/Frontend/CobraParser.g4 by ANTLR 4.13.2
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -37,45 +37,46 @@ public partial class CobraParser : Parser {
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
 		INT=1, FLOAT=2, STRING=3, BOOL=4, VOID=5, IMPORT=6, IF=7, ELSE=8, WHILE=9, 
-		FOR=10, IN=11, RETURN=12, PRINT=13, PLUS=14, MINUS=15, MUL=16, DIV=17, 
-		MOD=18, AND=19, OR=20, NOT=21, EQ=22, NEQ=23, GT=24, LT=25, GTE=26, LTE=27, 
-		ASSIGN=28, LPAREN=29, RPAREN=30, LBRACE=31, RBRACE=32, LBRACKET=33, RBRACKET=34, 
-		SEMICOLON=35, COMMA=36, COLON=37, QUOTE=38, INTEGER=39, FLOAT_LITERAL=40, 
-		STRING_LITERAL=41, BOOLEAN_LITERAL=42, ID=43, WHITESPACE=44, COMMENT=45, 
-		BLOCK_COMMENT=46;
+		FOR=10, IN=11, RETURN=12, PLUS=13, MINUS=14, MUL=15, DIV=16, MOD=17, AND=18, 
+		OR=19, NOT=20, EQ=21, NEQ=22, GT=23, LT=24, GTE=25, LTE=26, ASSIGN=27, 
+		LPAREN=28, RPAREN=29, LBRACE=30, RBRACE=31, LBRACKET=32, RBRACKET=33, 
+		SEMICOLON=34, COMMA=35, COLON=36, QUOTE=37, INTEGER=38, FLOAT_LITERAL=39, 
+		STRING_LITERAL=40, BOOLEAN_LITERAL=41, ID=42, WHITESPACE=43, COMMENT=44, 
+		BLOCK_COMMENT=45;
 	public const int
 		RULE_program = 0, RULE_statement = 1, RULE_declarationStatement = 2, RULE_assignmentStatement = 3, 
-		RULE_expressionStatement = 4, RULE_expression = 5, RULE_logicalOrExpression = 6, 
-		RULE_logicalAndExpression = 7, RULE_comparisonExpression = 8, RULE_arithmeticExpression = 9, 
-		RULE_multiplicationExpression = 10, RULE_unaryExpression = 11, RULE_primary = 12, 
-		RULE_controlStatement = 13, RULE_ifStatement = 14, RULE_whileLoop = 15, 
-		RULE_forLoop = 16, RULE_rangeExpression = 17, RULE_block = 18, RULE_functionDeclaration = 19, 
-		RULE_returnStatement = 20, RULE_functionCall = 21, RULE_parameterList = 22, 
-		RULE_parameter = 23, RULE_argumentList = 24, RULE_type = 25, RULE_importStatement = 26;
+		RULE_expressionStatement = 4, RULE_functionCallStatement = 5, RULE_expression = 6, 
+		RULE_logicalOrExpression = 7, RULE_logicalAndExpression = 8, RULE_comparisonExpression = 9, 
+		RULE_arithmeticExpression = 10, RULE_multiplicationExpression = 11, RULE_unaryExpression = 12, 
+		RULE_primary = 13, RULE_controlStatement = 14, RULE_ifStatement = 15, 
+		RULE_whileLoop = 16, RULE_forLoop = 17, RULE_rangeExpression = 18, RULE_block = 19, 
+		RULE_functionDeclaration = 20, RULE_returnStatement = 21, RULE_functionCall = 22, 
+		RULE_parameterList = 23, RULE_parameter = 24, RULE_argumentList = 25, 
+		RULE_type = 26, RULE_importStatement = 27;
 	public static readonly string[] ruleNames = {
 		"program", "statement", "declarationStatement", "assignmentStatement", 
-		"expressionStatement", "expression", "logicalOrExpression", "logicalAndExpression", 
-		"comparisonExpression", "arithmeticExpression", "multiplicationExpression", 
-		"unaryExpression", "primary", "controlStatement", "ifStatement", "whileLoop", 
-		"forLoop", "rangeExpression", "block", "functionDeclaration", "returnStatement", 
-		"functionCall", "parameterList", "parameter", "argumentList", "type", 
-		"importStatement"
+		"expressionStatement", "functionCallStatement", "expression", "logicalOrExpression", 
+		"logicalAndExpression", "comparisonExpression", "arithmeticExpression", 
+		"multiplicationExpression", "unaryExpression", "primary", "controlStatement", 
+		"ifStatement", "whileLoop", "forLoop", "rangeExpression", "block", "functionDeclaration", 
+		"returnStatement", "functionCall", "parameterList", "parameter", "argumentList", 
+		"type", "importStatement"
 	};
 
 	private static readonly string[] _LiteralNames = {
 		null, "'int'", "'float'", "'string'", "'bool'", "'void'", "'import'", 
-		"'if'", "'else'", "'while'", "'for'", "'in'", "'return'", "'print'", "'+'", 
-		"'-'", "'*'", "'/'", "'%'", "'&&'", "'||'", "'!'", "'=='", "'!='", "'>'", 
-		"'<'", "'>='", "'<='", "'='", "'('", "')'", "'{'", "'}'", "'['", "']'", 
-		"';'", "','", "':'", "'\"'"
+		"'if'", "'else'", "'while'", "'for'", "'in'", "'return'", "'+'", "'-'", 
+		"'*'", "'/'", "'%'", "'&&'", "'||'", "'!'", "'=='", "'!='", "'>'", "'<'", 
+		"'>='", "'<='", "'='", "'('", "')'", "'{'", "'}'", "'['", "']'", "';'", 
+		"','", "':'", "'\"'"
 	};
 	private static readonly string[] _SymbolicNames = {
 		null, "INT", "FLOAT", "STRING", "BOOL", "VOID", "IMPORT", "IF", "ELSE", 
-		"WHILE", "FOR", "IN", "RETURN", "PRINT", "PLUS", "MINUS", "MUL", "DIV", 
-		"MOD", "AND", "OR", "NOT", "EQ", "NEQ", "GT", "LT", "GTE", "LTE", "ASSIGN", 
-		"LPAREN", "RPAREN", "LBRACE", "RBRACE", "LBRACKET", "RBRACKET", "SEMICOLON", 
-		"COMMA", "COLON", "QUOTE", "INTEGER", "FLOAT_LITERAL", "STRING_LITERAL", 
-		"BOOLEAN_LITERAL", "ID", "WHITESPACE", "COMMENT", "BLOCK_COMMENT"
+		"WHILE", "FOR", "IN", "RETURN", "PLUS", "MINUS", "MUL", "DIV", "MOD", 
+		"AND", "OR", "NOT", "EQ", "NEQ", "GT", "LT", "GTE", "LTE", "ASSIGN", "LPAREN", 
+		"RPAREN", "LBRACE", "RBRACE", "LBRACKET", "RBRACKET", "SEMICOLON", "COMMA", 
+		"COLON", "QUOTE", "INTEGER", "FLOAT_LITERAL", "STRING_LITERAL", "BOOLEAN_LITERAL", 
+		"ID", "WHITESPACE", "COMMENT", "BLOCK_COMMENT"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -129,16 +130,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_program; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterProgram(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitProgram(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitProgram(this);
@@ -154,17 +145,17 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 58;
+			State = 60;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 17045116720894L) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 8522558363390L) != 0)) {
 				{
-				State = 56;
+				State = 58;
 				ErrorHandler.Sync(this);
 				switch (TokenStream.LA(1)) {
 				case IMPORT:
 					{
-					State = 54;
+					State = 56;
 					importStatement();
 					}
 					break;
@@ -187,7 +178,7 @@ public partial class CobraParser : Parser {
 				case BOOLEAN_LITERAL:
 				case ID:
 					{
-					State = 55;
+					State = 57;
 					statement();
 					}
 					break;
@@ -195,11 +186,11 @@ public partial class CobraParser : Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				State = 60;
+				State = 62;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 61;
+			State = 63;
 			Match(Eof);
 			}
 		}
@@ -224,6 +215,9 @@ public partial class CobraParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ExpressionStatementContext expressionStatement() {
 			return GetRuleContext<ExpressionStatementContext>(0);
 		}
+		[System.Diagnostics.DebuggerNonUserCode] public FunctionCallStatementContext functionCallStatement() {
+			return GetRuleContext<FunctionCallStatementContext>(0);
+		}
 		[System.Diagnostics.DebuggerNonUserCode] public ReturnStatementContext returnStatement() {
 			return GetRuleContext<ReturnStatementContext>(0);
 		}
@@ -242,16 +236,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_statement; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitStatement(this);
@@ -264,55 +248,62 @@ public partial class CobraParser : Parser {
 		StatementContext _localctx = new StatementContext(Context, State);
 		EnterRule(_localctx, 2, RULE_statement);
 		try {
-			State = 70;
+			State = 73;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,2,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 63;
+				State = 65;
 				declarationStatement();
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 64;
+				State = 66;
 				assignmentStatement();
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 65;
+				State = 67;
 				expressionStatement();
 				}
 				break;
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 66;
-				returnStatement();
+				State = 68;
+				functionCallStatement();
 				}
 				break;
 			case 5:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 67;
-				controlStatement();
+				State = 69;
+				returnStatement();
 				}
 				break;
 			case 6:
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 68;
-				block();
+				State = 70;
+				controlStatement();
 				}
 				break;
 			case 7:
 				EnterOuterAlt(_localctx, 7);
 				{
-				State = 69;
+				State = 71;
+				block();
+				}
+				break;
+			case 8:
+				EnterOuterAlt(_localctx, 8);
+				{
+				State = 72;
 				functionDeclaration();
 				}
 				break;
@@ -345,16 +336,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_declarationStatement; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterDeclarationStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitDeclarationStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitDeclarationStatement(this);
@@ -370,23 +351,23 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 72;
+			State = 75;
 			type();
-			State = 73;
-			Match(ID);
 			State = 76;
+			Match(ID);
+			State = 79;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==ASSIGN) {
 				{
-				State = 74;
+				State = 77;
 				Match(ASSIGN);
-				State = 75;
+				State = 78;
 				expression();
 				}
 			}
 
-			State = 78;
+			State = 81;
 			Match(SEMICOLON);
 			}
 		}
@@ -414,16 +395,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_assignmentStatement; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterAssignmentStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitAssignmentStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitAssignmentStatement(this);
@@ -438,13 +409,13 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 80;
-			Match(ID);
-			State = 81;
-			Match(ASSIGN);
-			State = 82;
-			expression();
 			State = 83;
+			Match(ID);
+			State = 84;
+			Match(ASSIGN);
+			State = 85;
+			expression();
+			State = 86;
 			Match(SEMICOLON);
 			}
 		}
@@ -470,16 +441,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_expressionStatement; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterExpressionStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitExpressionStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpressionStatement(this);
@@ -494,9 +455,51 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 85;
+			State = 88;
 			expression();
-			State = 86;
+			State = 89;
+			Match(SEMICOLON);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class FunctionCallStatementContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public FunctionCallContext functionCall() {
+			return GetRuleContext<FunctionCallContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON() { return GetToken(CobraParser.SEMICOLON, 0); }
+		public FunctionCallStatementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_functionCallStatement; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitFunctionCallStatement(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public FunctionCallStatementContext functionCallStatement() {
+		FunctionCallStatementContext _localctx = new FunctionCallStatementContext(Context, State);
+		EnterRule(_localctx, 10, RULE_functionCallStatement);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 91;
+			functionCall();
+			State = 92;
 			Match(SEMICOLON);
 			}
 		}
@@ -521,16 +524,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_expression; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpression(this);
@@ -541,11 +534,11 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public ExpressionContext expression() {
 		ExpressionContext _localctx = new ExpressionContext(Context, State);
-		EnterRule(_localctx, 10, RULE_expression);
+		EnterRule(_localctx, 12, RULE_expression);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 88;
+			State = 94;
 			logicalOrExpression();
 			}
 		}
@@ -577,16 +570,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_logicalOrExpression; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterLogicalOrExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitLogicalOrExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitLogicalOrExpression(this);
@@ -597,26 +580,26 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public LogicalOrExpressionContext logicalOrExpression() {
 		LogicalOrExpressionContext _localctx = new LogicalOrExpressionContext(Context, State);
-		EnterRule(_localctx, 12, RULE_logicalOrExpression);
+		EnterRule(_localctx, 14, RULE_logicalOrExpression);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 90;
+			State = 96;
 			logicalAndExpression();
-			State = 95;
+			State = 101;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==OR) {
 				{
 				{
-				State = 91;
+				State = 97;
 				Match(OR);
-				State = 92;
+				State = 98;
 				logicalAndExpression();
 				}
 				}
-				State = 97;
+				State = 103;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -650,16 +633,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_logicalAndExpression; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterLogicalAndExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitLogicalAndExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitLogicalAndExpression(this);
@@ -670,26 +643,26 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public LogicalAndExpressionContext logicalAndExpression() {
 		LogicalAndExpressionContext _localctx = new LogicalAndExpressionContext(Context, State);
-		EnterRule(_localctx, 14, RULE_logicalAndExpression);
+		EnterRule(_localctx, 16, RULE_logicalAndExpression);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 98;
+			State = 104;
 			comparisonExpression();
-			State = 103;
+			State = 109;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==AND) {
 				{
 				{
-				State = 99;
+				State = 105;
 				Match(AND);
-				State = 100;
+				State = 106;
 				comparisonExpression();
 				}
 				}
-				State = 105;
+				State = 111;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -725,16 +698,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_comparisonExpression; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterComparisonExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitComparisonExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitComparisonExpression(this);
@@ -745,28 +708,28 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public ComparisonExpressionContext comparisonExpression() {
 		ComparisonExpressionContext _localctx = new ComparisonExpressionContext(Context, State);
-		EnterRule(_localctx, 16, RULE_comparisonExpression);
+		EnterRule(_localctx, 18, RULE_comparisonExpression);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 106;
+			State = 112;
 			arithmeticExpression();
-			State = 109;
+			State = 115;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 264241152L) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 132120576L) != 0)) {
 				{
-				State = 107;
+				State = 113;
 				_la = TokenStream.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 264241152L) != 0)) ) {
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 132120576L) != 0)) ) {
 				ErrorHandler.RecoverInline(this);
 				}
 				else {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 108;
+				State = 114;
 				arithmeticExpression();
 				}
 			}
@@ -805,16 +768,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_arithmeticExpression; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterArithmeticExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitArithmeticExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitArithmeticExpression(this);
@@ -825,20 +778,20 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public ArithmeticExpressionContext arithmeticExpression() {
 		ArithmeticExpressionContext _localctx = new ArithmeticExpressionContext(Context, State);
-		EnterRule(_localctx, 18, RULE_arithmeticExpression);
+		EnterRule(_localctx, 20, RULE_arithmeticExpression);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 111;
+			State = 117;
 			multiplicationExpression();
-			State = 116;
+			State = 122;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==PLUS || _la==MINUS) {
 				{
 				{
-				State = 112;
+				State = 118;
 				_la = TokenStream.LA(1);
 				if ( !(_la==PLUS || _la==MINUS) ) {
 				ErrorHandler.RecoverInline(this);
@@ -847,11 +800,11 @@ public partial class CobraParser : Parser {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 113;
+				State = 119;
 				multiplicationExpression();
 				}
 				}
-				State = 118;
+				State = 124;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -893,16 +846,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_multiplicationExpression; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterMultiplicationExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitMultiplicationExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitMultiplicationExpression(this);
@@ -913,33 +856,33 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public MultiplicationExpressionContext multiplicationExpression() {
 		MultiplicationExpressionContext _localctx = new MultiplicationExpressionContext(Context, State);
-		EnterRule(_localctx, 20, RULE_multiplicationExpression);
+		EnterRule(_localctx, 22, RULE_multiplicationExpression);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 119;
+			State = 125;
 			unaryExpression();
-			State = 124;
+			State = 130;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 458752L) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 229376L) != 0)) {
 				{
 				{
-				State = 120;
+				State = 126;
 				_la = TokenStream.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 458752L) != 0)) ) {
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 229376L) != 0)) ) {
 				ErrorHandler.RecoverInline(this);
 				}
 				else {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 121;
+				State = 127;
 				unaryExpression();
 				}
 				}
-				State = 126;
+				State = 132;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -968,16 +911,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_unaryExpression; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterUnaryExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitUnaryExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitUnaryExpression(this);
@@ -988,17 +921,17 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public UnaryExpressionContext unaryExpression() {
 		UnaryExpressionContext _localctx = new UnaryExpressionContext(Context, State);
-		EnterRule(_localctx, 22, RULE_unaryExpression);
+		EnterRule(_localctx, 24, RULE_unaryExpression);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 128;
+			State = 134;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==MINUS || _la==NOT) {
 				{
-				State = 127;
+				State = 133;
 				_la = TokenStream.LA(1);
 				if ( !(_la==MINUS || _la==NOT) ) {
 				ErrorHandler.RecoverInline(this);
@@ -1010,7 +943,7 @@ public partial class CobraParser : Parser {
 				}
 			}
 
-			State = 130;
+			State = 136;
 			primary();
 			}
 		}
@@ -1045,16 +978,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_primary; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterPrimary(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitPrimary(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitPrimary(this);
@@ -1065,61 +988,61 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public PrimaryContext primary() {
 		PrimaryContext _localctx = new PrimaryContext(Context, State);
-		EnterRule(_localctx, 24, RULE_primary);
+		EnterRule(_localctx, 26, RULE_primary);
 		try {
-			State = 142;
+			State = 148;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,10,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 132;
+				State = 138;
 				Match(INTEGER);
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 133;
+				State = 139;
 				Match(FLOAT_LITERAL);
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 134;
+				State = 140;
 				Match(STRING_LITERAL);
 				}
 				break;
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 135;
+				State = 141;
 				Match(BOOLEAN_LITERAL);
 				}
 				break;
 			case 5:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 136;
+				State = 142;
 				Match(ID);
 				}
 				break;
 			case 6:
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 137;
+				State = 143;
 				Match(LPAREN);
-				State = 138;
+				State = 144;
 				expression();
-				State = 139;
+				State = 145;
 				Match(RPAREN);
 				}
 				break;
 			case 7:
 				EnterOuterAlt(_localctx, 7);
 				{
-				State = 141;
+				State = 147;
 				functionCall();
 				}
 				break;
@@ -1152,16 +1075,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_controlStatement; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterControlStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitControlStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitControlStatement(this);
@@ -1172,29 +1085,29 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public ControlStatementContext controlStatement() {
 		ControlStatementContext _localctx = new ControlStatementContext(Context, State);
-		EnterRule(_localctx, 26, RULE_controlStatement);
+		EnterRule(_localctx, 28, RULE_controlStatement);
 		try {
-			State = 147;
+			State = 153;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case IF:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 144;
+				State = 150;
 				ifStatement();
 				}
 				break;
 			case WHILE:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 145;
+				State = 151;
 				whileLoop();
 				}
 				break;
 			case FOR:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 146;
+				State = 152;
 				forLoop();
 				}
 				break;
@@ -1233,16 +1146,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_ifStatement; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterIfStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitIfStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitIfStatement(this);
@@ -1253,29 +1156,29 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public IfStatementContext ifStatement() {
 		IfStatementContext _localctx = new IfStatementContext(Context, State);
-		EnterRule(_localctx, 28, RULE_ifStatement);
+		EnterRule(_localctx, 30, RULE_ifStatement);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 149;
+			State = 155;
 			Match(IF);
-			State = 150;
-			Match(LPAREN);
-			State = 151;
-			expression();
-			State = 152;
-			Match(RPAREN);
-			State = 153;
-			block();
 			State = 156;
+			Match(LPAREN);
+			State = 157;
+			expression();
+			State = 158;
+			Match(RPAREN);
+			State = 159;
+			block();
+			State = 162;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==ELSE) {
 				{
-				State = 154;
+				State = 160;
 				Match(ELSE);
-				State = 155;
+				State = 161;
 				block();
 				}
 			}
@@ -1309,16 +1212,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_whileLoop; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterWhileLoop(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitWhileLoop(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitWhileLoop(this);
@@ -1329,19 +1222,19 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public WhileLoopContext whileLoop() {
 		WhileLoopContext _localctx = new WhileLoopContext(Context, State);
-		EnterRule(_localctx, 30, RULE_whileLoop);
+		EnterRule(_localctx, 32, RULE_whileLoop);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 158;
+			State = 164;
 			Match(WHILE);
-			State = 159;
+			State = 165;
 			Match(LPAREN);
-			State = 160;
+			State = 166;
 			expression();
-			State = 161;
+			State = 167;
 			Match(RPAREN);
-			State = 162;
+			State = 168;
 			block();
 			}
 		}
@@ -1374,16 +1267,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_forLoop; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterForLoop(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitForLoop(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitForLoop(this);
@@ -1394,23 +1277,23 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public ForLoopContext forLoop() {
 		ForLoopContext _localctx = new ForLoopContext(Context, State);
-		EnterRule(_localctx, 32, RULE_forLoop);
+		EnterRule(_localctx, 34, RULE_forLoop);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 164;
-			Match(FOR);
-			State = 165;
-			Match(LPAREN);
-			State = 166;
-			Match(ID);
-			State = 167;
-			Match(IN);
-			State = 168;
-			rangeExpression();
-			State = 169;
-			Match(RPAREN);
 			State = 170;
+			Match(FOR);
+			State = 171;
+			Match(LPAREN);
+			State = 172;
+			Match(ID);
+			State = 173;
+			Match(IN);
+			State = 174;
+			rangeExpression();
+			State = 175;
+			Match(RPAREN);
+			State = 176;
 			block();
 			}
 		}
@@ -1439,16 +1322,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_rangeExpression; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterRangeExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitRangeExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitRangeExpression(this);
@@ -1459,15 +1332,15 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public RangeExpressionContext rangeExpression() {
 		RangeExpressionContext _localctx = new RangeExpressionContext(Context, State);
-		EnterRule(_localctx, 34, RULE_rangeExpression);
+		EnterRule(_localctx, 36, RULE_rangeExpression);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 172;
+			State = 178;
 			expression();
-			State = 173;
+			State = 179;
 			Match(COLON);
-			State = 174;
+			State = 180;
 			expression();
 			}
 		}
@@ -1497,16 +1370,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_block; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterBlock(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitBlock(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBlock(this);
@@ -1517,28 +1380,28 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public BlockContext block() {
 		BlockContext _localctx = new BlockContext(Context, State);
-		EnterRule(_localctx, 36, RULE_block);
+		EnterRule(_localctx, 38, RULE_block);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 176;
+			State = 182;
 			Match(LBRACE);
-			State = 180;
+			State = 186;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 17045116720830L) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 8522558363326L) != 0)) {
 				{
 				{
-				State = 177;
+				State = 183;
 				statement();
 				}
 				}
-				State = 182;
+				State = 188;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 183;
+			State = 189;
 			Match(RBRACE);
 			}
 		}
@@ -1572,16 +1435,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_functionDeclaration; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterFunctionDeclaration(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitFunctionDeclaration(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitFunctionDeclaration(this);
@@ -1592,30 +1445,30 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public FunctionDeclarationContext functionDeclaration() {
 		FunctionDeclarationContext _localctx = new FunctionDeclarationContext(Context, State);
-		EnterRule(_localctx, 38, RULE_functionDeclaration);
+		EnterRule(_localctx, 40, RULE_functionDeclaration);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 185;
+			State = 191;
 			type();
-			State = 186;
+			State = 192;
 			Match(ID);
-			State = 187;
+			State = 193;
 			Match(LPAREN);
-			State = 189;
+			State = 195;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 62L) != 0)) {
 				{
-				State = 188;
+				State = 194;
 				parameterList();
 				}
 			}
 
-			State = 191;
+			State = 197;
 			Match(RPAREN);
-			State = 192;
+			State = 198;
 			block();
 			}
 		}
@@ -1642,16 +1495,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_returnStatement; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterReturnStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitReturnStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitReturnStatement(this);
@@ -1662,24 +1505,24 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public ReturnStatementContext returnStatement() {
 		ReturnStatementContext _localctx = new ReturnStatementContext(Context, State);
-		EnterRule(_localctx, 40, RULE_returnStatement);
+		EnterRule(_localctx, 42, RULE_returnStatement);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 194;
+			State = 200;
 			Match(RETURN);
-			State = 196;
+			State = 202;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 17042969231360L) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 8521484615680L) != 0)) {
 				{
-				State = 195;
+				State = 201;
 				expression();
 				}
 			}
 
-			State = 198;
+			State = 204;
 			Match(SEMICOLON);
 			}
 		}
@@ -1707,16 +1550,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_functionCall; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterFunctionCall(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitFunctionCall(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitFunctionCall(this);
@@ -1727,26 +1560,26 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public FunctionCallContext functionCall() {
 		FunctionCallContext _localctx = new FunctionCallContext(Context, State);
-		EnterRule(_localctx, 42, RULE_functionCall);
+		EnterRule(_localctx, 44, RULE_functionCall);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 200;
+			State = 206;
 			Match(ID);
-			State = 201;
+			State = 207;
 			Match(LPAREN);
-			State = 203;
+			State = 209;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 17042969231360L) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 8521484615680L) != 0)) {
 				{
-				State = 202;
+				State = 208;
 				argumentList();
 				}
 			}
 
-			State = 205;
+			State = 211;
 			Match(RPAREN);
 			}
 		}
@@ -1778,16 +1611,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_parameterList; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterParameterList(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitParameterList(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitParameterList(this);
@@ -1798,26 +1621,26 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public ParameterListContext parameterList() {
 		ParameterListContext _localctx = new ParameterListContext(Context, State);
-		EnterRule(_localctx, 44, RULE_parameterList);
+		EnterRule(_localctx, 46, RULE_parameterList);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 207;
+			State = 213;
 			parameter();
-			State = 212;
+			State = 218;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 208;
+				State = 214;
 				Match(COMMA);
-				State = 209;
+				State = 215;
 				parameter();
 				}
 				}
-				State = 214;
+				State = 220;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -1845,16 +1668,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_parameter; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterParameter(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitParameter(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitParameter(this);
@@ -1865,13 +1678,13 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public ParameterContext parameter() {
 		ParameterContext _localctx = new ParameterContext(Context, State);
-		EnterRule(_localctx, 46, RULE_parameter);
+		EnterRule(_localctx, 48, RULE_parameter);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 215;
+			State = 221;
 			type();
-			State = 216;
+			State = 222;
 			Match(ID);
 			}
 		}
@@ -1903,16 +1716,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_argumentList; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterArgumentList(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitArgumentList(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitArgumentList(this);
@@ -1923,26 +1726,26 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public ArgumentListContext argumentList() {
 		ArgumentListContext _localctx = new ArgumentListContext(Context, State);
-		EnterRule(_localctx, 48, RULE_argumentList);
+		EnterRule(_localctx, 50, RULE_argumentList);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 218;
+			State = 224;
 			expression();
-			State = 223;
+			State = 229;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 219;
+				State = 225;
 				Match(COMMA);
-				State = 220;
+				State = 226;
 				expression();
 				}
 				}
-				State = 225;
+				State = 231;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -1971,16 +1774,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_type; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterType(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitType(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitType(this);
@@ -1991,12 +1784,12 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public TypeContext type() {
 		TypeContext _localctx = new TypeContext(Context, State);
-		EnterRule(_localctx, 50, RULE_type);
+		EnterRule(_localctx, 52, RULE_type);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 226;
+			State = 232;
 			_la = TokenStream.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 62L) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
@@ -2028,16 +1821,6 @@ public partial class CobraParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_importStatement; } }
 		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.EnterImportStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraParserListener typedListener = listener as ICobraParserListener;
-			if (typedListener != null) typedListener.ExitImportStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraParserVisitor<TResult> typedVisitor = visitor as ICobraParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitImportStatement(this);
@@ -2048,15 +1831,15 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public ImportStatementContext importStatement() {
 		ImportStatementContext _localctx = new ImportStatementContext(Context, State);
-		EnterRule(_localctx, 52, RULE_importStatement);
+		EnterRule(_localctx, 54, RULE_importStatement);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 228;
+			State = 234;
 			Match(IMPORT);
-			State = 229;
+			State = 235;
 			Match(ID);
-			State = 230;
+			State = 236;
 			Match(SEMICOLON);
 			}
 		}
@@ -2072,79 +1855,81 @@ public partial class CobraParser : Parser {
 	}
 
 	private static int[] _serializedATN = {
-		4,1,46,233,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
+		4,1,45,239,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
 		7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,14,
 		2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,7,20,2,21,7,21,
-		2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,1,0,1,0,5,0,57,8,0,10,
-		0,12,0,60,9,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,71,8,1,1,2,1,2,1,
-		2,1,2,3,2,77,8,2,1,2,1,2,1,3,1,3,1,3,1,3,1,3,1,4,1,4,1,4,1,5,1,5,1,6,1,
-		6,1,6,5,6,94,8,6,10,6,12,6,97,9,6,1,7,1,7,1,7,5,7,102,8,7,10,7,12,7,105,
-		9,7,1,8,1,8,1,8,3,8,110,8,8,1,9,1,9,1,9,5,9,115,8,9,10,9,12,9,118,9,9,
-		1,10,1,10,1,10,5,10,123,8,10,10,10,12,10,126,9,10,1,11,3,11,129,8,11,1,
-		11,1,11,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,3,12,143,8,12,
-		1,13,1,13,1,13,3,13,148,8,13,1,14,1,14,1,14,1,14,1,14,1,14,1,14,3,14,157,
-		8,14,1,15,1,15,1,15,1,15,1,15,1,15,1,16,1,16,1,16,1,16,1,16,1,16,1,16,
-		1,16,1,17,1,17,1,17,1,17,1,18,1,18,5,18,179,8,18,10,18,12,18,182,9,18,
-		1,18,1,18,1,19,1,19,1,19,1,19,3,19,190,8,19,1,19,1,19,1,19,1,20,1,20,3,
-		20,197,8,20,1,20,1,20,1,21,1,21,1,21,3,21,204,8,21,1,21,1,21,1,22,1,22,
-		1,22,5,22,211,8,22,10,22,12,22,214,9,22,1,23,1,23,1,23,1,24,1,24,1,24,
-		5,24,222,8,24,10,24,12,24,225,9,24,1,25,1,25,1,26,1,26,1,26,1,26,1,26,
-		0,0,27,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,
-		46,48,50,52,0,5,1,0,22,27,1,0,14,15,1,0,16,18,2,0,15,15,21,21,1,0,1,5,
-		235,0,58,1,0,0,0,2,70,1,0,0,0,4,72,1,0,0,0,6,80,1,0,0,0,8,85,1,0,0,0,10,
-		88,1,0,0,0,12,90,1,0,0,0,14,98,1,0,0,0,16,106,1,0,0,0,18,111,1,0,0,0,20,
-		119,1,0,0,0,22,128,1,0,0,0,24,142,1,0,0,0,26,147,1,0,0,0,28,149,1,0,0,
-		0,30,158,1,0,0,0,32,164,1,0,0,0,34,172,1,0,0,0,36,176,1,0,0,0,38,185,1,
-		0,0,0,40,194,1,0,0,0,42,200,1,0,0,0,44,207,1,0,0,0,46,215,1,0,0,0,48,218,
-		1,0,0,0,50,226,1,0,0,0,52,228,1,0,0,0,54,57,3,52,26,0,55,57,3,2,1,0,56,
-		54,1,0,0,0,56,55,1,0,0,0,57,60,1,0,0,0,58,56,1,0,0,0,58,59,1,0,0,0,59,
-		61,1,0,0,0,60,58,1,0,0,0,61,62,5,0,0,1,62,1,1,0,0,0,63,71,3,4,2,0,64,71,
-		3,6,3,0,65,71,3,8,4,0,66,71,3,40,20,0,67,71,3,26,13,0,68,71,3,36,18,0,
-		69,71,3,38,19,0,70,63,1,0,0,0,70,64,1,0,0,0,70,65,1,0,0,0,70,66,1,0,0,
-		0,70,67,1,0,0,0,70,68,1,0,0,0,70,69,1,0,0,0,71,3,1,0,0,0,72,73,3,50,25,
-		0,73,76,5,43,0,0,74,75,5,28,0,0,75,77,3,10,5,0,76,74,1,0,0,0,76,77,1,0,
-		0,0,77,78,1,0,0,0,78,79,5,35,0,0,79,5,1,0,0,0,80,81,5,43,0,0,81,82,5,28,
-		0,0,82,83,3,10,5,0,83,84,5,35,0,0,84,7,1,0,0,0,85,86,3,10,5,0,86,87,5,
-		35,0,0,87,9,1,0,0,0,88,89,3,12,6,0,89,11,1,0,0,0,90,95,3,14,7,0,91,92,
-		5,20,0,0,92,94,3,14,7,0,93,91,1,0,0,0,94,97,1,0,0,0,95,93,1,0,0,0,95,96,
-		1,0,0,0,96,13,1,0,0,0,97,95,1,0,0,0,98,103,3,16,8,0,99,100,5,19,0,0,100,
-		102,3,16,8,0,101,99,1,0,0,0,102,105,1,0,0,0,103,101,1,0,0,0,103,104,1,
-		0,0,0,104,15,1,0,0,0,105,103,1,0,0,0,106,109,3,18,9,0,107,108,7,0,0,0,
-		108,110,3,18,9,0,109,107,1,0,0,0,109,110,1,0,0,0,110,17,1,0,0,0,111,116,
-		3,20,10,0,112,113,7,1,0,0,113,115,3,20,10,0,114,112,1,0,0,0,115,118,1,
-		0,0,0,116,114,1,0,0,0,116,117,1,0,0,0,117,19,1,0,0,0,118,116,1,0,0,0,119,
-		124,3,22,11,0,120,121,7,2,0,0,121,123,3,22,11,0,122,120,1,0,0,0,123,126,
-		1,0,0,0,124,122,1,0,0,0,124,125,1,0,0,0,125,21,1,0,0,0,126,124,1,0,0,0,
-		127,129,7,3,0,0,128,127,1,0,0,0,128,129,1,0,0,0,129,130,1,0,0,0,130,131,
-		3,24,12,0,131,23,1,0,0,0,132,143,5,39,0,0,133,143,5,40,0,0,134,143,5,41,
-		0,0,135,143,5,42,0,0,136,143,5,43,0,0,137,138,5,29,0,0,138,139,3,10,5,
-		0,139,140,5,30,0,0,140,143,1,0,0,0,141,143,3,42,21,0,142,132,1,0,0,0,142,
-		133,1,0,0,0,142,134,1,0,0,0,142,135,1,0,0,0,142,136,1,0,0,0,142,137,1,
-		0,0,0,142,141,1,0,0,0,143,25,1,0,0,0,144,148,3,28,14,0,145,148,3,30,15,
-		0,146,148,3,32,16,0,147,144,1,0,0,0,147,145,1,0,0,0,147,146,1,0,0,0,148,
-		27,1,0,0,0,149,150,5,7,0,0,150,151,5,29,0,0,151,152,3,10,5,0,152,153,5,
-		30,0,0,153,156,3,36,18,0,154,155,5,8,0,0,155,157,3,36,18,0,156,154,1,0,
-		0,0,156,157,1,0,0,0,157,29,1,0,0,0,158,159,5,9,0,0,159,160,5,29,0,0,160,
-		161,3,10,5,0,161,162,5,30,0,0,162,163,3,36,18,0,163,31,1,0,0,0,164,165,
-		5,10,0,0,165,166,5,29,0,0,166,167,5,43,0,0,167,168,5,11,0,0,168,169,3,
-		34,17,0,169,170,5,30,0,0,170,171,3,36,18,0,171,33,1,0,0,0,172,173,3,10,
-		5,0,173,174,5,37,0,0,174,175,3,10,5,0,175,35,1,0,0,0,176,180,5,31,0,0,
-		177,179,3,2,1,0,178,177,1,0,0,0,179,182,1,0,0,0,180,178,1,0,0,0,180,181,
-		1,0,0,0,181,183,1,0,0,0,182,180,1,0,0,0,183,184,5,32,0,0,184,37,1,0,0,
-		0,185,186,3,50,25,0,186,187,5,43,0,0,187,189,5,29,0,0,188,190,3,44,22,
-		0,189,188,1,0,0,0,189,190,1,0,0,0,190,191,1,0,0,0,191,192,5,30,0,0,192,
-		193,3,36,18,0,193,39,1,0,0,0,194,196,5,12,0,0,195,197,3,10,5,0,196,195,
-		1,0,0,0,196,197,1,0,0,0,197,198,1,0,0,0,198,199,5,35,0,0,199,41,1,0,0,
-		0,200,201,5,43,0,0,201,203,5,29,0,0,202,204,3,48,24,0,203,202,1,0,0,0,
-		203,204,1,0,0,0,204,205,1,0,0,0,205,206,5,30,0,0,206,43,1,0,0,0,207,212,
-		3,46,23,0,208,209,5,36,0,0,209,211,3,46,23,0,210,208,1,0,0,0,211,214,1,
-		0,0,0,212,210,1,0,0,0,212,213,1,0,0,0,213,45,1,0,0,0,214,212,1,0,0,0,215,
-		216,3,50,25,0,216,217,5,43,0,0,217,47,1,0,0,0,218,223,3,10,5,0,219,220,
-		5,36,0,0,220,222,3,10,5,0,221,219,1,0,0,0,222,225,1,0,0,0,223,221,1,0,
-		0,0,223,224,1,0,0,0,224,49,1,0,0,0,225,223,1,0,0,0,226,227,7,4,0,0,227,
-		51,1,0,0,0,228,229,5,6,0,0,229,230,5,43,0,0,230,231,5,35,0,0,231,53,1,
-		0,0,0,19,56,58,70,76,95,103,109,116,124,128,142,147,156,180,189,196,203,
-		212,223
+		2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,7,27,1,0,1,0,5,
+		0,59,8,0,10,0,12,0,62,9,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,
+		74,8,1,1,2,1,2,1,2,1,2,3,2,80,8,2,1,2,1,2,1,3,1,3,1,3,1,3,1,3,1,4,1,4,
+		1,4,1,5,1,5,1,5,1,6,1,6,1,7,1,7,1,7,5,7,100,8,7,10,7,12,7,103,9,7,1,8,
+		1,8,1,8,5,8,108,8,8,10,8,12,8,111,9,8,1,9,1,9,1,9,3,9,116,8,9,1,10,1,10,
+		1,10,5,10,121,8,10,10,10,12,10,124,9,10,1,11,1,11,1,11,5,11,129,8,11,10,
+		11,12,11,132,9,11,1,12,3,12,135,8,12,1,12,1,12,1,13,1,13,1,13,1,13,1,13,
+		1,13,1,13,1,13,1,13,1,13,3,13,149,8,13,1,14,1,14,1,14,3,14,154,8,14,1,
+		15,1,15,1,15,1,15,1,15,1,15,1,15,3,15,163,8,15,1,16,1,16,1,16,1,16,1,16,
+		1,16,1,17,1,17,1,17,1,17,1,17,1,17,1,17,1,17,1,18,1,18,1,18,1,18,1,19,
+		1,19,5,19,185,8,19,10,19,12,19,188,9,19,1,19,1,19,1,20,1,20,1,20,1,20,
+		3,20,196,8,20,1,20,1,20,1,20,1,21,1,21,3,21,203,8,21,1,21,1,21,1,22,1,
+		22,1,22,3,22,210,8,22,1,22,1,22,1,23,1,23,1,23,5,23,217,8,23,10,23,12,
+		23,220,9,23,1,24,1,24,1,24,1,25,1,25,1,25,5,25,228,8,25,10,25,12,25,231,
+		9,25,1,26,1,26,1,27,1,27,1,27,1,27,1,27,0,0,28,0,2,4,6,8,10,12,14,16,18,
+		20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,0,5,1,0,21,26,1,
+		0,13,14,1,0,15,17,2,0,14,14,20,20,1,0,1,5,241,0,60,1,0,0,0,2,73,1,0,0,
+		0,4,75,1,0,0,0,6,83,1,0,0,0,8,88,1,0,0,0,10,91,1,0,0,0,12,94,1,0,0,0,14,
+		96,1,0,0,0,16,104,1,0,0,0,18,112,1,0,0,0,20,117,1,0,0,0,22,125,1,0,0,0,
+		24,134,1,0,0,0,26,148,1,0,0,0,28,153,1,0,0,0,30,155,1,0,0,0,32,164,1,0,
+		0,0,34,170,1,0,0,0,36,178,1,0,0,0,38,182,1,0,0,0,40,191,1,0,0,0,42,200,
+		1,0,0,0,44,206,1,0,0,0,46,213,1,0,0,0,48,221,1,0,0,0,50,224,1,0,0,0,52,
+		232,1,0,0,0,54,234,1,0,0,0,56,59,3,54,27,0,57,59,3,2,1,0,58,56,1,0,0,0,
+		58,57,1,0,0,0,59,62,1,0,0,0,60,58,1,0,0,0,60,61,1,0,0,0,61,63,1,0,0,0,
+		62,60,1,0,0,0,63,64,5,0,0,1,64,1,1,0,0,0,65,74,3,4,2,0,66,74,3,6,3,0,67,
+		74,3,8,4,0,68,74,3,10,5,0,69,74,3,42,21,0,70,74,3,28,14,0,71,74,3,38,19,
+		0,72,74,3,40,20,0,73,65,1,0,0,0,73,66,1,0,0,0,73,67,1,0,0,0,73,68,1,0,
+		0,0,73,69,1,0,0,0,73,70,1,0,0,0,73,71,1,0,0,0,73,72,1,0,0,0,74,3,1,0,0,
+		0,75,76,3,52,26,0,76,79,5,42,0,0,77,78,5,27,0,0,78,80,3,12,6,0,79,77,1,
+		0,0,0,79,80,1,0,0,0,80,81,1,0,0,0,81,82,5,34,0,0,82,5,1,0,0,0,83,84,5,
+		42,0,0,84,85,5,27,0,0,85,86,3,12,6,0,86,87,5,34,0,0,87,7,1,0,0,0,88,89,
+		3,12,6,0,89,90,5,34,0,0,90,9,1,0,0,0,91,92,3,44,22,0,92,93,5,34,0,0,93,
+		11,1,0,0,0,94,95,3,14,7,0,95,13,1,0,0,0,96,101,3,16,8,0,97,98,5,19,0,0,
+		98,100,3,16,8,0,99,97,1,0,0,0,100,103,1,0,0,0,101,99,1,0,0,0,101,102,1,
+		0,0,0,102,15,1,0,0,0,103,101,1,0,0,0,104,109,3,18,9,0,105,106,5,18,0,0,
+		106,108,3,18,9,0,107,105,1,0,0,0,108,111,1,0,0,0,109,107,1,0,0,0,109,110,
+		1,0,0,0,110,17,1,0,0,0,111,109,1,0,0,0,112,115,3,20,10,0,113,114,7,0,0,
+		0,114,116,3,20,10,0,115,113,1,0,0,0,115,116,1,0,0,0,116,19,1,0,0,0,117,
+		122,3,22,11,0,118,119,7,1,0,0,119,121,3,22,11,0,120,118,1,0,0,0,121,124,
+		1,0,0,0,122,120,1,0,0,0,122,123,1,0,0,0,123,21,1,0,0,0,124,122,1,0,0,0,
+		125,130,3,24,12,0,126,127,7,2,0,0,127,129,3,24,12,0,128,126,1,0,0,0,129,
+		132,1,0,0,0,130,128,1,0,0,0,130,131,1,0,0,0,131,23,1,0,0,0,132,130,1,0,
+		0,0,133,135,7,3,0,0,134,133,1,0,0,0,134,135,1,0,0,0,135,136,1,0,0,0,136,
+		137,3,26,13,0,137,25,1,0,0,0,138,149,5,38,0,0,139,149,5,39,0,0,140,149,
+		5,40,0,0,141,149,5,41,0,0,142,149,5,42,0,0,143,144,5,28,0,0,144,145,3,
+		12,6,0,145,146,5,29,0,0,146,149,1,0,0,0,147,149,3,44,22,0,148,138,1,0,
+		0,0,148,139,1,0,0,0,148,140,1,0,0,0,148,141,1,0,0,0,148,142,1,0,0,0,148,
+		143,1,0,0,0,148,147,1,0,0,0,149,27,1,0,0,0,150,154,3,30,15,0,151,154,3,
+		32,16,0,152,154,3,34,17,0,153,150,1,0,0,0,153,151,1,0,0,0,153,152,1,0,
+		0,0,154,29,1,0,0,0,155,156,5,7,0,0,156,157,5,28,0,0,157,158,3,12,6,0,158,
+		159,5,29,0,0,159,162,3,38,19,0,160,161,5,8,0,0,161,163,3,38,19,0,162,160,
+		1,0,0,0,162,163,1,0,0,0,163,31,1,0,0,0,164,165,5,9,0,0,165,166,5,28,0,
+		0,166,167,3,12,6,0,167,168,5,29,0,0,168,169,3,38,19,0,169,33,1,0,0,0,170,
+		171,5,10,0,0,171,172,5,28,0,0,172,173,5,42,0,0,173,174,5,11,0,0,174,175,
+		3,36,18,0,175,176,5,29,0,0,176,177,3,38,19,0,177,35,1,0,0,0,178,179,3,
+		12,6,0,179,180,5,36,0,0,180,181,3,12,6,0,181,37,1,0,0,0,182,186,5,30,0,
+		0,183,185,3,2,1,0,184,183,1,0,0,0,185,188,1,0,0,0,186,184,1,0,0,0,186,
+		187,1,0,0,0,187,189,1,0,0,0,188,186,1,0,0,0,189,190,5,31,0,0,190,39,1,
+		0,0,0,191,192,3,52,26,0,192,193,5,42,0,0,193,195,5,28,0,0,194,196,3,46,
+		23,0,195,194,1,0,0,0,195,196,1,0,0,0,196,197,1,0,0,0,197,198,5,29,0,0,
+		198,199,3,38,19,0,199,41,1,0,0,0,200,202,5,12,0,0,201,203,3,12,6,0,202,
+		201,1,0,0,0,202,203,1,0,0,0,203,204,1,0,0,0,204,205,5,34,0,0,205,43,1,
+		0,0,0,206,207,5,42,0,0,207,209,5,28,0,0,208,210,3,50,25,0,209,208,1,0,
+		0,0,209,210,1,0,0,0,210,211,1,0,0,0,211,212,5,29,0,0,212,45,1,0,0,0,213,
+		218,3,48,24,0,214,215,5,35,0,0,215,217,3,48,24,0,216,214,1,0,0,0,217,220,
+		1,0,0,0,218,216,1,0,0,0,218,219,1,0,0,0,219,47,1,0,0,0,220,218,1,0,0,0,
+		221,222,3,52,26,0,222,223,5,42,0,0,223,49,1,0,0,0,224,229,3,12,6,0,225,
+		226,5,35,0,0,226,228,3,12,6,0,227,225,1,0,0,0,228,231,1,0,0,0,229,227,
+		1,0,0,0,229,230,1,0,0,0,230,51,1,0,0,0,231,229,1,0,0,0,232,233,7,4,0,0,
+		233,53,1,0,0,0,234,235,5,6,0,0,235,236,5,42,0,0,236,237,5,34,0,0,237,55,
+		1,0,0,0,19,58,60,73,79,101,109,115,122,130,134,148,153,162,186,195,202,
+		209,218,229
 	};
 
 	public static readonly ATN _ATN =
