@@ -5,7 +5,7 @@ namespace Cobra.Compiler;
 public class CobraProgramVisitor : CobraParserBaseVisitor<LLVMValueRef>
 {
     private readonly LLVMModuleRef _module;
-    private readonly LLVMBuilderRef _builder;
+    private LLVMBuilderRef _builder;
     private readonly Dictionary<string, LLVMValueRef> _namedValues;
 
     public CobraProgramVisitor(LLVMModuleRef module, LLVMBuilderRef builder,
@@ -38,27 +38,65 @@ public class CobraProgramVisitor : CobraParserBaseVisitor<LLVMValueRef>
         return null;
     }
 
+  public override LLVMValueRef VisitDeclarationStatement(CobraParser.DeclarationStatementContext context)
+    {
+        string variableName = context.ID().GetText();
+        string typeName = context.type().GetText();
+
+        LLVMTypeRef varType;
+        if (typeName == "int")
+        {
+            varType = LLVMTypeRef.Int32;
+        }
+        else if (typeName == "float")
+        {
+            varType = LLVMTypeRef.Float;
+        }
+        else
+        {
+            throw new Exception($"Unsupported type for declaration: {typeName}");
+        }
+
+        // Check if the variable is already declared to prevent re-declaration
+        if (_namedValues.ContainsKey(variableName))
+        {
+            throw new Exception($"Variable '{variableName}' is already declared.");
+        }
+
+        // Allocate memory for the new variable
+        LLVMValueRef alloca = _builder.BuildAlloca(varType, variableName);
+        _namedValues[variableName] = alloca;
+        
+        // If an initial value is provided, store it
+        if (context.expression() != null)
+        {
+            LLVMValueRef initialValue = Visit(context.expression());
+            _builder.BuildStore(initialValue, alloca);
+        }
+
+        Console.WriteLine($"Compiled declaration for variable: {variableName} with type {typeName}");
+        return alloca;
+    }
+
+
     public override LLVMValueRef VisitAssignmentStatement(CobraParser.AssignmentStatementContext context)
     {
         string variableName = context.ID().GetText();
-        LLVMValueRef valueToAssign = Visit(context.expression());
-
-        // Check if the variable has already been declared
+        
+        // The fix: Check if the variable is declared, and throw an error if not.
         if (!_namedValues.ContainsKey(variableName))
         {
-            // If not, we'll allocate space for it.
-            // For simplicity, we'll assume integer for now based on the expression type.
-            LLVMTypeRef varType = valueToAssign.TypeOf;
-            LLVMValueRef alloca = _builder.BuildAlloca(varType, variableName);
-            _namedValues[variableName] = alloca;
+            throw new Exception($"Undeclared variable: {variableName}");
         }
+        
+        LLVMValueRef valueToAssign = Visit(context.expression());
 
         // Store the value in the allocated variable
         _builder.BuildStore(valueToAssign, _namedValues[variableName]);
         Console.WriteLine($"Compiled assignment for variable: {variableName}");
         return valueToAssign;
     }
-
+    
     public override LLVMValueRef VisitPrimary(CobraParser.PrimaryContext context)
     {
         return CobraPrimaryVisitor.VisitPrimary(context, _builder, _namedValues);
