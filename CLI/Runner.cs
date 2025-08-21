@@ -1,9 +1,6 @@
 using Cobra.Compiler;
+using Cobra.Utils;
 using CommandLine;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 namespace Cobra.CLI;
 
@@ -18,12 +15,36 @@ public class Runner
 
     private static void RunCompiler(Options options)
     {
+        // Set the static logging level based on the command-line argument.
+        switch (options.VerboseLevel.ToLower())
+        {
+            case "off":
+                CobraLogger.Level = LogLevel.Off;
+                break;
+            case "error":
+                CobraLogger.Level = LogLevel.Error;
+                break;
+            case "warn":
+                CobraLogger.Level = LogLevel.Warn;
+                break;
+            case "info":
+                CobraLogger.Level = LogLevel.Info;
+                break;
+            default:
+                CobraLogger.Error("Invalid verbose level specified. Using default level 'warn'.");
+                CobraLogger.Level = LogLevel.Warn;
+                break;
+        }
+
+        // Set the runtime logging flag.
+        CobraLogger.EnableRuntime = options.VerboseRunning;
+
         try
         {
             // Determine the final output path and directory
             string finalExecutablePath;
             string outputDir;
-            
+
             if (options.InputFiles.Count() == 1)
             {
                 // Case 1: Single input file
@@ -49,13 +70,10 @@ public class Runner
             var objectFiles = new List<string>();
             foreach (var file in options.InputFiles)
             {
-                if (options.VerboseCompilation)
-                {
-                    Console.WriteLine($"Compiling: {file}");
-                }
+                CobraLogger.Info($"Compiling file: {file}");
 
                 string source = File.ReadAllText(file);
-                CobraBuilder builder = new CobraBuilder(source, options.VerboseRunning);
+                CobraBuilder builder = new CobraBuilder(source);
                 builder.Compile();
 
                 string baseFileName = Path.GetFileNameWithoutExtension(file);
@@ -70,7 +88,7 @@ public class Runner
             // Link all generated object files to create the final executable
             CobraBuilder.Build(outputDir, intermediateDir, objectFiles, finalExecutablePath);
 
-            Console.WriteLine($"\nSuccessfully compiled and linked to '{finalExecutablePath}'");
+            CobraLogger.Info($"Successfully compiled and linked to '{finalExecutablePath}'");
 
             // Clean up intermediate files if requested
             if (!options.KeepIntermediate)
@@ -83,13 +101,13 @@ public class Runner
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"\nError: {ex.Message}");
-            Console.WriteLine("Make sure you have LLVM and g++ installed and in your system's PATH.");
+            CobraLogger.Error($"\nError: {ex.Message}");
+            CobraLogger.Info("Make sure you have LLVM and g++ installed and in your system's PATH.");
         }
     }
 
     private static void HandleParseError(IEnumerable<Error> errors)
     {
-        Console.WriteLine("\nCommand line parsing failed. Use --help for usage information.");
+        CobraLogger.Info("Command line parsing failed. Use --help for usage information.");
     }
 }

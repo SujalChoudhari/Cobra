@@ -8,7 +8,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using LLVMSharp.Interop;
 using Antlr4.Runtime;
-using System.Linq; // Added for using .Select and .Join
+using System.Linq;
+using Cobra.Utils; // Added for using .Select and .Join
 
 namespace Cobra.Compiler;
 
@@ -22,13 +23,11 @@ public class CobraBuilder
     private LLVMBuilderRef _builder;
     private Dictionary<string, LLVMValueRef> _namedValues;
     private string _sourceCode;
-    private bool _verboseWhileRunning = false;
 
-    public CobraBuilder(string sourceCode, bool verboseWhileRunning)
+    public CobraBuilder(string sourceCode)
     {
         _sourceCode = sourceCode;
         _namedValues = new Dictionary<string, LLVMValueRef>();
-        _verboseWhileRunning = verboseWhileRunning;
         InitializeLLVM();
     }
 
@@ -62,37 +61,23 @@ public class CobraBuilder
         LLVMTypeRef int32Type = LLVMTypeRef.Int32;
         LLVMTypeRef mainFunctionType = LLVMTypeRef.CreateFunction(int32Type, Array.Empty<LLVMTypeRef>());
         LLVMValueRef mainFunction = _module.AddFunction("__cobra_main__", mainFunctionType);
-        
+
         // A basic block is a sequence of instructions with one entry and one exit point.
         // The 'entry' block is where the function execution begins.
         LLVMBasicBlockRef entryBlock = mainFunction.AppendBasicBlock("entry");
         _builder.PositionAtEnd(entryBlock);
-        
+
         // Step 3: Declaring the C standard library's printf function
         // We declare it so we can call it from our generated code.
         LLVMTypeRef charPtrType = LLVMTypeRef.CreatePointer(LLVMTypeRef.Int8, 0);
         LLVMTypeRef printfFunctionType = LLVMTypeRef.CreateFunction(int32Type, new LLVMTypeRef[] { charPtrType }, true);
         LLVMValueRef printfFunction = _module.AddFunction("printf", printfFunctionType);
+        CobraLogger.printfFunction = printfFunction;
 
         // Step 4: Walking the parse tree and generating LLVM IR
         // The visitor pattern allows us to walk the tree and generate code for each node.
         CobraProgramVisitor programVisitor = new CobraProgramVisitor(_module, _builder, _namedValues);
         programVisitor.Visit(programContext);
-
-        // Step 5: Adding a call to printf for output
-        // We load the value of 'x' and print it to the console.
-        if (_namedValues.TryGetValue("x", out LLVMValueRef xValue))
-        {
-            LLVMValueRef loadedXValue = _builder.BuildLoad2(xValue.TypeOf.ElementType, xValue, "x");
-            LLVMValueRef formatString = _builder.BuildGlobalStringPtr("The value of x is: %d\n", "format_string");
-            LLVMValueRef[] printfArgs = new LLVMValueRef[] { formatString, loadedXValue };
-            _builder.BuildCall2(printfFunctionType, printfFunction, printfArgs, "calltmp");
-        }
-        else
-        {
-            // If 'x' doesn't exist, we can't generate the printf call.
-            Console.WriteLine("Warning: Variable 'x' not found. Skipping printf call.");
-        }
 
         // Step 6: Finalizing the main function
         // Every function needs a return instruction. We return 0, which is the standard for success.
@@ -107,10 +92,11 @@ public class CobraBuilder
     {
         if (_module.TryPrintToFile(filePath, out string errorMessage))
         {
-            Console.WriteLine($"Generated LLVM IR file at: {filePath}");
+            CobraLogger.Info($"Generated LLVM IR file at: {filePath}");
         }
         else
         {
+            CobraLogger.Error($"Error generating LLVM IR: {errorMessage}");
             throw new Exception($"Error generating LLVM IR: {errorMessage}");
         }
     }
@@ -137,7 +123,7 @@ public class CobraBuilder
 
         if (targetMachine.TryEmitToFile(_module, filePath, LLVMCodeGenFileType.LLVMObjectFile, out string errorMessage))
         {
-            Console.WriteLine($"Generated object file at: {filePath}");
+            CobraLogger.Info($"Generated object file at: {filePath}");
         }
         else
         {
@@ -153,10 +139,11 @@ public class CobraBuilder
     /// <param name="objectFiles">A list of paths to the object files (.o).</param>
     /// <param name="finalExecutablePath">The desired path for the final executable.</param>
     // The new Build method signature
-    public static void Build(string outputDir, string intermediateDir, List<string> objectFiles, string finalExecutablePath)
+    public static void Build(string outputDir, string intermediateDir, List<string> objectFiles,
+        string finalExecutablePath)
     {
         string wrapperFile = Path.Combine(intermediateDir, "main.cpp");
-    
+
         // Step 1: Create a small C++ wrapper file
         File.WriteAllText(wrapperFile, @"
     #include <stdio.h>
@@ -167,7 +154,7 @@ public class CobraBuilder
         return __cobra_main__();
     }
     ");
-    
+
         // Step 2: Prepare the arguments for g++
         string objectFilesArg = string.Join(" ", objectFiles.Select(f => $"\"{f}\""));
         ProcessStartInfo psi = new ProcessStartInfo
@@ -179,26 +166,24 @@ public class CobraBuilder
             UseShellExecute = false,
             CreateNoWindow = true
         };
+        
+        CobraLogger.Info($"Running command: {psi.FileName} {psi.Arguments}");
 
-        using (var process = Process.Start(psi))
+        using var process = Process.Start(psi);
+        var output = process?.StandardOutput.ReadToEnd();
+        var error = process?.StandardError.ReadToEnd();
+        process?.WaitForExit();
+
+        if (process is { ExitCode: 0 })
         {
-            string output = process.StandardOutput.ReadToEnd();
-            string error = process.StandardError.ReadToEnd();
-            process.WaitForExit();
-
-            if (process.ExitCode == 0)
-            {
-                Console.WriteLine($"\nSuccessfully created executable: {finalExecutablePath}");
-                Console.WriteLine("To run it, use: {0}", finalExecutablePath);
-            }
-            else
-            {
-                Console.WriteLine("\nLinking failed. Here is the error output:");
-                Console.WriteLine(error);
-                throw new Exception("Linking failed. See console output for details.");
-            }
+            CobraLogger.Info($"Successfully created executable: {finalExecutablePath}");
+            CobraLogger.Info($"To run it, use: {finalExecutablePath}");
         }
-
-        // This file will be deleted by the cleanup logic in Runner.cs
+        else
+        {
+            CobraLogger.Error("Linking failed. Here is the error output:");
+            CobraLogger.Error(error);
+            throw new Exception("Linking failed. See console output for details.");
+        }
     }
 }

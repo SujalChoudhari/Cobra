@@ -1,20 +1,16 @@
+using Cobra.Utils;
 using LLVMSharp.Interop;
 
 namespace Cobra.Compiler;
 
-public class CobraProgramVisitor : CobraParserBaseVisitor<LLVMValueRef>
+public class CobraProgramVisitor(
+    LLVMModuleRef module,
+    LLVMBuilderRef builder,
+    Dictionary<string, LLVMValueRef> namedValues)
+    : CobraParserBaseVisitor<LLVMValueRef>
 {
-    private readonly LLVMModuleRef _module;
-    private LLVMBuilderRef _builder;
-    private readonly Dictionary<string, LLVMValueRef> _namedValues;
-
-    public CobraProgramVisitor(LLVMModuleRef module, LLVMBuilderRef builder,
-        Dictionary<string, LLVMValueRef> namedValues)
-    {
-        _module = module;
-        _builder = builder;
-        _namedValues = namedValues;
-    }
+    private readonly LLVMModuleRef _module = module;
+    private LLVMBuilderRef _builder = builder;
 
     public override LLVMValueRef VisitProgram(CobraParser.ProgramContext context)
     {
@@ -23,6 +19,7 @@ public class CobraProgramVisitor : CobraParserBaseVisitor<LLVMValueRef>
         {
             Visit(statement);
         }
+
         return null;
     }
 
@@ -38,7 +35,7 @@ public class CobraProgramVisitor : CobraParserBaseVisitor<LLVMValueRef>
         return null;
     }
 
-  public override LLVMValueRef VisitDeclarationStatement(CobraParser.DeclarationStatementContext context)
+    public override LLVMValueRef VisitDeclarationStatement(CobraParser.DeclarationStatementContext context)
     {
         string variableName = context.ID().GetText();
         string typeName = context.type().GetText();
@@ -58,15 +55,15 @@ public class CobraProgramVisitor : CobraParserBaseVisitor<LLVMValueRef>
         }
 
         // Check if the variable is already declared to prevent re-declaration
-        if (_namedValues.ContainsKey(variableName))
+        if (namedValues.ContainsKey(variableName))
         {
             throw new Exception($"Variable '{variableName}' is already declared.");
         }
 
         // Allocate memory for the new variable
         LLVMValueRef alloca = _builder.BuildAlloca(varType, variableName);
-        _namedValues[variableName] = alloca;
-        
+        namedValues[variableName] = alloca;
+
         // If an initial value is provided, store it
         if (context.expression() != null)
         {
@@ -82,23 +79,23 @@ public class CobraProgramVisitor : CobraParserBaseVisitor<LLVMValueRef>
     public override LLVMValueRef VisitAssignmentStatement(CobraParser.AssignmentStatementContext context)
     {
         string variableName = context.ID().GetText();
-        
+
         // The fix: Check if the variable is declared, and throw an error if not.
-        if (!_namedValues.ContainsKey(variableName))
+        if (!namedValues.ContainsKey(variableName))
         {
             throw new Exception($"Undeclared variable: {variableName}");
         }
-        
+
         LLVMValueRef valueToAssign = Visit(context.expression());
 
         // Store the value in the allocated variable
-        _builder.BuildStore(valueToAssign, _namedValues[variableName]);
-        Console.WriteLine($"Compiled assignment for variable: {variableName}");
+        _builder.BuildStore(valueToAssign, namedValues[variableName]);
+        CobraLogger.Info($"Compiled assignment for variable: {variableName}");
         return valueToAssign;
     }
-    
+
     public override LLVMValueRef VisitPrimary(CobraParser.PrimaryContext context)
     {
-        return CobraPrimaryVisitor.VisitPrimary(context, _builder, _namedValues);
+        return CobraPrimaryVisitor.VisitPrimary(context, _builder, namedValues);
     }
 }
