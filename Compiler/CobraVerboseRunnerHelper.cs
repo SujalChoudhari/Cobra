@@ -1,49 +1,78 @@
-using System;
 using LLVMSharp.Interop;
 
 namespace Cobra.Compiler;
 
+/// <summary>
+/// Provides helper methods for generating LLVM IR to produce verbose runtime output.
+/// This includes printing static messages and variable values with correct type handling
+/// and C-style `printf` format specifiers.
+/// </summary>
 public static class CobraVerboseRunnerHelper
 {
-    // Helper: get the real function type for BuildCall2
-    private static LLVMTypeRef GetFnType(LLVMValueRef fn)
+    /// <summary>
+    /// Retrieves the underlying function type from a function value.
+    /// This handles cases where the function value is a pointer to the function type.
+    /// </summary>
+    /// <param name="function">The LLVM function value.</param>
+    /// <returns>The <see cref="LLVMTypeRef"/> of the function.</returns>
+    private static LLVMTypeRef GetFnType(LLVMValueRef function)
     {
-        var ty = fn.TypeOf;
-        return ty.Kind == LLVMTypeKind.LLVMPointerTypeKind ? ty.ElementType : ty;
+        var type = function.TypeOf;
+        return type.Kind == LLVMTypeKind.LLVMPointerTypeKind ? type.ElementType : type;
     }
 
-    // Helper: load if pointer-to-scalar
-    private static LLVMValueRef EnsureLoadedScalar(LLVMBuilderRef builder, LLVMValueRef v)
+    /// <summary>
+    /// Ensures that a given LLVM value is a scalar value (not a pointer to one).
+    /// If the value is a pointer to a primitive type (integer, float, double, or another pointer),
+    /// it generates a `load` instruction to get the value itself.
+    /// </summary>
+    /// <param name="builder">The LLVM IR builder.</param>
+    /// <param name="value">The LLVM 'value' to check and potentially load.</param>
+    /// <returns>The scalar <see cref="LLVMValueRef"/>.</returns>
+    private static LLVMValueRef EnsureLoadedScalar(LLVMBuilderRef builder, LLVMValueRef value)
     {
-        var k = v.TypeOf.Kind;
-        if (k == LLVMTypeKind.LLVMPointerTypeKind)
+        var type = value.TypeOf;
+        if (type.Kind != LLVMTypeKind.LLVMPointerTypeKind)
         {
-            var elem = v.TypeOf.ElementType.Kind;
-            if (elem is LLVMTypeKind.LLVMIntegerTypeKind
-                or LLVMTypeKind.LLVMFloatTypeKind
-                or LLVMTypeKind.LLVMDoubleTypeKind
-                or LLVMTypeKind.LLVMPointerTypeKind)
-            {
-                return builder.BuildLoad2(v.TypeOf.ElementType, v, "ld");
-            }
+            return value;
         }
-        return v;
+
+        var elementType = type.ElementType.Kind;
+        return elementType is LLVMTypeKind.LLVMIntegerTypeKind
+            or LLVMTypeKind.LLVMFloatTypeKind
+            or LLVMTypeKind.LLVMDoubleTypeKind
+            or LLVMTypeKind.LLVMPointerTypeKind ? builder.BuildLoad2(type.ElementType, value, "loaded_val") : value;
     }
 
-    /// Print static message.
+    /// <summary>
+    /// Generates LLVM IR to print a static, null-terminated string to standard output.
+    /// </summary>
+    /// <param name="builder">The LLVM IR builder instance.</param>
+    /// <param name="module">The LLVM module.</param>
+    /// <param name="printfFunction">The LLVM value for the `printf` function.</param>
+    /// <param name="message">The string message to be printed.</param>
     public static void AddPrintStatement(
         LLVMBuilderRef builder,
         LLVMModuleRef module,
         LLVMValueRef printfFunction,
         string message)
     {
-        var printfFnTy = GetFnType(printfFunction);
-        var fmt = builder.BuildGlobalStringPtr(message + "\n", "fmt_msg");
-        LLVMValueRef[] args = new[] { fmt };
-        builder.BuildCall2(printfFnTy, printfFunction, args, "call_printf_msg");
+        var printfFnType = GetFnType(printfFunction);
+        var formatString = builder.BuildGlobalStringPtr(message + "\n", "fmt_msg");
+        LLVMValueRef[] args = [formatString];
+        builder.BuildCall2(printfFnType, printfFunction, args, "call_printf_msg");
     }
 
-    /// Print "message: <value>" with correct promotions.
+    /// <summary>
+    /// Generates LLVM IR to print a message followed by a variable's value, handling different data types
+    /// and their corresponding `printf` format specifiers. It correctly promotes smaller integer types to 32-bit
+    /// and `float` to `double` as per C calling conventions.
+    /// </summary>
+    /// <param name="builder">The LLVM IR builder instance.</param>
+    /// <param name="module">The LLVM module.</param>
+    /// <param name="printfFunction">The LLVM value for the `printf` function.</param>
+    /// <param name="message">The message to prefix the variable value.</param>
+    /// <param name="variableValue">The LLVM value reference for the variable to print.</param>
     public static void AddPrintVariable(
         LLVMBuilderRef builder,
         LLVMModuleRef module,
@@ -51,78 +80,64 @@ public static class CobraVerboseRunnerHelper
         string message,
         LLVMValueRef variableValue)
     {
-        var printfFnTy = GetFnType(printfFunction);
+        var printfFnType = GetFnType(printfFunction);
 
-        // Load if needed
-        var v = EnsureLoadedScalar(builder, variableValue);
-        var vt = v.TypeOf;
+        var value = EnsureLoadedScalar(builder, variableValue);
+        var valueType = value.TypeOf;
 
-        // Integers
-        if (vt.Kind == LLVMTypeKind.LLVMIntegerTypeKind)
+        var formatString = string.Empty;
+        var args = new LLVMValueRef[] { };
+        var callName = string.Empty;
+
+        if (valueType.Kind == LLVMTypeKind.LLVMIntegerTypeKind)
         {
-            uint w = vt.IntWidth;
-            LLVMValueRef vPromoted;
-            string spec;
+            var width = valueType.IntWidth;
+            if (width <= 32)
+            {
+                var promotedValue = width < 32
+                    ? builder.BuildSExt(value, LLVMTypeRef.Int32, "s_ext_i32")
+                    : value;
 
-            if (w <= 32)
-            {
-                // default argument promotion to int
-                if (w < 32)
-                    vPromoted = builder.BuildSExt(v, LLVMTypeRef.Int32, "sext_i32");
-                else
-                    vPromoted = v; // i32
-                spec = "%d";
-                var fmt = builder.BuildGlobalStringPtr($"{message}: {spec}\n", "fmt_int");
-                LLVMValueRef[] args = new[] { fmt, vPromoted };
-                builder.BuildCall2(printfFnTy, printfFunction, args, "call_printf_int");
-                return;
+                formatString = $"{message}: %d\n";
+                args = [builder.BuildGlobalStringPtr(formatString, "fmt_int"), promotedValue];
+                callName = "call_printf_int";
             }
-            else if (w == 64)
+            else if (width == 64)
             {
-                // print i64 as long long
-                spec = "%lld";
-                var fmt = builder.BuildGlobalStringPtr($"{message}:\t{spec}\n", "fmt_i64");
-                LLVMValueRef[] args = new[] { fmt, v };
-                builder.BuildCall2(printfFnTy, printfFunction, args, "call_printf_i64");
-                return;
+                formatString = $"{message}: %lld\n";
+                args = [builder.BuildGlobalStringPtr(formatString, "fmt_i64"), value];
+                callName = "call_printf_i64";
             }
         }
-
-        // Float -> promote to double for %f
-        if (vt.Kind == LLVMTypeKind.LLVMFloatTypeKind)
+        else if (valueType.Kind == LLVMTypeKind.LLVMFloatTypeKind)
         {
-            var vd = builder.BuildFPExt(v, LLVMTypeRef.Double, "fpext");
-            var fmt = builder.BuildGlobalStringPtr($"{message}: %f\n", "fmt_float");
-            LLVMValueRef[] args = new[] { fmt, vd };
-            builder.BuildCall2(printfFnTy, printfFunction, args, "call_printf_f32");
-            return;
+            var doubleValue = builder.BuildFPExt(value, LLVMTypeRef.Double, "fp_ext_f64");
+            formatString = $"{message}: %f\n";
+            args = [builder.BuildGlobalStringPtr(formatString, "fmt_float"), doubleValue];
+            callName = "call_printf_f32";
         }
-
-        // Double
-        if (vt.Kind == LLVMTypeKind.LLVMDoubleTypeKind)
+        else if (valueType.Kind == LLVMTypeKind.LLVMDoubleTypeKind)
         {
-            var fmt = builder.BuildGlobalStringPtr($"{message}: %f\n", "fmt_double");
-            LLVMValueRef[] args = new[] { fmt, v };
-            builder.BuildCall2(printfFnTy, printfFunction, args, "call_printf_f64");
-            return;
+            formatString = $"{message}: %f\n";
+            args = [builder.BuildGlobalStringPtr(formatString, "fmt_double"), value];
+            callName = "call_printf_f64";
         }
-
-        // Pointer -> %p, cast to i8*
-        if (vt.Kind == LLVMTypeKind.LLVMPointerTypeKind)
+        else if (valueType.Kind == LLVMTypeKind.LLVMPointerTypeKind)
         {
             var i8Ptr = LLVMTypeRef.CreatePointer(LLVMTypeRef.Int8, 0);
-            var vp = builder.BuildBitCast(v, i8Ptr, "bitcast_i8p");
-            var fmt = builder.BuildGlobalStringPtr($"{message}: %p\n", "fmt_ptr");
-            LLVMValueRef[] args = new[] { fmt, vp };
-            builder.BuildCall2(printfFnTy, printfFunction, args, "call_printf_ptr");
-            return;
+            var castPointer = builder.BuildBitCast(value, i8Ptr, "bit_cast_i8p");
+            formatString = $"{message}: %p\n";
+            args = [builder.BuildGlobalStringPtr(formatString, "fmt_ptr"), castPointer];
+            callName = "call_printf_ptr";
         }
 
-        // Fallback: just message
+        if (string.IsNullOrEmpty(formatString))
         {
-            var fmt = builder.BuildGlobalStringPtr(message + "\n", "fmt_default");
-            LLVMValueRef[] args = new[] { fmt };
-            builder.BuildCall2(printfFnTy, printfFunction, args, "call_printf_default");
+            formatString = $"{message}\n";
+            args = [builder.BuildGlobalStringPtr(formatString, "fmt_default")];
+            callName = "call_printf_default";
         }
+
+        builder.BuildCall2(printfFnType, printfFunction, args, callName);
     }
 }

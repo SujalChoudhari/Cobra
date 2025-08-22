@@ -1,5 +1,5 @@
+using Cobra.Compiler;
 using LLVMSharp.Interop;
-using System;
 
 namespace Cobra.Utils;
 
@@ -9,15 +9,15 @@ namespace Cobra.Utils;
 public enum LogLevel
 {
     Off,
-    Success,
+    Error,
     Warn,
     Info,
-    Error,
-
+    Success
 }
 
 /// <summary>
-/// A static utility class for logging compiler messages to the console with color-coding.
+/// A static utility class for logging compiler messages to the console with color-coding
+/// and for injecting runtime logging into the generated LLVM IR.
 /// </summary>
 public static class CobraLogger
 {
@@ -29,19 +29,18 @@ public static class CobraLogger
     /// <summary>
     /// Enables or disables the injection of `printf` calls into the generated code for runtime debugging.
     /// </summary>
-    public static bool EnableRuntime { get; set; } = false;
+    public static bool EnableRuntime { get; set; }
 
     /// <summary>
     /// Holds the reference to the LLVM `printf` function, declared in the module.
-    /// This must be initialized before calling the Runtime log function.
+    /// This must be initialized before calling the Runtime log functions.
     /// </summary>
     public static LLVMValueRef PrintfFunction;
 
-    // --- Public Logging Methods ---
-
     /// <summary>
-    /// Logs a success message in green. Use this for successful compilation stages.
+    /// Logs a success message in green.
     /// </summary>
+    /// <param name="message">The message to log.</param>
     public static void Success(string message)
     {
         Log(LogLevel.Success, $"[SUCCESS] {message}", ConsoleColor.Green);
@@ -50,28 +49,29 @@ public static class CobraLogger
     /// <summary>
     /// Logs a standard informational message in white.
     /// </summary>
+    /// <param name="message">The message to log.</param>
     public static void Info(string message)
     {
         Log(LogLevel.Info, $"[INFO]    {message}", ConsoleColor.White);
     }
 
     /// <summary>
-    /// Logs a warning message in yellow. Use this for non-critical issues.
+    /// Logs a warning message in yellow.
     /// </summary>
+    /// <param name="message">The message to log.</param>
     public static void Warn(string message)
     {
         Log(LogLevel.Warn, $"[WARN]    {message}", ConsoleColor.Yellow);
     }
 
     /// <summary>
-    /// Logs an error message in red. Use this for critical, compilation-halting issues.
-    ///<_summary>
+    /// Logs an error message in red.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
     public static void Error(string? message)
     {
         Log(LogLevel.Error, $"[ERROR]   {message}", ConsoleColor.Red);
     }
-
-    // --- Runtime Logging ---
 
     /// <summary>
     /// Injects a `printf` call into the LLVM IR to log a message when the compiled program is executed.
@@ -83,37 +83,34 @@ public static class CobraLogger
     {
         if (EnableRuntime && PrintfFunction.Handle != IntPtr.Zero)
         {
-            // Assuming CobraVerboseRunnerHelper exists and contains this method.
-            // This structure remains as you provided.
-            Cobra.Compiler.CobraVerboseRunnerHelper.AddPrintStatement(builder, module, PrintfFunction, $"[RUNTIME]  {message}");
+            CobraVerboseRunnerHelper.AddPrintStatement(builder, module, PrintfFunction, $"[RUNTIME]  {message}");
         }
     }
-    
+
     /// <summary>
-    /// Injects a `printf` call into the LLVM IR to log a message when the compiled program is executed.
+    /// Injects a `printf` call to log a message and the value of a variable at runtime.
     /// </summary>
     /// <param name="builder">The LLVM IR builder.</param>
     /// <param name="module">The LLVM module.</param>
-    /// <param name="message">The message to be printed at runtime.</param>
+    /// <param name="message">The message to be printed.</param>
+    /// <param name="variableValue">The LLVM value reference for the variable to be printed.</param>
     public static void RuntimeVariableValue(LLVMBuilderRef builder, LLVMModuleRef module, string message, LLVMValueRef variableValue)
     {
         if (EnableRuntime && PrintfFunction.Handle != IntPtr.Zero)
         {
-            // Assuming CobraVerboseRunnerHelper exists and contains this method.
-            // This structure remains as you provided.
-            Cobra.Compiler.CobraVerboseRunnerHelper.AddPrintVariable(builder, module, PrintfFunction, $"[RUNTIME]  {message}", variableValue);
+            CobraVerboseRunnerHelper.AddPrintVariable(builder, module, PrintfFunction, $"[RUNTIME]  {message}", variableValue);
         }
     }
-
-    // --- Private Core Logic ---
 
     /// <summary>
     /// The core logging method that handles level checking and console color output.
     /// </summary>
+    /// <param name="messageLevel">The log level of the message.</param>
+    /// <param name="message">The message string to display.</param>
+    /// <param name="color">The color to use for the message.</param>
     private static void Log(LogLevel messageLevel, string message, ConsoleColor color)
     {
-        // Only log if the specified level is at or above the class's current log level.
-        if (Level >= messageLevel)
+        if (Level <= messageLevel)
         {
             Console.ForegroundColor = color;
             Console.WriteLine(message);

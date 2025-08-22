@@ -10,10 +10,16 @@ namespace Cobra.Utils;
 /// </summary>
 public class CobraAstGenerator
 {
-    private readonly CobraParser.ProgramContext _programContext;
+    private readonly CobraParser.ProgramContext? _programContext;
     private readonly string _programName;
 
-    public CobraAstGenerator(CobraParser.ProgramContext programContext, string programName = "cobra_program")
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CobraAstGenerator"/> class.
+    /// </summary>
+    /// <param name="programContext">The root context of the parsed program's tree.</param>
+    /// <param name="programName">The base name for the output file. Defaults to "cobra_program".</param>
+    /// <exception cref="ArgumentNullException">Thrown if the program context is null.</exception>
+    public CobraAstGenerator(CobraParser.ProgramContext? programContext, string programName = "cobra_program")
     {
         _programContext = programContext ?? throw new ArgumentNullException(nameof(programContext));
         _programName = string.IsNullOrWhiteSpace(programName) ? "cobra_program" : programName;
@@ -22,18 +28,16 @@ public class CobraAstGenerator
     /// <summary>
     /// Generates the AST and saves it to a .ast file in the specified directory.
     /// </summary>
-    /// <param name="outputDir">Directory to save the .ast file.</param>
+    /// <param name="outputDir">The directory where the .ast file will be saved.</param>
+    /// <exception cref="Exception">Thrown if an error occurs during AST generation or file writing.</exception>
     public void GenerateAst(string outputDir)
     {
-        string astFilePath = Path.Combine(outputDir, $"{_programName}.ast");
+        var astFilePath = Path.Combine(outputDir, $"{_programName}.ast");
         CobraLogger.Info($"Generating AST at: {astFilePath}");
 
         try
         {
-            // Generate the formatted AST
-            string astText = GenerateAstText(_programContext);
-
-            // Save to file
+            var astText = GenerateAstText(_programContext);
             File.WriteAllText(astFilePath, astText);
             CobraLogger.Success($"Generated AST file at: {astFilePath}");
         }
@@ -49,49 +53,39 @@ public class CobraAstGenerator
     /// </summary>
     /// <param name="context">The root parse tree node (program context).</param>
     /// <returns>A formatted string representing the AST.</returns>
-    private string GenerateAstText(IParseTree context)
+    private static string GenerateAstText(IParseTree? context)
     {
-        StringBuilder astBuilder = new StringBuilder();
-        AstVisitor visitor = new AstVisitor();
-        visitor.Visit(context, astBuilder, new List<bool>());
+        var astBuilder = new StringBuilder();
+        var visitor = new AstVisitor();
+        AstVisitor.Visit(context, astBuilder, new List<bool>());
         return astBuilder.ToString();
     }
 
     /// <summary>
-    /// Visitor class to traverse the parse tree and generate a formatted AST with tree markers.
+    /// A nested visitor class to traverse the parse tree and build the formatted AST string.
+    /// It uses a list of booleans to track branch status for proper tree-like indentation.
     /// </summary>
     private class AstVisitor : CobraBaseVisitor<object>
     {
-        public void Visit(IParseTree tree, StringBuilder builder, List<bool> isLast)
+        /// <summary>
+        /// Recursively visits a parse tree node and its children, appending a formatted
+        /// representation to a StringBuilder.
+        /// </summary>
+        /// <param name="tree">The parse tree node to visit.</param>
+        /// <param name="builder">The StringBuilder to append the formatted AST text to.</param>
+        /// <param name="isLast">A list of booleans indicating if each ancestor is the last child.</param>
+        public static void Visit(IParseTree? tree, StringBuilder builder, List<bool> isLast)
         {
             if (tree == null)
+            {
                 return;
-
-            // Determine node name
-            string nodeName = tree switch
-            {
-                ParserRuleContext ruleContext => CobraParser.ruleNames[ruleContext.RuleIndex],
-                TerminalNodeImpl terminal => $"{terminal.Symbol.Type switch
-                {
-                    CobraParser.Eof => "EOF",
-                    _ => $"{CobraLexer.DefaultVocabulary.GetSymbolicName(terminal.Symbol.Type) ?? "TOKEN"}: {terminal.Symbol.Text}"
-                }}",
-                _ => tree.GetType().Name
-            };
-
-            // Build indentation with tree markers
-            string indent = "";
-            for (int i = 0; i < isLast.Count - 1; i++)
-            {
-                indent += isLast[i] ? "    " : "│   ";
             }
 
-            indent += isLast.Count > 0 ? (isLast[^1] ? "└── " : "├── ") : "";
-
-            // Append the node
+            string? nodeName = GetNodeName(tree);
+            string indent = GetIndent(isLast);
+            
             builder.AppendLine($"{indent}{nodeName}");
 
-            // Visit children
             for (int i = 0; i < tree.ChildCount; i++)
             {
                 var newIsLast = new List<bool>(isLast) { i == tree.ChildCount - 1 };
@@ -99,10 +93,55 @@ public class CobraAstGenerator
             }
         }
 
+        /// <summary>
+        /// Determines the display name for a given parse tree node.
+        /// </summary>
+        /// <param name="tree">The parse tree node.</param>
+        /// <returns>The formatted name of the node.</returns>
+        private static string? GetNodeName(IParseTree? tree)
+        {
+            return tree switch
+            {
+                ParserRuleContext ruleContext => CobraParser.ruleNames[ruleContext.RuleIndex],
+                ITerminalNode terminal => terminal.Symbol.Type switch
+                {
+                    CobraParser.Eof => "EOF",
+                    _ => $"{CobraLexer.DefaultVocabulary.GetSymbolicName(terminal.Symbol.Type) ?? "TOKEN"}: {terminal.GetText()}"
+                },
+                _ => tree?.GetType().Name
+            };
+        }
+
+        /// <summary>
+        /// Generates the indentation string with tree markers based on the `isLast` list.
+        /// </summary>
+        /// <param name="isLast">A list of booleans indicating if each ancestor is the last child.</param>
+        /// <returns>The formatted indentation string.</returns>
+        private static string GetIndent(IReadOnlyList<bool> isLast)
+        {
+            if (isLast.Count == 0)
+            {
+                return string.Empty;
+            }
+            
+            var indentBuilder = new StringBuilder();
+            for (int i = 0; i < isLast.Count - 1; i++)
+            {
+                indentBuilder.Append(isLast[i] ? "    " : "│   ");
+            }
+
+            indentBuilder.Append(isLast[^1] ? "└── " : "├── ");
+            return indentBuilder.ToString();
+        }
+
+        /// <summary>
+        /// Overrides the default VisitTerminal to prevent double-processing, as terminals are handled in the main Visit method.
+        /// </summary>
+        /// <param name="node">The terminal node.</param>
+        /// <returns>Null, as this method does not produce a value.</returns>
         public override object VisitTerminal(ITerminalNode node)
         {
-            // Handled in Visit to include token details
-            return null;
+            return null!;
         }
     }
 }
