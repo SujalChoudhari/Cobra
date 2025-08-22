@@ -129,7 +129,7 @@ public static class CobraVerboseRunnerHelper
             formatString = $"{message}: %p\n";
             args = [builder.BuildGlobalStringPtr(formatString, "fmt_ptr"), castPointer];
             callName = "call_printf_ptr";
-        }
+        } 
 
         if (string.IsNullOrEmpty(formatString))
         {
@@ -137,6 +137,8 @@ public static class CobraVerboseRunnerHelper
             args = [builder.BuildGlobalStringPtr(formatString, "fmt_default")];
             callName = "call_printf_default";
         }
+        
+        
 
         builder.BuildCall2(printfFnType, printfFunction, args, callName);
     }

@@ -168,18 +168,6 @@ public partial class CobraBaseListener : ICobraListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitBlock([NotNull] CobraParser.BlockContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="CobraParser.assignmentStatement"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterAssignmentStatement([NotNull] CobraParser.AssignmentStatementContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="CobraParser.assignmentStatement"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitAssignmentStatement([NotNull] CobraParser.AssignmentStatementContext context) { }
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="CobraParser.assignmentOperator"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -323,6 +311,18 @@ public partial class CobraBaseListener : ICobraListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitExpression([NotNull] CobraParser.ExpressionContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.assignmentExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterAssignmentExpression([NotNull] CobraParser.AssignmentExpressionContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.assignmentExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitAssignmentExpression([NotNull] CobraParser.AssignmentExpressionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="CobraParser.conditionalExpression"/>.
 	/// <para>The default implementation does nothing.</para>

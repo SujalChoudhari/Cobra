@@ -51,11 +51,11 @@ public partial class CobraParser : Parser {
 		RULE_program = 0, RULE_classDeclaration = 1, RULE_classBody = 2, RULE_memberDeclaration = 3, 
 		RULE_fieldDeclaration = 4, RULE_methodDeclaration = 5, RULE_constructorDeclaration = 6, 
 		RULE_functionDeclaration = 7, RULE_declarationStatement = 8, RULE_statement = 9, 
-		RULE_block = 10, RULE_assignmentStatement = 11, RULE_assignmentOperator = 12, 
-		RULE_expressionStatement = 13, RULE_ifStatement = 14, RULE_whileStatement = 15, 
-		RULE_doWhileStatement = 16, RULE_forStatement = 17, RULE_forControl = 18, 
-		RULE_switchStatement = 19, RULE_switchBlockStatementGroup = 20, RULE_switchLabel = 21, 
-		RULE_jumpStatement = 22, RULE_expression = 23, RULE_conditionalExpression = 24, 
+		RULE_block = 10, RULE_assignmentOperator = 11, RULE_expressionStatement = 12, 
+		RULE_ifStatement = 13, RULE_whileStatement = 14, RULE_doWhileStatement = 15, 
+		RULE_forStatement = 16, RULE_forControl = 17, RULE_switchStatement = 18, 
+		RULE_switchBlockStatementGroup = 19, RULE_switchLabel = 20, RULE_jumpStatement = 21, 
+		RULE_expression = 22, RULE_assignmentExpression = 23, RULE_conditionalExpression = 24, 
 		RULE_logicalOrExpression = 25, RULE_logicalAndExpression = 26, RULE_bitwiseOrExpression = 27, 
 		RULE_bitwiseXorExpression = 28, RULE_bitwiseAndExpression = 29, RULE_equalityExpression = 30, 
 		RULE_comparisonExpression = 31, RULE_bitwiseShiftExpression = 32, RULE_additiveExpression = 33, 
@@ -66,16 +66,16 @@ public partial class CobraParser : Parser {
 	public static readonly string[] ruleNames = {
 		"program", "classDeclaration", "classBody", "memberDeclaration", "fieldDeclaration", 
 		"methodDeclaration", "constructorDeclaration", "functionDeclaration", 
-		"declarationStatement", "statement", "block", "assignmentStatement", "assignmentOperator", 
-		"expressionStatement", "ifStatement", "whileStatement", "doWhileStatement", 
-		"forStatement", "forControl", "switchStatement", "switchBlockStatementGroup", 
-		"switchLabel", "jumpStatement", "expression", "conditionalExpression", 
-		"logicalOrExpression", "logicalAndExpression", "bitwiseOrExpression", 
-		"bitwiseXorExpression", "bitwiseAndExpression", "equalityExpression", 
-		"comparisonExpression", "bitwiseShiftExpression", "additiveExpression", 
-		"multiplicativeExpression", "unaryExpression", "postfixExpression", "primary", 
-		"argumentList", "type", "typeSpecifier", "primitiveType", "parameterList", 
-		"parameter", "accessModifier", "importStatement", "literal"
+		"declarationStatement", "statement", "block", "assignmentOperator", "expressionStatement", 
+		"ifStatement", "whileStatement", "doWhileStatement", "forStatement", "forControl", 
+		"switchStatement", "switchBlockStatementGroup", "switchLabel", "jumpStatement", 
+		"expression", "assignmentExpression", "conditionalExpression", "logicalOrExpression", 
+		"logicalAndExpression", "bitwiseOrExpression", "bitwiseXorExpression", 
+		"bitwiseAndExpression", "equalityExpression", "comparisonExpression", 
+		"bitwiseShiftExpression", "additiveExpression", "multiplicativeExpression", 
+		"unaryExpression", "postfixExpression", "primary", "argumentList", "type", 
+		"typeSpecifier", "primitiveType", "parameterList", "parameter", "accessModifier", 
+		"importStatement", "literal"
 	};
 
 	private static readonly string[] _LiteralNames = {
@@ -863,9 +863,6 @@ public partial class CobraParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public DeclarationStatementContext declarationStatement() {
 			return GetRuleContext<DeclarationStatementContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public AssignmentStatementContext assignmentStatement() {
-			return GetRuleContext<AssignmentStatementContext>(0);
-		}
 		[System.Diagnostics.DebuggerNonUserCode] public IfStatementContext ifStatement() {
 			return GetRuleContext<IfStatementContext>(0);
 		}
@@ -915,7 +912,7 @@ public partial class CobraParser : Parser {
 		StatementContext _localctx = new StatementContext(Context, State);
 		EnterRule(_localctx, 18, RULE_statement);
 		try {
-			State = 183;
+			State = 182;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,11,Context) ) {
 			case 1:
@@ -936,55 +933,48 @@ public partial class CobraParser : Parser {
 				EnterOuterAlt(_localctx, 3);
 				{
 				State = 175;
-				assignmentStatement();
+				ifStatement();
 				}
 				break;
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
 				State = 176;
-				ifStatement();
+				whileStatement();
 				}
 				break;
 			case 5:
 				EnterOuterAlt(_localctx, 5);
 				{
 				State = 177;
-				whileStatement();
+				doWhileStatement();
 				}
 				break;
 			case 6:
 				EnterOuterAlt(_localctx, 6);
 				{
 				State = 178;
-				doWhileStatement();
+				forStatement();
 				}
 				break;
 			case 7:
 				EnterOuterAlt(_localctx, 7);
 				{
 				State = 179;
-				forStatement();
+				switchStatement();
 				}
 				break;
 			case 8:
 				EnterOuterAlt(_localctx, 8);
 				{
 				State = 180;
-				switchStatement();
+				jumpStatement();
 				}
 				break;
 			case 9:
 				EnterOuterAlt(_localctx, 9);
 				{
 				State = 181;
-				jumpStatement();
-				}
-				break;
-			case 10:
-				EnterOuterAlt(_localctx, 10);
-				{
-				State = 182;
 				expressionStatement();
 				}
 				break;
@@ -1041,86 +1031,24 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 185;
+			State = 184;
 			Match(LBRACE);
-			State = 189;
+			State = 188;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & -6878122247435610256L) != 0) || _la==ID) {
 				{
 				{
-				State = 186;
+				State = 185;
 				statement();
 				}
 				}
-				State = 191;
+				State = 190;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 192;
+			State = 191;
 			Match(RBRACE);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class AssignmentStatementContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public PostfixExpressionContext postfixExpression() {
-			return GetRuleContext<PostfixExpressionContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public AssignmentOperatorContext assignmentOperator() {
-			return GetRuleContext<AssignmentOperatorContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON() { return GetToken(CobraParser.SEMICOLON, 0); }
-		public AssignmentStatementContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_assignmentStatement; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterAssignmentStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitAssignmentStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitAssignmentStatement(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public AssignmentStatementContext assignmentStatement() {
-		AssignmentStatementContext _localctx = new AssignmentStatementContext(Context, State);
-		EnterRule(_localctx, 22, RULE_assignmentStatement);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 194;
-			postfixExpression();
-			State = 195;
-			assignmentOperator();
-			State = 196;
-			expression();
-			State = 197;
-			Match(SEMICOLON);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1166,12 +1094,12 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public AssignmentOperatorContext assignmentOperator() {
 		AssignmentOperatorContext _localctx = new AssignmentOperatorContext(Context, State);
-		EnterRule(_localctx, 24, RULE_assignmentOperator);
+		EnterRule(_localctx, 22, RULE_assignmentOperator);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 199;
+			State = 193;
 			_la = TokenStream.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 1090715534753792L) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
@@ -1224,13 +1152,13 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public ExpressionStatementContext expressionStatement() {
 		ExpressionStatementContext _localctx = new ExpressionStatementContext(Context, State);
-		EnterRule(_localctx, 26, RULE_expressionStatement);
+		EnterRule(_localctx, 24, RULE_expressionStatement);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 201;
+			State = 195;
 			expression();
-			State = 202;
+			State = 196;
 			Match(SEMICOLON);
 			}
 		}
@@ -1285,28 +1213,28 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public IfStatementContext ifStatement() {
 		IfStatementContext _localctx = new IfStatementContext(Context, State);
-		EnterRule(_localctx, 28, RULE_ifStatement);
+		EnterRule(_localctx, 26, RULE_ifStatement);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 204;
+			State = 198;
 			Match(IF);
-			State = 205;
+			State = 199;
 			Match(LPAREN);
-			State = 206;
+			State = 200;
 			expression();
-			State = 207;
+			State = 201;
 			Match(RPAREN);
-			State = 208;
+			State = 202;
 			statement();
-			State = 211;
+			State = 205;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,13,Context) ) {
 			case 1:
 				{
-				State = 209;
+				State = 203;
 				Match(ELSE);
-				State = 210;
+				State = 204;
 				statement();
 				}
 				break;
@@ -1360,19 +1288,19 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public WhileStatementContext whileStatement() {
 		WhileStatementContext _localctx = new WhileStatementContext(Context, State);
-		EnterRule(_localctx, 30, RULE_whileStatement);
+		EnterRule(_localctx, 28, RULE_whileStatement);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 213;
+			State = 207;
 			Match(WHILE);
-			State = 214;
+			State = 208;
 			Match(LPAREN);
-			State = 215;
+			State = 209;
 			expression();
-			State = 216;
+			State = 210;
 			Match(RPAREN);
-			State = 217;
+			State = 211;
 			statement();
 			}
 		}
@@ -1425,23 +1353,23 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public DoWhileStatementContext doWhileStatement() {
 		DoWhileStatementContext _localctx = new DoWhileStatementContext(Context, State);
-		EnterRule(_localctx, 32, RULE_doWhileStatement);
+		EnterRule(_localctx, 30, RULE_doWhileStatement);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 219;
+			State = 213;
 			Match(DO);
-			State = 220;
+			State = 214;
 			statement();
-			State = 221;
+			State = 215;
 			Match(WHILE);
-			State = 222;
+			State = 216;
 			Match(LPAREN);
-			State = 223;
+			State = 217;
 			expression();
-			State = 224;
+			State = 218;
 			Match(RPAREN);
-			State = 225;
+			State = 219;
 			Match(SEMICOLON);
 			}
 		}
@@ -1492,19 +1420,19 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public ForStatementContext forStatement() {
 		ForStatementContext _localctx = new ForStatementContext(Context, State);
-		EnterRule(_localctx, 34, RULE_forStatement);
+		EnterRule(_localctx, 32, RULE_forStatement);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 227;
+			State = 221;
 			Match(FOR);
-			State = 228;
+			State = 222;
 			Match(LPAREN);
-			State = 229;
+			State = 223;
 			forControl();
-			State = 230;
+			State = 224;
 			Match(RPAREN);
-			State = 231;
+			State = 225;
 			statement();
 			}
 		}
@@ -1523,7 +1451,10 @@ public partial class CobraParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public DeclarationStatementContext declarationStatement() {
 			return GetRuleContext<DeclarationStatementContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON() { return GetToken(CobraParser.SEMICOLON, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] SEMICOLON() { return GetTokens(CobraParser.SEMICOLON); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON(int i) {
+			return GetToken(CobraParser.SEMICOLON, i);
+		}
 		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext[] expression() {
 			return GetRuleContexts<ExpressionContext>();
 		}
@@ -1561,35 +1492,35 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public ForControlContext forControl() {
 		ForControlContext _localctx = new ForControlContext(Context, State);
-		EnterRule(_localctx, 36, RULE_forControl);
+		EnterRule(_localctx, 34, RULE_forControl);
 		int _la;
 		try {
-			State = 246;
+			State = 251;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,16,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,19,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 233;
+				State = 227;
 				declarationStatement();
-				State = 235;
+				State = 229;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 2345249789288906800L) != 0) || _la==ID) {
 					{
-					State = 234;
+					State = 228;
 					expression();
 					}
 				}
 
-				State = 237;
+				State = 231;
 				Match(SEMICOLON);
-				State = 239;
+				State = 233;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 2345249789288906800L) != 0) || _la==ID) {
 					{
-					State = 238;
+					State = 232;
 					expression();
 					}
 				}
@@ -1599,13 +1530,52 @@ public partial class CobraParser : Parser {
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 241;
-				type();
+				State = 236;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 2345249789288906800L) != 0) || _la==ID) {
+					{
+					State = 235;
+					expression();
+					}
+				}
+
+				State = 238;
+				Match(SEMICOLON);
+				State = 240;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 2345249789288906800L) != 0) || _la==ID) {
+					{
+					State = 239;
+					expression();
+					}
+				}
+
 				State = 242;
-				Match(ID);
-				State = 243;
-				Match(IN);
+				Match(SEMICOLON);
 				State = 244;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 2345249789288906800L) != 0) || _la==ID) {
+					{
+					State = 243;
+					expression();
+					}
+				}
+
+				}
+				break;
+			case 3:
+				EnterOuterAlt(_localctx, 3);
+				{
+				State = 246;
+				type();
+				State = 247;
+				Match(ID);
+				State = 248;
+				Match(IN);
+				State = 249;
 				expression();
 				}
 				break;
@@ -1663,36 +1633,36 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public SwitchStatementContext switchStatement() {
 		SwitchStatementContext _localctx = new SwitchStatementContext(Context, State);
-		EnterRule(_localctx, 38, RULE_switchStatement);
+		EnterRule(_localctx, 36, RULE_switchStatement);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 248;
+			State = 253;
 			Match(SWITCH);
-			State = 249;
+			State = 254;
 			Match(LPAREN);
-			State = 250;
+			State = 255;
 			expression();
-			State = 251;
-			Match(RPAREN);
-			State = 252;
-			Match(LBRACE);
 			State = 256;
+			Match(RPAREN);
+			State = 257;
+			Match(LBRACE);
+			State = 261;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==CASE || _la==DEFAULT) {
 				{
 				{
-				State = 253;
+				State = 258;
 				switchBlockStatementGroup();
 				}
 				}
-				State = 258;
+				State = 263;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 259;
+			State = 264;
 			Match(RBRACE);
 			}
 		}
@@ -1746,13 +1716,13 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public SwitchBlockStatementGroupContext switchBlockStatementGroup() {
 		SwitchBlockStatementGroupContext _localctx = new SwitchBlockStatementGroupContext(Context, State);
-		EnterRule(_localctx, 40, RULE_switchBlockStatementGroup);
+		EnterRule(_localctx, 38, RULE_switchBlockStatementGroup);
 		int _la;
 		try {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 262;
+			State = 267;
 			ErrorHandler.Sync(this);
 			_alt = 1;
 			do {
@@ -1760,7 +1730,7 @@ public partial class CobraParser : Parser {
 				case 1:
 					{
 					{
-					State = 261;
+					State = 266;
 					switchLabel();
 					}
 					}
@@ -1768,21 +1738,21 @@ public partial class CobraParser : Parser {
 				default:
 					throw new NoViableAltException(this);
 				}
-				State = 264;
+				State = 269;
 				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,18,Context);
+				_alt = Interpreter.AdaptivePredict(TokenStream,21,Context);
 			} while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER );
-			State = 269;
+			State = 274;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & -6878122247435610256L) != 0) || _la==ID) {
 				{
 				{
-				State = 266;
+				State = 271;
 				statement();
 				}
 				}
-				State = 271;
+				State = 276;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -1832,28 +1802,28 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public SwitchLabelContext switchLabel() {
 		SwitchLabelContext _localctx = new SwitchLabelContext(Context, State);
-		EnterRule(_localctx, 42, RULE_switchLabel);
+		EnterRule(_localctx, 40, RULE_switchLabel);
 		try {
-			State = 278;
+			State = 283;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case CASE:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 272;
+				State = 277;
 				Match(CASE);
-				State = 273;
+				State = 278;
 				expression();
-				State = 274;
+				State = 279;
 				Match(COLON);
 				}
 				break;
 			case DEFAULT:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 276;
+				State = 281;
 				Match(DEFAULT);
-				State = 277;
+				State = 282;
 				Match(COLON);
 				}
 				break;
@@ -1906,46 +1876,46 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public JumpStatementContext jumpStatement() {
 		JumpStatementContext _localctx = new JumpStatementContext(Context, State);
-		EnterRule(_localctx, 44, RULE_jumpStatement);
+		EnterRule(_localctx, 42, RULE_jumpStatement);
 		int _la;
 		try {
-			State = 289;
+			State = 294;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case RETURN:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 280;
+				State = 285;
 				Match(RETURN);
-				State = 282;
+				State = 287;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 2345249789288906800L) != 0) || _la==ID) {
 					{
-					State = 281;
+					State = 286;
 					expression();
 					}
 				}
 
-				State = 284;
+				State = 289;
 				Match(SEMICOLON);
 				}
 				break;
 			case BREAK:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 285;
+				State = 290;
 				Match(BREAK);
-				State = 286;
+				State = 291;
 				Match(SEMICOLON);
 				}
 				break;
 			case CONTINUE:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 287;
+				State = 292;
 				Match(CONTINUE);
-				State = 288;
+				State = 293;
 				Match(SEMICOLON);
 				}
 				break;
@@ -1965,8 +1935,8 @@ public partial class CobraParser : Parser {
 	}
 
 	public partial class ExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ConditionalExpressionContext conditionalExpression() {
-			return GetRuleContext<ConditionalExpressionContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression() {
+			return GetRuleContext<AssignmentExpressionContext>(0);
 		}
 		public ExpressionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -1994,12 +1964,87 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public ExpressionContext expression() {
 		ExpressionContext _localctx = new ExpressionContext(Context, State);
-		EnterRule(_localctx, 46, RULE_expression);
+		EnterRule(_localctx, 44, RULE_expression);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 291;
-			conditionalExpression();
+			State = 296;
+			assignmentExpression();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class AssignmentExpressionContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ConditionalExpressionContext conditionalExpression() {
+			return GetRuleContext<ConditionalExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public PostfixExpressionContext postfixExpression() {
+			return GetRuleContext<PostfixExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentOperatorContext assignmentOperator() {
+			return GetRuleContext<AssignmentOperatorContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression() {
+			return GetRuleContext<AssignmentExpressionContext>(0);
+		}
+		public AssignmentExpressionContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_assignmentExpression; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterAssignmentExpression(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitAssignmentExpression(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitAssignmentExpression(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public AssignmentExpressionContext assignmentExpression() {
+		AssignmentExpressionContext _localctx = new AssignmentExpressionContext(Context, State);
+		EnterRule(_localctx, 46, RULE_assignmentExpression);
+		try {
+			State = 303;
+			ErrorHandler.Sync(this);
+			switch ( Interpreter.AdaptivePredict(TokenStream,26,Context) ) {
+			case 1:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 298;
+				conditionalExpression();
+				}
+				break;
+			case 2:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 299;
+				postfixExpression();
+				State = 300;
+				assignmentOperator();
+				State = 301;
+				assignmentExpression();
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -2056,20 +2101,20 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 293;
+			State = 305;
 			logicalOrExpression();
-			State = 299;
+			State = 311;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==QUESTION_MARK) {
 				{
-				State = 294;
+				State = 306;
 				Match(QUESTION_MARK);
-				State = 295;
+				State = 307;
 				expression();
-				State = 296;
+				State = 308;
 				Match(COLON);
-				State = 297;
+				State = 309;
 				expression();
 				}
 			}
@@ -2129,21 +2174,21 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 301;
+			State = 313;
 			logicalAndExpression();
-			State = 306;
+			State = 318;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==OR) {
 				{
 				{
-				State = 302;
+				State = 314;
 				Match(OR);
-				State = 303;
+				State = 315;
 				logicalAndExpression();
 				}
 				}
-				State = 308;
+				State = 320;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -2202,21 +2247,21 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 309;
+			State = 321;
 			bitwiseOrExpression();
-			State = 314;
+			State = 326;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==AND) {
 				{
 				{
-				State = 310;
+				State = 322;
 				Match(AND);
-				State = 311;
+				State = 323;
 				bitwiseOrExpression();
 				}
 				}
-				State = 316;
+				State = 328;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -2275,21 +2320,21 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 317;
+			State = 329;
 			bitwiseXorExpression();
-			State = 322;
+			State = 334;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==BITWISE_OR) {
 				{
 				{
-				State = 318;
+				State = 330;
 				Match(BITWISE_OR);
-				State = 319;
+				State = 331;
 				bitwiseXorExpression();
 				}
 				}
-				State = 324;
+				State = 336;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -2348,21 +2393,21 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 325;
+			State = 337;
 			bitwiseAndExpression();
-			State = 330;
+			State = 342;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==BITWISE_XOR) {
 				{
 				{
-				State = 326;
+				State = 338;
 				Match(BITWISE_XOR);
-				State = 327;
+				State = 339;
 				bitwiseAndExpression();
 				}
 				}
-				State = 332;
+				State = 344;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -2421,21 +2466,21 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 333;
+			State = 345;
 			equalityExpression();
-			State = 338;
+			State = 350;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==BITWISE_AND) {
 				{
 				{
-				State = 334;
+				State = 346;
 				Match(BITWISE_AND);
-				State = 335;
+				State = 347;
 				equalityExpression();
 				}
 				}
-				State = 340;
+				State = 352;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -2498,15 +2543,15 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 341;
+			State = 353;
 			comparisonExpression();
-			State = 346;
+			State = 358;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==EQ || _la==NEQ) {
 				{
 				{
-				State = 342;
+				State = 354;
 				_la = TokenStream.LA(1);
 				if ( !(_la==EQ || _la==NEQ) ) {
 				ErrorHandler.RecoverInline(this);
@@ -2515,11 +2560,11 @@ public partial class CobraParser : Parser {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 343;
+				State = 355;
 				comparisonExpression();
 				}
 				}
-				State = 348;
+				State = 360;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -2590,15 +2635,15 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 349;
+			State = 361;
 			bitwiseShiftExpression();
-			State = 354;
+			State = 366;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 32985348833280L) != 0)) {
 				{
 				{
-				State = 350;
+				State = 362;
 				_la = TokenStream.LA(1);
 				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 32985348833280L) != 0)) ) {
 				ErrorHandler.RecoverInline(this);
@@ -2607,11 +2652,11 @@ public partial class CobraParser : Parser {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 351;
+				State = 363;
 				bitwiseShiftExpression();
 				}
 				}
-				State = 356;
+				State = 368;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -2674,15 +2719,15 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 357;
+			State = 369;
 			additiveExpression();
-			State = 362;
+			State = 374;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==BITWISE_LEFT_SHIFT || _la==BITWISE_RIGHT_SHIFT) {
 				{
 				{
-				State = 358;
+				State = 370;
 				_la = TokenStream.LA(1);
 				if ( !(_la==BITWISE_LEFT_SHIFT || _la==BITWISE_RIGHT_SHIFT) ) {
 				ErrorHandler.RecoverInline(this);
@@ -2691,11 +2736,11 @@ public partial class CobraParser : Parser {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 359;
+				State = 371;
 				additiveExpression();
 				}
 				}
-				State = 364;
+				State = 376;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -2758,15 +2803,15 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 365;
+			State = 377;
 			multiplicativeExpression();
-			State = 370;
+			State = 382;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==PLUS || _la==MINUS) {
 				{
 				{
-				State = 366;
+				State = 378;
 				_la = TokenStream.LA(1);
 				if ( !(_la==PLUS || _la==MINUS) ) {
 				ErrorHandler.RecoverInline(this);
@@ -2775,11 +2820,11 @@ public partial class CobraParser : Parser {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 367;
+				State = 379;
 				multiplicativeExpression();
 				}
 				}
-				State = 372;
+				State = 384;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -2846,15 +2891,15 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 373;
+			State = 385;
 			unaryExpression();
-			State = 378;
+			State = 390;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 60129542144L) != 0)) {
 				{
 				{
-				State = 374;
+				State = 386;
 				_la = TokenStream.LA(1);
 				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 60129542144L) != 0)) ) {
 				ErrorHandler.RecoverInline(this);
@@ -2863,11 +2908,11 @@ public partial class CobraParser : Parser {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 375;
+				State = 387;
 				unaryExpression();
 				}
 				}
-				State = 380;
+				State = 392;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -2926,7 +2971,7 @@ public partial class CobraParser : Parser {
 		EnterRule(_localctx, 70, RULE_unaryExpression);
 		int _la;
 		try {
-			State = 384;
+			State = 396;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case PLUS:
@@ -2937,7 +2982,7 @@ public partial class CobraParser : Parser {
 			case BITWISE_NOT:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 381;
+				State = 393;
 				_la = TokenStream.LA(1);
 				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 39406778059849728L) != 0)) ) {
 				ErrorHandler.RecoverInline(this);
@@ -2946,7 +2991,7 @@ public partial class CobraParser : Parser {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 382;
+				State = 394;
 				unaryExpression();
 				}
 				break;
@@ -2961,7 +3006,7 @@ public partial class CobraParser : Parser {
 			case ID:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 383;
+				State = 395;
 				postfixExpression();
 				}
 				break;
@@ -3063,48 +3108,48 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 386;
+			State = 398;
 			primary();
-			State = 402;
+			State = 414;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (((((_la - 50)) & ~0x3f) == 0 && ((1L << (_la - 50)) & 35587L) != 0)) {
 				{
-				State = 400;
+				State = 412;
 				ErrorHandler.Sync(this);
 				switch (TokenStream.LA(1)) {
 				case LPAREN:
 					{
-					State = 387;
+					State = 399;
 					Match(LPAREN);
-					State = 389;
+					State = 401;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 					if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 2345249789288906800L) != 0) || _la==ID) {
 						{
-						State = 388;
+						State = 400;
 						argumentList();
 						}
 					}
 
-					State = 391;
+					State = 403;
 					Match(RPAREN);
 					}
 					break;
 				case LBRACKET:
 					{
-					State = 392;
+					State = 404;
 					Match(LBRACKET);
-					State = 393;
+					State = 405;
 					expression();
-					State = 394;
+					State = 406;
 					Match(RBRACKET);
 					}
 					break;
 				case DOT:
 				case ARROW:
 					{
-					State = 396;
+					State = 408;
 					_la = TokenStream.LA(1);
 					if ( !(_la==DOT || _la==ARROW) ) {
 					ErrorHandler.RecoverInline(this);
@@ -3113,19 +3158,19 @@ public partial class CobraParser : Parser {
 						ErrorHandler.ReportMatch(this);
 					    Consume();
 					}
-					State = 397;
+					State = 409;
 					Match(ID);
 					}
 					break;
 				case INC:
 					{
-					State = 398;
+					State = 410;
 					Match(INC);
 					}
 					break;
 				case DEC:
 					{
-					State = 399;
+					State = 411;
 					Match(DEC);
 					}
 					break;
@@ -3133,7 +3178,7 @@ public partial class CobraParser : Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				State = 404;
+				State = 416;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -3199,17 +3244,17 @@ public partial class CobraParser : Parser {
 		EnterRule(_localctx, 74, RULE_primary);
 		int _la;
 		try {
-			State = 425;
+			State = 437;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case LPAREN:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 405;
+				State = 417;
 				Match(LPAREN);
-				State = 406;
+				State = 418;
 				expression();
-				State = 407;
+				State = 419;
 				Match(RPAREN);
 				}
 				break;
@@ -3220,59 +3265,59 @@ public partial class CobraParser : Parser {
 			case BOOLEAN_LITERAL:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 409;
+				State = 421;
 				literal();
 				}
 				break;
 			case ID:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 410;
+				State = 422;
 				Match(ID);
 				}
 				break;
 			case THIS:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 411;
+				State = 423;
 				Match(THIS);
 				}
 				break;
 			case NEW:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 412;
+				State = 424;
 				Match(NEW);
-				State = 413;
+				State = 425;
 				typeSpecifier();
-				State = 423;
+				State = 435;
 				ErrorHandler.Sync(this);
 				switch (TokenStream.LA(1)) {
 				case LPAREN:
 					{
-					State = 414;
+					State = 426;
 					Match(LPAREN);
-					State = 416;
+					State = 428;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 					if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 2345249789288906800L) != 0) || _la==ID) {
 						{
-						State = 415;
+						State = 427;
 						argumentList();
 						}
 					}
 
-					State = 418;
+					State = 430;
 					Match(RPAREN);
 					}
 					break;
 				case LBRACKET:
 					{
-					State = 419;
+					State = 431;
 					Match(LBRACKET);
-					State = 420;
+					State = 432;
 					expression();
-					State = 421;
+					State = 433;
 					Match(RBRACKET);
 					}
 					break;
@@ -3338,21 +3383,21 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 427;
+			State = 439;
 			expression();
-			State = 432;
+			State = 444;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 428;
+				State = 440;
 				Match(COMMA);
-				State = 429;
+				State = 441;
 				expression();
 				}
 				}
-				State = 434;
+				State = 446;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -3412,21 +3457,21 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 435;
+			State = 447;
 			typeSpecifier();
-			State = 440;
+			State = 452;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==LBRACKET) {
 				{
 				{
-				State = 436;
+				State = 448;
 				Match(LBRACKET);
-				State = 437;
+				State = 449;
 				Match(RBRACKET);
 				}
 				}
-				State = 442;
+				State = 454;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -3476,7 +3521,7 @@ public partial class CobraParser : Parser {
 		TypeSpecifierContext _localctx = new TypeSpecifierContext(Context, State);
 		EnterRule(_localctx, 80, RULE_typeSpecifier);
 		try {
-			State = 445;
+			State = 457;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case INT:
@@ -3486,14 +3531,14 @@ public partial class CobraParser : Parser {
 			case VOID:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 443;
+				State = 455;
 				primitiveType();
 				}
 				break;
 			case ID:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 444;
+				State = 456;
 				Match(ID);
 				}
 				break;
@@ -3549,7 +3594,7 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 447;
+			State = 459;
 			_la = TokenStream.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 130023424L) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
@@ -3613,21 +3658,21 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 449;
+			State = 461;
 			parameter();
-			State = 454;
+			State = 466;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 450;
+				State = 462;
 				Match(COMMA);
-				State = 451;
+				State = 463;
 				parameter();
 				}
 				}
-				State = 456;
+				State = 468;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -3679,9 +3724,9 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 457;
+			State = 469;
 			type();
-			State = 458;
+			State = 470;
 			Match(ID);
 			}
 		}
@@ -3731,7 +3776,7 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 460;
+			State = 472;
 			_la = TokenStream.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 1835008L) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
@@ -3787,11 +3832,11 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 462;
+			State = 474;
 			Match(IMPORT);
-			State = 463;
+			State = 475;
 			Match(ID);
-			State = 464;
+			State = 476;
 			Match(SEMICOLON);
 			}
 		}
@@ -3843,7 +3888,7 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 466;
+			State = 478;
 			_la = TokenStream.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 2015363072L) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
@@ -3866,7 +3911,7 @@ public partial class CobraParser : Parser {
 	}
 
 	private static int[] _serializedATN = {
-		4,1,73,469,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
+		4,1,73,481,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
 		7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,14,
 		2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,7,20,2,21,7,21,
 		2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,7,27,2,28,7,28,
@@ -3878,148 +3923,153 @@ public partial class CobraParser : Parser {
 		130,8,3,1,4,1,4,1,4,1,4,3,4,136,8,4,1,4,1,4,1,5,1,5,1,5,1,5,3,5,144,8,
 		5,1,5,1,5,1,5,1,6,1,6,1,6,3,6,152,8,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,3,7,
 		161,8,7,1,7,1,7,1,7,1,8,1,8,1,8,1,8,3,8,170,8,8,1,8,1,8,1,9,1,9,1,9,1,
-		9,1,9,1,9,1,9,1,9,1,9,1,9,3,9,184,8,9,1,10,1,10,5,10,188,8,10,10,10,12,
-		10,191,9,10,1,10,1,10,1,11,1,11,1,11,1,11,1,11,1,12,1,12,1,13,1,13,1,13,
-		1,14,1,14,1,14,1,14,1,14,1,14,1,14,3,14,212,8,14,1,15,1,15,1,15,1,15,1,
-		15,1,15,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,17,1,17,1,17,1,17,1,
-		17,1,17,1,18,1,18,3,18,236,8,18,1,18,1,18,3,18,240,8,18,1,18,1,18,1,18,
-		1,18,1,18,3,18,247,8,18,1,19,1,19,1,19,1,19,1,19,1,19,5,19,255,8,19,10,
-		19,12,19,258,9,19,1,19,1,19,1,20,4,20,263,8,20,11,20,12,20,264,1,20,5,
-		20,268,8,20,10,20,12,20,271,9,20,1,21,1,21,1,21,1,21,1,21,1,21,3,21,279,
-		8,21,1,22,1,22,3,22,283,8,22,1,22,1,22,1,22,1,22,1,22,3,22,290,8,22,1,
-		23,1,23,1,24,1,24,1,24,1,24,1,24,1,24,3,24,300,8,24,1,25,1,25,1,25,5,25,
-		305,8,25,10,25,12,25,308,9,25,1,26,1,26,1,26,5,26,313,8,26,10,26,12,26,
-		316,9,26,1,27,1,27,1,27,5,27,321,8,27,10,27,12,27,324,9,27,1,28,1,28,1,
-		28,5,28,329,8,28,10,28,12,28,332,9,28,1,29,1,29,1,29,5,29,337,8,29,10,
-		29,12,29,340,9,29,1,30,1,30,1,30,5,30,345,8,30,10,30,12,30,348,9,30,1,
-		31,1,31,1,31,5,31,353,8,31,10,31,12,31,356,9,31,1,32,1,32,1,32,5,32,361,
-		8,32,10,32,12,32,364,9,32,1,33,1,33,1,33,5,33,369,8,33,10,33,12,33,372,
-		9,33,1,34,1,34,1,34,5,34,377,8,34,10,34,12,34,380,9,34,1,35,1,35,1,35,
-		3,35,385,8,35,1,36,1,36,1,36,3,36,390,8,36,1,36,1,36,1,36,1,36,1,36,1,
-		36,1,36,1,36,1,36,5,36,401,8,36,10,36,12,36,404,9,36,1,37,1,37,1,37,1,
-		37,1,37,1,37,1,37,1,37,1,37,1,37,1,37,3,37,417,8,37,1,37,1,37,1,37,1,37,
-		1,37,3,37,424,8,37,3,37,426,8,37,1,38,1,38,1,38,5,38,431,8,38,10,38,12,
-		38,434,9,38,1,39,1,39,1,39,5,39,439,8,39,10,39,12,39,442,9,39,1,40,1,40,
-		3,40,446,8,40,1,41,1,41,1,42,1,42,1,42,5,42,453,8,42,10,42,12,42,456,9,
-		42,1,43,1,43,1,43,1,44,1,44,1,45,1,45,1,45,1,45,1,46,1,46,1,46,0,0,47,
-		0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,
-		50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,88,90,92,0,11,
-		1,0,45,49,1,0,39,40,1,0,41,44,1,0,56,57,1,0,31,32,1,0,33,35,4,0,31,32,
-		38,38,50,51,55,55,1,0,58,59,1,0,22,26,1,0,18,20,2,0,21,21,27,30,485,0,
-		101,1,0,0,0,2,106,1,0,0,0,4,121,1,0,0,0,6,124,1,0,0,0,8,131,1,0,0,0,10,
-		139,1,0,0,0,12,148,1,0,0,0,14,156,1,0,0,0,16,165,1,0,0,0,18,183,1,0,0,
-		0,20,185,1,0,0,0,22,194,1,0,0,0,24,199,1,0,0,0,26,201,1,0,0,0,28,204,1,
-		0,0,0,30,213,1,0,0,0,32,219,1,0,0,0,34,227,1,0,0,0,36,246,1,0,0,0,38,248,
-		1,0,0,0,40,262,1,0,0,0,42,278,1,0,0,0,44,289,1,0,0,0,46,291,1,0,0,0,48,
-		293,1,0,0,0,50,301,1,0,0,0,52,309,1,0,0,0,54,317,1,0,0,0,56,325,1,0,0,
-		0,58,333,1,0,0,0,60,341,1,0,0,0,62,349,1,0,0,0,64,357,1,0,0,0,66,365,1,
-		0,0,0,68,373,1,0,0,0,70,384,1,0,0,0,72,386,1,0,0,0,74,425,1,0,0,0,76,427,
-		1,0,0,0,78,435,1,0,0,0,80,445,1,0,0,0,82,447,1,0,0,0,84,449,1,0,0,0,86,
-		457,1,0,0,0,88,460,1,0,0,0,90,462,1,0,0,0,92,466,1,0,0,0,94,100,3,90,45,
-		0,95,100,3,14,7,0,96,100,3,2,1,0,97,100,3,16,8,0,98,100,3,18,9,0,99,94,
-		1,0,0,0,99,95,1,0,0,0,99,96,1,0,0,0,99,97,1,0,0,0,99,98,1,0,0,0,100,103,
-		1,0,0,0,101,99,1,0,0,0,101,102,1,0,0,0,102,104,1,0,0,0,103,101,1,0,0,0,
-		104,105,5,0,0,1,105,1,1,0,0,0,106,107,5,2,0,0,107,110,5,70,0,0,108,109,
-		5,3,0,0,109,111,3,80,40,0,110,108,1,0,0,0,110,111,1,0,0,0,111,112,1,0,
-		0,0,112,116,5,63,0,0,113,115,3,4,2,0,114,113,1,0,0,0,115,118,1,0,0,0,116,
-		114,1,0,0,0,116,117,1,0,0,0,117,119,1,0,0,0,118,116,1,0,0,0,119,120,5,
-		64,0,0,120,3,1,0,0,0,121,122,3,6,3,0,122,5,1,0,0,0,123,125,3,88,44,0,124,
-		123,1,0,0,0,124,125,1,0,0,0,125,129,1,0,0,0,126,130,3,8,4,0,127,130,3,
-		10,5,0,128,130,3,12,6,0,129,126,1,0,0,0,129,127,1,0,0,0,129,128,1,0,0,
-		0,130,7,1,0,0,0,131,132,3,78,39,0,132,135,5,70,0,0,133,134,5,45,0,0,134,
-		136,3,46,23,0,135,133,1,0,0,0,135,136,1,0,0,0,136,137,1,0,0,0,137,138,
-		5,67,0,0,138,9,1,0,0,0,139,140,3,78,39,0,140,141,5,70,0,0,141,143,5,61,
-		0,0,142,144,3,84,42,0,143,142,1,0,0,0,143,144,1,0,0,0,144,145,1,0,0,0,
-		145,146,5,62,0,0,146,147,3,20,10,0,147,11,1,0,0,0,148,149,5,70,0,0,149,
-		151,5,61,0,0,150,152,3,84,42,0,151,150,1,0,0,0,151,152,1,0,0,0,152,153,
-		1,0,0,0,153,154,5,62,0,0,154,155,3,20,10,0,155,13,1,0,0,0,156,157,3,78,
-		39,0,157,158,5,70,0,0,158,160,5,61,0,0,159,161,3,84,42,0,160,159,1,0,0,
-		0,160,161,1,0,0,0,161,162,1,0,0,0,162,163,5,62,0,0,163,164,3,20,10,0,164,
-		15,1,0,0,0,165,166,3,78,39,0,166,169,5,70,0,0,167,168,5,45,0,0,168,170,
-		3,46,23,0,169,167,1,0,0,0,169,170,1,0,0,0,170,171,1,0,0,0,171,172,5,67,
-		0,0,172,17,1,0,0,0,173,184,3,20,10,0,174,184,3,16,8,0,175,184,3,22,11,
-		0,176,184,3,28,14,0,177,184,3,30,15,0,178,184,3,32,16,0,179,184,3,34,17,
-		0,180,184,3,38,19,0,181,184,3,44,22,0,182,184,3,26,13,0,183,173,1,0,0,
-		0,183,174,1,0,0,0,183,175,1,0,0,0,183,176,1,0,0,0,183,177,1,0,0,0,183,
-		178,1,0,0,0,183,179,1,0,0,0,183,180,1,0,0,0,183,181,1,0,0,0,183,182,1,
-		0,0,0,184,19,1,0,0,0,185,189,5,63,0,0,186,188,3,18,9,0,187,186,1,0,0,0,
-		188,191,1,0,0,0,189,187,1,0,0,0,189,190,1,0,0,0,190,192,1,0,0,0,191,189,
-		1,0,0,0,192,193,5,64,0,0,193,21,1,0,0,0,194,195,3,72,36,0,195,196,3,24,
-		12,0,196,197,3,46,23,0,197,198,5,67,0,0,198,23,1,0,0,0,199,200,7,0,0,0,
-		200,25,1,0,0,0,201,202,3,46,23,0,202,203,5,67,0,0,203,27,1,0,0,0,204,205,
-		5,6,0,0,205,206,5,61,0,0,206,207,3,46,23,0,207,208,5,62,0,0,208,211,3,
-		18,9,0,209,210,5,7,0,0,210,212,3,18,9,0,211,209,1,0,0,0,211,212,1,0,0,
-		0,212,29,1,0,0,0,213,214,5,8,0,0,214,215,5,61,0,0,215,216,3,46,23,0,216,
-		217,5,62,0,0,217,218,3,18,9,0,218,31,1,0,0,0,219,220,5,9,0,0,220,221,3,
-		18,9,0,221,222,5,8,0,0,222,223,5,61,0,0,223,224,3,46,23,0,224,225,5,62,
-		0,0,225,226,5,67,0,0,226,33,1,0,0,0,227,228,5,10,0,0,228,229,5,61,0,0,
-		229,230,3,36,18,0,230,231,5,62,0,0,231,232,3,18,9,0,232,35,1,0,0,0,233,
-		235,3,16,8,0,234,236,3,46,23,0,235,234,1,0,0,0,235,236,1,0,0,0,236,237,
-		1,0,0,0,237,239,5,67,0,0,238,240,3,46,23,0,239,238,1,0,0,0,239,240,1,0,
-		0,0,240,247,1,0,0,0,241,242,3,78,39,0,242,243,5,70,0,0,243,244,5,11,0,
-		0,244,245,3,46,23,0,245,247,1,0,0,0,246,233,1,0,0,0,246,241,1,0,0,0,247,
-		37,1,0,0,0,248,249,5,12,0,0,249,250,5,61,0,0,250,251,3,46,23,0,251,252,
-		5,62,0,0,252,256,5,63,0,0,253,255,3,40,20,0,254,253,1,0,0,0,255,258,1,
-		0,0,0,256,254,1,0,0,0,256,257,1,0,0,0,257,259,1,0,0,0,258,256,1,0,0,0,
-		259,260,5,64,0,0,260,39,1,0,0,0,261,263,3,42,21,0,262,261,1,0,0,0,263,
-		264,1,0,0,0,264,262,1,0,0,0,264,265,1,0,0,0,265,269,1,0,0,0,266,268,3,
-		18,9,0,267,266,1,0,0,0,268,271,1,0,0,0,269,267,1,0,0,0,269,270,1,0,0,0,
-		270,41,1,0,0,0,271,269,1,0,0,0,272,273,5,13,0,0,273,274,3,46,23,0,274,
-		275,5,69,0,0,275,279,1,0,0,0,276,277,5,14,0,0,277,279,5,69,0,0,278,272,
-		1,0,0,0,278,276,1,0,0,0,279,43,1,0,0,0,280,282,5,15,0,0,281,283,3,46,23,
-		0,282,281,1,0,0,0,282,283,1,0,0,0,283,284,1,0,0,0,284,290,5,67,0,0,285,
-		286,5,16,0,0,286,290,5,67,0,0,287,288,5,17,0,0,288,290,5,67,0,0,289,280,
-		1,0,0,0,289,285,1,0,0,0,289,287,1,0,0,0,290,45,1,0,0,0,291,292,3,48,24,
-		0,292,47,1,0,0,0,293,299,3,50,25,0,294,295,5,60,0,0,295,296,3,46,23,0,
-		296,297,5,69,0,0,297,298,3,46,23,0,298,300,1,0,0,0,299,294,1,0,0,0,299,
-		300,1,0,0,0,300,49,1,0,0,0,301,306,3,52,26,0,302,303,5,37,0,0,303,305,
-		3,52,26,0,304,302,1,0,0,0,305,308,1,0,0,0,306,304,1,0,0,0,306,307,1,0,
-		0,0,307,51,1,0,0,0,308,306,1,0,0,0,309,314,3,54,27,0,310,311,5,36,0,0,
-		311,313,3,54,27,0,312,310,1,0,0,0,313,316,1,0,0,0,314,312,1,0,0,0,314,
-		315,1,0,0,0,315,53,1,0,0,0,316,314,1,0,0,0,317,322,3,56,28,0,318,319,5,
-		53,0,0,319,321,3,56,28,0,320,318,1,0,0,0,321,324,1,0,0,0,322,320,1,0,0,
-		0,322,323,1,0,0,0,323,55,1,0,0,0,324,322,1,0,0,0,325,330,3,58,29,0,326,
-		327,5,54,0,0,327,329,3,58,29,0,328,326,1,0,0,0,329,332,1,0,0,0,330,328,
-		1,0,0,0,330,331,1,0,0,0,331,57,1,0,0,0,332,330,1,0,0,0,333,338,3,60,30,
-		0,334,335,5,52,0,0,335,337,3,60,30,0,336,334,1,0,0,0,337,340,1,0,0,0,338,
-		336,1,0,0,0,338,339,1,0,0,0,339,59,1,0,0,0,340,338,1,0,0,0,341,346,3,62,
-		31,0,342,343,7,1,0,0,343,345,3,62,31,0,344,342,1,0,0,0,345,348,1,0,0,0,
-		346,344,1,0,0,0,346,347,1,0,0,0,347,61,1,0,0,0,348,346,1,0,0,0,349,354,
-		3,64,32,0,350,351,7,2,0,0,351,353,3,64,32,0,352,350,1,0,0,0,353,356,1,
-		0,0,0,354,352,1,0,0,0,354,355,1,0,0,0,355,63,1,0,0,0,356,354,1,0,0,0,357,
-		362,3,66,33,0,358,359,7,3,0,0,359,361,3,66,33,0,360,358,1,0,0,0,361,364,
-		1,0,0,0,362,360,1,0,0,0,362,363,1,0,0,0,363,65,1,0,0,0,364,362,1,0,0,0,
-		365,370,3,68,34,0,366,367,7,4,0,0,367,369,3,68,34,0,368,366,1,0,0,0,369,
-		372,1,0,0,0,370,368,1,0,0,0,370,371,1,0,0,0,371,67,1,0,0,0,372,370,1,0,
-		0,0,373,378,3,70,35,0,374,375,7,5,0,0,375,377,3,70,35,0,376,374,1,0,0,
-		0,377,380,1,0,0,0,378,376,1,0,0,0,378,379,1,0,0,0,379,69,1,0,0,0,380,378,
-		1,0,0,0,381,382,7,6,0,0,382,385,3,70,35,0,383,385,3,72,36,0,384,381,1,
-		0,0,0,384,383,1,0,0,0,385,71,1,0,0,0,386,402,3,74,37,0,387,389,5,61,0,
-		0,388,390,3,76,38,0,389,388,1,0,0,0,389,390,1,0,0,0,390,391,1,0,0,0,391,
-		401,5,62,0,0,392,393,5,65,0,0,393,394,3,46,23,0,394,395,5,66,0,0,395,401,
-		1,0,0,0,396,397,7,7,0,0,397,401,5,70,0,0,398,401,5,50,0,0,399,401,5,51,
-		0,0,400,387,1,0,0,0,400,392,1,0,0,0,400,396,1,0,0,0,400,398,1,0,0,0,400,
-		399,1,0,0,0,401,404,1,0,0,0,402,400,1,0,0,0,402,403,1,0,0,0,403,73,1,0,
-		0,0,404,402,1,0,0,0,405,406,5,61,0,0,406,407,3,46,23,0,407,408,5,62,0,
-		0,408,426,1,0,0,0,409,426,3,92,46,0,410,426,5,70,0,0,411,426,5,5,0,0,412,
-		413,5,4,0,0,413,423,3,80,40,0,414,416,5,61,0,0,415,417,3,76,38,0,416,415,
-		1,0,0,0,416,417,1,0,0,0,417,418,1,0,0,0,418,424,5,62,0,0,419,420,5,65,
-		0,0,420,421,3,46,23,0,421,422,5,66,0,0,422,424,1,0,0,0,423,414,1,0,0,0,
-		423,419,1,0,0,0,424,426,1,0,0,0,425,405,1,0,0,0,425,409,1,0,0,0,425,410,
-		1,0,0,0,425,411,1,0,0,0,425,412,1,0,0,0,426,75,1,0,0,0,427,432,3,46,23,
-		0,428,429,5,68,0,0,429,431,3,46,23,0,430,428,1,0,0,0,431,434,1,0,0,0,432,
-		430,1,0,0,0,432,433,1,0,0,0,433,77,1,0,0,0,434,432,1,0,0,0,435,440,3,80,
-		40,0,436,437,5,65,0,0,437,439,5,66,0,0,438,436,1,0,0,0,439,442,1,0,0,0,
-		440,438,1,0,0,0,440,441,1,0,0,0,441,79,1,0,0,0,442,440,1,0,0,0,443,446,
-		3,82,41,0,444,446,5,70,0,0,445,443,1,0,0,0,445,444,1,0,0,0,446,81,1,0,
-		0,0,447,448,7,8,0,0,448,83,1,0,0,0,449,454,3,86,43,0,450,451,5,68,0,0,
-		451,453,3,86,43,0,452,450,1,0,0,0,453,456,1,0,0,0,454,452,1,0,0,0,454,
-		455,1,0,0,0,455,85,1,0,0,0,456,454,1,0,0,0,457,458,3,78,39,0,458,459,5,
-		70,0,0,459,87,1,0,0,0,460,461,7,9,0,0,461,89,1,0,0,0,462,463,5,1,0,0,463,
-		464,5,70,0,0,464,465,5,67,0,0,465,91,1,0,0,0,466,467,7,10,0,0,467,93,1,
-		0,0,0,45,99,101,110,116,124,129,135,143,151,160,169,183,189,211,235,239,
-		246,256,264,269,278,282,289,299,306,314,322,330,338,346,354,362,370,378,
-		384,389,400,402,416,423,425,432,440,445,454
+		9,1,9,1,9,1,9,1,9,1,9,3,9,183,8,9,1,10,1,10,5,10,187,8,10,10,10,12,10,
+		190,9,10,1,10,1,10,1,11,1,11,1,12,1,12,1,12,1,13,1,13,1,13,1,13,1,13,1,
+		13,1,13,3,13,206,8,13,1,14,1,14,1,14,1,14,1,14,1,14,1,15,1,15,1,15,1,15,
+		1,15,1,15,1,15,1,15,1,16,1,16,1,16,1,16,1,16,1,16,1,17,1,17,3,17,230,8,
+		17,1,17,1,17,3,17,234,8,17,1,17,3,17,237,8,17,1,17,1,17,3,17,241,8,17,
+		1,17,1,17,3,17,245,8,17,1,17,1,17,1,17,1,17,1,17,3,17,252,8,17,1,18,1,
+		18,1,18,1,18,1,18,1,18,5,18,260,8,18,10,18,12,18,263,9,18,1,18,1,18,1,
+		19,4,19,268,8,19,11,19,12,19,269,1,19,5,19,273,8,19,10,19,12,19,276,9,
+		19,1,20,1,20,1,20,1,20,1,20,1,20,3,20,284,8,20,1,21,1,21,3,21,288,8,21,
+		1,21,1,21,1,21,1,21,1,21,3,21,295,8,21,1,22,1,22,1,23,1,23,1,23,1,23,1,
+		23,3,23,304,8,23,1,24,1,24,1,24,1,24,1,24,1,24,3,24,312,8,24,1,25,1,25,
+		1,25,5,25,317,8,25,10,25,12,25,320,9,25,1,26,1,26,1,26,5,26,325,8,26,10,
+		26,12,26,328,9,26,1,27,1,27,1,27,5,27,333,8,27,10,27,12,27,336,9,27,1,
+		28,1,28,1,28,5,28,341,8,28,10,28,12,28,344,9,28,1,29,1,29,1,29,5,29,349,
+		8,29,10,29,12,29,352,9,29,1,30,1,30,1,30,5,30,357,8,30,10,30,12,30,360,
+		9,30,1,31,1,31,1,31,5,31,365,8,31,10,31,12,31,368,9,31,1,32,1,32,1,32,
+		5,32,373,8,32,10,32,12,32,376,9,32,1,33,1,33,1,33,5,33,381,8,33,10,33,
+		12,33,384,9,33,1,34,1,34,1,34,5,34,389,8,34,10,34,12,34,392,9,34,1,35,
+		1,35,1,35,3,35,397,8,35,1,36,1,36,1,36,3,36,402,8,36,1,36,1,36,1,36,1,
+		36,1,36,1,36,1,36,1,36,1,36,5,36,413,8,36,10,36,12,36,416,9,36,1,37,1,
+		37,1,37,1,37,1,37,1,37,1,37,1,37,1,37,1,37,1,37,3,37,429,8,37,1,37,1,37,
+		1,37,1,37,1,37,3,37,436,8,37,3,37,438,8,37,1,38,1,38,1,38,5,38,443,8,38,
+		10,38,12,38,446,9,38,1,39,1,39,1,39,5,39,451,8,39,10,39,12,39,454,9,39,
+		1,40,1,40,3,40,458,8,40,1,41,1,41,1,42,1,42,1,42,5,42,465,8,42,10,42,12,
+		42,468,9,42,1,43,1,43,1,43,1,44,1,44,1,45,1,45,1,45,1,45,1,46,1,46,1,46,
+		0,0,47,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,
+		46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,88,90,92,
+		0,11,1,0,45,49,1,0,39,40,1,0,41,44,1,0,56,57,1,0,31,32,1,0,33,35,4,0,31,
+		32,38,38,50,51,55,55,1,0,58,59,1,0,22,26,1,0,18,20,2,0,21,21,27,30,501,
+		0,101,1,0,0,0,2,106,1,0,0,0,4,121,1,0,0,0,6,124,1,0,0,0,8,131,1,0,0,0,
+		10,139,1,0,0,0,12,148,1,0,0,0,14,156,1,0,0,0,16,165,1,0,0,0,18,182,1,0,
+		0,0,20,184,1,0,0,0,22,193,1,0,0,0,24,195,1,0,0,0,26,198,1,0,0,0,28,207,
+		1,0,0,0,30,213,1,0,0,0,32,221,1,0,0,0,34,251,1,0,0,0,36,253,1,0,0,0,38,
+		267,1,0,0,0,40,283,1,0,0,0,42,294,1,0,0,0,44,296,1,0,0,0,46,303,1,0,0,
+		0,48,305,1,0,0,0,50,313,1,0,0,0,52,321,1,0,0,0,54,329,1,0,0,0,56,337,1,
+		0,0,0,58,345,1,0,0,0,60,353,1,0,0,0,62,361,1,0,0,0,64,369,1,0,0,0,66,377,
+		1,0,0,0,68,385,1,0,0,0,70,396,1,0,0,0,72,398,1,0,0,0,74,437,1,0,0,0,76,
+		439,1,0,0,0,78,447,1,0,0,0,80,457,1,0,0,0,82,459,1,0,0,0,84,461,1,0,0,
+		0,86,469,1,0,0,0,88,472,1,0,0,0,90,474,1,0,0,0,92,478,1,0,0,0,94,100,3,
+		90,45,0,95,100,3,14,7,0,96,100,3,2,1,0,97,100,3,16,8,0,98,100,3,18,9,0,
+		99,94,1,0,0,0,99,95,1,0,0,0,99,96,1,0,0,0,99,97,1,0,0,0,99,98,1,0,0,0,
+		100,103,1,0,0,0,101,99,1,0,0,0,101,102,1,0,0,0,102,104,1,0,0,0,103,101,
+		1,0,0,0,104,105,5,0,0,1,105,1,1,0,0,0,106,107,5,2,0,0,107,110,5,70,0,0,
+		108,109,5,3,0,0,109,111,3,80,40,0,110,108,1,0,0,0,110,111,1,0,0,0,111,
+		112,1,0,0,0,112,116,5,63,0,0,113,115,3,4,2,0,114,113,1,0,0,0,115,118,1,
+		0,0,0,116,114,1,0,0,0,116,117,1,0,0,0,117,119,1,0,0,0,118,116,1,0,0,0,
+		119,120,5,64,0,0,120,3,1,0,0,0,121,122,3,6,3,0,122,5,1,0,0,0,123,125,3,
+		88,44,0,124,123,1,0,0,0,124,125,1,0,0,0,125,129,1,0,0,0,126,130,3,8,4,
+		0,127,130,3,10,5,0,128,130,3,12,6,0,129,126,1,0,0,0,129,127,1,0,0,0,129,
+		128,1,0,0,0,130,7,1,0,0,0,131,132,3,78,39,0,132,135,5,70,0,0,133,134,5,
+		45,0,0,134,136,3,44,22,0,135,133,1,0,0,0,135,136,1,0,0,0,136,137,1,0,0,
+		0,137,138,5,67,0,0,138,9,1,0,0,0,139,140,3,78,39,0,140,141,5,70,0,0,141,
+		143,5,61,0,0,142,144,3,84,42,0,143,142,1,0,0,0,143,144,1,0,0,0,144,145,
+		1,0,0,0,145,146,5,62,0,0,146,147,3,20,10,0,147,11,1,0,0,0,148,149,5,70,
+		0,0,149,151,5,61,0,0,150,152,3,84,42,0,151,150,1,0,0,0,151,152,1,0,0,0,
+		152,153,1,0,0,0,153,154,5,62,0,0,154,155,3,20,10,0,155,13,1,0,0,0,156,
+		157,3,78,39,0,157,158,5,70,0,0,158,160,5,61,0,0,159,161,3,84,42,0,160,
+		159,1,0,0,0,160,161,1,0,0,0,161,162,1,0,0,0,162,163,5,62,0,0,163,164,3,
+		20,10,0,164,15,1,0,0,0,165,166,3,78,39,0,166,169,5,70,0,0,167,168,5,45,
+		0,0,168,170,3,44,22,0,169,167,1,0,0,0,169,170,1,0,0,0,170,171,1,0,0,0,
+		171,172,5,67,0,0,172,17,1,0,0,0,173,183,3,20,10,0,174,183,3,16,8,0,175,
+		183,3,26,13,0,176,183,3,28,14,0,177,183,3,30,15,0,178,183,3,32,16,0,179,
+		183,3,36,18,0,180,183,3,42,21,0,181,183,3,24,12,0,182,173,1,0,0,0,182,
+		174,1,0,0,0,182,175,1,0,0,0,182,176,1,0,0,0,182,177,1,0,0,0,182,178,1,
+		0,0,0,182,179,1,0,0,0,182,180,1,0,0,0,182,181,1,0,0,0,183,19,1,0,0,0,184,
+		188,5,63,0,0,185,187,3,18,9,0,186,185,1,0,0,0,187,190,1,0,0,0,188,186,
+		1,0,0,0,188,189,1,0,0,0,189,191,1,0,0,0,190,188,1,0,0,0,191,192,5,64,0,
+		0,192,21,1,0,0,0,193,194,7,0,0,0,194,23,1,0,0,0,195,196,3,44,22,0,196,
+		197,5,67,0,0,197,25,1,0,0,0,198,199,5,6,0,0,199,200,5,61,0,0,200,201,3,
+		44,22,0,201,202,5,62,0,0,202,205,3,18,9,0,203,204,5,7,0,0,204,206,3,18,
+		9,0,205,203,1,0,0,0,205,206,1,0,0,0,206,27,1,0,0,0,207,208,5,8,0,0,208,
+		209,5,61,0,0,209,210,3,44,22,0,210,211,5,62,0,0,211,212,3,18,9,0,212,29,
+		1,0,0,0,213,214,5,9,0,0,214,215,3,18,9,0,215,216,5,8,0,0,216,217,5,61,
+		0,0,217,218,3,44,22,0,218,219,5,62,0,0,219,220,5,67,0,0,220,31,1,0,0,0,
+		221,222,5,10,0,0,222,223,5,61,0,0,223,224,3,34,17,0,224,225,5,62,0,0,225,
+		226,3,18,9,0,226,33,1,0,0,0,227,229,3,16,8,0,228,230,3,44,22,0,229,228,
+		1,0,0,0,229,230,1,0,0,0,230,231,1,0,0,0,231,233,5,67,0,0,232,234,3,44,
+		22,0,233,232,1,0,0,0,233,234,1,0,0,0,234,252,1,0,0,0,235,237,3,44,22,0,
+		236,235,1,0,0,0,236,237,1,0,0,0,237,238,1,0,0,0,238,240,5,67,0,0,239,241,
+		3,44,22,0,240,239,1,0,0,0,240,241,1,0,0,0,241,242,1,0,0,0,242,244,5,67,
+		0,0,243,245,3,44,22,0,244,243,1,0,0,0,244,245,1,0,0,0,245,252,1,0,0,0,
+		246,247,3,78,39,0,247,248,5,70,0,0,248,249,5,11,0,0,249,250,3,44,22,0,
+		250,252,1,0,0,0,251,227,1,0,0,0,251,236,1,0,0,0,251,246,1,0,0,0,252,35,
+		1,0,0,0,253,254,5,12,0,0,254,255,5,61,0,0,255,256,3,44,22,0,256,257,5,
+		62,0,0,257,261,5,63,0,0,258,260,3,38,19,0,259,258,1,0,0,0,260,263,1,0,
+		0,0,261,259,1,0,0,0,261,262,1,0,0,0,262,264,1,0,0,0,263,261,1,0,0,0,264,
+		265,5,64,0,0,265,37,1,0,0,0,266,268,3,40,20,0,267,266,1,0,0,0,268,269,
+		1,0,0,0,269,267,1,0,0,0,269,270,1,0,0,0,270,274,1,0,0,0,271,273,3,18,9,
+		0,272,271,1,0,0,0,273,276,1,0,0,0,274,272,1,0,0,0,274,275,1,0,0,0,275,
+		39,1,0,0,0,276,274,1,0,0,0,277,278,5,13,0,0,278,279,3,44,22,0,279,280,
+		5,69,0,0,280,284,1,0,0,0,281,282,5,14,0,0,282,284,5,69,0,0,283,277,1,0,
+		0,0,283,281,1,0,0,0,284,41,1,0,0,0,285,287,5,15,0,0,286,288,3,44,22,0,
+		287,286,1,0,0,0,287,288,1,0,0,0,288,289,1,0,0,0,289,295,5,67,0,0,290,291,
+		5,16,0,0,291,295,5,67,0,0,292,293,5,17,0,0,293,295,5,67,0,0,294,285,1,
+		0,0,0,294,290,1,0,0,0,294,292,1,0,0,0,295,43,1,0,0,0,296,297,3,46,23,0,
+		297,45,1,0,0,0,298,304,3,48,24,0,299,300,3,72,36,0,300,301,3,22,11,0,301,
+		302,3,46,23,0,302,304,1,0,0,0,303,298,1,0,0,0,303,299,1,0,0,0,304,47,1,
+		0,0,0,305,311,3,50,25,0,306,307,5,60,0,0,307,308,3,44,22,0,308,309,5,69,
+		0,0,309,310,3,44,22,0,310,312,1,0,0,0,311,306,1,0,0,0,311,312,1,0,0,0,
+		312,49,1,0,0,0,313,318,3,52,26,0,314,315,5,37,0,0,315,317,3,52,26,0,316,
+		314,1,0,0,0,317,320,1,0,0,0,318,316,1,0,0,0,318,319,1,0,0,0,319,51,1,0,
+		0,0,320,318,1,0,0,0,321,326,3,54,27,0,322,323,5,36,0,0,323,325,3,54,27,
+		0,324,322,1,0,0,0,325,328,1,0,0,0,326,324,1,0,0,0,326,327,1,0,0,0,327,
+		53,1,0,0,0,328,326,1,0,0,0,329,334,3,56,28,0,330,331,5,53,0,0,331,333,
+		3,56,28,0,332,330,1,0,0,0,333,336,1,0,0,0,334,332,1,0,0,0,334,335,1,0,
+		0,0,335,55,1,0,0,0,336,334,1,0,0,0,337,342,3,58,29,0,338,339,5,54,0,0,
+		339,341,3,58,29,0,340,338,1,0,0,0,341,344,1,0,0,0,342,340,1,0,0,0,342,
+		343,1,0,0,0,343,57,1,0,0,0,344,342,1,0,0,0,345,350,3,60,30,0,346,347,5,
+		52,0,0,347,349,3,60,30,0,348,346,1,0,0,0,349,352,1,0,0,0,350,348,1,0,0,
+		0,350,351,1,0,0,0,351,59,1,0,0,0,352,350,1,0,0,0,353,358,3,62,31,0,354,
+		355,7,1,0,0,355,357,3,62,31,0,356,354,1,0,0,0,357,360,1,0,0,0,358,356,
+		1,0,0,0,358,359,1,0,0,0,359,61,1,0,0,0,360,358,1,0,0,0,361,366,3,64,32,
+		0,362,363,7,2,0,0,363,365,3,64,32,0,364,362,1,0,0,0,365,368,1,0,0,0,366,
+		364,1,0,0,0,366,367,1,0,0,0,367,63,1,0,0,0,368,366,1,0,0,0,369,374,3,66,
+		33,0,370,371,7,3,0,0,371,373,3,66,33,0,372,370,1,0,0,0,373,376,1,0,0,0,
+		374,372,1,0,0,0,374,375,1,0,0,0,375,65,1,0,0,0,376,374,1,0,0,0,377,382,
+		3,68,34,0,378,379,7,4,0,0,379,381,3,68,34,0,380,378,1,0,0,0,381,384,1,
+		0,0,0,382,380,1,0,0,0,382,383,1,0,0,0,383,67,1,0,0,0,384,382,1,0,0,0,385,
+		390,3,70,35,0,386,387,7,5,0,0,387,389,3,70,35,0,388,386,1,0,0,0,389,392,
+		1,0,0,0,390,388,1,0,0,0,390,391,1,0,0,0,391,69,1,0,0,0,392,390,1,0,0,0,
+		393,394,7,6,0,0,394,397,3,70,35,0,395,397,3,72,36,0,396,393,1,0,0,0,396,
+		395,1,0,0,0,397,71,1,0,0,0,398,414,3,74,37,0,399,401,5,61,0,0,400,402,
+		3,76,38,0,401,400,1,0,0,0,401,402,1,0,0,0,402,403,1,0,0,0,403,413,5,62,
+		0,0,404,405,5,65,0,0,405,406,3,44,22,0,406,407,5,66,0,0,407,413,1,0,0,
+		0,408,409,7,7,0,0,409,413,5,70,0,0,410,413,5,50,0,0,411,413,5,51,0,0,412,
+		399,1,0,0,0,412,404,1,0,0,0,412,408,1,0,0,0,412,410,1,0,0,0,412,411,1,
+		0,0,0,413,416,1,0,0,0,414,412,1,0,0,0,414,415,1,0,0,0,415,73,1,0,0,0,416,
+		414,1,0,0,0,417,418,5,61,0,0,418,419,3,44,22,0,419,420,5,62,0,0,420,438,
+		1,0,0,0,421,438,3,92,46,0,422,438,5,70,0,0,423,438,5,5,0,0,424,425,5,4,
+		0,0,425,435,3,80,40,0,426,428,5,61,0,0,427,429,3,76,38,0,428,427,1,0,0,
+		0,428,429,1,0,0,0,429,430,1,0,0,0,430,436,5,62,0,0,431,432,5,65,0,0,432,
+		433,3,44,22,0,433,434,5,66,0,0,434,436,1,0,0,0,435,426,1,0,0,0,435,431,
+		1,0,0,0,436,438,1,0,0,0,437,417,1,0,0,0,437,421,1,0,0,0,437,422,1,0,0,
+		0,437,423,1,0,0,0,437,424,1,0,0,0,438,75,1,0,0,0,439,444,3,44,22,0,440,
+		441,5,68,0,0,441,443,3,44,22,0,442,440,1,0,0,0,443,446,1,0,0,0,444,442,
+		1,0,0,0,444,445,1,0,0,0,445,77,1,0,0,0,446,444,1,0,0,0,447,452,3,80,40,
+		0,448,449,5,65,0,0,449,451,5,66,0,0,450,448,1,0,0,0,451,454,1,0,0,0,452,
+		450,1,0,0,0,452,453,1,0,0,0,453,79,1,0,0,0,454,452,1,0,0,0,455,458,3,82,
+		41,0,456,458,5,70,0,0,457,455,1,0,0,0,457,456,1,0,0,0,458,81,1,0,0,0,459,
+		460,7,8,0,0,460,83,1,0,0,0,461,466,3,86,43,0,462,463,5,68,0,0,463,465,
+		3,86,43,0,464,462,1,0,0,0,465,468,1,0,0,0,466,464,1,0,0,0,466,467,1,0,
+		0,0,467,85,1,0,0,0,468,466,1,0,0,0,469,470,3,78,39,0,470,471,5,70,0,0,
+		471,87,1,0,0,0,472,473,7,9,0,0,473,89,1,0,0,0,474,475,5,1,0,0,475,476,
+		5,70,0,0,476,477,5,67,0,0,477,91,1,0,0,0,478,479,7,10,0,0,479,93,1,0,0,
+		0,49,99,101,110,116,124,129,135,143,151,160,169,182,188,205,229,233,236,
+		240,244,251,261,269,274,283,287,294,303,311,318,326,334,342,350,358,366,
+		374,382,390,396,401,412,414,428,435,437,444,452,457,466
 	};
 
 	public static readonly ATN _ATN =

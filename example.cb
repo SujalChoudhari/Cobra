@@ -1,27 +1,16 @@
-int a = 5;
-int b = -3;
-bool c = true;
-int d = ~a;  // Bitwise NOT: ~5 = -6
-int e = a & b;  // Bitwise AND: 5 & -3 = 5 & (111...1101) = 5 (two's complement)
-int f = a | b;  // Bitwise OR
-int g = a ^ b;  // Bitwise XOR
-int h = a << 1;  // Left shift: 10
-int i = h >> 2;  // Right shift (arithmetic for signed): 10 >> 2 = 2
-bool j = (a == 5) && (b != 0) && c;  // true && true && true = true (chain, short-circuit if false early)
-bool k = (a > 10) || (b < 0) || !c;  // false || true || false = true (short-circuit if true early)
-bool l = a >= b;  // true
-bool m = a <= 0;  // false
-int n = +a;  // +5 = 5
-int o = -b;  // -(-3) = 3
-bool p = !c;  // !true = false
-int q = ++a;  // Prefix ++: a=6, q=6
-int r = a++;  // Postfix ++: r=6, a=7
-int s = --b;  // Prefix --: b=-4, s=-4
-int t = b--;  // Postfix --: t=-4, b=-5
-bool u = (a > 0) ? true : false;  // Ternary: true
-
 int x = 10;
-x /= 2;
-x+= 3;
-x-=4;
-int y = x;
+
+for (int k = 0; k < x; k++){
+    
+    if(x == 9){
+        int y = 20;
+        break;
+    }
+    
+    
+    if(x == 10){
+        int y = 21;
+        break;
+    }
+
+}

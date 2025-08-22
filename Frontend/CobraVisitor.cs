@@ -98,12 +98,6 @@ public interface ICobraVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitBlock([NotNull] CobraParser.BlockContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.assignmentStatement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitAssignmentStatement([NotNull] CobraParser.AssignmentStatementContext context);
-	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.assignmentOperator"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -175,6 +169,12 @@ public interface ICobraVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitExpression([NotNull] CobraParser.ExpressionContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.assignmentExpression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitAssignmentExpression([NotNull] CobraParser.AssignmentExpressionContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.conditionalExpression"/>.
 	/// </summary>

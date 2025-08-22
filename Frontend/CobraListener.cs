@@ -141,16 +141,6 @@ public interface ICobraListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitBlock([NotNull] CobraParser.BlockContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="CobraParser.assignmentStatement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterAssignmentStatement([NotNull] CobraParser.AssignmentStatementContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="CobraParser.assignmentStatement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitAssignmentStatement([NotNull] CobraParser.AssignmentStatementContext context);
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="CobraParser.assignmentOperator"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -270,6 +260,16 @@ public interface ICobraListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitExpression([NotNull] CobraParser.ExpressionContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.assignmentExpression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterAssignmentExpression([NotNull] CobraParser.AssignmentExpressionContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.assignmentExpression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitAssignmentExpression([NotNull] CobraParser.AssignmentExpressionContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="CobraParser.conditionalExpression"/>.
 	/// </summary>

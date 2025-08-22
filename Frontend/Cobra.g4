@@ -57,7 +57,6 @@ declarationStatement
 statement
     : block
     | declarationStatement
-    | assignmentStatement
     | ifStatement
     | whileStatement
     | doWhileStatement
@@ -72,10 +71,6 @@ block
     : LBRACE statement* RBRACE
     ;
 
-// Assignment using various operators to a valid l-value (postfixExpression)
-assignmentStatement
-    : postfixExpression assignmentOperator expression SEMICOLON
-    ;
 
 assignmentOperator
     : ASSIGN | PLUS_ASSIGN | MINUS_ASSIGN | MUL_ASSIGN | DIV_ASSIGN
@@ -102,10 +97,10 @@ forStatement
     : FOR LPAREN forControl RPAREN statement
     ;
 
-// C-style for loop and for-each loop
 forControl
-    : declarationStatement expression? SEMICOLON expression? // for(int i=0; i<10; i++)
-    | type ID IN expression                           // for(int item in collection)
+    : declarationStatement expression? SEMICOLON expression?
+    | expression? SEMICOLON expression? SEMICOLON expression?   // non-declaration init
+    | type ID IN expression
     ;
 
 // Switch/Case statement
@@ -137,8 +132,14 @@ jumpStatement
  */
 
 expression
-    : conditionalExpression
+    : assignmentExpression
     ;
+    
+assignmentExpression
+    : conditionalExpression
+    | postfixExpression assignmentOperator assignmentExpression  // right-associative
+    ;
+
 
 conditionalExpression // Ternary operator
     : logicalOrExpression (QUESTION_MARK expression COLON expression)?

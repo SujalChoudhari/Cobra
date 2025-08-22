@@ -21,7 +21,6 @@ public class CobraBuilder
     public CobraBuilder(string sourceCode)
     {
         _sourceCode = sourceCode;
-        _namedValues = new Dictionary<string, LLVMValueRef>();
         InitializeLlvm();
     }
 
@@ -67,7 +66,7 @@ public class CobraBuilder
         var printfFunction = _module.AddFunction("printf", printfFunctionType);
         CobraLogger.PrintfFunction = printfFunction;
 
-        var programVisitor = new CobraProgramVisitor(_module, _builder, _namedValues);
+        var programVisitor = new CobraProgramVisitor(_module, _builder);
         programVisitor.Visit(programContext);
 
         _builder.BuildRet(LLVMValueRef.CreateConstInt(int32Type, 0));
