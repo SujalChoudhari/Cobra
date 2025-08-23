@@ -7,12 +7,14 @@ namespace Cobra.Compiler.Visitors;
 internal class CobraStatementVisitor
 {
     private readonly CobraProgramVisitor _visitor;
+    private LLVMModuleRef _module;
     private LLVMBuilderRef _builder;
 
     internal CobraStatementVisitor(CobraProgramVisitor mainVisitor)
     {
         _visitor = mainVisitor;
         _builder = mainVisitor.Builder;
+        _module = mainVisitor.Module;
     }
 
     public LLVMValueRef VisitProgram(CobraParser.ProgramContext context)
@@ -23,6 +25,8 @@ internal class CobraStatementVisitor
             foreach (var child in context.children)
             {
                 if (child is ITerminalNode) continue;
+                if (child is CobraParser.FunctionDeclarationContext) continue;
+                if (child is CobraParser.DeclarationStatementContext decl && decl.GLOBAL() != null) continue;
                 _visitor.Visit(child);
             }
         }
@@ -33,6 +37,7 @@ internal class CobraStatementVisitor
 
         return default;
     }
+
 
     public LLVMValueRef VisitStatement(CobraParser.StatementContext context)
     {
@@ -89,6 +94,42 @@ internal class CobraStatementVisitor
             _ => throw new Exception($"Invalid type specified: {typeName}")
         };
 
+        // --- Is it explicitly global? ---
+        bool isGlobal = context.GLOBAL() != null;
+
+        if (_visitor.IsGlobalScope && isGlobal)
+        {
+            if (typeName == "void")
+                throw new Exception("Variables cannot have type 'void'");
+
+            // Create global variable
+            var g = _module.AddGlobal(varType, variableName);
+
+            if (context.expression() != null)
+            {
+                var init = _visitor.Visit(context.expression());
+                if (!init.IsConstant)
+                    throw new Exception($"Global '{variableName}' requires a constant initializer");
+                g.Initializer = init;
+            }
+            else
+            {
+                // Default initializer
+                g.Initializer = varType.Kind switch
+                {
+                    LLVMTypeKind.LLVMIntegerTypeKind => LLVMValueRef.CreateConstInt(varType, 0, false),
+                    LLVMTypeKind.LLVMFloatTypeKind => LLVMValueRef.CreateConstReal(varType, 0.0),
+                    LLVMTypeKind.LLVMPointerTypeKind => LLVMValueRef.CreateConstNull(varType),
+                    _ => throw new Exception($"Unsupported global type for variable '{variableName}'")
+                };
+            }
+
+            _visitor.ScopeManagement.DeclareVariable(variableName, g, isGlobal: true);
+            CobraLogger.Success($"Declared global variable: {variableName} <{typeName}>");
+            return g;
+        }
+
+        // --- Local or top-level “Python-style” statement ---
         var allocatedValue = _builder.BuildAlloca(varType, variableName);
         _visitor.ScopeManagement.DeclareVariable(variableName, allocatedValue);
 
@@ -101,13 +142,14 @@ internal class CobraStatementVisitor
                 initialValue);
         }
 
-        CobraLogger.Success($"Compiled declaration for variable: {variableName} with type {typeName}");
+        CobraLogger.Success($"Compiled local variable: {variableName} <{typeName}>");
         return allocatedValue;
     }
 
+
     public LLVMValueRef VisitIfStatement(CobraParser.IfStatementContext context)
     {
-        var condition = _visitor.Visit(context.expression());
+        var condition = ToI1(_visitor.Visit(context.expression()));
         var parentFunction = _builder.InsertBlock.Parent;
 
         var thenBlock = LLVMBasicBlockRef.AppendInContext(_visitor.Module.Context, parentFunction, "if_then");
@@ -151,7 +193,7 @@ internal class CobraStatementVisitor
         {
             _builder.BuildBr(condBlock);
             _builder.PositionAtEnd(condBlock);
-            var condition = _visitor.Visit(context.expression());
+            var condition = ToI1(_visitor.Visit(context.expression()));
             _builder.BuildCondBr(condition, loopBodyBlock, afterLoopBlock);
             _builder.PositionAtEnd(loopBodyBlock);
             _visitor.Visit(context.statement());
@@ -191,7 +233,7 @@ internal class CobraStatementVisitor
             }
 
             _builder.PositionAtEnd(condBlock);
-            var condition = _visitor.Visit(context.expression());
+            var condition = ToI1(_visitor.Visit(context.expression()));
             _builder.BuildCondBr(condition, loopBodyBlock, afterLoopBlock);
 
             _builder.PositionAtEnd(afterLoopBlock);
@@ -226,7 +268,7 @@ internal class CobraStatementVisitor
 
                     _builder.PositionAtEnd(condBlock);
                     var condition = forControl.expression(0) != null
-                        ? _visitor.Visit(forControl.expression(0))
+                        ? ToI1(_visitor.Visit(forControl.expression(0)))
                         : LLVMValueRef.CreateConstInt(LLVMTypeRef.Int1, 1);
                     _builder.BuildCondBr(condition, loopBodyBlock, afterLoopBlock);
 
@@ -276,9 +318,46 @@ internal class CobraStatementVisitor
         }
         else if (context.RETURN() != null)
         {
-            throw new NotImplementedException("Return statements are not yet implemented.");
+            if (_visitor.CurrentFunction == default)
+            {
+                throw new Exception("'return' statement not within a function.");
+            }
+
+            if (context.expression() != null)
+            {
+                var returnValue = _visitor.Visit(context.expression());
+                _builder.BuildRet(returnValue);
+            }
+            else
+            {
+                _builder.BuildRetVoid();
+            }
         }
 
         return default;
+    }
+
+
+    private LLVMValueRef ToI1(LLVMValueRef v)
+    {
+        var k = v.TypeOf.Kind;
+
+        if (k == LLVMTypeKind.LLVMIntegerTypeKind && v.TypeOf.IntWidth == 1) return v;
+
+        if (k == LLVMTypeKind.LLVMIntegerTypeKind)
+            return _builder.BuildICmp(
+                LLVMIntPredicate.LLVMIntNE,
+                v,
+                LLVMValueRef.CreateConstInt(v.TypeOf, 0),
+                "truthy");
+
+        if (k == LLVMTypeKind.LLVMFloatTypeKind || k == LLVMTypeKind.LLVMDoubleTypeKind)
+            return _builder.BuildFCmp(
+                LLVMRealPredicate.LLVMRealONE,
+                v,
+                LLVMValueRef.CreateConstReal(v.TypeOf, 0.0),
+                "truthy");
+
+        throw new Exception("Condition must be scalar (int/float/bool).");
     }
 }

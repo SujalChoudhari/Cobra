@@ -1,5 +1,3 @@
-using Cobra.Compiler.Visitors.Expressions;
-using Cobra.Utils;
 using LLVMSharp.Interop;
 
 namespace Cobra.Compiler.Visitors;
@@ -13,8 +11,15 @@ public class CobraProgramVisitor : CobraBaseVisitor<LLVMValueRef>
     internal readonly LLVMModuleRef Module;
     internal readonly LLVMBuilderRef Builder;
     internal readonly Stack<(LLVMBasicBlockRef ContinueTarget, LLVMBasicBlockRef BreakTarget)> LoopContexts = new();
-    internal CobraScopeManagement ScopeManagement = new();
+    internal readonly CobraScopeManagement ScopeManagement = new();
+    internal bool IsGlobalScope = true;
+
+    internal readonly Dictionary<string, LLVMValueRef> Functions = new();
+
+    internal LLVMValueRef CurrentFunction;
+
     // Visitors
+    private readonly CobraFunctionVisitor _functionVisitor;
     private readonly CobraStatementVisitor _statementVisitor;
     private readonly CobraAssignmentExpressionVisitor _assignmentExpressionVisitor;
     private readonly CobraConditionalExpressionVisitor _conditionalExpressionVisitor;
@@ -29,7 +34,7 @@ public class CobraProgramVisitor : CobraBaseVisitor<LLVMValueRef>
     {
         Module = module;
         Builder = builder;
-
+        _functionVisitor = new CobraFunctionVisitor(this);
         _statementVisitor = new CobraStatementVisitor(this);
         _assignmentExpressionVisitor = new CobraAssignmentExpressionVisitor(this);
         _conditionalExpressionVisitor = new CobraConditionalExpressionVisitor(this);
@@ -42,8 +47,36 @@ public class CobraProgramVisitor : CobraBaseVisitor<LLVMValueRef>
     }
 
     // --- Top-Level ---
-    public override LLVMValueRef VisitProgram(CobraParser.ProgramContext context) =>
+    public override LLVMValueRef VisitProgram(CobraParser.ProgramContext context)
+    {
+        
+        // --- Pass 1: declare function prototypes ---
+        foreach (var funcDecl in context.functionDeclaration())
+        {
+            _functionVisitor.VisitFunctionDeclaration_Pass1(funcDecl);
+        }
+
+        // --- Pass 0: declare globals ---
+        foreach (var decl in context.declarationStatement()
+                     .Where(d => d.GLOBAL() != null))
+        {
+            _statementVisitor.VisitDeclarationStatement(decl);
+        }
+
+        // --- Pass 2: generate function bodies ---
+        foreach (var funcDecl in context.functionDeclaration())
+        {
+            _functionVisitor.VisitFunctionDeclaration_Pass2(funcDecl);
+        }
+
         _statementVisitor.VisitProgram(context);
+
+        return default;
+    }
+
+
+    public override LLVMValueRef VisitFunctionDeclaration(CobraParser.FunctionDeclarationContext context) =>
+        _functionVisitor.VisitFunctionDeclaration_Pass2(context);
 
     // --- Statement Delegation ---
     public override LLVMValueRef VisitStatement(CobraParser.StatementContext context) =>

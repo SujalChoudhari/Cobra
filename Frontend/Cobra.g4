@@ -45,6 +45,7 @@ functionDeclaration
 // Variable declaration statement (can be used inside blocks)
 declarationStatement
     : type ID (ASSIGN expression)? SEMICOLON
+    | GLOBAL type ID (ASSIGN expression)? SEMICOLON
     ;
 
 
@@ -288,6 +289,7 @@ PUBLIC: 'public';
 PRIVATE: 'private';
 PROTECTED: 'protected';
 NULL: 'null';
+GLOBAL: 'global';
 
 // Type Keywords
 INT: 'int';

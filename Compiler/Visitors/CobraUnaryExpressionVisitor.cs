@@ -1,8 +1,6 @@
-// /Compiler/Visitors/Expressions/CobraUnaryExpressionVisitor.cs
-
 using LLVMSharp.Interop;
 
-namespace Cobra.Compiler.Visitors.Expressions;
+namespace Cobra.Compiler.Visitors;
 
 internal class CobraUnaryExpressionVisitor
 {

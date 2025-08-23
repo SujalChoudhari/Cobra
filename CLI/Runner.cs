@@ -52,8 +52,7 @@ public static class Runner
         }
         catch (Exception ex)
         {
-            CobraLogger.Error($"\nError: {ex.Message}");
-            CobraLogger.Info("Make sure you have LLVM and g++ installed and in your system's PATH.");
+            CobraLogger.Error($"Error: {ex.Message}");
         }
     }
 
@@ -120,7 +119,8 @@ public static class Runner
         string source = File.ReadAllText(filePath);
         string baseFileName = Path.GetFileNameWithoutExtension(filePath);
         CobraBuilder builder = new(source);
-        builder.Compile();
+        builder.Compile(options.KeepIntermediate,intermediateDir, baseFileName);
+        
 
         string objectFile = Path.Combine(intermediateDir, baseFileName + ".o");
         string irFile = Path.Combine(intermediateDir, baseFileName + ".ll");

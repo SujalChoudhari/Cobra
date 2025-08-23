@@ -1,16 +1,8 @@
-int x = 10;
 
-for (int k = 0; k < x; k++){
-    
-    if(k == 9){
-        int y = 20;
-        break;
-    }
-    
-    
-    if(x == 10){
-        int y = 21;
-        break;
-    }
-
+int factorial(int x){
+    if(x == 0) return 1;
+    else 
+        return x * factorial(x-1)
 }
+
+int res = factorial(7);
