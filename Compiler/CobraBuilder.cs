@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Antlr4.Runtime;
+using Cobra.Compiler.Visitors;
 using Cobra.Utils;
 using LLVMSharp.Interop;
 
@@ -8,14 +9,11 @@ namespace Cobra.Compiler;
 /// <summary>
 /// Represents the core class for compiling Cobra source code into LLVM Intermediate Representation (IR),
 /// providing functionality for generating IR, object files, and building the final executable.
-///
-/// @author: Sujal Choudhari 
 /// </summary>
 public class CobraBuilder
 {
     private LLVMModuleRef _module;
     private LLVMBuilderRef _builder;
-    private readonly Dictionary<string, LLVMValueRef> _namedValues;
     private readonly string _sourceCode;
 
     public CobraBuilder(string sourceCode)
