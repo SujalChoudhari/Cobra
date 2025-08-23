@@ -271,24 +271,28 @@ public class CobraProgramVisitor(
         var hasElse = context.ELSE() != null;
         _builder.BuildCondBr(condition, thenBlock, hasElse ? elseBlock : mergeBlock);
 
-        // --- Then Block ---
         _builder.PositionAtEnd(thenBlock);
         Visit(context.statement(0));
+        // FIX: Only add a branch if the block wasn't already terminated (e.g., by a return or break).
+        if (_builder.InsertBlock.Terminator == default)
+        {
+            _builder.BuildBr(mergeBlock);
+        }
 
-        _builder.BuildBr(mergeBlock);
-
-        // --- Else Block ---
         if (hasElse)
         {
             _builder.PositionAtEnd(elseBlock);
             Visit(context.statement(1));
-            _builder.BuildBr(mergeBlock);
+            if (_builder.InsertBlock.Terminator == default)
+            {
+                _builder.BuildBr(mergeBlock);
+            }
         }
 
-        // --- Continue ---
         _builder.PositionAtEnd(mergeBlock);
         return default;
     }
+
 
     /// <summary>
     /// Visits a while loop and generates the corresponding loop structure.

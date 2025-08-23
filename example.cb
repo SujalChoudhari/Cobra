@@ -2,7 +2,7 @@ int x = 10;
 
 for (int k = 0; k < x; k++){
     
-    if(x == 9){
+    if(k == 9){
         int y = 20;
         break;
     }
