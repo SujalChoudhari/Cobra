@@ -16,7 +16,8 @@ internal class CobraAssignmentExpressionVisitor
         _builder = mainVisitor.Builder;
     }
 
-    public LLVMValueRef VisitExpression(CobraParser.ExpressionContext context) => _visitor.Visit(context.assignmentExpression());
+    public LLVMValueRef VisitExpression(CobraParser.ExpressionContext context) =>
+        _visitor.Visit(context.assignmentExpression());
 
     public LLVMValueRef VisitAssignmentExpression(CobraParser.AssignmentExpressionContext context)
     {
@@ -28,8 +29,16 @@ internal class CobraAssignmentExpressionVisitor
         var variableAddress = VisitLValue(context.postfixExpression());
         var rhs = _visitor.Visit(context.assignmentExpression());
         var op = context.assignmentOperator().GetText();
-        LLVMValueRef valueToStore;
+        
+        var lhsType = variableAddress.TypeOf.ElementType;
+        var rhsType = rhs.TypeOf;
 
+        if (lhsType.Kind != rhsType.Kind)
+        {
+            throw new Exception($"Type mismatch: cannot assign {rhsType} to {lhsType}");
+        }
+        
+        LLVMValueRef valueToStore;
         if (op == "=")
         {
             valueToStore = rhs;
@@ -47,19 +56,47 @@ internal class CobraAssignmentExpressionVisitor
             };
         }
 
+
         _builder.BuildStore(valueToStore, variableAddress);
-        CobraLogger.Success($"Compiled assignment expression");
+        CobraLogger.Success($"Compiled assignment expression for: {variableAddress}");
         CobraLogger.RuntimeVariableValue(_builder, _module, "Assigned value:", valueToStore);
 
         return valueToStore;
     }
 
+    private LLVMValueRef VisitArrayAccessLValue(CobraParser.PostfixExpressionContext context)
+    {
+        // Base variable name
+        var baseVarName = context.primary().ID().GetText();
+        var baseVarAddr = _visitor.ScopeManagement.FindVariable(baseVarName); // alloca of i32*
+
+        // Load the array pointer (the result of `new int[...]`)
+        var arrayPtr = _builder.BuildLoad2(baseVarAddr.TypeOf.ElementType, baseVarAddr, "load_array_ptr");
+
+        var indexExpr = context.expression(0);
+        var indexVal = _visitor.Visit(indexExpr);
+
+        var elementType = arrayPtr.TypeOf.ElementType;
+        return _builder.BuildGEP2(elementType, arrayPtr, new[] { indexVal }, "element_ptr");
+    }
+
+
+
     private LLVMValueRef VisitLValue(CobraParser.PostfixExpressionContext context)
     {
+        // Case 1: Simple variable assignment (e.g., x = 10)
         if (context.primary()?.ID() != null && context.ChildCount == 1)
         {
             return _visitor.ScopeManagement.FindVariable(context.primary().ID().GetText());
         }
-        throw new Exception($"Invalid l-value for assignment.");
+
+        // Case 2: Array element assignment (e.g., arr[i] = 10)
+        if (context.ChildCount > 1 && context.GetChild(1).GetText() == "[")
+        {
+            return VisitArrayAccessLValue(context);
+        }
+
+
+        throw new Exception("Invalid l-value for assignment.");
     }
 }

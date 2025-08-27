@@ -36,9 +36,9 @@ public class Options
     /// Gets or sets the verbosity level for the compiler's logging output.
     /// Accepted values include 'off', 'error', 'warn', and 'info'.
     /// </summary>
-    [Option('v', "verbose", Required = false, Default = "warn",
-        HelpText = "Set the verbosity level for the compiler. Can be: off, error, warn, or info. Default is 'warn'.")]
-    public string VerboseLevel { get; set; } = "warn";
+    [Option('v', "verbose", Required = false, Default = "info",
+        HelpText = "Set the verbosity level for the compiler. Can be: off, error, warn, success or info. Default is 'info'.")]
+    public string VerboseLevel { get; set; } = "info";
 
     /// <summary>
     /// Gets or sets a value indicating whether to include verbose runtime output in the compiled program.

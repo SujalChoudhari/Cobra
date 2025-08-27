@@ -8,11 +8,11 @@ namespace Cobra.Utils;
 /// </summary>
 public enum LogLevel
 {
-    Off,
-    Error,
-    Warn,
-    Info,
-    Success
+    Off = 0,
+    Error = 1,
+    Warn = 2,
+    Success = 3,
+    Info = 4,
 }
 
 /// <summary>
@@ -94,11 +94,13 @@ public static class CobraLogger
     /// <param name="module">The LLVM module.</param>
     /// <param name="message">The message to be printed.</param>
     /// <param name="variableValue">The LLVM value reference for the variable to be printed.</param>
-    public static void RuntimeVariableValue(LLVMBuilderRef builder, LLVMModuleRef module, string message, LLVMValueRef variableValue)
+    public static void RuntimeVariableValue(LLVMBuilderRef builder, LLVMModuleRef module, string message,
+        LLVMValueRef variableValue)
     {
         if (EnableRuntime && PrintfFunction.Handle != IntPtr.Zero)
         {
-            CobraVerboseRunnerHelper.AddPrintVariable(builder, module, PrintfFunction, $"[RUNTIME]  {message}", variableValue);
+            CobraVerboseRunnerHelper.AddPrintVariable(builder, module, PrintfFunction, $"[RUNTIME]  {message}",
+                variableValue);
         }
     }
 
@@ -110,11 +112,10 @@ public static class CobraLogger
     /// <param name="color">The color to use for the message.</param>
     private static void Log(LogLevel messageLevel, string message, ConsoleColor color)
     {
-        if (Level <= messageLevel)
-        {
-            Console.ForegroundColor = color;
-            Console.WriteLine(message);
-            Console.ResetColor();
-        }
+        if (messageLevel > Level) return;
+
+        Console.ForegroundColor = color;
+        Console.WriteLine(message);
+        Console.ResetColor();
     }
 }

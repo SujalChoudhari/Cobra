@@ -1,8 +1,7 @@
 
-int factorial(int x){
-    if(x == 0) return 1;
-    else 
-        return x * factorial(x-1)
-}
+int[] arr = new int[5];
 
-int res = factorial(7);
+arr[2] = 10;
+arr[3] = 44;
+arr[4] = arr[2];
+arr[50] = 30;

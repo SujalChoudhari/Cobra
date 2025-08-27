@@ -18,7 +18,7 @@ run-release: release
 
 debug:
 	@mkdir -p $(DEBUG_OUTPUT)
-	$(DOTNET) run -- $(SOURCE_FILE) -o $(DEBUG_APP) -k -V -v error
+	$(DOTNET) run -- $(SOURCE_FILE) -o $(DEBUG_APP) -k -V 
 
 run-debug: debug
 	$(DEBUG_APP)

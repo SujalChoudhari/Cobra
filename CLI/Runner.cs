@@ -68,7 +68,8 @@ public static class Runner
             "error" => LogLevel.Error,
             "warn" => LogLevel.Warn,
             "info" => LogLevel.Info,
-            _ => LogLevel.Warn
+            "success" => LogLevel.Success,
+            _ => LogLevel.Info
         };
 
         if (CobraLogger.Level == LogLevel.Warn && options.VerboseLevel.ToLower() != "warn")

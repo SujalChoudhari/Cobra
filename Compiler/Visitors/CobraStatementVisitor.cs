@@ -84,25 +84,12 @@ internal class CobraStatementVisitor
         var variableName = context.ID().GetText();
         var typeName = context.type().GetText();
 
-        var varType = typeName switch
-        {
-            "int" => LLVMTypeRef.Int32,
-            "float" => LLVMTypeRef.Float,
-            "string" => LLVMTypeRef.CreatePointer(LLVMTypeRef.Int8, 0),
-            "bool" => LLVMTypeRef.Int1,
-            "void" => LLVMTypeRef.Void,
-            _ => throw new Exception($"Invalid type specified: {typeName}")
-        };
+        var varType = CobraTypeResolver.ResolveType(context.type());
 
-        // --- Is it explicitly global? ---
         bool isGlobal = context.GLOBAL() != null;
-
         if (_visitor.IsGlobalScope && isGlobal)
         {
-            if (typeName == "void")
-                throw new Exception("Variables cannot have type 'void'");
-
-            // Create global variable
+            if (typeName == "void") throw new Exception("Variables cannot have type 'void'");
             var g = _module.AddGlobal(varType, variableName);
 
             if (context.expression() != null)
@@ -110,11 +97,11 @@ internal class CobraStatementVisitor
                 var init = _visitor.Visit(context.expression());
                 if (!init.IsConstant)
                     throw new Exception($"Global '{variableName}' requires a constant initializer");
+
                 g.Initializer = init;
             }
             else
             {
-                // Default initializer
                 g.Initializer = varType.Kind switch
                 {
                     LLVMTypeKind.LLVMIntegerTypeKind => LLVMValueRef.CreateConstInt(varType, 0, false),
@@ -129,23 +116,45 @@ internal class CobraStatementVisitor
             return g;
         }
 
-        // --- Local or top-level “Python-style” statement ---
-        var allocatedValue = _builder.BuildAlloca(varType, variableName);
-        _visitor.ScopeManagement.DeclareVariable(variableName, allocatedValue);
+        // Local variable
+        var allocatedVariable = _builder.BuildAlloca(varType, variableName);
+        _visitor.ScopeManagement.DeclareVariable(variableName, allocatedVariable);
 
         if (context.expression() != null)
         {
             var initialValue = _visitor.Visit(context.expression());
-            _builder.BuildStore(initialValue, allocatedValue);
+
+            // Validate type: if varType is pointer (like int[]), RHS must also be pointer
+            if (varType.Kind == LLVMTypeKind.LLVMPointerTypeKind &&
+                initialValue.TypeOf.Kind != LLVMTypeKind.LLVMPointerTypeKind)
+            {
+                throw new Exception($"Type mismatch: cannot assign non-pointer value '{initialValue}' to pointer '{variableName}'");
+            }
+
+            _builder.BuildStore(initialValue, allocatedVariable);
+
             CobraLogger.RuntimeVariableValue(_builder, _visitor.Module,
                 $"Declared variable: {variableName} <{typeName}>",
                 initialValue);
         }
+        else
+        {
+            // Default init
+            LLVMValueRef defaultValue = varType.Kind switch
+            {
+                LLVMTypeKind.LLVMIntegerTypeKind => LLVMValueRef.CreateConstInt(varType, 0, false),
+                LLVMTypeKind.LLVMFloatTypeKind => LLVMValueRef.CreateConstReal(varType, 0.0),
+                LLVMTypeKind.LLVMPointerTypeKind => LLVMValueRef.CreateConstNull(varType),
+                _ => throw new Exception($"Unsupported local type for variable '{variableName}'")
+            };
+            _builder.BuildStore(defaultValue, allocatedVariable);
+        }
 
         CobraLogger.Success($"Compiled local variable: {variableName} <{typeName}>");
-        return allocatedValue;
+        return allocatedVariable;
     }
-
+    
+    
 
     public LLVMValueRef VisitIfStatement(CobraParser.IfStatementContext context)
     {
