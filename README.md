@@ -65,7 +65,7 @@ import utils.math;
 // Declare the C printf function to print the result.
 extern int printf(string format, int value);
 
-int result = math.add(10, 32);
+int result = add(10, 32);
 
 printf("The result is: %d\n", result);
 ```
