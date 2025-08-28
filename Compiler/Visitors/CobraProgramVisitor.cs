@@ -1,3 +1,5 @@
+using Antlr4.Runtime;
+using Cobra.Utils;
 using LLVMSharp.Interop;
 
 namespace Cobra.Compiler.Visitors;
@@ -10,6 +12,8 @@ public class CobraProgramVisitor : CobraBaseVisitor<LLVMValueRef>
 {
     internal readonly LLVMModuleRef Module;
     internal readonly LLVMBuilderRef Builder;
+    internal readonly String ModuleName;
+    internal readonly bool IsMainModule;
     internal readonly Stack<(LLVMBasicBlockRef ContinueTarget, LLVMBasicBlockRef BreakTarget)> LoopContexts = new();
     internal readonly CobraScopeManagement ScopeManagement = new();
     internal bool IsGlobalScope = true;
@@ -17,7 +21,6 @@ public class CobraProgramVisitor : CobraBaseVisitor<LLVMValueRef>
     internal readonly Dictionary<string, LLVMValueRef> Functions = new();
 
     internal LLVMValueRef CurrentFunction;
-    private bool _extractDeclarationOnly;
 
     // Visitors
     private readonly CobraFunctionVisitor _functionVisitor;
@@ -31,12 +34,13 @@ public class CobraProgramVisitor : CobraBaseVisitor<LLVMValueRef>
     private readonly CobraUnaryExpressionVisitor _unaryExpressionVisitor;
     private readonly CobraPrimaryExpressionVisitor _primaryExpressionVisitor;
 
-    public CobraProgramVisitor(LLVMModuleRef module, LLVMBuilderRef builder, bool extractDeclarationOnly = false)
+    public CobraProgramVisitor(LLVMModuleRef module, LLVMBuilderRef builder, string moduleName,
+        bool isMainModule = true)
     {
         Module = module;
         Builder = builder;
-
-        _extractDeclarationOnly = extractDeclarationOnly;
+        ModuleName = moduleName;
+        IsMainModule = isMainModule;
 
         _functionVisitor = new CobraFunctionVisitor(this);
         _statementVisitor = new CobraStatementVisitor(this);
@@ -55,8 +59,6 @@ public class CobraProgramVisitor : CobraBaseVisitor<LLVMValueRef>
     {
         ProcessExternStatements(context);
         ProcessFunctionDeclarationStatements(context);
-
-        if (_extractDeclarationOnly) return default;
         ProcessGlobalDeclarationStatements(context);
         ProcessFunctionDeclaration2Statements(context);
         _statementVisitor.VisitProgram(context);
@@ -95,6 +97,37 @@ public class CobraProgramVisitor : CobraBaseVisitor<LLVMValueRef>
         {
             _statementVisitor.VisitDeclarationStatement(decl);
         }
+    }
+
+    public override LLVMValueRef VisitImportStatement(CobraParser.ImportStatementContext context)
+    {
+        var modulePath = context.qualifiedName().GetText();
+        var moduleName = modulePath.Split('.').Last(); // "math"
+
+        string
+            baseDirectory =
+                "."; // Assume relative to the execution directory for now. A more robust solution might track the current file's directory.
+        string relativePath = modulePath.Replace('.', Path.DirectorySeparatorChar) + ".cb";
+        string filePath = Path.GetFullPath(Path.Combine(baseDirectory, relativePath));
+
+        if (!File.Exists(filePath))
+            throw new FileNotFoundException($"Imported module not found: '{modulePath}' resolved to '{filePath}'");
+
+        CobraLogger.Info($"Processing import: {modulePath}");
+
+        // Parse the imported file to get its function declarations
+        string source = File.ReadAllText(filePath);
+        var inputStream = new AntlrInputStream(source);
+        var lexer = new CobraLexer(inputStream);
+        var commonTokenStream = new CommonTokenStream(lexer);
+        var parser = new CobraParser(commonTokenStream);
+        var programContext = parser.program();
+
+        // Pass 1: Declare all functions from the imported module with the namespace
+        ProcessExternStatements(programContext);
+        ProcessFunctionDeclarationStatements(programContext);
+
+        return default; // Import statements don't generate code directly.
     }
 
 

@@ -23,33 +23,39 @@ internal class CobraFunctionVisitor
     public void VisitFunctionDeclaration_Pass1(CobraParser.FunctionDeclarationContext context)
     {
         var functionName = context.ID().GetText();
-
+        // NEW: Prepend namespace if provided
+        
         if (_visitor.Functions.ContainsKey(functionName))
         {
-            CobraLogger.Error($"Function '{functionName}' is already declared.");
-            throw new Exception($"Function '{functionName}' is already declared.");
+            // It's okay to re-declare a function prototype if it's identical, but for now we can just skip.
+            // This happens when multiple files import the same module.
+            return;
         }
 
         var returnType = CobraTypeResolver.ResolveType(context.type());
         var paramTypes = new List<LLVMTypeRef>();
         if (context.parameterList() != null)
         {
-            paramTypes.AddRange(context.parameterList().parameter().Select(param => CobraTypeResolver.ResolveType(param.type())));
+            paramTypes.AddRange(context.parameterList().parameter()
+                .Select(param => CobraTypeResolver.ResolveType(param.type())));
         }
 
         var functionType = LLVMTypeRef.CreateFunction(returnType, paramTypes.ToArray());
+        // Use the qualified name for the function in the LLVM module
         var function = _module.AddFunction(functionName, functionType);
 
         _visitor.Functions[functionName] = function;
         CobraLogger.Success($"Declared function prototype: {functionName}");
     }
 
+
     /// <summary>
     /// PASS 2: Fills in the function body with instructions.
     /// </summary>
-     public LLVMValueRef VisitFunctionDeclaration_Pass2(CobraParser.FunctionDeclarationContext context)
+    public LLVMValueRef VisitFunctionDeclaration_Pass2(CobraParser.FunctionDeclarationContext context)
     {
         var functionName = context.ID().GetText();
+        
         var function = _visitor.Functions[functionName];
 
         var originalBlock = _builder.InsertBlock;
@@ -93,12 +99,12 @@ internal class CobraFunctionVisitor
         finally
         {
             _visitor.ScopeManagement.ExitScope();
-            
+
             if (originalBlock.Handle != IntPtr.Zero)
             {
-                 _builder.PositionAtEnd(originalBlock);
+                _builder.PositionAtEnd(originalBlock);
             }
-           
+
             _visitor.CurrentFunction = oldFunction;
             _visitor.IsGlobalScope = oldIsGlobal;
         }
@@ -106,7 +112,7 @@ internal class CobraFunctionVisitor
         CobraLogger.Success($"Defined function body: {functionName}");
         return function;
     }
-    
+
     public LLVMValueRef VisitExternDeclaration(CobraParser.ExternDeclarationContext context)
     {
         var functionName = context.ID().GetText();
@@ -133,7 +139,7 @@ internal class CobraFunctionVisitor
                 paramTypes.Add(CobraTypeResolver.ResolveType(param.type()));
             }
         }
-    
+
         if (functionName == "printf")
         {
             isVariadic = true;
@@ -146,5 +152,4 @@ internal class CobraFunctionVisitor
         CobraLogger.Success($"Declared extern function prototype: {functionName}");
         return function;
     }
-
 }

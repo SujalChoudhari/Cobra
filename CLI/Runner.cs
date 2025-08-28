@@ -10,6 +10,64 @@ namespace Cobra.CLI;
 /// </summary>
 public static class Runner
 {
+    private static IEnumerable<string> GetImports(string filePath)
+    {
+        var source = File.ReadAllText(filePath);
+        var inputStream = new Antlr4.Runtime.AntlrInputStream(source);
+        var lexer = new CobraLexer(inputStream);
+        var commonTokenStream = new Antlr4.Runtime.CommonTokenStream(lexer);
+        var parser = new CobraParser(commonTokenStream);
+        var programContext = parser.program();
+
+        return programContext.importStatement().Select(import => import.qualifiedName().GetText());
+    }
+
+    private static List<string> ResolveDependencies(IEnumerable<string> initialFiles)
+    {
+        var filesToCompile = new List<string>();
+        var processedFiles = new HashSet<string>();
+        var initialFilePaths = initialFiles.Select(Path.GetFullPath).ToList();
+        var filesToScan = new Queue<string>(initialFilePaths);
+
+        string baseDirectory = Path.GetDirectoryName(initialFilePaths.First()) ?? Directory.GetCurrentDirectory();
+
+
+        while (filesToScan.Count > 0)
+        {
+            var currentFile = filesToScan.Dequeue();
+            if (processedFiles.Contains(currentFile))
+                continue;
+
+            CobraLogger.Info($"Resolving dependencies for: {Path.GetRelativePath(baseDirectory, currentFile)}");
+            processedFiles.Add(currentFile);
+            filesToCompile.Add(currentFile);
+
+            if (!File.Exists(currentFile))
+            {
+                throw new FileNotFoundException($"The source file was not found: {currentFile}");
+            }
+
+            var imports = GetImports(currentFile);
+            foreach (var importPath in imports)
+            {
+                string relativePath = importPath.Replace('.', Path.DirectorySeparatorChar) + ".cb";
+                string fullPath = Path.GetFullPath(Path.Combine(baseDirectory, relativePath));
+
+                if (!processedFiles.Contains(fullPath))
+                {
+                    CobraLogger.Info($"Found dependency: {Path.GetRelativePath(baseDirectory, fullPath)}");
+                    filesToScan.Enqueue(fullPath);
+                }
+            }
+        }
+
+        // We want to compile dependencies first, though order for linking doesn't strictly matter.
+        // Reversing provides a more logical compilation order (dependencies first).
+        filesToCompile.Reverse();
+        return filesToCompile;
+    }
+
+
     /// <summary>
     /// Parses command-line arguments and initiates the compilation process.
     /// </summary>
@@ -32,16 +90,23 @@ public static class Runner
 
         try
         {
+            var allFilesToCompile = ResolveDependencies(options.InputFiles);
+            CobraLogger.Info("Dependency resolution complete.");
+            CobraLogger.Info($"Compiling {allFilesToCompile.Count} files...");
+
             var (finalExecutablePath, outputDir, intermediateDir) = GetOutputPaths(options);
 
             Directory.CreateDirectory(outputDir);
             Directory.CreateDirectory(intermediateDir);
 
             var objectFiles = new List<string>();
-            foreach (var file in options.InputFiles)
+
+            // Compile dependencies first
+            foreach (var file in allFilesToCompile)
             {
-                CobraLogger.Info($"Compiling file: {file}");
-                CompileSingleFile(file, options, intermediateDir, objectFiles);
+                bool isMainModule = options.InputFiles.Contains(file);
+                CobraLogger.Info($"Compiling file: {file} (Main: {isMainModule})");
+                CompileSingleFile(file, options, intermediateDir, objectFiles, isMainModule);
             }
 
             CobraBuilder.Build(outputDir, intermediateDir, objectFiles, finalExecutablePath);
@@ -55,6 +120,7 @@ public static class Runner
             CobraLogger.Error($"Error: {ex.Message}");
         }
     }
+
 
     /// <summary>
     /// Sets the static logging levels based on user-provided command-line options.
@@ -112,13 +178,14 @@ public static class Runner
     /// <param name="options">The parsed command-line options.</param>
     /// <param name="intermediateDir">The directory for intermediate files.</param>
     /// <param name="objectFiles">The list to which the generated object file path will be added.</param>
+    /// <param name="isMainModule"></param>
     private static void CompileSingleFile(string filePath, Options options, string intermediateDir,
-        List<string> objectFiles)
+        List<string> objectFiles, bool isMainModule = true)
     {
         var source = File.ReadAllText(filePath);
         var baseFileName = Path.GetFileNameWithoutExtension(filePath);
         CobraBuilder builder = new(baseFileName, source);
-        builder.Compile(options.KeepIntermediate, intermediateDir, baseFileName);
+        builder.Compile(options.KeepIntermediate, intermediateDir, baseFileName, isMainModule);
 
 
         var objectFile = Path.Combine(intermediateDir, baseFileName + ".o");
@@ -137,7 +204,7 @@ public static class Runner
     private static void CleanIntermediateFiles(Options options, string intermediateDir)
     {
         if (options.KeepIntermediate) return;
-        
+
         if (Directory.Exists(intermediateDir))
         {
             Directory.Delete(intermediateDir, true);

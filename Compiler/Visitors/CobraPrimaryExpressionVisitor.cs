@@ -1,7 +1,7 @@
+using System.Text;
 using System.Text.RegularExpressions;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
-using Cobra.Utils;
 using LLVMSharp.Interop;
 
 namespace Cobra.Compiler.Visitors;
@@ -21,40 +21,58 @@ internal class CobraPrimaryExpressionVisitor
 
     public LLVMValueRef VisitPostfixExpression(CobraParser.PostfixExpressionContext context)
     {
-        var primaryCtx = context.primary();
-        var idNode = primaryCtx?.ID();
-
-        if (idNode != null && context.ChildCount > 1 && context.GetChild(1).GetText() == "(")
+        // CASE 1: This is a function call. We know this if there's an LPAREN token.
+        if (context.LPAREN().Length > 0)
         {
-            // Function call logic (unchanged)
-            var functionName = idNode.GetText();
+            var functionNameBuilder = new StringBuilder();
+            // The children are [primary, DOT, ID, LPAREN, argumentList, RPAREN].
+            // We need to build the name from all children before the '('.
+            for (int i = 0; i < context.ChildCount; i++)
+            {
+                var child = context.GetChild(i);
+                // Stop when we hit the '('.
+                if (child is ITerminalNode terminal && terminal.Symbol.Type == CobraLexer.LPAREN)
+                {
+                    break;
+                }
+
+                functionNameBuilder.Append(child.GetText());
+            }
+
+            var functionName = functionNameBuilder.ToString();
+
             if (!_visitor.Functions.TryGetValue(functionName, out var function))
+            {
                 throw new Exception($"Undeclared function: '{functionName}'");
+            }
 
             var argList = context.argumentList(0);
             var args = new List<LLVMValueRef>();
             if (argList != null)
+            {
                 args.AddRange(argList.expression().Select(argExpr => _visitor.Visit(argExpr)));
+            }
 
             return _builder.BuildCall2(function.TypeOf.ElementType, function, args.ToArray(), "call_tmp");
         }
 
-        // Base value: either a literal, or a loaded variable
-        LLVMValueRef baseValue = _visitor.Visit(primaryCtx);
+        // CASE 2: This is NOT a function call (e.g., variable, array access, postfix inc/dec).
+        // Start with the base primary expression (e.g., the variable 'x').
+        LLVMValueRef baseValue = _visitor.Visit(context.primary());
 
-        // Process postfix operators (++, --, [...])
+        // This part handles array access, postfix ++/-- etc., and is unchanged from the original.
+        // We start at i=1 because child 0 is always the primary expression.
         for (int i = 1; i < context.ChildCount; i++)
         {
             string op = context.GetChild(i).GetText();
-
             switch (op)
             {
                 case "++":
                 case "--":
                 {
-                    var varName = idNode?.GetText() ?? throw new Exception("Invalid lvalue for postfix inc/dec");
+                    var varName = context.primary()?.ID()?.GetText() ??
+                                  throw new Exception("Invalid lvalue for postfix inc/dec");
                     var addr = _visitor.ScopeManagement.FindVariable(varName);
-
                     var oldVal = baseValue; // Postfix returns the original value
                     var one = LLVMValueRef.CreateConstInt(baseValue.TypeOf, 1);
                     var newVal = op == "++"
@@ -69,12 +87,10 @@ internal class CobraPrimaryExpressionVisitor
                     // This is an R-value access (reading from arr[i])
                     var indexExpr = context.expression(i - 1);
                     var indexVal = _visitor.Visit(indexExpr);
-
                     var elementType = baseValue.TypeOf.ElementType; // baseValue is the loaded pointer (i32*)
-
                     var ptr = _builder.BuildGEP2(elementType, baseValue, new[] { indexVal }, "element_ptr");
                     baseValue = _builder.BuildLoad2(elementType, ptr, "load_element");
-                    i++; // Manually advance past the matching ']'
+                    i += 2; // Manually advance past the expression and the matching ']'
                     break;
                 }
             }

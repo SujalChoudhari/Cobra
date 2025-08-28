@@ -2,7 +2,7 @@ grammar Cobra;
 
 // The starting point of a program file
 program
-    : (importStatement | externDeclaration | functionDeclaration | classDeclaration | declarationStatement | statement)* EOF
+    : (importStatement| externDeclaration | functionDeclaration | classDeclaration | declarationStatement | statement)* EOF
     ;
 
 /*
@@ -66,6 +66,7 @@ statement
     | whileStatement
     | doWhileStatement
     | forStatement
+    | importStatement
     | switchStatement
     | jumpStatement
     | expressionStatement
@@ -255,7 +256,11 @@ accessModifier
     ;
 
 importStatement
-    : IMPORT ID SEMICOLON
+    : IMPORT qualifiedName SEMICOLON
+    ;
+    
+qualifiedName
+    : ID (DOT ID)*
     ;
 
 literal

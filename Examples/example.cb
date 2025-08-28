@@ -1,0 +1,6 @@
+import std.math;
+
+
+extern int printf(string format);
+
+printf("%d\n", add(10,20));

@@ -501,6 +501,16 @@ public interface ICobraListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitImportStatement([NotNull] CobraParser.ImportStatementContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.qualifiedName"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterQualifiedName([NotNull] CobraParser.QualifiedNameContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.qualifiedName"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitQualifiedName([NotNull] CobraParser.QualifiedNameContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="CobraParser.literal"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

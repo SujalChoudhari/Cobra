@@ -30,7 +30,7 @@ namespace Cobra.Compiler
         }
 
         public void Compile(bool makeAst = false, string outputDir = "path/to/output/directory",
-            string programName = "my_program")
+            string programName = "my_program", bool isMainModule = true)
         {
             var inputStream = new AntlrInputStream(_sourceCode);
             var lexer = new CobraLexer(inputStream);
@@ -44,18 +44,19 @@ namespace Cobra.Compiler
                 astGenerator.GenerateAst(outputDir);
             }
 
-            // Use the single context for all types
-            var int32Type = LLVMTypeRef.Int32; // DO NOT create with context manually
-            var mainFunctionType = LLVMTypeRef.CreateFunction(int32Type, []);
-            var mainFunction = _module.AddFunction("__cobra_main__", mainFunctionType);
+            if (isMainModule)
+            {
+                var mainFunctionType = LLVMTypeRef.CreateFunction(LLVMTypeRef.Int32, []);
+                var mainFunction = _module.AddFunction("__cobra_main__", mainFunctionType);
+                var entryBlock = mainFunction.AppendBasicBlock("entry");
+                _builder.PositionAtEnd(entryBlock);
+            }
 
-            var entryBlock = mainFunction.AppendBasicBlock("entry");
-            _builder.PositionAtEnd(entryBlock);
 
             // Visit program
-            var programVisitor = new CobraProgramVisitor(_module, _builder);
+            var programVisitor = new CobraProgramVisitor(_module, _builder, programName, isMainModule);
             programVisitor.Visit(programContext);
-            _builder.BuildRet(LLVMValueRef.CreateConstInt(int32Type, 0));
+            _builder.BuildRet(LLVMValueRef.CreateConstInt(LLVMTypeRef.Int32, 0));
         }
 
         public void GenerateIr(string filePath)

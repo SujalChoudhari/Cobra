@@ -49,6 +49,7 @@ internal class CobraStatementVisitor
         if (context.doWhileStatement() != null) return _visitor.VisitDoWhileStatement(context.doWhileStatement());
         if (context.forStatement() != null) return _visitor.VisitForStatement(context.forStatement());
         if (context.jumpStatement() != null) return _visitor.VisitJumpStatement(context.jumpStatement());
+        if (context.importStatement() != null) return _visitor.VisitImportStatement(context.importStatement());
         if (context.expressionStatement() != null)
             return _visitor.VisitExpressionStatement(context.expressionStatement());
 
@@ -341,6 +342,7 @@ internal class CobraStatementVisitor
 
         return default;
     }
+    
 
 
     private LLVMValueRef ToI1(LLVMValueRef v)
