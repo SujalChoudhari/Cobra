@@ -17,6 +17,7 @@ public class CobraProgramVisitor : CobraBaseVisitor<LLVMValueRef>
     internal readonly Dictionary<string, LLVMValueRef> Functions = new();
 
     internal LLVMValueRef CurrentFunction;
+    private bool _extractDeclarationOnly;
 
     // Visitors
     private readonly CobraFunctionVisitor _functionVisitor;
@@ -30,10 +31,13 @@ public class CobraProgramVisitor : CobraBaseVisitor<LLVMValueRef>
     private readonly CobraUnaryExpressionVisitor _unaryExpressionVisitor;
     private readonly CobraPrimaryExpressionVisitor _primaryExpressionVisitor;
 
-    public CobraProgramVisitor(LLVMModuleRef module, LLVMBuilderRef builder)
+    public CobraProgramVisitor(LLVMModuleRef module, LLVMBuilderRef builder, bool extractDeclarationOnly = false)
     {
         Module = module;
         Builder = builder;
+
+        _extractDeclarationOnly = extractDeclarationOnly;
+
         _functionVisitor = new CobraFunctionVisitor(this);
         _statementVisitor = new CobraStatementVisitor(this);
         _assignmentExpressionVisitor = new CobraAssignmentExpressionVisitor(this);
@@ -49,29 +53,48 @@ public class CobraProgramVisitor : CobraBaseVisitor<LLVMValueRef>
     // --- Top-Level ---
     public override LLVMValueRef VisitProgram(CobraParser.ProgramContext context)
     {
+        ProcessExternStatements(context);
+        ProcessFunctionDeclarationStatements(context);
+
+        if (_extractDeclarationOnly) return default;
+        ProcessGlobalDeclarationStatements(context);
+        ProcessFunctionDeclaration2Statements(context);
+        _statementVisitor.VisitProgram(context);
+
+        return default;
+    }
+
+    void ProcessExternStatements(CobraParser.ProgramContext context)
+    {
         foreach (var externDeclarationContext in context.externDeclaration())
         {
             _functionVisitor.VisitExternDeclaration(externDeclarationContext);
         }
+    }
+
+    void ProcessFunctionDeclarationStatements(CobraParser.ProgramContext context)
+    {
         foreach (var funcDecl in context.functionDeclaration())
         {
             _functionVisitor.VisitFunctionDeclaration_Pass1(funcDecl);
         }
+    }
 
+    void ProcessFunctionDeclaration2Statements(CobraParser.ProgramContext context)
+    {
+        foreach (var funcDecl in context.functionDeclaration())
+        {
+            _functionVisitor.VisitFunctionDeclaration_Pass2(funcDecl);
+        }
+    }
+
+    void ProcessGlobalDeclarationStatements(CobraParser.ProgramContext context)
+    {
         foreach (var decl in context.declarationStatement()
                      .Where(d => d.GLOBAL() != null))
         {
             _statementVisitor.VisitDeclarationStatement(decl);
         }
-
-        foreach (var funcDecl in context.functionDeclaration())
-        {
-            _functionVisitor.VisitFunctionDeclaration_Pass2(funcDecl);
-        }
-
-        _statementVisitor.VisitProgram(context);
-
-        return default;
     }
 
 

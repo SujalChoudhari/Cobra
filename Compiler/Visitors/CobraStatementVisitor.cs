@@ -152,8 +152,6 @@ internal class CobraStatementVisitor
         return allocatedVariable;
     }
     
-    
-
     public LLVMValueRef VisitIfStatement(CobraParser.IfStatementContext context)
     {
         var condition = ToI1(_visitor.Visit(context.expression()));

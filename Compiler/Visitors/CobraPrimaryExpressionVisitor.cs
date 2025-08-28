@@ -87,6 +87,19 @@ internal class CobraPrimaryExpressionVisitor
     {
         if (context.expression() != null && context.NEW() == null) return _visitor.Visit(context.expression());
 
+        if (context.BITWISE_AND() != null)
+        {
+            if (context.ID() != null)
+            {
+                var variableName = context.ID().GetText();
+                var varRef = _visitor.ScopeManagement.FindVariable(variableName);
+                // Return the pointer (do NOT load)
+                return varRef;
+            }
+
+            throw new Exception("Address-of operator currently only supports variables");
+        }
+
         if (context.NEW() != null)
         {
             // Handle array allocation: new int[5]

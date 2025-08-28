@@ -13,19 +13,19 @@ namespace Cobra.Compiler
         private LLVMContextRef _context;
         private readonly string _sourceCode;
 
-        public CobraBuilder(string sourceCode)
+        public CobraBuilder(string moduleName, string sourceCode)
         {
             _sourceCode = sourceCode;
-            InitializeLlvm();
+            InitializeLlvm(moduleName);
         }
 
         /// <summary>
         /// Initialize LLVM context, module, and builder
         /// </summary>
-        private void InitializeLlvm()
+        private void InitializeLlvm(string moduleName = "CobraModule")
         {
             _context = LLVMContextRef.Create();
-            _module = _context.CreateModuleWithName("CobraModule");
+            _module = _context.CreateModuleWithName(moduleName);
             _builder = _context.CreateBuilder();
         }
 

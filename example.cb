@@ -1,4 +1,11 @@
+extern int printf(string format)
+extern int scanf(string format)
 
-extern int printf(string format);
+void get_age(){
+    int age
+    printf("Enter your age\n")
+    scanf("%d", &age)
+    printf("Your age is %d\n", age)
+}
 
-printf("d\n");
+ get_age();

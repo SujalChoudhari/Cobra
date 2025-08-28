@@ -209,6 +209,7 @@ primary
     : LPAREN expression RPAREN
     | literal
     | ID
+    | BITWISE_AND ID
     | THIS
     | NEW typeSpecifier (LPAREN argumentList? RPAREN | LBRACKET expression RBRACKET) // Object or Array instantiation
     ;

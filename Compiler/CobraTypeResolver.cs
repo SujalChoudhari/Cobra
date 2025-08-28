@@ -17,7 +17,7 @@ public abstract class CobraTypeResolver
             _ => throw new Exception($"Invalid type specified: {typeName}") // TODO: Handle custom class types
         };
 
-        if (context.MUL() != null)
+        if (context.MUL()!.Length > 0)
         {
             return LLVMTypeRef.CreatePointer(baseType, 0);
         }

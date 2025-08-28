@@ -76,7 +76,6 @@ public static class Runner
         {
             CobraLogger.Error("Invalid verbose level specified. Using default level 'warn'.");
         }
-
     }
 
     /// <summary>
@@ -116,14 +115,14 @@ public static class Runner
     private static void CompileSingleFile(string filePath, Options options, string intermediateDir,
         List<string> objectFiles)
     {
-        string source = File.ReadAllText(filePath);
-        string baseFileName = Path.GetFileNameWithoutExtension(filePath);
-        CobraBuilder builder = new(source);
-        builder.Compile(options.KeepIntermediate,intermediateDir, baseFileName);
-        
+        var source = File.ReadAllText(filePath);
+        var baseFileName = Path.GetFileNameWithoutExtension(filePath);
+        CobraBuilder builder = new(baseFileName, source);
+        builder.Compile(options.KeepIntermediate, intermediateDir, baseFileName);
 
-        string objectFile = Path.Combine(intermediateDir, baseFileName + ".o");
-        string irFile = Path.Combine(intermediateDir, baseFileName + ".ll");
+
+        var objectFile = Path.Combine(intermediateDir, baseFileName + ".o");
+        var irFile = Path.Combine(intermediateDir, baseFileName + ".ll");
 
         builder.GenerateIr(irFile);
         builder.GenerateObjectFile(objectFile);
@@ -137,12 +136,11 @@ public static class Runner
     /// <param name="intermediateDir">The path to the intermediate directory.</param>
     private static void CleanIntermediateFiles(Options options, string intermediateDir)
     {
-        if (!options.KeepIntermediate)
+        if (options.KeepIntermediate) return;
+        
+        if (Directory.Exists(intermediateDir))
         {
-            if (Directory.Exists(intermediateDir))
-            {
-                Directory.Delete(intermediateDir, true);
-            }
+            Directory.Delete(intermediateDir, true);
         }
     }
 

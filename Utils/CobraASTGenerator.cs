@@ -56,8 +56,7 @@ public class CobraAstGenerator
     private static string GenerateAstText(IParseTree? context)
     {
         var astBuilder = new StringBuilder();
-        var visitor = new AstVisitor();
-        AstVisitor.Visit(context, astBuilder, new List<bool>());
+        AstVisitor.Visit(context, astBuilder, []);
         return astBuilder.ToString();
     }
 
@@ -65,7 +64,7 @@ public class CobraAstGenerator
     /// A nested visitor class to traverse the parse tree and build the formatted AST string.
     /// It uses a list of booleans to track branch status for proper tree-like indentation.
     /// </summary>
-    private class AstVisitor : CobraBaseVisitor<object>
+    private abstract class AstVisitor : CobraBaseVisitor<object>
     {
         /// <summary>
         /// Recursively visits a parse tree node and its children, appending a formatted
@@ -83,7 +82,7 @@ public class CobraAstGenerator
 
             string? nodeName = GetNodeName(tree);
             string indent = GetIndent(isLast);
-            
+
             builder.AppendLine($"{indent}{nodeName}");
 
             for (int i = 0; i < tree.ChildCount; i++)
@@ -106,7 +105,8 @@ public class CobraAstGenerator
                 ITerminalNode terminal => terminal.Symbol.Type switch
                 {
                     CobraParser.Eof => "EOF",
-                    _ => $"{CobraLexer.DefaultVocabulary.GetSymbolicName(terminal.Symbol.Type) ?? "TOKEN"}: {terminal.GetText()}"
+                    _ =>
+                        $"{CobraLexer.DefaultVocabulary.GetSymbolicName(terminal.Symbol.Type) ?? "TOKEN"}: {terminal.GetText()}"
                 },
                 _ => tree?.GetType().Name
             };
@@ -123,7 +123,7 @@ public class CobraAstGenerator
             {
                 return string.Empty;
             }
-            
+
             var indentBuilder = new StringBuilder();
             for (int i = 0; i < isLast.Count - 1; i++)
             {
