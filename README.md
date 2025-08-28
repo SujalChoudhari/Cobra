@@ -1,8 +1,4 @@
-Of course. Here is a comprehensive `README.md` for your Cobra compiler project. It covers the project's purpose, features, architecture, and how to get started.
-
----
-
-# Cobra Compiler
+# Cobra
 
 A simple, statically-typed, C-style programming language built with .NET, ANTLR, and LLVM.
 
