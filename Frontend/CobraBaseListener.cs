@@ -120,6 +120,18 @@ public partial class CobraBaseListener : ICobraListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitConstructorDeclaration([NotNull] CobraParser.ConstructorDeclarationContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.externDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterExternDeclaration([NotNull] CobraParser.ExternDeclarationContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.externDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitExternDeclaration([NotNull] CobraParser.ExternDeclarationContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="CobraParser.functionDeclaration"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

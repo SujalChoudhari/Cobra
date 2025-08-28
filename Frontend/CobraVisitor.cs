@@ -74,6 +74,12 @@ public interface ICobraVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitConstructorDeclaration([NotNull] CobraParser.ConstructorDeclarationContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.externDeclaration"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitExternDeclaration([NotNull] CobraParser.ExternDeclarationContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.functionDeclaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

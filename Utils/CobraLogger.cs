@@ -26,16 +26,6 @@ public static class CobraLogger
     /// </summary>
     public static LogLevel Level { get; set; } = LogLevel.Info;
 
-    /// <summary>
-    /// Enables or disables the injection of `printf` calls into the generated code for runtime debugging.
-    /// </summary>
-    public static bool EnableRuntime { get; set; }
-
-    /// <summary>
-    /// Holds the reference to the LLVM `printf` function, declared in the module.
-    /// This must be initialized before calling the Runtime log functions.
-    /// </summary>
-    public static LLVMValueRef PrintfFunction;
 
     /// <summary>
     /// Logs a success message in green.
@@ -71,37 +61,6 @@ public static class CobraLogger
     public static void Error(string? message)
     {
         Log(LogLevel.Error, $"[ERROR]   {message}", ConsoleColor.Red);
-    }
-
-    /// <summary>
-    /// Injects a `printf` call into the LLVM IR to log a message when the compiled program is executed.
-    /// </summary>
-    /// <param name="builder">The LLVM IR builder.</param>
-    /// <param name="module">The LLVM module.</param>
-    /// <param name="message">The message to be printed at runtime.</param>
-    public static void Runtime(LLVMBuilderRef builder, LLVMModuleRef module, string message)
-    {
-        if (EnableRuntime && PrintfFunction.Handle != IntPtr.Zero)
-        {
-            CobraVerboseRunnerHelper.AddPrintStatement(builder, module, PrintfFunction, $"[RUNTIME]  {message}");
-        }
-    }
-
-    /// <summary>
-    /// Injects a `printf` call to log a message and the value of a variable at runtime.
-    /// </summary>
-    /// <param name="builder">The LLVM IR builder.</param>
-    /// <param name="module">The LLVM module.</param>
-    /// <param name="message">The message to be printed.</param>
-    /// <param name="variableValue">The LLVM value reference for the variable to be printed.</param>
-    public static void RuntimeVariableValue(LLVMBuilderRef builder, LLVMModuleRef module, string message,
-        LLVMValueRef variableValue)
-    {
-        if (EnableRuntime && PrintfFunction.Handle != IntPtr.Zero)
-        {
-            CobraVerboseRunnerHelper.AddPrintVariable(builder, module, PrintfFunction, $"[RUNTIME]  {message}",
-                variableValue);
-        }
     }
 
     /// <summary>

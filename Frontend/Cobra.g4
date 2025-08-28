@@ -2,7 +2,7 @@ grammar Cobra;
 
 // The starting point of a program file
 program
-    : (importStatement | functionDeclaration | classDeclaration | declarationStatement | statement)* EOF
+    : (importStatement | externDeclaration | functionDeclaration | classDeclaration | declarationStatement | statement)* EOF
     ;
 
 /*
@@ -35,6 +35,10 @@ methodDeclaration
 
 constructorDeclaration
     : ID LPAREN parameterList? RPAREN block // Constructor name must match class name
+    ;
+
+externDeclaration
+    : EXTERN type ID LPAREN parameterList? RPAREN SEMICOLON
     ;
 
 // Function (non-method) declaration
@@ -223,7 +227,7 @@ argumentList
 
 // A type can be a primitive or a class name, with multiple array dimensions
 type
-    : typeSpecifier (LBRACKET RBRACKET)*
+    : typeSpecifier (LBRACKET RBRACKET | MUL)*
     ;
 
 // The base name of a type
@@ -269,6 +273,7 @@ literal
 
 // Keywords
 IMPORT: 'import';
+EXTERN: 'extern';
 CLASS: 'class';
 EXTENDS: 'extends';
 NEW: 'new';

@@ -77,7 +77,6 @@ public static class Runner
             CobraLogger.Error("Invalid verbose level specified. Using default level 'warn'.");
         }
 
-        CobraLogger.EnableRuntime = options.VerboseRunning;
     }
 
     /// <summary>

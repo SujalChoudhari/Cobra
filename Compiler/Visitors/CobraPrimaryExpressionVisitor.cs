@@ -130,7 +130,6 @@ internal class CobraPrimaryExpressionVisitor
 
             // Cast to element pointer type (int* for int[])
             var arrayPtr = _builder.BuildBitCast(rawMem, pointerType, "array_ptr");
-            CobraLogger.RuntimeVariableValue(_builder,_module,$"Allocated dynamic memory of size",totalSize);
             return arrayPtr;
         }
 

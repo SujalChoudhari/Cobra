@@ -40,10 +40,4 @@ public class Options
         HelpText = "Set the verbosity level for the compiler. Can be: off, error, warn, success or info. Default is 'info'.")]
     public string VerboseLevel { get; set; } = "info";
 
-    /// <summary>
-    /// Gets or sets a value indicating whether to include verbose runtime output in the compiled program.
-    /// </summary>
-    [Option('V', "verbose-runtime", Required = false,
-        HelpText = "Enable verbose runtime output in the compiled program.")]
-    public bool VerboseRunning { get; set; }
 }

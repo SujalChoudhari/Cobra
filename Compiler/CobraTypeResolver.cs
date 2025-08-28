@@ -17,11 +17,15 @@ public abstract class CobraTypeResolver
             _ => throw new Exception($"Invalid type specified: {typeName}") // TODO: Handle custom class types
         };
 
-        // If there are array specifiers `[]`, this is a pointer to the base type.
+        if (context.MUL() != null)
+        {
+            return LLVMTypeRef.CreatePointer(baseType, 0);
+        }
+
         if (context.LBRACKET()?.Length > 0)
         {
-            // For now, we only support single-dimensional arrays.
-            // A local array variable is best represented as a pointer to its element type.
+            // TODO: Support multiple dimensions array
+            // TODO: Make arrays as struct and store the size
             return LLVMTypeRef.CreatePointer(baseType, 0);
         }
 

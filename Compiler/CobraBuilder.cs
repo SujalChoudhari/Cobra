@@ -52,12 +52,6 @@ namespace Cobra.Compiler
             var entryBlock = mainFunction.AppendBasicBlock("entry");
             _builder.PositionAtEnd(entryBlock);
 
-            // printf declaration
-            var charPtrType = LLVMTypeRef.CreatePointer(LLVMTypeRef.Int8, 0);
-            var printfFunctionType = LLVMTypeRef.CreateFunction(int32Type, new[] { charPtrType }, true);
-            var printfFunction = _module.AddFunction("printf", printfFunctionType);
-            CobraLogger.PrintfFunction = printfFunction;
-
             // Visit program
             var programVisitor = new CobraProgramVisitor(_module, _builder);
             programVisitor.Visit(programContext);

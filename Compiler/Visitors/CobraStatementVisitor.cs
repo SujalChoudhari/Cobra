@@ -133,9 +133,7 @@ internal class CobraStatementVisitor
 
             _builder.BuildStore(initialValue, allocatedVariable);
 
-            CobraLogger.RuntimeVariableValue(_builder, _visitor.Module,
-                $"Declared variable: {variableName} <{typeName}>",
-                initialValue);
+           
         }
         else
         {

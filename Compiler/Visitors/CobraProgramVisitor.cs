@@ -49,21 +49,21 @@ public class CobraProgramVisitor : CobraBaseVisitor<LLVMValueRef>
     // --- Top-Level ---
     public override LLVMValueRef VisitProgram(CobraParser.ProgramContext context)
     {
-        
-        // --- Pass 1: declare function prototypes ---
+        foreach (var externDeclarationContext in context.externDeclaration())
+        {
+            _functionVisitor.VisitExternDeclaration(externDeclarationContext);
+        }
         foreach (var funcDecl in context.functionDeclaration())
         {
             _functionVisitor.VisitFunctionDeclaration_Pass1(funcDecl);
         }
 
-        // --- Pass 0: declare globals ---
         foreach (var decl in context.declarationStatement()
                      .Where(d => d.GLOBAL() != null))
         {
             _statementVisitor.VisitDeclarationStatement(decl);
         }
 
-        // --- Pass 2: generate function bodies ---
         foreach (var funcDecl in context.functionDeclaration())
         {
             _functionVisitor.VisitFunctionDeclaration_Pass2(funcDecl);

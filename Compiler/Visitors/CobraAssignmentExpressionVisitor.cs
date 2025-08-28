@@ -59,7 +59,6 @@ internal class CobraAssignmentExpressionVisitor
 
         _builder.BuildStore(valueToStore, variableAddress);
         CobraLogger.Success($"Compiled assignment expression for: {variableAddress}");
-        CobraLogger.RuntimeVariableValue(_builder, _module, "Assigned value:", valueToStore);
 
         return valueToStore;
     }

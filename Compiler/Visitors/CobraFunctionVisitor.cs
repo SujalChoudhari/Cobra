@@ -52,13 +52,12 @@ internal class CobraFunctionVisitor
         var functionName = context.ID().GetText();
         var function = _visitor.Functions[functionName];
 
-        // --- CRITICAL FIX: Save the builder's current position ---
         var originalBlock = _builder.InsertBlock;
 
         var oldFunction = _visitor.CurrentFunction;
         var oldIsGlobal = _visitor.IsGlobalScope;
         _visitor.CurrentFunction = function;
-        _visitor.IsGlobalScope = false; // We are inside a function now
+        _visitor.IsGlobalScope = false;
 
         var entryBlock = function.AppendBasicBlock("entry");
         _builder.PositionAtEnd(entryBlock);
@@ -66,7 +65,6 @@ internal class CobraFunctionVisitor
         _visitor.ScopeManagement.EnterScope();
         try
         {
-            // Process parameters
             if (context.parameterList() != null)
             {
                 for (int i = 0; i < context.parameterList().parameter().Length; i++)
@@ -84,7 +82,6 @@ internal class CobraFunctionVisitor
 
             _visitor.Visit(context.block());
 
-            // Add a return if one doesn't exist for void functions
             if (function.TypeOf.ElementType.ReturnType.Kind == LLVMTypeKind.LLVMVoidTypeKind)
             {
                 if (_builder.InsertBlock.Terminator == default)
@@ -97,7 +94,6 @@ internal class CobraFunctionVisitor
         {
             _visitor.ScopeManagement.ExitScope();
             
-            // --- CRITICAL FIX: Restore the builder's position and state ---
             if (originalBlock.Handle != IntPtr.Zero)
             {
                  _builder.PositionAtEnd(originalBlock);
@@ -111,4 +107,44 @@ internal class CobraFunctionVisitor
         return function;
     }
     
+    public LLVMValueRef VisitExternDeclaration(CobraParser.ExternDeclarationContext context)
+    {
+        var functionName = context.ID().GetText();
+
+        if (_visitor.Functions.ContainsKey(functionName))
+        {
+            throw new Exception($"Function '{functionName}' is already declared.");
+        }
+
+        var returnType = CobraTypeResolver.ResolveType(context.type());
+
+        // For variadic functions like printf, we need to know the fixed parameters
+        var paramTypes = new List<LLVMTypeRef>();
+        bool isVariadic = false;
+        if (context.parameterList() != null)
+        {
+            foreach (var param in context.parameterList().parameter())
+            {
+                //TODO: Use the convention for variadic functions
+                // A simple convention for variadic: use '...' as the last parameter name
+                // The grammar doesn't support this, so we'll treat it as a special case
+                // for now. For printf, let's assume it's variadic if it's named 'printf'.
+                // A better approach would be to add `...` to the grammar.
+                paramTypes.Add(CobraTypeResolver.ResolveType(param.type()));
+            }
+        }
+    
+        if (functionName == "printf")
+        {
+            isVariadic = true;
+        }
+
+        var functionType = LLVMTypeRef.CreateFunction(returnType, paramTypes.ToArray(), isVariadic);
+        var function = _module.AddFunction(functionName, functionType);
+
+        _visitor.Functions[functionName] = function;
+        CobraLogger.Success($"Declared extern function prototype: {functionName}");
+        return function;
+    }
+
 }

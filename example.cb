@@ -1,7 +1,4 @@
 
-int[] arr = new int[5];
+extern int printf(string format);
 
-arr[2] = 10;
-arr[3] = 44;
-arr[4] = arr[2];
-arr[50] = 30;
+printf("d\n");
