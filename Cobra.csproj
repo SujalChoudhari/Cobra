@@ -10,11 +10,6 @@
     <ItemGroup>
       <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
       <PackageReference Include="CommandLineParser" Version="2.9.1" />
-      <PackageReference Include="LLVMSharp.Interop" Version="16.0.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Compiler\Preprocessor\" />
     </ItemGroup>
 
 </Project>
