@@ -1,38 +1,16 @@
 grammar Cobra;
 
-/*
-  Cobra.g4
-  Final grammar for Cobra language (strict-typed, no generics, dict{...}, no sets).
-  - Arrays: type[]
-  - Dict constructor: dict{ key: value, ... } with unquoted or string keys
-  - Function refs use the keyword `fun` for declarations: fun f = int (int a) { ... };
-  - Named functions: int name(...) { ... }
-  - Markup: JSX-like within a <></> wrapper. Self-closing tags supported.
-  - link "file"; import "mod"; external int foo(...);
-  - Blocks { } are scopes. dict uses explicit ctor `dict{}` to avoid ambiguity.
-*/
-
-options { tokenVocab=LexerTokens; } // optional split lexer approach
-
-/* =========================
-   Parser rules
-   ========================= */
-
+// Entry
 program
-  : (topLevelItem)* EOF
+  : (linkStatement
+    | importStatement
+    | namespaceDeclaration
+    | topLevelDeclaration
+    | statement
+    )* EOF
   ;
 
-topLevelItem
-  : linkStatement
-  | importStatement
-  | namespaceDeclaration
-  | externDeclaration
-  | constDeclaration
-  | varDeclaration
-  | functionDeclaration
-  | statement
-  ;
-
+// Modules / Linking / Import
 linkStatement
   : LINK STRING_LITERAL SEMICOLON
   ;
@@ -41,33 +19,66 @@ importStatement
   : IMPORT STRING_LITERAL SEMICOLON
   ;
 
-/* Namespaces */
+// Namespaces
 namespaceDeclaration
-  : NAMESPACE qualifiedName LBRACE (topLevelItem)* RBRACE
+  : NAMESPACE qualifiedName LBRACE (topLevelDeclaration | statement | externDeclaration)* RBRACE
   ;
 
-/* Externals */
-externDeclaration
-  : EXTERNAL type ID LPAREN parameterList? RPAREN SEMICOLON
+qualifiedName
+  : ID (DOT ID)*
   ;
 
-/* Declarations */
+// Top-level declarations
+topLevelDeclaration
+  : constDeclaration
+  | varDeclaration
+  | functionDeclaration
+  | externDeclaration
+  ;
+
 constDeclaration
-  : CONST type ID (ASSIGN expression)? SEMICOLON
+  : CONST type ID ASSIGN expression SEMICOLON
   ;
 
 varDeclaration
   : type ID (ASSIGN expression)? SEMICOLON
   ;
 
-/* Named functions */
 functionDeclaration
   : type ID LPAREN parameterList? RPAREN block
   ;
 
-/* Statements */
+externDeclaration
+  : EXTERNAL type ID LPAREN parameterList? RPAREN SEMICOLON
+  ;
+
+// Types & Parameters
+type
+  : primitiveType (LBRACKET RBRACKET)*  
+  | FUN                                 
+  | ID                                  
+  ;
+
+primitiveType
+  : INT
+  | FLOAT
+  | BOOL
+  | STRING
+  | VOID
+  ;
+
+parameterList
+  : parameter (COMMA parameter)*
+  ;
+
+parameter
+  : type ID
+  ;
+
+// Statements & Blocks
 statement
   : block
+  | declarationStatement
   | ifStatement
   | whileStatement
   | doWhileStatement
@@ -77,20 +88,18 @@ statement
   | tryStatement
   | jumpStatement
   | expressionStatement
-  | SEMICOLON
+  | printStatement
+  ;
+
+declarationStatement
+  : constDeclaration
+  | varDeclaration
   ;
 
 block
-  : LBRACE (declarationOrStatement)* RBRACE
+  : LBRACE (declarationStatement | statement)* RBRACE
   ;
 
-declarationOrStatement
-  : constDeclaration
-  | varDeclaration
-  | statement
-  ;
-
-/* Control flow */
 ifStatement
   : IF LPAREN expression RPAREN statement (ELSE statement)?
   ;
@@ -104,7 +113,7 @@ doWhileStatement
   ;
 
 forStatement
-  : FOR LPAREN (varDeclaration | expressionStatement | SEMICOLON) expression? SEMICOLON expression? RPAREN statement
+  : FOR LPAREN (varDeclaration | expressionStatement | SEMICOLON)? expression? SEMICOLON expression? RPAREN statement
   ;
 
 forEachStatement
@@ -112,11 +121,11 @@ forEachStatement
   ;
 
 switchStatement
-  : SWITCH LPAREN expression RPAREN LBRACE switchGroup* RBRACE
+  : SWITCH LPAREN expression RPAREN LBRACE switchBlock* RBRACE
   ;
 
-switchGroup
-  : switchLabel+ (statement)*
+switchBlock
+  : switchLabel+ statement*
   ;
 
 switchLabel
@@ -125,41 +134,37 @@ switchLabel
   ;
 
 tryStatement
-  : TRY block (CATCH LPAREN type ID RPAREN block)? (FINALLY block)?
+  : TRY block (CATCH LPAREN parameter RPAREN block)? (FINALLY block)?
   ;
 
-/* Jumps */
 jumpStatement
   : RETURN expression? SEMICOLON
   | BREAK SEMICOLON
   | CONTINUE SEMICOLON
   ;
 
-/* Expressions */
 expressionStatement
   : expression SEMICOLON
   ;
 
+printStatement
+  : PRINT LPAREN expression RPAREN SEMICOLON
+  ;
+
+// Expressions (precedence)
 expression
   : assignmentExpression
   ;
 
 assignmentExpression
   : conditionalExpression
-  | lhs assignmentOperator expression
+  | leftHandSide assignmentOperator assignmentExpression
   ;
 
-/* left-hand side for assignments */
-lhs
-  : primary ( (DOT ID) | (LBRACKET expression RBRACKET) )*
-  ;
-
-/* conditional (ternary) */
 conditionalExpression
   : logicalOrExpression (QUESTION expression COLON expression)?
   ;
 
-/* boolean/logical/bitwise/arithmetic precedence */
 logicalOrExpression
   : logicalAndExpression (OR logicalAndExpression)*
   ;
@@ -185,11 +190,11 @@ equalityExpression
   ;
 
 relationalExpression
-  : shiftExpression ((LT | GT | LTE | GTE) shiftExpression)*
+  : shiftExpression ((GT | LT | GTE | LTE) shiftExpression)*
   ;
 
 shiftExpression
-  : additiveExpression ((LSHIFT | RSHIFT) additiveExpression)*
+  : additiveExpression ((SHL | SHR) additiveExpression)*
   ;
 
 additiveExpression
@@ -206,158 +211,75 @@ unaryExpression
   ;
 
 postfixExpression
-  : primary ( (LPAREN argumentList? RPAREN) | (DOT ID) | (LBRACKET expression RBRACKET) | INC | DEC )*
+  : primary ( LPAREN argumentList? RPAREN
+            | LBRACKET expression RBRACKET
+            | DOT ID
+            | INC
+            | DEC
+            )*
   ;
 
-/* Primary expressions (includes literals, identifiers, calls, dict/array/tuple/markup, and function literals) */
+leftHandSide
+  : primary ( LBRACKET expression RBRACKET
+            | DOT ID
+            )*
+  ;
+
 primary
   : LPAREN expression RPAREN
   | literal
   | ID
-  | functionLiteral
+  | functionExpression
   | arrayLiteral
-  | tupleLiteral
-  | dictConstructor
-  | markupLiteral
+  | dictLiteral
   ;
 
-/* Function literal used as expression or as value in declarations:
-   - When used as a value, must be assigned to `fun` typed variable.
-   - Syntax: type ( paramList? ) block
-   Example: int (int a, int b) { return a + b; }
-*/
-functionLiteral
+argumentList
+  : expression (COMMA expression)*
+  ;
+
+functionExpression
   : type LPAREN parameterList? RPAREN block
   ;
 
-/* Containers */
 arrayLiteral
   : LBRACKET (expression (COMMA expression)*)? RBRACKET
   ;
 
-tupleLiteral
-  : LPAREN expression (COMMA expression)+ RPAREN
-  ;
-
-/* Explicit dict constructor to avoid clash with blocks */
-dictConstructor
-  : DICT LBRACE (dictEntry (COMMA dictEntry)*)? RBRACE
+dictLiteral
+  : LBRACE (dictEntry (COMMA dictEntry)*)? RBRACE
   ;
 
 dictEntry
   : (STRING_LITERAL | ID) COLON expression
   ;
 
-/* Markup (JSX-like). Top-level wrapper required: <></> */
-markupLiteral
-  : LT GT markupNodes LT SLASH GT
-  ;
-
-markupNodes
-  : (markupElement | markupText | markupExpr)*
-  ;
-
-markupText
-  : MARKUP_TEXT
-  ;
-
-markupExpr
-  : LBRACE expression RBRACE
-  ;
-
-markupElement
-  : LT ID markupAttrs? SLASH GT                       # markupSelfClose
-  | LT ID markupAttrs? GT markupNodes LT SLASH ID GT  # markupNormal
-  ;
-
-markupAttrs
-  : (markupAttr)*
-  ;
-
-markupAttr
-  : ID ASSIGN (STRING_LITERAL | markupAttrExpr)
-  ;
-
-markupAttrExpr
-  : LBRACE expression RBRACE
-  ;
-
-/* Arguments and parameters */
-argumentList
-  : expression (COMMA expression)*
-  ;
-
-parameterList
-  : parameter (COMMA parameter)*
-  ;
-
-parameter
-  : type ID
-  ;
-
-/* Types */
-type
-  : primitiveType (LBRACKET RBRACKET)*      # arrayStyle
-  | FUN                                    # funType        // the special 'fun' keyword as a type for function refs
-  | MARKUP_T                               # markupType     // markup type keyword
-  ;
-
-// primitive types
-primitiveType
-  : INT_T
-  | FLOAT_T
-  | STRING_T
-  | BOOL_T
-  | VOID_T
-  ;
-
-/* Assignment operators */
-assignmentOperator
-  : ASSIGN | PLUS_ASSIGN | MINUS_ASSIGN | MUL_ASSIGN | DIV_ASSIGN | MOD_ASSIGN
-  ;
-
-/* Literals */
 literal
   : INTEGER
   | FLOAT_LITERAL
   | STRING_LITERAL
+  | BACKTICK_STRING
   | TRUE
   | FALSE
   | NULL
   ;
 
-/* Qualified name */
-qualifiedName
-  : ID (DOT ID)*
+assignmentOperator
+  : ASSIGN
+  | PLUS_ASSIGN
+  | MINUS_ASSIGN
+  | MUL_ASSIGN
+  | DIV_ASSIGN
+  | MOD_ASSIGN
   ;
 
-/* =========================
-   Lexer rules (inline for portability)
-   ========================= */
-
-/* Keywords and type tokens */
+// Lexer
 LINK:       'link';
 IMPORT:     'import';
 NAMESPACE:  'namespace';
 EXTERNAL:   'external';
-CONST:      'const';
 FUN:        'fun';
-MARKUP_T:   'markup';
-
-INT_T:      'int';
-FLOAT_T:    'float';
-STRING_T:   'string';
-BOOL_T:     'bool';
-VOID_T:     'void';
-
-TRUE:       'true';
-FALSE:      'false';
-NULL:       'null';
-
-TRY:        'try';
-CATCH:      'catch';
-FINALLY:    'finally';
-
+CONST:      'const';
 IF:         'if';
 ELSE:       'else';
 WHILE:      'while';
@@ -367,44 +289,54 @@ IN:         'in';
 SWITCH:     'switch';
 CASE:       'case';
 DEFAULT:    'default';
+TRY:        'try';
+CATCH:      'catch';
+FINALLY:    'finally';
 RETURN:     'return';
 BREAK:      'break';
 CONTINUE:   'continue';
+PRINT:      'print';
 
-/* Constructors and container keywords */
-DICT:       'dict';
+INT:    'int';
+FLOAT:  'float';
+STRING: 'string';
+BOOL:   'bool';
+VOID:   'void';
+NULL:   'null';
+TRUE:   'true';
+FALSE:  'false';
 
-/* Operators */
-PLUS:       '+';
-MINUS:      '-';
-MUL:        '*';
-DIV:        '/';
-MOD:        '%';
-PLUS_ASSIGN:'+=';
-MINUS_ASSIGN:'-=';
-MUL_ASSIGN: '*=';
-DIV_ASSIGN: '/=';
-MOD_ASSIGN: '%=';
-INC:        '++';
-DEC:        '--';
-ASSIGN:     '=';
-EQ:         '==';
-NEQ:        '!=';
-LTE:        '<=';
-GTE:        '>=';
-NOT:        '!';
-AND:        '&&';
-OR:         '||';
-BITWISE_AND:'&';
-BITWISE_OR: '|';
-BITWISE_XOR:'^';
-BITWISE_NOT:'~';
-LSHIFT:     '<<';
-RSHIFT:     '>>';
-QUESTION:   '?';
-COLON:      ':';
+PLUS:           '+';
+MINUS:          '-';
+MUL:            '*';
+DIV:            '/';
+MOD:            '%';
+PLUS_ASSIGN:    '+=';
+MINUS_ASSIGN:   '-=';
+MUL_ASSIGN:     '*=';
+DIV_ASSIGN:     '/=';
+MOD_ASSIGN:     '%=';
+INC:            '++';
+DEC:            '--';
+ASSIGN:         '=';
+EQ:             '==';
+NEQ:            '!=';
+GT:             '>';
+LT:             '<';
+GTE:            '>=';
+LTE:            '<=';
+NOT:            '!';
+AND:            '&&';
+OR:             '||';
+BITWISE_AND:    '&';
+BITWISE_OR:     '|';
+BITWISE_XOR:    '^';
+BITWISE_NOT:    '~';
+SHL:            '<<';
+SHR:            '>>';
+QUESTION:       '?';
+SLASH:          '/';
 
-/* Punctuation */
 LPAREN:     '(';
 RPAREN:     ')';
 LBRACE:     '{';
@@ -413,58 +345,33 @@ LBRACKET:   '[';
 RBRACKET:   ']';
 SEMICOLON:  ';';
 COMMA:      ',';
+COLON:      ':';
 DOT:        '.';
-SLASH:      '/';
-LT:         '<';
-GT:         '>';
-SLASH:      '/';
-SLASH_GT:   '/>';
 
-/* Strings and numbers */
+ID: [a-zA-Z_] [a-zA-Z_0-9]*;
+
 STRING_LITERAL
   : '"' ( EscapeSequence | ~('\\'|'"') )* '"'
   ;
 
-fragment EscapeSequence
-  : '\\' [btnfr"\\/']
-  ;
-
-FLOAT_LITERAL
-  : [0-9]+ '.' [0-9]* ([eE] [+-]? [0-9]+)?
-  | '.' [0-9]+ ([eE] [+-]? [0-9]+)?
-  | [0-9]+ [eE] [+-]? [0-9]+
+BACKTICK_STRING
+  : '`' ( ~'`' | '``' )* '`'
   ;
 
 INTEGER
   : [0-9]+
   ;
 
-/* Markup text: any run of chars not starting a tag or expr */
-MARKUP_TEXT
-  : (~[<>{}])+ 
+FLOAT_LITERAL
+  : [0-9]+ '.' [0-9]* ([eE][+-]?[0-9]+)?
+  | '.' [0-9]+ ([eE][+-]?[0-9]+)?
+  | [0-9]+ [eE][+-]?[0-9]+
   ;
 
-/* Identifiers */
-ID
-  : [a-zA-Z_] [a-zA-Z_0-9]*
-  ;
+LINE_COMMENT: '//' ~[\r\n]* -> skip;
+BLOCK_COMMENT: '/*' .*? '*/' -> skip;
+WS: [ \t\r\n]+ -> skip;
 
-/* String literal for import/link */
-STRING_LITERAL_RAW
-  : '"' ( EscapeSequence | ~('\\'|'"') )* '"'
-  ;
-
-/* For import/link we reuse STRING_LITERAL token above; STRING_LITERAL_RAW kept for clarity if needed */
-
-/* Whitespace and comments */
-WHITESPACE
-  : [ \t\r\n]+ -> skip
-  ;
-
-LINE_COMMENT
-  : '//' ~[\r\n]* -> skip
-  ;
-
-BLOCK_COMMENT
-  : '/*' .*? '*/' -> skip
+fragment EscapeSequence
+  : '\\' [btnfr"'\\/]
   ;
