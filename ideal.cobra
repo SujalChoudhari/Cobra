@@ -18,6 +18,8 @@ namespace App.Main {
     int add(int a, int b) {
         return a + b;
     }
+    
+    ratio = 3.5;
 
     // Function literal assigned to fun type
     fun op = int (int x, int y) {

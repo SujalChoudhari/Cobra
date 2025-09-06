@@ -37,11 +37,11 @@ topLevelDeclaration
   ;
 
 constDeclaration
-  : CONST type ID ASSIGN expression SEMICOLON
+  : CONST type ID ASSIGN assignmentExpression SEMICOLON
   ;
 
 varDeclaration
-  : type ID (ASSIGN expression)? SEMICOLON
+  : type ID (ASSIGN assignmentExpression)? SEMICOLON
   ;
 
 functionDeclaration
@@ -101,27 +101,27 @@ block
   ;
 
 ifStatement
-  : IF LPAREN expression RPAREN statement (ELSE statement)?
+  : IF LPAREN assignmentExpression RPAREN statement (ELSE statement)?
   ;
 
 whileStatement
-  : WHILE LPAREN expression RPAREN statement
+  : WHILE LPAREN assignmentExpression RPAREN statement
   ;
 
 doWhileStatement
-  : DO statement WHILE LPAREN expression RPAREN SEMICOLON
+  : DO statement WHILE LPAREN assignmentExpression RPAREN SEMICOLON
   ;
 
 forStatement
-  : FOR LPAREN (varDeclaration | expressionStatement | SEMICOLON)? expression? SEMICOLON expression? RPAREN statement
+  : FOR LPAREN (varDeclaration | expressionStatement | SEMICOLON)? assignmentExpression? SEMICOLON assignmentExpression? RPAREN statement
   ;
 
 forEachStatement
-  : FOR LPAREN type ID IN expression RPAREN statement
+  : FOR LPAREN type ID IN assignmentExpression RPAREN statement
   ;
 
 switchStatement
-  : SWITCH LPAREN expression RPAREN LBRACE switchBlock* RBRACE
+  : SWITCH LPAREN assignmentExpression RPAREN LBRACE switchBlock* RBRACE
   ;
 
 switchBlock
@@ -129,7 +129,7 @@ switchBlock
   ;
 
 switchLabel
-  : CASE expression COLON
+  : CASE assignmentExpression COLON
   | DEFAULT COLON
   ;
 
@@ -138,81 +138,66 @@ tryStatement
   ;
 
 jumpStatement
-  : RETURN expression? SEMICOLON
+  : RETURN assignmentExpression? SEMICOLON
   | BREAK SEMICOLON
   | CONTINUE SEMICOLON
   ;
 
 expressionStatement
-  : expression SEMICOLON
+  : assignmentExpression SEMICOLON
   ;
 
 printStatement
-  : PRINT LPAREN expression RPAREN SEMICOLON
+  : PRINT LPAREN assignmentExpression RPAREN SEMICOLON
   ;
 
 // Expressions (precedence)
-expression
-  : assignmentExpression
-  ;
-
 assignmentExpression
-  : conditionalExpression
-  | leftHandSide assignmentOperator assignmentExpression
+  : leftHandSide assignmentOperator assignmentExpression
+  | binaryExpression (QUESTION assignmentExpression COLON assignmentExpression)?
   ;
 
-conditionalExpression
-  : logicalOrExpression (QUESTION expression COLON expression)?
+binaryExpression
+  : ( // logicalOr
+      ( // logicalAnd
+        ( // bitwiseOr
+          ( // bitwiseXor
+            ( // bitwiseAnd
+              ( // equality
+                ( // relational
+                  ( // shift
+                    ( // additive
+                      ( // multiplicative
+                        unaryOp* postfixExpression
+                        ((MUL | DIV | MOD) unaryOp* postfixExpression)*
+                      )
+                      ((PLUS | MINUS) unaryOp* postfixExpression)*
+                    )
+                    ((SHL | SHR) unaryOp* postfixExpression)*
+                  )
+                  ((GT | LT | GTE | LTE) unaryOp* postfixExpression)*
+                )
+                ((EQ | NEQ) unaryOp* postfixExpression)*
+              )
+              (BITWISE_AND unaryOp* postfixExpression)*
+            )
+            (BITWISE_XOR unaryOp* postfixExpression)*
+          )
+          (BITWISE_OR unaryOp* postfixExpression)*
+        )
+        (AND unaryOp* postfixExpression)*
+      )
+      (OR unaryOp* postfixExpression)*
+    )
   ;
 
-logicalOrExpression
-  : logicalAndExpression (OR logicalAndExpression)*
-  ;
-
-logicalAndExpression
-  : bitwiseOrExpression (AND bitwiseOrExpression)*
-  ;
-
-bitwiseOrExpression
-  : bitwiseXorExpression (BITWISE_OR bitwiseXorExpression)*
-  ;
-
-bitwiseXorExpression
-  : bitwiseAndExpression (BITWISE_XOR bitwiseAndExpression)*
-  ;
-
-bitwiseAndExpression
-  : equalityExpression (BITWISE_AND equalityExpression)*
-  ;
-
-equalityExpression
-  : relationalExpression ((EQ | NEQ) relationalExpression)*
-  ;
-
-relationalExpression
-  : shiftExpression ((GT | LT | GTE | LTE) shiftExpression)*
-  ;
-
-shiftExpression
-  : additiveExpression ((SHL | SHR) additiveExpression)*
-  ;
-
-additiveExpression
-  : multiplicativeExpression ((PLUS | MINUS) multiplicativeExpression)*
-  ;
-
-multiplicativeExpression
-  : unaryExpression ((MUL | DIV | MOD) unaryExpression)*
-  ;
-
-unaryExpression
-  : (PLUS | MINUS | NOT | BITWISE_NOT | INC | DEC) unaryExpression
-  | postfixExpression
+unaryOp
+  : PLUS | MINUS | NOT | BITWISE_NOT | INC | DEC
   ;
 
 postfixExpression
   : primary ( LPAREN argumentList? RPAREN
-            | LBRACKET expression RBRACKET
+            | LBRACKET assignmentExpression RBRACKET
             | DOT ID
             | INC
             | DEC
@@ -220,13 +205,13 @@ postfixExpression
   ;
 
 leftHandSide
-  : primary ( LBRACKET expression RBRACKET
+  : primary ( LBRACKET assignmentExpression RBRACKET
             | DOT ID
             )*
   ;
 
 primary
-  : LPAREN expression RPAREN
+  : LPAREN assignmentExpression RPAREN
   | literal
   | ID
   | functionExpression
@@ -235,7 +220,7 @@ primary
   ;
 
 argumentList
-  : expression (COMMA expression)*
+  : assignmentExpression (COMMA assignmentExpression)*
   ;
 
 functionExpression
@@ -243,7 +228,7 @@ functionExpression
   ;
 
 arrayLiteral
-  : LBRACKET (expression (COMMA expression)*)? RBRACKET
+  : LBRACKET (assignmentExpression (COMMA assignmentExpression)*)? RBRACKET
   ;
 
 dictLiteral
@@ -251,7 +236,7 @@ dictLiteral
   ;
 
 dictEntry
-  : (STRING_LITERAL | ID) COLON expression
+  : (STRING_LITERAL | ID) COLON assignmentExpression
   ;
 
 literal
