@@ -384,18 +384,6 @@ public partial class CobraBaseListener : ICobraListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitExpressionStatement([NotNull] CobraParser.ExpressionStatementContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="CobraParser.printStatement"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterPrintStatement([NotNull] CobraParser.PrintStatementContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="CobraParser.printStatement"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitPrintStatement([NotNull] CobraParser.PrintStatementContext context) { }
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="CobraParser.assignmentExpression"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
