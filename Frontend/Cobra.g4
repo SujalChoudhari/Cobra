@@ -233,7 +233,7 @@ arrayLiteral
   ;
 
 dictLiteral
-  : LBRACE (dictEntry (COMMA dictEntry)*)? RBRACE
+  : LBRACE (dictEntry (COMMA dictEntry | COMMA)*)? RBRACE
   ;
 
 dictEntry

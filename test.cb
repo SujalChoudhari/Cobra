@@ -1,76 +1,17 @@
-// Cobra Language Test Suite
-
-print("--- Variable and Constant Declaration ---");
-int a = 10;
-const int B = 20;
-print(a); // Expected: 10
-print(B); // Expected: 20
-
-a = a + B;
-print(a); // Expected: 30
-
-print("");
-print("--- Scoping Test ---");
-int x = 100;
-{
-    int x = 50; // Shadowing
-    print(x); // Expected: 50
-}
-print(x); // Expected: 100
-
-print("");
-print("--- Conditional (if-else) Test ---");
-if (a > 25) {
-    print("a is greater than 25"); // Expected
-} else {
-    print("a is not greater than 25");
-}
-
-if (a < 0) {
-    print("This should not print");
-}
-
-print("");
-print("--- Function Declaration and Call ---");
-
-int fib(int n) {
-    if (n <= 1) {
-        return n;
+dict x = {
+    y: 2,
+    op: int(int m) {
+        return m + 1;
+    },
+    z: 3,
+    more: {
+        x: 2,
+        y: 4
     }
-    return fib(n - 1) + fib(n - 2);
-}
-
-print("Calculating fib(10)...");
-int result = fib(10);
-print(result); // Expected: 55
-
-print("");
-print("--- Loop Tests (for, break, continue) ---");
-
-int counter = 0;
-for (int i = 0; i < 10; i = i + 1) {
-    if (i == 3) {
-        print("Continuing at i=3");
-        continue;
-    }
-    if (i == 7) {
-        print("Breaking at i=7");
-        break;
-    }
-    counter = counter + 1;
-}
-print("Loop ran this many times:");
-print(counter); // Expected: 6 (0,1,2,4,5,6)
-
-print("");
-print("--- Literals (Array and Dictionary) ---");
-int[] numbers = [10, 20, 30];
-print(numbers); // Printing complex types is not pretty yet
-
-dict person = {
-    "name": "Cobra",
-    age: 5
 };
-print(person);
 
-print("--- End of Test Suite ---");
+int a = x.y;
+int b = x.op(1);
+int c = x.z;
+
+print(a, b, c, x.more.x);
