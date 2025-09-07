@@ -168,6 +168,18 @@ public partial class CobraBaseListener : ICobraListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitType([NotNull] CobraParser.TypeContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.secondaryType"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterSecondaryType([NotNull] CobraParser.SecondaryTypeContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.secondaryType"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitSecondaryType([NotNull] CobraParser.SecondaryTypeContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="CobraParser.primitiveType"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

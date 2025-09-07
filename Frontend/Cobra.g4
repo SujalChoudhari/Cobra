@@ -55,8 +55,13 @@ externDeclaration
 // Types & Parameters
 type
   : primitiveType (LBRACKET RBRACKET)*  
-  | FUN                                 
-  | ID                                  
+  | secondaryType (LBRACKET RBRACKET)*  
+  ;
+  
+secondaryType
+  : FUN
+  | MARKUP
+  | DICT
   ;
 
 primitiveType
@@ -64,7 +69,7 @@ primitiveType
   | FLOAT
   | BOOL
   | STRING
-  | VOID
+  | VOID  
   ;
 
 parameterList
@@ -263,7 +268,6 @@ LINK:       'link';
 IMPORT:     'import';
 NAMESPACE:  'namespace';
 EXTERNAL:   'external';
-FUN:        'fun';
 CONST:      'const';
 IF:         'if';
 ELSE:       'else';
@@ -288,6 +292,11 @@ STRING: 'string';
 BOOL:   'bool';
 VOID:   'void';
 NULL:   'null';
+
+FUN:    'fun';
+MARKUP: 'markup';
+DICT: 'dict';
+
 TRUE:   'true';
 FALSE:  'false';
 
@@ -320,7 +329,6 @@ BITWISE_NOT:    '~';
 SHL:            '<<';
 SHR:            '>>';
 QUESTION:       '?';
-SLASH:          '/';
 
 LPAREN:     '(';
 RPAREN:     ')';
@@ -333,10 +341,13 @@ COMMA:      ',';
 COLON:      ':';
 DOT:        '.';
 
+OPEN_FRAGMENT: '<>';
+CLOSE_FRAGMENT: '</>';
+
 ID: [a-zA-Z_] [a-zA-Z_0-9]*;
 
 STRING_LITERAL
-  : '"' ( EscapeSequence | ~('\\'|'"') )* '"'
+  : '"' ALL* '"'
   ;
 
 BACKTICK_STRING
@@ -356,6 +367,10 @@ FLOAT_LITERAL
 LINE_COMMENT: '//' ~[\r\n]* -> skip;
 BLOCK_COMMENT: '/*' .*? '*/' -> skip;
 WS: [ \t\r\n]+ -> skip;
+
+fragment ALL
+    : ( EscapeSequence | ~('\\'|'"') )
+    ;
 
 fragment EscapeSequence
   : '\\' [btnfr"'\\/]

@@ -98,6 +98,12 @@ public interface ICobraVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitType([NotNull] CobraParser.TypeContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.secondaryType"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSecondaryType([NotNull] CobraParser.SecondaryTypeContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.primitiveType"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
