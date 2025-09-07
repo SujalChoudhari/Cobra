@@ -3,8 +3,25 @@ namespace Cobra.Environment;
 public class CobraEnvironment(CobraEnvironment? parent = null)
 {
     private readonly Dictionary<string, CobraVariableDefinition> _variables = new();
+    private CobraEnvironment? Parent { get; } = parent;
 
-    public void DefineVariable(string name, object value, bool isConst = false, bool isArray = false)
+    public static CobraEnvironment CreateGlobalEnvironment()
+    {
+        var env = new CobraEnvironment();
+
+        var printFunc = new BuiltinFunction("print", (args) =>
+        {
+            var output = string.Join(" ", args.Select(a => a?.ToString() ?? "null"));
+            Console.WriteLine(output);
+            return null;
+        });
+        
+        env.DefineVariable("print", printFunc, isConst: true);
+
+        return env;
+    }
+
+    public void DefineVariable(string name, object? value, bool isConst = false, bool isArray = false)
     {
         if (_variables.ContainsKey(name))
             throw new Exception($"Variable '{name}' is already defined in this scope.");
@@ -18,8 +35,8 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
         if (value == null) return CobraRuntimeTypes.Null;
         return value switch
         {
-            int => CobraRuntimeTypes.Int,
-            float or double => CobraRuntimeTypes.Float, 
+            int or long => CobraRuntimeTypes.Int,
+            float or double => CobraRuntimeTypes.Float,
             bool => CobraRuntimeTypes.Bool,
             string => CobraRuntimeTypes.String,
             Dictionary<string, object> => CobraRuntimeTypes.Dict,
@@ -30,8 +47,7 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
         };
     }
 
-
-    public void AssignVariable(string name, object value)
+    public void AssignVariable(string name, object? value)
     {
         if (_variables.TryGetValue(name, out var variable))
         {
@@ -42,9 +58,9 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
             return;
         }
 
-        if (parent != null)
+        if (Parent != null)
         {
-            parent.AssignVariable(name, value);
+            Parent.AssignVariable(name, value);
             return;
         }
 
@@ -58,9 +74,9 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
             return variable.Value;
         }
 
-        if (parent != null)
+        if (Parent != null)
         {
-            return parent.GetVariable(name);
+            return Parent.GetVariable(name);
         }
 
         throw new Exception($"Variable '{name}' not found.");
@@ -71,8 +87,8 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
         if (_variables.TryGetValue(name, out var variable))
             return variable;
 
-        if (parent != null)
-            return parent.GetVariableDefinition(name);
+        if (Parent != null)
+            return Parent.GetVariableDefinition(name);
 
         throw new Exception($"Variable '{name}' not found.");
     }
