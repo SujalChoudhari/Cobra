@@ -7,6 +7,7 @@ namespace Cobra.Utils;
 public class CobraRunner
 {
     private readonly CobraInterpreter _interpreter;
+    private CobraLogger Log => CobraLogger.GetLogger<CobraRunner>();
 
     public CobraRunner()
     {
@@ -22,8 +23,7 @@ public class CobraRunner
 
         var tree = parser.program();
 
-        var parseTreeWalker = new ParseTreeWalker();
-        parseTreeWalker.Walk(_interpreter, tree);
+        _interpreter.Visit(tree);
     }
 
     public void StartRepl()
@@ -44,7 +44,7 @@ public class CobraRunner
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                Log.Error($"Error: {ex.Message}");
             }
         }
     }
