@@ -2,11 +2,20 @@ using CommandLine;
 
 namespace Cobra.Utils;
 
-public static class CobraCommandLine
+public abstract class CobraCommandLine
 {
-    public static int Run(string[] args)
+    private static readonly CobraLogger Log = CobraLogger.GetLogger<CobraCommandLine>();
+
+    public static void Run(string[] args)
     {
-        return Parser.Default.ParseArguments<RunOptions, ReplOptions>(args)
+        if (args.Length == 0)
+        {
+            Log.Info("No arguments provided. Starting REPL mode...");
+            StartRepl(new ReplOptions());
+            return;
+        }
+
+        Parser.Default.ParseArguments<RunOptions, ReplOptions>(args)
             .MapResult(
                 (RunOptions opts) => RunScript(opts),
                 (ReplOptions opts) => StartRepl(opts),
@@ -17,37 +26,38 @@ public static class CobraCommandLine
     {
         if (!File.Exists(opts.File))
         {
-            Console.Error.WriteLine($"File not found: {opts.File}");
+            Log.Error($"File not found: {opts.File}");
             return 1;
         }
 
-        Console.WriteLine($"Running: {opts.File}");
-        Console.WriteLine("Library folders:");
+        Log.Info($"Running: {opts.File}");
+        Log.Info("Library folders:");
         foreach (var lib in opts.LibPaths)
-            Console.WriteLine($"  {lib}");
-        Console.WriteLine("Definitions:");
+            Log.Info($"  {lib}");
+        Log.Info("Definitions:");
         foreach (var def in opts.Defines)
-            Console.WriteLine($"  {def}");
+            Log.Info($"  {def}");
 
-        // TODO: Initialize interpreter, set library paths, apply definitions
-        // Interpreter.Run(opts.File, opts.LibPaths, opts.Defines);
+        CobraRunner runner = new();
+        runner.Run(File.ReadAllText(opts.File));
 
         return 0;
     }
 
     private static int StartRepl(ReplOptions opts)
     {
-        Console.WriteLine("Starting REPL...");
-        
+        Log.Info("Starting REPL mode...");
+        CobraRunner runner = new();
+        runner.StartRepl();
         return 0;
     }
 }
 
 [Verb("run", HelpText = "Run a script file.")]
-internal abstract class RunOptions
+internal class RunOptions
 {
     [Value(0, MetaName = "file", Required = true, HelpText = "Path to the script file.")]
-    public required string File { get; set; }
+    public string File { get; set; } = "";
 
     [Option('l', "lib", Separator = ';', HelpText = "Additional library folders.")]
     public IEnumerable<string> LibPaths { get; set; } = new List<string>();
@@ -57,7 +67,7 @@ internal abstract class RunOptions
 }
 
 [Verb("repl", HelpText = "Start interactive REPL mode.")]
-internal abstract class ReplOptions
+internal class ReplOptions
 {
     [Option('l', "lib", Separator = ';', HelpText = "Additional library folders.")]
     public IEnumerable<string> LibPaths { get; set; } = new List<string>();

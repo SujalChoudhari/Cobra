@@ -19,7 +19,7 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
         return value switch
         {
             int => CobraRuntimeTypes.Int,
-            float or double => CobraRuntimeTypes.Float,
+            float or double => CobraRuntimeTypes.Float, 
             bool => CobraRuntimeTypes.Bool,
             string => CobraRuntimeTypes.String,
             Dictionary<string, object> => CobraRuntimeTypes.Dict,

@@ -6,7 +6,14 @@ namespace Cobra.Utils;
 
 public class CobraRunner
 {
-    public static void Run(string code)
+    private readonly CobraInterpreter _interpreter;
+
+    public CobraRunner()
+    {
+        _interpreter = new CobraInterpreter();
+    }
+
+    public void Run(string code)
     {
         var inputStream = new AntlrInputStream(code);
         var lexer = new CobraLexer(inputStream);
@@ -16,7 +23,29 @@ public class CobraRunner
         var tree = parser.program();
 
         var parseTreeWalker = new ParseTreeWalker();
-        var listener = new CobraInterpreter();
-        parseTreeWalker.Walk(listener, tree);
+        parseTreeWalker.Walk(_interpreter, tree);
+    }
+
+    public void StartRepl()
+    {
+        Console.WriteLine("Cobra REPL started. Type 'exit' to quit.");
+        while (true)
+        {
+            Console.Write("> ");
+            var code = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(code))
+                continue;
+            if (code.Trim().ToLower() == "exit")
+                break;
+
+            try
+            {
+                Run(code);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
     }
 }
