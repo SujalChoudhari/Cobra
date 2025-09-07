@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from /home/sujal/Code/Cobra/Frontend/Cobra.g4 by ANTLR 4.13.2
+// Generated from F:/Workspace/Cobra/Frontend/Cobra.g4 by ANTLR 4.13.2
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -36,72 +36,66 @@ public partial class CobraParser : Parser {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
-		IMPORT=1, EXTERN=2, CLASS=3, EXTENDS=4, NEW=5, THIS=6, IF=7, ELSE=8, WHILE=9, 
-		DO=10, FOR=11, IN=12, SWITCH=13, CASE=14, DEFAULT=15, RETURN=16, BREAK=17, 
-		CONTINUE=18, PUBLIC=19, PRIVATE=20, PROTECTED=21, NULL=22, GLOBAL=23, 
-		INT=24, FLOAT=25, STRING=26, BOOL=27, VOID=28, INTEGER=29, FLOAT_LITERAL=30, 
-		STRING_LITERAL=31, BOOLEAN_LITERAL=32, PLUS=33, MINUS=34, MUL=35, DIV=36, 
-		MOD=37, AND=38, OR=39, NOT=40, EQ=41, NEQ=42, GT=43, LT=44, GTE=45, LTE=46, 
-		ASSIGN=47, PLUS_ASSIGN=48, MINUS_ASSIGN=49, MUL_ASSIGN=50, DIV_ASSIGN=51, 
-		INC=52, DEC=53, BITWISE_AND=54, BITWISE_OR=55, BITWISE_XOR=56, BITWISE_NOT=57, 
-		BITWISE_LEFT_SHIFT=58, BITWISE_RIGHT_SHIFT=59, DOT=60, ARROW=61, QUESTION_MARK=62, 
-		LPAREN=63, RPAREN=64, LBRACE=65, RBRACE=66, LBRACKET=67, RBRACKET=68, 
-		SEMICOLON=69, COMMA=70, COLON=71, ID=72, WHITESPACE=73, COMMENT=74, BLOCK_COMMENT=75;
+		LINK=1, IMPORT=2, NAMESPACE=3, EXTERNAL=4, CONST=5, IF=6, ELSE=7, WHILE=8, 
+		DO=9, FOR=10, IN=11, SWITCH=12, CASE=13, DEFAULT=14, TRY=15, CATCH=16, 
+		FINALLY=17, RETURN=18, BREAK=19, CONTINUE=20, INT=21, FLOAT=22, STRING=23, 
+		BOOL=24, VOID=25, NULL=26, FUN=27, MARKUP=28, DICT=29, TRUE=30, FALSE=31, 
+		PLUS=32, MINUS=33, MUL=34, DIV=35, MOD=36, PLUS_ASSIGN=37, MINUS_ASSIGN=38, 
+		MUL_ASSIGN=39, DIV_ASSIGN=40, MOD_ASSIGN=41, INC=42, DEC=43, ASSIGN=44, 
+		EQ=45, NEQ=46, GT=47, LT=48, GTE=49, LTE=50, NOT=51, AND=52, OR=53, BITWISE_AND=54, 
+		BITWISE_OR=55, BITWISE_XOR=56, BITWISE_NOT=57, SHL=58, SHR=59, QUESTION=60, 
+		LPAREN=61, RPAREN=62, LBRACE=63, RBRACE=64, LBRACKET=65, RBRACKET=66, 
+		SEMICOLON=67, COMMA=68, COLON=69, DOT=70, ID=71, STRING_LITERAL=72, BACKTICK_STRING=73, 
+		INTEGER=74, FLOAT_LITERAL=75, LINE_COMMENT=76, BLOCK_COMMENT=77, WS=78;
 	public const int
-		RULE_program = 0, RULE_classDeclaration = 1, RULE_classBody = 2, RULE_memberDeclaration = 3, 
-		RULE_fieldDeclaration = 4, RULE_methodDeclaration = 5, RULE_constructorDeclaration = 6, 
-		RULE_externDeclaration = 7, RULE_functionDeclaration = 8, RULE_declarationStatement = 9, 
-		RULE_statement = 10, RULE_block = 11, RULE_assignmentOperator = 12, RULE_expressionStatement = 13, 
-		RULE_ifStatement = 14, RULE_whileStatement = 15, RULE_doWhileStatement = 16, 
-		RULE_forStatement = 17, RULE_forControl = 18, RULE_switchStatement = 19, 
-		RULE_switchBlockStatementGroup = 20, RULE_switchLabel = 21, RULE_jumpStatement = 22, 
-		RULE_expression = 23, RULE_assignmentExpression = 24, RULE_conditionalExpression = 25, 
-		RULE_logicalOrExpression = 26, RULE_logicalAndExpression = 27, RULE_bitwiseOrExpression = 28, 
-		RULE_bitwiseXorExpression = 29, RULE_bitwiseAndExpression = 30, RULE_equalityExpression = 31, 
-		RULE_comparisonExpression = 32, RULE_bitwiseShiftExpression = 33, RULE_additiveExpression = 34, 
-		RULE_multiplicativeExpression = 35, RULE_unaryExpression = 36, RULE_postfixExpression = 37, 
-		RULE_primary = 38, RULE_argumentList = 39, RULE_type = 40, RULE_typeSpecifier = 41, 
-		RULE_primitiveType = 42, RULE_parameterList = 43, RULE_parameter = 44, 
-		RULE_accessModifier = 45, RULE_importStatement = 46, RULE_qualifiedName = 47, 
-		RULE_literal = 48;
+		RULE_program = 0, RULE_linkStatement = 1, RULE_importStatement = 2, RULE_namespaceDeclaration = 3, 
+		RULE_qualifiedName = 4, RULE_topLevelDeclaration = 5, RULE_constDeclaration = 6, 
+		RULE_varDeclaration = 7, RULE_functionDeclaration = 8, RULE_externDeclaration = 9, 
+		RULE_type = 10, RULE_secondaryType = 11, RULE_primitiveType = 12, RULE_parameterList = 13, 
+		RULE_parameter = 14, RULE_statement = 15, RULE_declarationStatement = 16, 
+		RULE_block = 17, RULE_ifStatement = 18, RULE_whileStatement = 19, RULE_doWhileStatement = 20, 
+		RULE_forStatement = 21, RULE_forEachStatement = 22, RULE_switchStatement = 23, 
+		RULE_switchBlock = 24, RULE_switchLabel = 25, RULE_tryStatement = 26, 
+		RULE_jumpStatement = 27, RULE_expressionStatement = 28, RULE_assignmentExpression = 29, 
+		RULE_binaryExpression = 30, RULE_unaryOp = 31, RULE_postfixExpression = 32, 
+		RULE_leftHandSide = 33, RULE_primary = 34, RULE_argumentList = 35, RULE_functionExpression = 36, 
+		RULE_arrayLiteral = 37, RULE_dictLiteral = 38, RULE_dictEntry = 39, RULE_literal = 40, 
+		RULE_assignmentOperator = 41;
 	public static readonly string[] ruleNames = {
-		"program", "classDeclaration", "classBody", "memberDeclaration", "fieldDeclaration", 
-		"methodDeclaration", "constructorDeclaration", "externDeclaration", "functionDeclaration", 
-		"declarationStatement", "statement", "block", "assignmentOperator", "expressionStatement", 
-		"ifStatement", "whileStatement", "doWhileStatement", "forStatement", "forControl", 
-		"switchStatement", "switchBlockStatementGroup", "switchLabel", "jumpStatement", 
-		"expression", "assignmentExpression", "conditionalExpression", "logicalOrExpression", 
-		"logicalAndExpression", "bitwiseOrExpression", "bitwiseXorExpression", 
-		"bitwiseAndExpression", "equalityExpression", "comparisonExpression", 
-		"bitwiseShiftExpression", "additiveExpression", "multiplicativeExpression", 
-		"unaryExpression", "postfixExpression", "primary", "argumentList", "type", 
-		"typeSpecifier", "primitiveType", "parameterList", "parameter", "accessModifier", 
-		"importStatement", "qualifiedName", "literal"
+		"program", "linkStatement", "importStatement", "namespaceDeclaration", 
+		"qualifiedName", "topLevelDeclaration", "constDeclaration", "varDeclaration", 
+		"functionDeclaration", "externDeclaration", "type", "secondaryType", "primitiveType", 
+		"parameterList", "parameter", "statement", "declarationStatement", "block", 
+		"ifStatement", "whileStatement", "doWhileStatement", "forStatement", "forEachStatement", 
+		"switchStatement", "switchBlock", "switchLabel", "tryStatement", "jumpStatement", 
+		"expressionStatement", "assignmentExpression", "binaryExpression", "unaryOp", 
+		"postfixExpression", "leftHandSide", "primary", "argumentList", "functionExpression", 
+		"arrayLiteral", "dictLiteral", "dictEntry", "literal", "assignmentOperator"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "'import'", "'extern'", "'class'", "'extends'", "'new'", "'this'", 
-		"'if'", "'else'", "'while'", "'do'", "'for'", "'in'", "'switch'", "'case'", 
-		"'default'", "'return'", "'break'", "'continue'", "'public'", "'private'", 
-		"'protected'", "'null'", "'global'", "'int'", "'float'", "'string'", "'bool'", 
-		"'void'", null, null, null, null, "'+'", "'-'", "'*'", "'/'", "'%'", "'&&'", 
-		"'||'", "'!'", "'=='", "'!='", "'>'", "'<'", "'>='", "'<='", "'='", "'+='", 
-		"'-='", "'*='", "'/='", "'++'", "'--'", "'&'", "'|'", "'^'", "'~'", "'<<'", 
-		"'>>'", "'.'", "'->'", "'?'", "'('", "')'", "'{'", "'}'", "'['", "']'", 
-		"';'", "','", "':'"
+		null, "'link'", "'import'", "'namespace'", "'external'", "'const'", "'if'", 
+		"'else'", "'while'", "'do'", "'for'", "'in'", "'switch'", "'case'", "'default'", 
+		"'try'", "'catch'", "'finally'", "'return'", "'break'", "'continue'", 
+		"'int'", "'float'", "'string'", "'bool'", "'void'", "'null'", "'fun'", 
+		"'markup'", "'dict'", "'true'", "'false'", "'+'", "'-'", "'*'", "'/'", 
+		"'%'", "'+='", "'-='", "'*='", "'/='", "'%='", "'++'", "'--'", "'='", 
+		"'=='", "'!='", "'>'", "'<'", "'>='", "'<='", "'!'", "'&&'", "'||'", "'&'", 
+		"'|'", "'^'", "'~'", "'<<'", "'>>'", "'?'", "'('", "')'", "'{'", "'}'", 
+		"'['", "']'", "';'", "','", "':'", "'.'"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, "IMPORT", "EXTERN", "CLASS", "EXTENDS", "NEW", "THIS", "IF", "ELSE", 
-		"WHILE", "DO", "FOR", "IN", "SWITCH", "CASE", "DEFAULT", "RETURN", "BREAK", 
-		"CONTINUE", "PUBLIC", "PRIVATE", "PROTECTED", "NULL", "GLOBAL", "INT", 
-		"FLOAT", "STRING", "BOOL", "VOID", "INTEGER", "FLOAT_LITERAL", "STRING_LITERAL", 
-		"BOOLEAN_LITERAL", "PLUS", "MINUS", "MUL", "DIV", "MOD", "AND", "OR", 
-		"NOT", "EQ", "NEQ", "GT", "LT", "GTE", "LTE", "ASSIGN", "PLUS_ASSIGN", 
-		"MINUS_ASSIGN", "MUL_ASSIGN", "DIV_ASSIGN", "INC", "DEC", "BITWISE_AND", 
-		"BITWISE_OR", "BITWISE_XOR", "BITWISE_NOT", "BITWISE_LEFT_SHIFT", "BITWISE_RIGHT_SHIFT", 
-		"DOT", "ARROW", "QUESTION_MARK", "LPAREN", "RPAREN", "LBRACE", "RBRACE", 
-		"LBRACKET", "RBRACKET", "SEMICOLON", "COMMA", "COLON", "ID", "WHITESPACE", 
-		"COMMENT", "BLOCK_COMMENT"
+		null, "LINK", "IMPORT", "NAMESPACE", "EXTERNAL", "CONST", "IF", "ELSE", 
+		"WHILE", "DO", "FOR", "IN", "SWITCH", "CASE", "DEFAULT", "TRY", "CATCH", 
+		"FINALLY", "RETURN", "BREAK", "CONTINUE", "INT", "FLOAT", "STRING", "BOOL", 
+		"VOID", "NULL", "FUN", "MARKUP", "DICT", "TRUE", "FALSE", "PLUS", "MINUS", 
+		"MUL", "DIV", "MOD", "PLUS_ASSIGN", "MINUS_ASSIGN", "MUL_ASSIGN", "DIV_ASSIGN", 
+		"MOD_ASSIGN", "INC", "DEC", "ASSIGN", "EQ", "NEQ", "GT", "LT", "GTE", 
+		"LTE", "NOT", "AND", "OR", "BITWISE_AND", "BITWISE_OR", "BITWISE_XOR", 
+		"BITWISE_NOT", "SHL", "SHR", "QUESTION", "LPAREN", "RPAREN", "LBRACE", 
+		"RBRACE", "LBRACKET", "RBRACKET", "SEMICOLON", "COMMA", "COLON", "DOT", 
+		"ID", "STRING_LITERAL", "BACKTICK_STRING", "INTEGER", "FLOAT_LITERAL", 
+		"LINE_COMMENT", "BLOCK_COMMENT", "WS"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -137,35 +131,29 @@ public partial class CobraParser : Parser {
 
 	public partial class ProgramContext : ParserRuleContext {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Eof() { return GetToken(CobraParser.Eof, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public LinkStatementContext[] linkStatement() {
+			return GetRuleContexts<LinkStatementContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public LinkStatementContext linkStatement(int i) {
+			return GetRuleContext<LinkStatementContext>(i);
+		}
 		[System.Diagnostics.DebuggerNonUserCode] public ImportStatementContext[] importStatement() {
 			return GetRuleContexts<ImportStatementContext>();
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ImportStatementContext importStatement(int i) {
 			return GetRuleContext<ImportStatementContext>(i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ExternDeclarationContext[] externDeclaration() {
-			return GetRuleContexts<ExternDeclarationContext>();
+		[System.Diagnostics.DebuggerNonUserCode] public NamespaceDeclarationContext[] namespaceDeclaration() {
+			return GetRuleContexts<NamespaceDeclarationContext>();
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ExternDeclarationContext externDeclaration(int i) {
-			return GetRuleContext<ExternDeclarationContext>(i);
+		[System.Diagnostics.DebuggerNonUserCode] public NamespaceDeclarationContext namespaceDeclaration(int i) {
+			return GetRuleContext<NamespaceDeclarationContext>(i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public FunctionDeclarationContext[] functionDeclaration() {
-			return GetRuleContexts<FunctionDeclarationContext>();
+		[System.Diagnostics.DebuggerNonUserCode] public TopLevelDeclarationContext[] topLevelDeclaration() {
+			return GetRuleContexts<TopLevelDeclarationContext>();
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public FunctionDeclarationContext functionDeclaration(int i) {
-			return GetRuleContext<FunctionDeclarationContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ClassDeclarationContext[] classDeclaration() {
-			return GetRuleContexts<ClassDeclarationContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ClassDeclarationContext classDeclaration(int i) {
-			return GetRuleContext<ClassDeclarationContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public DeclarationStatementContext[] declarationStatement() {
-			return GetRuleContexts<DeclarationStatementContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public DeclarationStatementContext declarationStatement(int i) {
-			return GetRuleContext<DeclarationStatementContext>(i);
+		[System.Diagnostics.DebuggerNonUserCode] public TopLevelDeclarationContext topLevelDeclaration(int i) {
+			return GetRuleContext<TopLevelDeclarationContext>(i);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public StatementContext[] statement() {
 			return GetRuleContexts<StatementContext>();
@@ -204,57 +192,51 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 106;
+			State = 91;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & -9047730517519683858L) != 0) || _la==LBRACE || _la==ID) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & -6771148828432361602L) != 0) || ((((_la - 65)) & ~0x3f) == 0 && ((1L << (_la - 65)) & 1985L) != 0)) {
 				{
-				State = 104;
+				State = 89;
 				ErrorHandler.Sync(this);
 				switch ( Interpreter.AdaptivePredict(TokenStream,0,Context) ) {
 				case 1:
 					{
-					State = 98;
-					importStatement();
+					State = 84;
+					linkStatement();
 					}
 					break;
 				case 2:
 					{
-					State = 99;
-					externDeclaration();
+					State = 85;
+					importStatement();
 					}
 					break;
 				case 3:
 					{
-					State = 100;
-					functionDeclaration();
+					State = 86;
+					namespaceDeclaration();
 					}
 					break;
 				case 4:
 					{
-					State = 101;
-					classDeclaration();
+					State = 87;
+					topLevelDeclaration();
 					}
 					break;
 				case 5:
 					{
-					State = 102;
-					declarationStatement();
-					}
-					break;
-				case 6:
-					{
-					State = 103;
+					State = 88;
 					statement();
 					}
 					break;
 				}
 				}
-				State = 108;
+				State = 93;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 109;
+			State = 94;
 			Match(Eof);
 			}
 		}
@@ -269,295 +251,45 @@ public partial class CobraParser : Parser {
 		return _localctx;
 	}
 
-	public partial class ClassDeclarationContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLASS() { return GetToken(CobraParser.CLASS, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID() { return GetToken(CobraParser.ID, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LBRACE() { return GetToken(CobraParser.LBRACE, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RBRACE() { return GetToken(CobraParser.RBRACE, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXTENDS() { return GetToken(CobraParser.EXTENDS, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public TypeSpecifierContext typeSpecifier() {
-			return GetRuleContext<TypeSpecifierContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ClassBodyContext[] classBody() {
-			return GetRuleContexts<ClassBodyContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ClassBodyContext classBody(int i) {
-			return GetRuleContext<ClassBodyContext>(i);
-		}
-		public ClassDeclarationContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_classDeclaration; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterClassDeclaration(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitClassDeclaration(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitClassDeclaration(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public ClassDeclarationContext classDeclaration() {
-		ClassDeclarationContext _localctx = new ClassDeclarationContext(Context, State);
-		EnterRule(_localctx, 2, RULE_classDeclaration);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 111;
-			Match(CLASS);
-			State = 112;
-			Match(ID);
-			State = 115;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			if (_la==EXTENDS) {
-				{
-				State = 113;
-				Match(EXTENDS);
-				State = 114;
-				typeSpecifier();
-				}
-			}
-
-			State = 117;
-			Match(LBRACE);
-			State = 121;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while (((((_la - 19)) & ~0x3f) == 0 && ((1L << (_la - 19)) & 9007199254741991L) != 0)) {
-				{
-				{
-				State = 118;
-				classBody();
-				}
-				}
-				State = 123;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-			}
-			State = 124;
-			Match(RBRACE);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class ClassBodyContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public MemberDeclarationContext memberDeclaration() {
-			return GetRuleContext<MemberDeclarationContext>(0);
-		}
-		public ClassBodyContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_classBody; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterClassBody(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitClassBody(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitClassBody(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public ClassBodyContext classBody() {
-		ClassBodyContext _localctx = new ClassBodyContext(Context, State);
-		EnterRule(_localctx, 4, RULE_classBody);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 126;
-			memberDeclaration();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class MemberDeclarationContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public FieldDeclarationContext fieldDeclaration() {
-			return GetRuleContext<FieldDeclarationContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public MethodDeclarationContext methodDeclaration() {
-			return GetRuleContext<MethodDeclarationContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ConstructorDeclarationContext constructorDeclaration() {
-			return GetRuleContext<ConstructorDeclarationContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public AccessModifierContext accessModifier() {
-			return GetRuleContext<AccessModifierContext>(0);
-		}
-		public MemberDeclarationContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_memberDeclaration; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterMemberDeclaration(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitMemberDeclaration(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitMemberDeclaration(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public MemberDeclarationContext memberDeclaration() {
-		MemberDeclarationContext _localctx = new MemberDeclarationContext(Context, State);
-		EnterRule(_localctx, 6, RULE_memberDeclaration);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 129;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 3670016L) != 0)) {
-				{
-				State = 128;
-				accessModifier();
-				}
-			}
-
-			State = 134;
-			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,5,Context) ) {
-			case 1:
-				{
-				State = 131;
-				fieldDeclaration();
-				}
-				break;
-			case 2:
-				{
-				State = 132;
-				methodDeclaration();
-				}
-				break;
-			case 3:
-				{
-				State = 133;
-				constructorDeclaration();
-				}
-				break;
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class FieldDeclarationContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public TypeContext type() {
-			return GetRuleContext<TypeContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID() { return GetToken(CobraParser.ID, 0); }
+	public partial class LinkStatementContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LINK() { return GetToken(CobraParser.LINK, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode STRING_LITERAL() { return GetToken(CobraParser.STRING_LITERAL, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON() { return GetToken(CobraParser.SEMICOLON, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ASSIGN() { return GetToken(CobraParser.ASSIGN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
-		}
-		public FieldDeclarationContext(ParserRuleContext parent, int invokingState)
+		public LinkStatementContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_fieldDeclaration; } }
+		public override int RuleIndex { get { return RULE_linkStatement; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterFieldDeclaration(this);
+			if (typedListener != null) typedListener.EnterLinkStatement(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitFieldDeclaration(this);
+			if (typedListener != null) typedListener.ExitLinkStatement(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitFieldDeclaration(this);
+			if (typedVisitor != null) return typedVisitor.VisitLinkStatement(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public FieldDeclarationContext fieldDeclaration() {
-		FieldDeclarationContext _localctx = new FieldDeclarationContext(Context, State);
-		EnterRule(_localctx, 8, RULE_fieldDeclaration);
-		int _la;
+	public LinkStatementContext linkStatement() {
+		LinkStatementContext _localctx = new LinkStatementContext(Context, State);
+		EnterRule(_localctx, 2, RULE_linkStatement);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 136;
-			type();
-			State = 137;
-			Match(ID);
-			State = 140;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			if (_la==ASSIGN) {
-				{
-				State = 138;
-				Match(ASSIGN);
-				State = 139;
-				expression();
-				}
-			}
-
-			State = 142;
+			State = 96;
+			Match(LINK);
+			State = 97;
+			Match(STRING_LITERAL);
+			State = 98;
 			Match(SEMICOLON);
 			}
 		}
@@ -572,219 +304,448 @@ public partial class CobraParser : Parser {
 		return _localctx;
 	}
 
-	public partial class MethodDeclarationContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public TypeContext type() {
-			return GetRuleContext<TypeContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID() { return GetToken(CobraParser.ID, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public BlockContext block() {
-			return GetRuleContext<BlockContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ParameterListContext parameterList() {
-			return GetRuleContext<ParameterListContext>(0);
-		}
-		public MethodDeclarationContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_methodDeclaration; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterMethodDeclaration(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitMethodDeclaration(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitMethodDeclaration(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public MethodDeclarationContext methodDeclaration() {
-		MethodDeclarationContext _localctx = new MethodDeclarationContext(Context, State);
-		EnterRule(_localctx, 10, RULE_methodDeclaration);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 144;
-			type();
-			State = 145;
-			Match(ID);
-			State = 146;
-			Match(LPAREN);
-			State = 148;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			if (((((_la - 24)) & ~0x3f) == 0 && ((1L << (_la - 24)) & 281474976710687L) != 0)) {
-				{
-				State = 147;
-				parameterList();
-				}
-			}
-
-			State = 150;
-			Match(RPAREN);
-			State = 151;
-			block();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class ConstructorDeclarationContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID() { return GetToken(CobraParser.ID, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public BlockContext block() {
-			return GetRuleContext<BlockContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ParameterListContext parameterList() {
-			return GetRuleContext<ParameterListContext>(0);
-		}
-		public ConstructorDeclarationContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_constructorDeclaration; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterConstructorDeclaration(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitConstructorDeclaration(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitConstructorDeclaration(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public ConstructorDeclarationContext constructorDeclaration() {
-		ConstructorDeclarationContext _localctx = new ConstructorDeclarationContext(Context, State);
-		EnterRule(_localctx, 12, RULE_constructorDeclaration);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 153;
-			Match(ID);
-			State = 154;
-			Match(LPAREN);
-			State = 156;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			if (((((_la - 24)) & ~0x3f) == 0 && ((1L << (_la - 24)) & 281474976710687L) != 0)) {
-				{
-				State = 155;
-				parameterList();
-				}
-			}
-
-			State = 158;
-			Match(RPAREN);
-			State = 159;
-			block();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class ExternDeclarationContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXTERN() { return GetToken(CobraParser.EXTERN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public TypeContext type() {
-			return GetRuleContext<TypeContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID() { return GetToken(CobraParser.ID, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
+	public partial class ImportStatementContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IMPORT() { return GetToken(CobraParser.IMPORT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode STRING_LITERAL() { return GetToken(CobraParser.STRING_LITERAL, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON() { return GetToken(CobraParser.SEMICOLON, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ParameterListContext parameterList() {
-			return GetRuleContext<ParameterListContext>(0);
-		}
-		public ExternDeclarationContext(ParserRuleContext parent, int invokingState)
+		public ImportStatementContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_externDeclaration; } }
+		public override int RuleIndex { get { return RULE_importStatement; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterExternDeclaration(this);
+			if (typedListener != null) typedListener.EnterImportStatement(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitExternDeclaration(this);
+			if (typedListener != null) typedListener.ExitImportStatement(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitExternDeclaration(this);
+			if (typedVisitor != null) return typedVisitor.VisitImportStatement(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public ExternDeclarationContext externDeclaration() {
-		ExternDeclarationContext _localctx = new ExternDeclarationContext(Context, State);
-		EnterRule(_localctx, 14, RULE_externDeclaration);
+	public ImportStatementContext importStatement() {
+		ImportStatementContext _localctx = new ImportStatementContext(Context, State);
+		EnterRule(_localctx, 4, RULE_importStatement);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 100;
+			Match(IMPORT);
+			State = 101;
+			Match(STRING_LITERAL);
+			State = 102;
+			Match(SEMICOLON);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class NamespaceDeclarationContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NAMESPACE() { return GetToken(CobraParser.NAMESPACE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public QualifiedNameContext qualifiedName() {
+			return GetRuleContext<QualifiedNameContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LBRACE() { return GetToken(CobraParser.LBRACE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RBRACE() { return GetToken(CobraParser.RBRACE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public TopLevelDeclarationContext[] topLevelDeclaration() {
+			return GetRuleContexts<TopLevelDeclarationContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public TopLevelDeclarationContext topLevelDeclaration(int i) {
+			return GetRuleContext<TopLevelDeclarationContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public StatementContext[] statement() {
+			return GetRuleContexts<StatementContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public StatementContext statement(int i) {
+			return GetRuleContext<StatementContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ExternDeclarationContext[] externDeclaration() {
+			return GetRuleContexts<ExternDeclarationContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ExternDeclarationContext externDeclaration(int i) {
+			return GetRuleContext<ExternDeclarationContext>(i);
+		}
+		public NamespaceDeclarationContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_namespaceDeclaration; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterNamespaceDeclaration(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitNamespaceDeclaration(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitNamespaceDeclaration(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public NamespaceDeclarationContext namespaceDeclaration() {
+		NamespaceDeclarationContext _localctx = new NamespaceDeclarationContext(Context, State);
+		EnterRule(_localctx, 6, RULE_namespaceDeclaration);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 161;
-			Match(EXTERN);
-			State = 162;
-			type();
-			State = 163;
-			Match(ID);
-			State = 164;
-			Match(LPAREN);
-			State = 166;
+			State = 104;
+			Match(NAMESPACE);
+			State = 105;
+			qualifiedName();
+			State = 106;
+			Match(LBRACE);
+			State = 112;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (((((_la - 24)) & ~0x3f) == 0 && ((1L << (_la - 24)) & 281474976710687L) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & -6771148828432361616L) != 0) || ((((_la - 65)) & ~0x3f) == 0 && ((1L << (_la - 65)) & 1985L) != 0)) {
 				{
-				State = 165;
-				parameterList();
+				State = 110;
+				ErrorHandler.Sync(this);
+				switch ( Interpreter.AdaptivePredict(TokenStream,2,Context) ) {
+				case 1:
+					{
+					State = 107;
+					topLevelDeclaration();
+					}
+					break;
+				case 2:
+					{
+					State = 108;
+					statement();
+					}
+					break;
+				case 3:
+					{
+					State = 109;
+					externDeclaration();
+					}
+					break;
+				}
+				}
+				State = 114;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			State = 115;
+			Match(RBRACE);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class QualifiedNameContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] ID() { return GetTokens(CobraParser.ID); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID(int i) {
+			return GetToken(CobraParser.ID, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] DOT() { return GetTokens(CobraParser.DOT); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DOT(int i) {
+			return GetToken(CobraParser.DOT, i);
+		}
+		public QualifiedNameContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_qualifiedName; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterQualifiedName(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitQualifiedName(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitQualifiedName(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public QualifiedNameContext qualifiedName() {
+		QualifiedNameContext _localctx = new QualifiedNameContext(Context, State);
+		EnterRule(_localctx, 8, RULE_qualifiedName);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 117;
+			Match(ID);
+			State = 122;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==DOT) {
+				{
+				{
+				State = 118;
+				Match(DOT);
+				State = 119;
+				Match(ID);
+				}
+				}
+				State = 124;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class TopLevelDeclarationContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ConstDeclarationContext constDeclaration() {
+			return GetRuleContext<ConstDeclarationContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public VarDeclarationContext varDeclaration() {
+			return GetRuleContext<VarDeclarationContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public FunctionDeclarationContext functionDeclaration() {
+			return GetRuleContext<FunctionDeclarationContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ExternDeclarationContext externDeclaration() {
+			return GetRuleContext<ExternDeclarationContext>(0);
+		}
+		public TopLevelDeclarationContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_topLevelDeclaration; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterTopLevelDeclaration(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitTopLevelDeclaration(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitTopLevelDeclaration(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public TopLevelDeclarationContext topLevelDeclaration() {
+		TopLevelDeclarationContext _localctx = new TopLevelDeclarationContext(Context, State);
+		EnterRule(_localctx, 10, RULE_topLevelDeclaration);
+		try {
+			State = 129;
+			ErrorHandler.Sync(this);
+			switch ( Interpreter.AdaptivePredict(TokenStream,5,Context) ) {
+			case 1:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 125;
+				constDeclaration();
+				}
+				break;
+			case 2:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 126;
+				varDeclaration();
+				}
+				break;
+			case 3:
+				EnterOuterAlt(_localctx, 3);
+				{
+				State = 127;
+				functionDeclaration();
+				}
+				break;
+			case 4:
+				EnterOuterAlt(_localctx, 4);
+				{
+				State = 128;
+				externDeclaration();
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ConstDeclarationContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONST() { return GetToken(CobraParser.CONST, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public TypeContext type() {
+			return GetRuleContext<TypeContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID() { return GetToken(CobraParser.ID, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ASSIGN() { return GetToken(CobraParser.ASSIGN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression() {
+			return GetRuleContext<AssignmentExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON() { return GetToken(CobraParser.SEMICOLON, 0); }
+		public ConstDeclarationContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_constDeclaration; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterConstDeclaration(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitConstDeclaration(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitConstDeclaration(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ConstDeclarationContext constDeclaration() {
+		ConstDeclarationContext _localctx = new ConstDeclarationContext(Context, State);
+		EnterRule(_localctx, 12, RULE_constDeclaration);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 131;
+			Match(CONST);
+			State = 132;
+			type();
+			State = 133;
+			Match(ID);
+			State = 134;
+			Match(ASSIGN);
+			State = 135;
+			assignmentExpression();
+			State = 136;
+			Match(SEMICOLON);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class VarDeclarationContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public TypeContext type() {
+			return GetRuleContext<TypeContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID() { return GetToken(CobraParser.ID, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON() { return GetToken(CobraParser.SEMICOLON, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ASSIGN() { return GetToken(CobraParser.ASSIGN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression() {
+			return GetRuleContext<AssignmentExpressionContext>(0);
+		}
+		public VarDeclarationContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_varDeclaration; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterVarDeclaration(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitVarDeclaration(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitVarDeclaration(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public VarDeclarationContext varDeclaration() {
+		VarDeclarationContext _localctx = new VarDeclarationContext(Context, State);
+		EnterRule(_localctx, 14, RULE_varDeclaration);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 138;
+			type();
+			State = 139;
+			Match(ID);
+			State = 142;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (_la==ASSIGN) {
+				{
+				State = 140;
+				Match(ASSIGN);
+				State = 141;
+				assignmentExpression();
 				}
 			}
 
-			State = 168;
-			Match(RPAREN);
-			State = 169;
+			State = 144;
 			Match(SEMICOLON);
 			}
 		}
@@ -843,25 +804,25 @@ public partial class CobraParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 171;
+			State = 146;
 			type();
-			State = 172;
+			State = 147;
 			Match(ID);
-			State = 173;
+			State = 148;
 			Match(LPAREN);
-			State = 175;
+			State = 150;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (((((_la - 24)) & ~0x3f) == 0 && ((1L << (_la - 24)) & 281474976710687L) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 1004535808L) != 0)) {
 				{
-				State = 174;
+				State = 149;
 				parameterList();
 				}
 			}
 
-			State = 177;
+			State = 152;
 			Match(RPAREN);
-			State = 178;
+			State = 153;
 			block();
 			}
 		}
@@ -876,2683 +837,71 @@ public partial class CobraParser : Parser {
 		return _localctx;
 	}
 
-	public partial class DeclarationStatementContext : ParserRuleContext {
+	public partial class ExternDeclarationContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXTERNAL() { return GetToken(CobraParser.EXTERNAL, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public TypeContext type() {
 			return GetRuleContext<TypeContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID() { return GetToken(CobraParser.ID, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON() { return GetToken(CobraParser.SEMICOLON, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ASSIGN() { return GetToken(CobraParser.ASSIGN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public ParameterListContext parameterList() {
+			return GetRuleContext<ParameterListContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GLOBAL() { return GetToken(CobraParser.GLOBAL, 0); }
-		public DeclarationStatementContext(ParserRuleContext parent, int invokingState)
+		public ExternDeclarationContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_declarationStatement; } }
+		public override int RuleIndex { get { return RULE_externDeclaration; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterDeclarationStatement(this);
+			if (typedListener != null) typedListener.EnterExternDeclaration(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitDeclarationStatement(this);
+			if (typedListener != null) typedListener.ExitExternDeclaration(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitDeclarationStatement(this);
+			if (typedVisitor != null) return typedVisitor.VisitExternDeclaration(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public DeclarationStatementContext declarationStatement() {
-		DeclarationStatementContext _localctx = new DeclarationStatementContext(Context, State);
-		EnterRule(_localctx, 18, RULE_declarationStatement);
-		int _la;
-		try {
-			State = 197;
-			ErrorHandler.Sync(this);
-			switch (TokenStream.LA(1)) {
-			case INT:
-			case FLOAT:
-			case STRING:
-			case BOOL:
-			case VOID:
-			case ID:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 180;
-				type();
-				State = 181;
-				Match(ID);
-				State = 184;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-				if (_la==ASSIGN) {
-					{
-					State = 182;
-					Match(ASSIGN);
-					State = 183;
-					expression();
-					}
-				}
-
-				State = 186;
-				Match(SEMICOLON);
-				}
-				break;
-			case GLOBAL:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 188;
-				Match(GLOBAL);
-				State = 189;
-				type();
-				State = 190;
-				Match(ID);
-				State = 193;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-				if (_la==ASSIGN) {
-					{
-					State = 191;
-					Match(ASSIGN);
-					State = 192;
-					expression();
-					}
-				}
-
-				State = 195;
-				Match(SEMICOLON);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class StatementContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public BlockContext block() {
-			return GetRuleContext<BlockContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public DeclarationStatementContext declarationStatement() {
-			return GetRuleContext<DeclarationStatementContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public IfStatementContext ifStatement() {
-			return GetRuleContext<IfStatementContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public WhileStatementContext whileStatement() {
-			return GetRuleContext<WhileStatementContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public DoWhileStatementContext doWhileStatement() {
-			return GetRuleContext<DoWhileStatementContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ForStatementContext forStatement() {
-			return GetRuleContext<ForStatementContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ImportStatementContext importStatement() {
-			return GetRuleContext<ImportStatementContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public SwitchStatementContext switchStatement() {
-			return GetRuleContext<SwitchStatementContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public JumpStatementContext jumpStatement() {
-			return GetRuleContext<JumpStatementContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionStatementContext expressionStatement() {
-			return GetRuleContext<ExpressionStatementContext>(0);
-		}
-		public StatementContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_statement; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitStatement(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public StatementContext statement() {
-		StatementContext _localctx = new StatementContext(Context, State);
-		EnterRule(_localctx, 20, RULE_statement);
-		try {
-			State = 209;
-			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,14,Context) ) {
-			case 1:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 199;
-				block();
-				}
-				break;
-			case 2:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 200;
-				declarationStatement();
-				}
-				break;
-			case 3:
-				EnterOuterAlt(_localctx, 3);
-				{
-				State = 201;
-				ifStatement();
-				}
-				break;
-			case 4:
-				EnterOuterAlt(_localctx, 4);
-				{
-				State = 202;
-				whileStatement();
-				}
-				break;
-			case 5:
-				EnterOuterAlt(_localctx, 5);
-				{
-				State = 203;
-				doWhileStatement();
-				}
-				break;
-			case 6:
-				EnterOuterAlt(_localctx, 6);
-				{
-				State = 204;
-				forStatement();
-				}
-				break;
-			case 7:
-				EnterOuterAlt(_localctx, 7);
-				{
-				State = 205;
-				importStatement();
-				}
-				break;
-			case 8:
-				EnterOuterAlt(_localctx, 8);
-				{
-				State = 206;
-				switchStatement();
-				}
-				break;
-			case 9:
-				EnterOuterAlt(_localctx, 9);
-				{
-				State = 207;
-				jumpStatement();
-				}
-				break;
-			case 10:
-				EnterOuterAlt(_localctx, 10);
-				{
-				State = 208;
-				expressionStatement();
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class BlockContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LBRACE() { return GetToken(CobraParser.LBRACE, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RBRACE() { return GetToken(CobraParser.RBRACE, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public StatementContext[] statement() {
-			return GetRuleContexts<StatementContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public StatementContext statement(int i) {
-			return GetRuleContext<StatementContext>(i);
-		}
-		public BlockContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_block; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterBlock(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitBlock(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitBlock(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public BlockContext block() {
-		BlockContext _localctx = new BlockContext(Context, State);
-		EnterRule(_localctx, 22, RULE_block);
+	public ExternDeclarationContext externDeclaration() {
+		ExternDeclarationContext _localctx = new ExternDeclarationContext(Context, State);
+		EnterRule(_localctx, 18, RULE_externDeclaration);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 211;
-			Match(LBRACE);
-			State = 215;
+			State = 155;
+			Match(EXTERNAL);
+			State = 156;
+			type();
+			State = 157;
+			Match(ID);
+			State = 158;
+			Match(LPAREN);
+			State = 160;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & -9047730517519683870L) != 0) || _la==LBRACE || _la==ID) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 1004535808L) != 0)) {
 				{
-				{
-				State = 212;
-				statement();
+				State = 159;
+				parameterList();
 				}
-				}
-				State = 217;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
 			}
-			State = 218;
-			Match(RBRACE);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
 
-	public partial class AssignmentOperatorContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ASSIGN() { return GetToken(CobraParser.ASSIGN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PLUS_ASSIGN() { return GetToken(CobraParser.PLUS_ASSIGN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MINUS_ASSIGN() { return GetToken(CobraParser.MINUS_ASSIGN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MUL_ASSIGN() { return GetToken(CobraParser.MUL_ASSIGN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DIV_ASSIGN() { return GetToken(CobraParser.DIV_ASSIGN, 0); }
-		public AssignmentOperatorContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_assignmentOperator; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterAssignmentOperator(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitAssignmentOperator(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitAssignmentOperator(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public AssignmentOperatorContext assignmentOperator() {
-		AssignmentOperatorContext _localctx = new AssignmentOperatorContext(Context, State);
-		EnterRule(_localctx, 24, RULE_assignmentOperator);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 220;
-			_la = TokenStream.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 4362862139015168L) != 0)) ) {
-			ErrorHandler.RecoverInline(this);
-			}
-			else {
-				ErrorHandler.ReportMatch(this);
-			    Consume();
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class ExpressionStatementContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON() { return GetToken(CobraParser.SEMICOLON, 0); }
-		public ExpressionStatementContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_expressionStatement; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterExpressionStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitExpressionStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitExpressionStatement(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public ExpressionStatementContext expressionStatement() {
-		ExpressionStatementContext _localctx = new ExpressionStatementContext(Context, State);
-		EnterRule(_localctx, 26, RULE_expressionStatement);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 222;
-			expression();
-			State = 223;
+			State = 162;
+			Match(RPAREN);
+			State = 163;
 			Match(SEMICOLON);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class IfStatementContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF() { return GetToken(CobraParser.IF, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public StatementContext[] statement() {
-			return GetRuleContexts<StatementContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public StatementContext statement(int i) {
-			return GetRuleContext<StatementContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ELSE() { return GetToken(CobraParser.ELSE, 0); }
-		public IfStatementContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_ifStatement; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterIfStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitIfStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitIfStatement(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public IfStatementContext ifStatement() {
-		IfStatementContext _localctx = new IfStatementContext(Context, State);
-		EnterRule(_localctx, 28, RULE_ifStatement);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 225;
-			Match(IF);
-			State = 226;
-			Match(LPAREN);
-			State = 227;
-			expression();
-			State = 228;
-			Match(RPAREN);
-			State = 229;
-			statement();
-			State = 232;
-			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,16,Context) ) {
-			case 1:
-				{
-				State = 230;
-				Match(ELSE);
-				State = 231;
-				statement();
-				}
-				break;
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class WhileStatementContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHILE() { return GetToken(CobraParser.WHILE, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public StatementContext statement() {
-			return GetRuleContext<StatementContext>(0);
-		}
-		public WhileStatementContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_whileStatement; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterWhileStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitWhileStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitWhileStatement(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public WhileStatementContext whileStatement() {
-		WhileStatementContext _localctx = new WhileStatementContext(Context, State);
-		EnterRule(_localctx, 30, RULE_whileStatement);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 234;
-			Match(WHILE);
-			State = 235;
-			Match(LPAREN);
-			State = 236;
-			expression();
-			State = 237;
-			Match(RPAREN);
-			State = 238;
-			statement();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class DoWhileStatementContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DO() { return GetToken(CobraParser.DO, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public StatementContext statement() {
-			return GetRuleContext<StatementContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHILE() { return GetToken(CobraParser.WHILE, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON() { return GetToken(CobraParser.SEMICOLON, 0); }
-		public DoWhileStatementContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_doWhileStatement; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterDoWhileStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitDoWhileStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitDoWhileStatement(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public DoWhileStatementContext doWhileStatement() {
-		DoWhileStatementContext _localctx = new DoWhileStatementContext(Context, State);
-		EnterRule(_localctx, 32, RULE_doWhileStatement);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 240;
-			Match(DO);
-			State = 241;
-			statement();
-			State = 242;
-			Match(WHILE);
-			State = 243;
-			Match(LPAREN);
-			State = 244;
-			expression();
-			State = 245;
-			Match(RPAREN);
-			State = 246;
-			Match(SEMICOLON);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class ForStatementContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOR() { return GetToken(CobraParser.FOR, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ForControlContext forControl() {
-			return GetRuleContext<ForControlContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public StatementContext statement() {
-			return GetRuleContext<StatementContext>(0);
-		}
-		public ForStatementContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_forStatement; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterForStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitForStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitForStatement(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public ForStatementContext forStatement() {
-		ForStatementContext _localctx = new ForStatementContext(Context, State);
-		EnterRule(_localctx, 34, RULE_forStatement);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 248;
-			Match(FOR);
-			State = 249;
-			Match(LPAREN);
-			State = 250;
-			forControl();
-			State = 251;
-			Match(RPAREN);
-			State = 252;
-			statement();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class ForControlContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public DeclarationStatementContext declarationStatement() {
-			return GetRuleContext<DeclarationStatementContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] SEMICOLON() { return GetTokens(CobraParser.SEMICOLON); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON(int i) {
-			return GetToken(CobraParser.SEMICOLON, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext[] expression() {
-			return GetRuleContexts<ExpressionContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression(int i) {
-			return GetRuleContext<ExpressionContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public TypeContext type() {
-			return GetRuleContext<TypeContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID() { return GetToken(CobraParser.ID, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IN() { return GetToken(CobraParser.IN, 0); }
-		public ForControlContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_forControl; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterForControl(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitForControl(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitForControl(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public ForControlContext forControl() {
-		ForControlContext _localctx = new ForControlContext(Context, State);
-		EnterRule(_localctx, 36, RULE_forControl);
-		int _la;
-		try {
-			State = 278;
-			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,22,Context) ) {
-			case 1:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 254;
-				declarationStatement();
-				State = 256;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -9047730518048636832L) != 0) || _la==ID) {
-					{
-					State = 255;
-					expression();
-					}
-				}
-
-				State = 258;
-				Match(SEMICOLON);
-				State = 260;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -9047730518048636832L) != 0) || _la==ID) {
-					{
-					State = 259;
-					expression();
-					}
-				}
-
-				}
-				break;
-			case 2:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 263;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -9047730518048636832L) != 0) || _la==ID) {
-					{
-					State = 262;
-					expression();
-					}
-				}
-
-				State = 265;
-				Match(SEMICOLON);
-				State = 267;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -9047730518048636832L) != 0) || _la==ID) {
-					{
-					State = 266;
-					expression();
-					}
-				}
-
-				State = 269;
-				Match(SEMICOLON);
-				State = 271;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -9047730518048636832L) != 0) || _la==ID) {
-					{
-					State = 270;
-					expression();
-					}
-				}
-
-				}
-				break;
-			case 3:
-				EnterOuterAlt(_localctx, 3);
-				{
-				State = 273;
-				type();
-				State = 274;
-				Match(ID);
-				State = 275;
-				Match(IN);
-				State = 276;
-				expression();
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class SwitchStatementContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SWITCH() { return GetToken(CobraParser.SWITCH, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LBRACE() { return GetToken(CobraParser.LBRACE, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RBRACE() { return GetToken(CobraParser.RBRACE, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public SwitchBlockStatementGroupContext[] switchBlockStatementGroup() {
-			return GetRuleContexts<SwitchBlockStatementGroupContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public SwitchBlockStatementGroupContext switchBlockStatementGroup(int i) {
-			return GetRuleContext<SwitchBlockStatementGroupContext>(i);
-		}
-		public SwitchStatementContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_switchStatement; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterSwitchStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitSwitchStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitSwitchStatement(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public SwitchStatementContext switchStatement() {
-		SwitchStatementContext _localctx = new SwitchStatementContext(Context, State);
-		EnterRule(_localctx, 38, RULE_switchStatement);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 280;
-			Match(SWITCH);
-			State = 281;
-			Match(LPAREN);
-			State = 282;
-			expression();
-			State = 283;
-			Match(RPAREN);
-			State = 284;
-			Match(LBRACE);
-			State = 288;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while (_la==CASE || _la==DEFAULT) {
-				{
-				{
-				State = 285;
-				switchBlockStatementGroup();
-				}
-				}
-				State = 290;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-			}
-			State = 291;
-			Match(RBRACE);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class SwitchBlockStatementGroupContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public SwitchLabelContext[] switchLabel() {
-			return GetRuleContexts<SwitchLabelContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public SwitchLabelContext switchLabel(int i) {
-			return GetRuleContext<SwitchLabelContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public StatementContext[] statement() {
-			return GetRuleContexts<StatementContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public StatementContext statement(int i) {
-			return GetRuleContext<StatementContext>(i);
-		}
-		public SwitchBlockStatementGroupContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_switchBlockStatementGroup; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterSwitchBlockStatementGroup(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitSwitchBlockStatementGroup(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitSwitchBlockStatementGroup(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public SwitchBlockStatementGroupContext switchBlockStatementGroup() {
-		SwitchBlockStatementGroupContext _localctx = new SwitchBlockStatementGroupContext(Context, State);
-		EnterRule(_localctx, 40, RULE_switchBlockStatementGroup);
-		int _la;
-		try {
-			int _alt;
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 294;
-			ErrorHandler.Sync(this);
-			_alt = 1;
-			do {
-				switch (_alt) {
-				case 1:
-					{
-					{
-					State = 293;
-					switchLabel();
-					}
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				State = 296;
-				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,24,Context);
-			} while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER );
-			State = 301;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & -9047730517519683870L) != 0) || _la==LBRACE || _la==ID) {
-				{
-				{
-				State = 298;
-				statement();
-				}
-				}
-				State = 303;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class SwitchLabelContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CASE() { return GetToken(CobraParser.CASE, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLON() { return GetToken(CobraParser.COLON, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFAULT() { return GetToken(CobraParser.DEFAULT, 0); }
-		public SwitchLabelContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_switchLabel; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterSwitchLabel(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitSwitchLabel(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitSwitchLabel(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public SwitchLabelContext switchLabel() {
-		SwitchLabelContext _localctx = new SwitchLabelContext(Context, State);
-		EnterRule(_localctx, 42, RULE_switchLabel);
-		try {
-			State = 310;
-			ErrorHandler.Sync(this);
-			switch (TokenStream.LA(1)) {
-			case CASE:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 304;
-				Match(CASE);
-				State = 305;
-				expression();
-				State = 306;
-				Match(COLON);
-				}
-				break;
-			case DEFAULT:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 308;
-				Match(DEFAULT);
-				State = 309;
-				Match(COLON);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class JumpStatementContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RETURN() { return GetToken(CobraParser.RETURN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON() { return GetToken(CobraParser.SEMICOLON, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BREAK() { return GetToken(CobraParser.BREAK, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONTINUE() { return GetToken(CobraParser.CONTINUE, 0); }
-		public JumpStatementContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_jumpStatement; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterJumpStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitJumpStatement(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitJumpStatement(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public JumpStatementContext jumpStatement() {
-		JumpStatementContext _localctx = new JumpStatementContext(Context, State);
-		EnterRule(_localctx, 44, RULE_jumpStatement);
-		int _la;
-		try {
-			State = 321;
-			ErrorHandler.Sync(this);
-			switch (TokenStream.LA(1)) {
-			case RETURN:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 312;
-				Match(RETURN);
-				State = 314;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -9047730518048636832L) != 0) || _la==ID) {
-					{
-					State = 313;
-					expression();
-					}
-				}
-
-				State = 316;
-				Match(SEMICOLON);
-				}
-				break;
-			case BREAK:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 317;
-				Match(BREAK);
-				State = 318;
-				Match(SEMICOLON);
-				}
-				break;
-			case CONTINUE:
-				EnterOuterAlt(_localctx, 3);
-				{
-				State = 319;
-				Match(CONTINUE);
-				State = 320;
-				Match(SEMICOLON);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class ExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression() {
-			return GetRuleContext<AssignmentExpressionContext>(0);
-		}
-		public ExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_expression; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitExpression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public ExpressionContext expression() {
-		ExpressionContext _localctx = new ExpressionContext(Context, State);
-		EnterRule(_localctx, 46, RULE_expression);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 323;
-			assignmentExpression();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class AssignmentExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ConditionalExpressionContext conditionalExpression() {
-			return GetRuleContext<ConditionalExpressionContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public PostfixExpressionContext postfixExpression() {
-			return GetRuleContext<PostfixExpressionContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public AssignmentOperatorContext assignmentOperator() {
-			return GetRuleContext<AssignmentOperatorContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression() {
-			return GetRuleContext<AssignmentExpressionContext>(0);
-		}
-		public AssignmentExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_assignmentExpression; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterAssignmentExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitAssignmentExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitAssignmentExpression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public AssignmentExpressionContext assignmentExpression() {
-		AssignmentExpressionContext _localctx = new AssignmentExpressionContext(Context, State);
-		EnterRule(_localctx, 48, RULE_assignmentExpression);
-		try {
-			State = 330;
-			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,29,Context) ) {
-			case 1:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 325;
-				conditionalExpression();
-				}
-				break;
-			case 2:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 326;
-				postfixExpression();
-				State = 327;
-				assignmentOperator();
-				State = 328;
-				assignmentExpression();
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class ConditionalExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public LogicalOrExpressionContext logicalOrExpression() {
-			return GetRuleContext<LogicalOrExpressionContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode QUESTION_MARK() { return GetToken(CobraParser.QUESTION_MARK, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext[] expression() {
-			return GetRuleContexts<ExpressionContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression(int i) {
-			return GetRuleContext<ExpressionContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLON() { return GetToken(CobraParser.COLON, 0); }
-		public ConditionalExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_conditionalExpression; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterConditionalExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitConditionalExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitConditionalExpression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public ConditionalExpressionContext conditionalExpression() {
-		ConditionalExpressionContext _localctx = new ConditionalExpressionContext(Context, State);
-		EnterRule(_localctx, 50, RULE_conditionalExpression);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 332;
-			logicalOrExpression();
-			State = 338;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			if (_la==QUESTION_MARK) {
-				{
-				State = 333;
-				Match(QUESTION_MARK);
-				State = 334;
-				expression();
-				State = 335;
-				Match(COLON);
-				State = 336;
-				expression();
-				}
-			}
-
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class LogicalOrExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public LogicalAndExpressionContext[] logicalAndExpression() {
-			return GetRuleContexts<LogicalAndExpressionContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public LogicalAndExpressionContext logicalAndExpression(int i) {
-			return GetRuleContext<LogicalAndExpressionContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] OR() { return GetTokens(CobraParser.OR); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OR(int i) {
-			return GetToken(CobraParser.OR, i);
-		}
-		public LogicalOrExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_logicalOrExpression; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterLogicalOrExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitLogicalOrExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitLogicalOrExpression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public LogicalOrExpressionContext logicalOrExpression() {
-		LogicalOrExpressionContext _localctx = new LogicalOrExpressionContext(Context, State);
-		EnterRule(_localctx, 52, RULE_logicalOrExpression);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 340;
-			logicalAndExpression();
-			State = 345;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while (_la==OR) {
-				{
-				{
-				State = 341;
-				Match(OR);
-				State = 342;
-				logicalAndExpression();
-				}
-				}
-				State = 347;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class LogicalAndExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public BitwiseOrExpressionContext[] bitwiseOrExpression() {
-			return GetRuleContexts<BitwiseOrExpressionContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public BitwiseOrExpressionContext bitwiseOrExpression(int i) {
-			return GetRuleContext<BitwiseOrExpressionContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] AND() { return GetTokens(CobraParser.AND); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AND(int i) {
-			return GetToken(CobraParser.AND, i);
-		}
-		public LogicalAndExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_logicalAndExpression; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterLogicalAndExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitLogicalAndExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitLogicalAndExpression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public LogicalAndExpressionContext logicalAndExpression() {
-		LogicalAndExpressionContext _localctx = new LogicalAndExpressionContext(Context, State);
-		EnterRule(_localctx, 54, RULE_logicalAndExpression);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 348;
-			bitwiseOrExpression();
-			State = 353;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while (_la==AND) {
-				{
-				{
-				State = 349;
-				Match(AND);
-				State = 350;
-				bitwiseOrExpression();
-				}
-				}
-				State = 355;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class BitwiseOrExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public BitwiseXorExpressionContext[] bitwiseXorExpression() {
-			return GetRuleContexts<BitwiseXorExpressionContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public BitwiseXorExpressionContext bitwiseXorExpression(int i) {
-			return GetRuleContext<BitwiseXorExpressionContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] BITWISE_OR() { return GetTokens(CobraParser.BITWISE_OR); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BITWISE_OR(int i) {
-			return GetToken(CobraParser.BITWISE_OR, i);
-		}
-		public BitwiseOrExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_bitwiseOrExpression; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterBitwiseOrExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitBitwiseOrExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitBitwiseOrExpression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public BitwiseOrExpressionContext bitwiseOrExpression() {
-		BitwiseOrExpressionContext _localctx = new BitwiseOrExpressionContext(Context, State);
-		EnterRule(_localctx, 56, RULE_bitwiseOrExpression);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 356;
-			bitwiseXorExpression();
-			State = 361;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while (_la==BITWISE_OR) {
-				{
-				{
-				State = 357;
-				Match(BITWISE_OR);
-				State = 358;
-				bitwiseXorExpression();
-				}
-				}
-				State = 363;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class BitwiseXorExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public BitwiseAndExpressionContext[] bitwiseAndExpression() {
-			return GetRuleContexts<BitwiseAndExpressionContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public BitwiseAndExpressionContext bitwiseAndExpression(int i) {
-			return GetRuleContext<BitwiseAndExpressionContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] BITWISE_XOR() { return GetTokens(CobraParser.BITWISE_XOR); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BITWISE_XOR(int i) {
-			return GetToken(CobraParser.BITWISE_XOR, i);
-		}
-		public BitwiseXorExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_bitwiseXorExpression; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterBitwiseXorExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitBitwiseXorExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitBitwiseXorExpression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public BitwiseXorExpressionContext bitwiseXorExpression() {
-		BitwiseXorExpressionContext _localctx = new BitwiseXorExpressionContext(Context, State);
-		EnterRule(_localctx, 58, RULE_bitwiseXorExpression);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 364;
-			bitwiseAndExpression();
-			State = 369;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while (_la==BITWISE_XOR) {
-				{
-				{
-				State = 365;
-				Match(BITWISE_XOR);
-				State = 366;
-				bitwiseAndExpression();
-				}
-				}
-				State = 371;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class BitwiseAndExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public EqualityExpressionContext[] equalityExpression() {
-			return GetRuleContexts<EqualityExpressionContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public EqualityExpressionContext equalityExpression(int i) {
-			return GetRuleContext<EqualityExpressionContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] BITWISE_AND() { return GetTokens(CobraParser.BITWISE_AND); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BITWISE_AND(int i) {
-			return GetToken(CobraParser.BITWISE_AND, i);
-		}
-		public BitwiseAndExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_bitwiseAndExpression; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterBitwiseAndExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitBitwiseAndExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitBitwiseAndExpression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public BitwiseAndExpressionContext bitwiseAndExpression() {
-		BitwiseAndExpressionContext _localctx = new BitwiseAndExpressionContext(Context, State);
-		EnterRule(_localctx, 60, RULE_bitwiseAndExpression);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 372;
-			equalityExpression();
-			State = 377;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while (_la==BITWISE_AND) {
-				{
-				{
-				State = 373;
-				Match(BITWISE_AND);
-				State = 374;
-				equalityExpression();
-				}
-				}
-				State = 379;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class EqualityExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ComparisonExpressionContext[] comparisonExpression() {
-			return GetRuleContexts<ComparisonExpressionContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ComparisonExpressionContext comparisonExpression(int i) {
-			return GetRuleContext<ComparisonExpressionContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] EQ() { return GetTokens(CobraParser.EQ); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EQ(int i) {
-			return GetToken(CobraParser.EQ, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] NEQ() { return GetTokens(CobraParser.NEQ); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NEQ(int i) {
-			return GetToken(CobraParser.NEQ, i);
-		}
-		public EqualityExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_equalityExpression; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterEqualityExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitEqualityExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitEqualityExpression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public EqualityExpressionContext equalityExpression() {
-		EqualityExpressionContext _localctx = new EqualityExpressionContext(Context, State);
-		EnterRule(_localctx, 62, RULE_equalityExpression);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 380;
-			comparisonExpression();
-			State = 385;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while (_la==EQ || _la==NEQ) {
-				{
-				{
-				State = 381;
-				_la = TokenStream.LA(1);
-				if ( !(_la==EQ || _la==NEQ) ) {
-				ErrorHandler.RecoverInline(this);
-				}
-				else {
-					ErrorHandler.ReportMatch(this);
-				    Consume();
-				}
-				State = 382;
-				comparisonExpression();
-				}
-				}
-				State = 387;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class ComparisonExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public BitwiseShiftExpressionContext[] bitwiseShiftExpression() {
-			return GetRuleContexts<BitwiseShiftExpressionContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public BitwiseShiftExpressionContext bitwiseShiftExpression(int i) {
-			return GetRuleContext<BitwiseShiftExpressionContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] GT() { return GetTokens(CobraParser.GT); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GT(int i) {
-			return GetToken(CobraParser.GT, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] LT() { return GetTokens(CobraParser.LT); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LT(int i) {
-			return GetToken(CobraParser.LT, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] GTE() { return GetTokens(CobraParser.GTE); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GTE(int i) {
-			return GetToken(CobraParser.GTE, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] LTE() { return GetTokens(CobraParser.LTE); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LTE(int i) {
-			return GetToken(CobraParser.LTE, i);
-		}
-		public ComparisonExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_comparisonExpression; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterComparisonExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitComparisonExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitComparisonExpression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public ComparisonExpressionContext comparisonExpression() {
-		ComparisonExpressionContext _localctx = new ComparisonExpressionContext(Context, State);
-		EnterRule(_localctx, 64, RULE_comparisonExpression);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 388;
-			bitwiseShiftExpression();
-			State = 393;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 131941395333120L) != 0)) {
-				{
-				{
-				State = 389;
-				_la = TokenStream.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 131941395333120L) != 0)) ) {
-				ErrorHandler.RecoverInline(this);
-				}
-				else {
-					ErrorHandler.ReportMatch(this);
-				    Consume();
-				}
-				State = 390;
-				bitwiseShiftExpression();
-				}
-				}
-				State = 395;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class BitwiseShiftExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public AdditiveExpressionContext[] additiveExpression() {
-			return GetRuleContexts<AdditiveExpressionContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public AdditiveExpressionContext additiveExpression(int i) {
-			return GetRuleContext<AdditiveExpressionContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] BITWISE_LEFT_SHIFT() { return GetTokens(CobraParser.BITWISE_LEFT_SHIFT); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BITWISE_LEFT_SHIFT(int i) {
-			return GetToken(CobraParser.BITWISE_LEFT_SHIFT, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] BITWISE_RIGHT_SHIFT() { return GetTokens(CobraParser.BITWISE_RIGHT_SHIFT); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BITWISE_RIGHT_SHIFT(int i) {
-			return GetToken(CobraParser.BITWISE_RIGHT_SHIFT, i);
-		}
-		public BitwiseShiftExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_bitwiseShiftExpression; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterBitwiseShiftExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitBitwiseShiftExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitBitwiseShiftExpression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public BitwiseShiftExpressionContext bitwiseShiftExpression() {
-		BitwiseShiftExpressionContext _localctx = new BitwiseShiftExpressionContext(Context, State);
-		EnterRule(_localctx, 66, RULE_bitwiseShiftExpression);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 396;
-			additiveExpression();
-			State = 401;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while (_la==BITWISE_LEFT_SHIFT || _la==BITWISE_RIGHT_SHIFT) {
-				{
-				{
-				State = 397;
-				_la = TokenStream.LA(1);
-				if ( !(_la==BITWISE_LEFT_SHIFT || _la==BITWISE_RIGHT_SHIFT) ) {
-				ErrorHandler.RecoverInline(this);
-				}
-				else {
-					ErrorHandler.ReportMatch(this);
-				    Consume();
-				}
-				State = 398;
-				additiveExpression();
-				}
-				}
-				State = 403;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class AdditiveExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public MultiplicativeExpressionContext[] multiplicativeExpression() {
-			return GetRuleContexts<MultiplicativeExpressionContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public MultiplicativeExpressionContext multiplicativeExpression(int i) {
-			return GetRuleContext<MultiplicativeExpressionContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] PLUS() { return GetTokens(CobraParser.PLUS); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PLUS(int i) {
-			return GetToken(CobraParser.PLUS, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] MINUS() { return GetTokens(CobraParser.MINUS); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MINUS(int i) {
-			return GetToken(CobraParser.MINUS, i);
-		}
-		public AdditiveExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_additiveExpression; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterAdditiveExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitAdditiveExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitAdditiveExpression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public AdditiveExpressionContext additiveExpression() {
-		AdditiveExpressionContext _localctx = new AdditiveExpressionContext(Context, State);
-		EnterRule(_localctx, 68, RULE_additiveExpression);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 404;
-			multiplicativeExpression();
-			State = 409;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while (_la==PLUS || _la==MINUS) {
-				{
-				{
-				State = 405;
-				_la = TokenStream.LA(1);
-				if ( !(_la==PLUS || _la==MINUS) ) {
-				ErrorHandler.RecoverInline(this);
-				}
-				else {
-					ErrorHandler.ReportMatch(this);
-				    Consume();
-				}
-				State = 406;
-				multiplicativeExpression();
-				}
-				}
-				State = 411;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class MultiplicativeExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public UnaryExpressionContext[] unaryExpression() {
-			return GetRuleContexts<UnaryExpressionContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public UnaryExpressionContext unaryExpression(int i) {
-			return GetRuleContext<UnaryExpressionContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] MUL() { return GetTokens(CobraParser.MUL); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MUL(int i) {
-			return GetToken(CobraParser.MUL, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] DIV() { return GetTokens(CobraParser.DIV); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DIV(int i) {
-			return GetToken(CobraParser.DIV, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] MOD() { return GetTokens(CobraParser.MOD); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MOD(int i) {
-			return GetToken(CobraParser.MOD, i);
-		}
-		public MultiplicativeExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_multiplicativeExpression; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterMultiplicativeExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitMultiplicativeExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitMultiplicativeExpression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public MultiplicativeExpressionContext multiplicativeExpression() {
-		MultiplicativeExpressionContext _localctx = new MultiplicativeExpressionContext(Context, State);
-		EnterRule(_localctx, 70, RULE_multiplicativeExpression);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 412;
-			unaryExpression();
-			State = 417;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 240518168576L) != 0)) {
-				{
-				{
-				State = 413;
-				_la = TokenStream.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 240518168576L) != 0)) ) {
-				ErrorHandler.RecoverInline(this);
-				}
-				else {
-					ErrorHandler.ReportMatch(this);
-				    Consume();
-				}
-				State = 414;
-				unaryExpression();
-				}
-				}
-				State = 419;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class UnaryExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public UnaryExpressionContext unaryExpression() {
-			return GetRuleContext<UnaryExpressionContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PLUS() { return GetToken(CobraParser.PLUS, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MINUS() { return GetToken(CobraParser.MINUS, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT() { return GetToken(CobraParser.NOT, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BITWISE_NOT() { return GetToken(CobraParser.BITWISE_NOT, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INC() { return GetToken(CobraParser.INC, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEC() { return GetToken(CobraParser.DEC, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public PostfixExpressionContext postfixExpression() {
-			return GetRuleContext<PostfixExpressionContext>(0);
-		}
-		public UnaryExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_unaryExpression; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterUnaryExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitUnaryExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitUnaryExpression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public UnaryExpressionContext unaryExpression() {
-		UnaryExpressionContext _localctx = new UnaryExpressionContext(Context, State);
-		EnterRule(_localctx, 72, RULE_unaryExpression);
-		int _la;
-		try {
-			State = 423;
-			ErrorHandler.Sync(this);
-			switch (TokenStream.LA(1)) {
-			case PLUS:
-			case MINUS:
-			case NOT:
-			case INC:
-			case DEC:
-			case BITWISE_NOT:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 420;
-				_la = TokenStream.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 157627112239398912L) != 0)) ) {
-				ErrorHandler.RecoverInline(this);
-				}
-				else {
-					ErrorHandler.ReportMatch(this);
-				    Consume();
-				}
-				State = 421;
-				unaryExpression();
-				}
-				break;
-			case NEW:
-			case THIS:
-			case NULL:
-			case INTEGER:
-			case FLOAT_LITERAL:
-			case STRING_LITERAL:
-			case BOOLEAN_LITERAL:
-			case BITWISE_AND:
-			case LPAREN:
-			case ID:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 422;
-				postfixExpression();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class PostfixExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public PrimaryContext primary() {
-			return GetRuleContext<PrimaryContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] LPAREN() { return GetTokens(CobraParser.LPAREN); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN(int i) {
-			return GetToken(CobraParser.LPAREN, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] RPAREN() { return GetTokens(CobraParser.RPAREN); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN(int i) {
-			return GetToken(CobraParser.RPAREN, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] LBRACKET() { return GetTokens(CobraParser.LBRACKET); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LBRACKET(int i) {
-			return GetToken(CobraParser.LBRACKET, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext[] expression() {
-			return GetRuleContexts<ExpressionContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression(int i) {
-			return GetRuleContext<ExpressionContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] RBRACKET() { return GetTokens(CobraParser.RBRACKET); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RBRACKET(int i) {
-			return GetToken(CobraParser.RBRACKET, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] ID() { return GetTokens(CobraParser.ID); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID(int i) {
-			return GetToken(CobraParser.ID, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] INC() { return GetTokens(CobraParser.INC); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INC(int i) {
-			return GetToken(CobraParser.INC, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] DEC() { return GetTokens(CobraParser.DEC); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEC(int i) {
-			return GetToken(CobraParser.DEC, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] DOT() { return GetTokens(CobraParser.DOT); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DOT(int i) {
-			return GetToken(CobraParser.DOT, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] ARROW() { return GetTokens(CobraParser.ARROW); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ARROW(int i) {
-			return GetToken(CobraParser.ARROW, i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ArgumentListContext[] argumentList() {
-			return GetRuleContexts<ArgumentListContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ArgumentListContext argumentList(int i) {
-			return GetRuleContext<ArgumentListContext>(i);
-		}
-		public PostfixExpressionContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_postfixExpression; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterPostfixExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitPostfixExpression(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitPostfixExpression(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public PostfixExpressionContext postfixExpression() {
-		PostfixExpressionContext _localctx = new PostfixExpressionContext(Context, State);
-		EnterRule(_localctx, 74, RULE_postfixExpression);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 425;
-			primary();
-			State = 441;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while (((((_la - 52)) & ~0x3f) == 0 && ((1L << (_la - 52)) & 35587L) != 0)) {
-				{
-				State = 439;
-				ErrorHandler.Sync(this);
-				switch (TokenStream.LA(1)) {
-				case LPAREN:
-					{
-					State = 426;
-					Match(LPAREN);
-					State = 428;
-					ErrorHandler.Sync(this);
-					_la = TokenStream.LA(1);
-					if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -9047730518048636832L) != 0) || _la==ID) {
-						{
-						State = 427;
-						argumentList();
-						}
-					}
-
-					State = 430;
-					Match(RPAREN);
-					}
-					break;
-				case LBRACKET:
-					{
-					State = 431;
-					Match(LBRACKET);
-					State = 432;
-					expression();
-					State = 433;
-					Match(RBRACKET);
-					}
-					break;
-				case DOT:
-				case ARROW:
-					{
-					State = 435;
-					_la = TokenStream.LA(1);
-					if ( !(_la==DOT || _la==ARROW) ) {
-					ErrorHandler.RecoverInline(this);
-					}
-					else {
-						ErrorHandler.ReportMatch(this);
-					    Consume();
-					}
-					State = 436;
-					Match(ID);
-					}
-					break;
-				case INC:
-					{
-					State = 437;
-					Match(INC);
-					}
-					break;
-				case DEC:
-					{
-					State = 438;
-					Match(DEC);
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				}
-				State = 443;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class PrimaryContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public LiteralContext literal() {
-			return GetRuleContext<LiteralContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID() { return GetToken(CobraParser.ID, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BITWISE_AND() { return GetToken(CobraParser.BITWISE_AND, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode THIS() { return GetToken(CobraParser.THIS, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NEW() { return GetToken(CobraParser.NEW, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public TypeSpecifierContext typeSpecifier() {
-			return GetRuleContext<TypeSpecifierContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LBRACKET() { return GetToken(CobraParser.LBRACKET, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RBRACKET() { return GetToken(CobraParser.RBRACKET, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ArgumentListContext argumentList() {
-			return GetRuleContext<ArgumentListContext>(0);
-		}
-		public PrimaryContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_primary; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterPrimary(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitPrimary(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitPrimary(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public PrimaryContext primary() {
-		PrimaryContext _localctx = new PrimaryContext(Context, State);
-		EnterRule(_localctx, 76, RULE_primary);
-		int _la;
-		try {
-			State = 466;
-			ErrorHandler.Sync(this);
-			switch (TokenStream.LA(1)) {
-			case LPAREN:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 444;
-				Match(LPAREN);
-				State = 445;
-				expression();
-				State = 446;
-				Match(RPAREN);
-				}
-				break;
-			case NULL:
-			case INTEGER:
-			case FLOAT_LITERAL:
-			case STRING_LITERAL:
-			case BOOLEAN_LITERAL:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 448;
-				literal();
-				}
-				break;
-			case ID:
-				EnterOuterAlt(_localctx, 3);
-				{
-				State = 449;
-				Match(ID);
-				}
-				break;
-			case BITWISE_AND:
-				EnterOuterAlt(_localctx, 4);
-				{
-				State = 450;
-				Match(BITWISE_AND);
-				State = 451;
-				Match(ID);
-				}
-				break;
-			case THIS:
-				EnterOuterAlt(_localctx, 5);
-				{
-				State = 452;
-				Match(THIS);
-				}
-				break;
-			case NEW:
-				EnterOuterAlt(_localctx, 6);
-				{
-				State = 453;
-				Match(NEW);
-				State = 454;
-				typeSpecifier();
-				State = 464;
-				ErrorHandler.Sync(this);
-				switch (TokenStream.LA(1)) {
-				case LPAREN:
-					{
-					State = 455;
-					Match(LPAREN);
-					State = 457;
-					ErrorHandler.Sync(this);
-					_la = TokenStream.LA(1);
-					if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -9047730518048636832L) != 0) || _la==ID) {
-						{
-						State = 456;
-						argumentList();
-						}
-					}
-
-					State = 459;
-					Match(RPAREN);
-					}
-					break;
-				case LBRACKET:
-					{
-					State = 460;
-					Match(LBRACKET);
-					State = 461;
-					expression();
-					State = 462;
-					Match(RBRACKET);
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class ArgumentListContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext[] expression() {
-			return GetRuleContexts<ExpressionContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression(int i) {
-			return GetRuleContext<ExpressionContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(CobraParser.COMMA); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
-			return GetToken(CobraParser.COMMA, i);
-		}
-		public ArgumentListContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_argumentList; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterArgumentList(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitArgumentList(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitArgumentList(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public ArgumentListContext argumentList() {
-		ArgumentListContext _localctx = new ArgumentListContext(Context, State);
-		EnterRule(_localctx, 78, RULE_argumentList);
-		int _la;
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 468;
-			expression();
-			State = 473;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while (_la==COMMA) {
-				{
-				{
-				State = 469;
-				Match(COMMA);
-				State = 470;
-				expression();
-				}
-				}
-				State = 475;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -3567,8 +916,8 @@ public partial class CobraParser : Parser {
 	}
 
 	public partial class TypeContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public TypeSpecifierContext typeSpecifier() {
-			return GetRuleContext<TypeSpecifierContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public PrimitiveTypeContext primitiveType() {
+			return GetRuleContext<PrimitiveTypeContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] LBRACKET() { return GetTokens(CobraParser.LBRACKET); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LBRACKET(int i) {
@@ -3578,9 +927,8 @@ public partial class CobraParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RBRACKET(int i) {
 			return GetToken(CobraParser.RBRACKET, i);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] MUL() { return GetTokens(CobraParser.MUL); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MUL(int i) {
-			return GetToken(CobraParser.MUL, i);
+		[System.Diagnostics.DebuggerNonUserCode] public SecondaryTypeContext secondaryType() {
+			return GetRuleContext<SecondaryTypeContext>(0);
 		}
 		public TypeContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -3608,90 +956,10 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public TypeContext type() {
 		TypeContext _localctx = new TypeContext(Context, State);
-		EnterRule(_localctx, 80, RULE_type);
+		EnterRule(_localctx, 20, RULE_type);
 		int _la;
 		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 476;
-			typeSpecifier();
-			State = 482;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while (_la==MUL || _la==LBRACKET) {
-				{
-				State = 480;
-				ErrorHandler.Sync(this);
-				switch (TokenStream.LA(1)) {
-				case LBRACKET:
-					{
-					State = 477;
-					Match(LBRACKET);
-					State = 478;
-					Match(RBRACKET);
-					}
-					break;
-				case MUL:
-					{
-					State = 479;
-					Match(MUL);
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				}
-				State = 484;
-				ErrorHandler.Sync(this);
-				_la = TokenStream.LA(1);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			ErrorHandler.ReportError(this, re);
-			ErrorHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
-
-	public partial class TypeSpecifierContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public PrimitiveTypeContext primitiveType() {
-			return GetRuleContext<PrimitiveTypeContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID() { return GetToken(CobraParser.ID, 0); }
-		public TypeSpecifierContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_typeSpecifier; } }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterTypeSpecifier(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitTypeSpecifier(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitTypeSpecifier(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public TypeSpecifierContext typeSpecifier() {
-		TypeSpecifierContext _localctx = new TypeSpecifierContext(Context, State);
-		EnterRule(_localctx, 82, RULE_typeSpecifier);
-		try {
-			State = 487;
+			State = 181;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case INT:
@@ -3701,15 +969,49 @@ public partial class CobraParser : Parser {
 			case VOID:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 485;
+				State = 165;
 				primitiveType();
+				State = 170;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while (_la==LBRACKET) {
+					{
+					{
+					State = 166;
+					Match(LBRACKET);
+					State = 167;
+					Match(RBRACKET);
+					}
+					}
+					State = 172;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
 				}
 				break;
-			case ID:
+			case FUN:
+			case MARKUP:
+			case DICT:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 486;
-				Match(ID);
+				State = 173;
+				secondaryType();
+				State = 178;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while (_la==LBRACKET) {
+					{
+					{
+					State = 174;
+					Match(LBRACKET);
+					State = 175;
+					Match(RBRACKET);
+					}
+					}
+					State = 180;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
 				}
 				break;
 			default:
@@ -3727,11 +1029,68 @@ public partial class CobraParser : Parser {
 		return _localctx;
 	}
 
+	public partial class SecondaryTypeContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FUN() { return GetToken(CobraParser.FUN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MARKUP() { return GetToken(CobraParser.MARKUP, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DICT() { return GetToken(CobraParser.DICT, 0); }
+		public SecondaryTypeContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_secondaryType; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterSecondaryType(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitSecondaryType(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitSecondaryType(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public SecondaryTypeContext secondaryType() {
+		SecondaryTypeContext _localctx = new SecondaryTypeContext(Context, State);
+		EnterRule(_localctx, 22, RULE_secondaryType);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 183;
+			_la = TokenStream.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 939524096L) != 0)) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
 	public partial class PrimitiveTypeContext : ParserRuleContext {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INT() { return GetToken(CobraParser.INT, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FLOAT() { return GetToken(CobraParser.FLOAT, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode STRING() { return GetToken(CobraParser.STRING, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BOOL() { return GetToken(CobraParser.BOOL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode STRING() { return GetToken(CobraParser.STRING, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode VOID() { return GetToken(CobraParser.VOID, 0); }
 		public PrimitiveTypeContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -3759,14 +1118,14 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public PrimitiveTypeContext primitiveType() {
 		PrimitiveTypeContext _localctx = new PrimitiveTypeContext(Context, State);
-		EnterRule(_localctx, 84, RULE_primitiveType);
+		EnterRule(_localctx, 24, RULE_primitiveType);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 489;
+			State = 185;
 			_la = TokenStream.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 520093696L) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 65011712L) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
@@ -3823,26 +1182,26 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public ParameterListContext parameterList() {
 		ParameterListContext _localctx = new ParameterListContext(Context, State);
-		EnterRule(_localctx, 86, RULE_parameterList);
+		EnterRule(_localctx, 26, RULE_parameterList);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 491;
+			State = 187;
 			parameter();
-			State = 496;
+			State = 192;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 492;
+				State = 188;
 				Match(COMMA);
-				State = 493;
+				State = 189;
 				parameter();
 				}
 				}
-				State = 498;
+				State = 194;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -3890,13 +1249,13 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public ParameterContext parameter() {
 		ParameterContext _localctx = new ParameterContext(Context, State);
-		EnterRule(_localctx, 88, RULE_parameter);
+		EnterRule(_localctx, 28, RULE_parameter);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 499;
+			State = 195;
 			type();
-			State = 500;
+			State = 196;
 			Match(ID);
 			}
 		}
@@ -3911,44 +1270,1853 @@ public partial class CobraParser : Parser {
 		return _localctx;
 	}
 
-	public partial class AccessModifierContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PUBLIC() { return GetToken(CobraParser.PUBLIC, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PRIVATE() { return GetToken(CobraParser.PRIVATE, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PROTECTED() { return GetToken(CobraParser.PROTECTED, 0); }
-		public AccessModifierContext(ParserRuleContext parent, int invokingState)
+	public partial class StatementContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public BlockContext block() {
+			return GetRuleContext<BlockContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public DeclarationStatementContext declarationStatement() {
+			return GetRuleContext<DeclarationStatementContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public IfStatementContext ifStatement() {
+			return GetRuleContext<IfStatementContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public WhileStatementContext whileStatement() {
+			return GetRuleContext<WhileStatementContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public DoWhileStatementContext doWhileStatement() {
+			return GetRuleContext<DoWhileStatementContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ForStatementContext forStatement() {
+			return GetRuleContext<ForStatementContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ForEachStatementContext forEachStatement() {
+			return GetRuleContext<ForEachStatementContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public SwitchStatementContext switchStatement() {
+			return GetRuleContext<SwitchStatementContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public TryStatementContext tryStatement() {
+			return GetRuleContext<TryStatementContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public JumpStatementContext jumpStatement() {
+			return GetRuleContext<JumpStatementContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ExpressionStatementContext expressionStatement() {
+			return GetRuleContext<ExpressionStatementContext>(0);
+		}
+		public StatementContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_accessModifier; } }
+		public override int RuleIndex { get { return RULE_statement; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterAccessModifier(this);
+			if (typedListener != null) typedListener.EnterStatement(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitAccessModifier(this);
+			if (typedListener != null) typedListener.ExitStatement(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitAccessModifier(this);
+			if (typedVisitor != null) return typedVisitor.VisitStatement(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public AccessModifierContext accessModifier() {
-		AccessModifierContext _localctx = new AccessModifierContext(Context, State);
-		EnterRule(_localctx, 90, RULE_accessModifier);
+	public StatementContext statement() {
+		StatementContext _localctx = new StatementContext(Context, State);
+		EnterRule(_localctx, 30, RULE_statement);
+		try {
+			State = 209;
+			ErrorHandler.Sync(this);
+			switch ( Interpreter.AdaptivePredict(TokenStream,13,Context) ) {
+			case 1:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 198;
+				block();
+				}
+				break;
+			case 2:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 199;
+				declarationStatement();
+				}
+				break;
+			case 3:
+				EnterOuterAlt(_localctx, 3);
+				{
+				State = 200;
+				ifStatement();
+				}
+				break;
+			case 4:
+				EnterOuterAlt(_localctx, 4);
+				{
+				State = 201;
+				whileStatement();
+				}
+				break;
+			case 5:
+				EnterOuterAlt(_localctx, 5);
+				{
+				State = 202;
+				doWhileStatement();
+				}
+				break;
+			case 6:
+				EnterOuterAlt(_localctx, 6);
+				{
+				State = 203;
+				forStatement();
+				}
+				break;
+			case 7:
+				EnterOuterAlt(_localctx, 7);
+				{
+				State = 204;
+				forEachStatement();
+				}
+				break;
+			case 8:
+				EnterOuterAlt(_localctx, 8);
+				{
+				State = 205;
+				switchStatement();
+				}
+				break;
+			case 9:
+				EnterOuterAlt(_localctx, 9);
+				{
+				State = 206;
+				tryStatement();
+				}
+				break;
+			case 10:
+				EnterOuterAlt(_localctx, 10);
+				{
+				State = 207;
+				jumpStatement();
+				}
+				break;
+			case 11:
+				EnterOuterAlt(_localctx, 11);
+				{
+				State = 208;
+				expressionStatement();
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class DeclarationStatementContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ConstDeclarationContext constDeclaration() {
+			return GetRuleContext<ConstDeclarationContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public VarDeclarationContext varDeclaration() {
+			return GetRuleContext<VarDeclarationContext>(0);
+		}
+		public DeclarationStatementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_declarationStatement; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterDeclarationStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitDeclarationStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDeclarationStatement(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public DeclarationStatementContext declarationStatement() {
+		DeclarationStatementContext _localctx = new DeclarationStatementContext(Context, State);
+		EnterRule(_localctx, 32, RULE_declarationStatement);
+		try {
+			State = 213;
+			ErrorHandler.Sync(this);
+			switch (TokenStream.LA(1)) {
+			case CONST:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 211;
+				constDeclaration();
+				}
+				break;
+			case INT:
+			case FLOAT:
+			case STRING:
+			case BOOL:
+			case VOID:
+			case FUN:
+			case MARKUP:
+			case DICT:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 212;
+				varDeclaration();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class BlockContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LBRACE() { return GetToken(CobraParser.LBRACE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RBRACE() { return GetToken(CobraParser.RBRACE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public DeclarationStatementContext[] declarationStatement() {
+			return GetRuleContexts<DeclarationStatementContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public DeclarationStatementContext declarationStatement(int i) {
+			return GetRuleContext<DeclarationStatementContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public StatementContext[] statement() {
+			return GetRuleContexts<StatementContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public StatementContext statement(int i) {
+			return GetRuleContext<StatementContext>(i);
+		}
+		public BlockContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_block; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterBlock(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitBlock(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitBlock(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public BlockContext block() {
+		BlockContext _localctx = new BlockContext(Context, State);
+		EnterRule(_localctx, 34, RULE_block);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 502;
+			State = 215;
+			Match(LBRACE);
+			State = 220;
+			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 3670016L) != 0)) ) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & -6771148828432361632L) != 0) || ((((_la - 65)) & ~0x3f) == 0 && ((1L << (_la - 65)) & 1985L) != 0)) {
+				{
+				State = 218;
+				ErrorHandler.Sync(this);
+				switch ( Interpreter.AdaptivePredict(TokenStream,15,Context) ) {
+				case 1:
+					{
+					State = 216;
+					declarationStatement();
+					}
+					break;
+				case 2:
+					{
+					State = 217;
+					statement();
+					}
+					break;
+				}
+				}
+				State = 222;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			State = 223;
+			Match(RBRACE);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class IfStatementContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF() { return GetToken(CobraParser.IF, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression() {
+			return GetRuleContext<AssignmentExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public StatementContext[] statement() {
+			return GetRuleContexts<StatementContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public StatementContext statement(int i) {
+			return GetRuleContext<StatementContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ELSE() { return GetToken(CobraParser.ELSE, 0); }
+		public IfStatementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_ifStatement; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterIfStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitIfStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitIfStatement(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public IfStatementContext ifStatement() {
+		IfStatementContext _localctx = new IfStatementContext(Context, State);
+		EnterRule(_localctx, 36, RULE_ifStatement);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 225;
+			Match(IF);
+			State = 226;
+			Match(LPAREN);
+			State = 227;
+			assignmentExpression();
+			State = 228;
+			Match(RPAREN);
+			State = 229;
+			statement();
+			State = 232;
+			ErrorHandler.Sync(this);
+			switch ( Interpreter.AdaptivePredict(TokenStream,17,Context) ) {
+			case 1:
+				{
+				State = 230;
+				Match(ELSE);
+				State = 231;
+				statement();
+				}
+				break;
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class WhileStatementContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHILE() { return GetToken(CobraParser.WHILE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression() {
+			return GetRuleContext<AssignmentExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public StatementContext statement() {
+			return GetRuleContext<StatementContext>(0);
+		}
+		public WhileStatementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_whileStatement; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterWhileStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitWhileStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitWhileStatement(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public WhileStatementContext whileStatement() {
+		WhileStatementContext _localctx = new WhileStatementContext(Context, State);
+		EnterRule(_localctx, 38, RULE_whileStatement);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 234;
+			Match(WHILE);
+			State = 235;
+			Match(LPAREN);
+			State = 236;
+			assignmentExpression();
+			State = 237;
+			Match(RPAREN);
+			State = 238;
+			statement();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class DoWhileStatementContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DO() { return GetToken(CobraParser.DO, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public StatementContext statement() {
+			return GetRuleContext<StatementContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode WHILE() { return GetToken(CobraParser.WHILE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression() {
+			return GetRuleContext<AssignmentExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON() { return GetToken(CobraParser.SEMICOLON, 0); }
+		public DoWhileStatementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_doWhileStatement; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterDoWhileStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitDoWhileStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDoWhileStatement(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public DoWhileStatementContext doWhileStatement() {
+		DoWhileStatementContext _localctx = new DoWhileStatementContext(Context, State);
+		EnterRule(_localctx, 40, RULE_doWhileStatement);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 240;
+			Match(DO);
+			State = 241;
+			statement();
+			State = 242;
+			Match(WHILE);
+			State = 243;
+			Match(LPAREN);
+			State = 244;
+			assignmentExpression();
+			State = 245;
+			Match(RPAREN);
+			State = 246;
+			Match(SEMICOLON);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ForStatementContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOR() { return GetToken(CobraParser.FOR, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] SEMICOLON() { return GetTokens(CobraParser.SEMICOLON); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON(int i) {
+			return GetToken(CobraParser.SEMICOLON, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public StatementContext statement() {
+			return GetRuleContext<StatementContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public VarDeclarationContext varDeclaration() {
+			return GetRuleContext<VarDeclarationContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ExpressionStatementContext expressionStatement() {
+			return GetRuleContext<ExpressionStatementContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext[] assignmentExpression() {
+			return GetRuleContexts<AssignmentExpressionContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression(int i) {
+			return GetRuleContext<AssignmentExpressionContext>(i);
+		}
+		public ForStatementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_forStatement; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterForStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitForStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitForStatement(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ForStatementContext forStatement() {
+		ForStatementContext _localctx = new ForStatementContext(Context, State);
+		EnterRule(_localctx, 42, RULE_forStatement);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 248;
+			Match(FOR);
+			State = 249;
+			Match(LPAREN);
+			State = 253;
+			ErrorHandler.Sync(this);
+			switch ( Interpreter.AdaptivePredict(TokenStream,18,Context) ) {
+			case 1:
+				{
+				State = 250;
+				varDeclaration();
+				}
+				break;
+			case 2:
+				{
+				State = 251;
+				expressionStatement();
+				}
+				break;
+			case 3:
+				{
+				State = 252;
+				Match(SEMICOLON);
+				}
+				break;
+			}
+			State = 256;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (((((_la - 21)) & ~0x3f) == 0 && ((1L << (_la - 21)) & 34926056655822847L) != 0)) {
+				{
+				State = 255;
+				assignmentExpression();
+				}
+			}
+
+			State = 258;
+			Match(SEMICOLON);
+			State = 260;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (((((_la - 21)) & ~0x3f) == 0 && ((1L << (_la - 21)) & 34926056655822847L) != 0)) {
+				{
+				State = 259;
+				assignmentExpression();
+				}
+			}
+
+			State = 262;
+			Match(RPAREN);
+			State = 263;
+			statement();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ForEachStatementContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FOR() { return GetToken(CobraParser.FOR, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public TypeContext type() {
+			return GetRuleContext<TypeContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID() { return GetToken(CobraParser.ID, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IN() { return GetToken(CobraParser.IN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression() {
+			return GetRuleContext<AssignmentExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public StatementContext statement() {
+			return GetRuleContext<StatementContext>(0);
+		}
+		public ForEachStatementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_forEachStatement; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterForEachStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitForEachStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitForEachStatement(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ForEachStatementContext forEachStatement() {
+		ForEachStatementContext _localctx = new ForEachStatementContext(Context, State);
+		EnterRule(_localctx, 44, RULE_forEachStatement);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 265;
+			Match(FOR);
+			State = 266;
+			Match(LPAREN);
+			State = 267;
+			type();
+			State = 268;
+			Match(ID);
+			State = 269;
+			Match(IN);
+			State = 270;
+			assignmentExpression();
+			State = 271;
+			Match(RPAREN);
+			State = 272;
+			statement();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class SwitchStatementContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SWITCH() { return GetToken(CobraParser.SWITCH, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression() {
+			return GetRuleContext<AssignmentExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LBRACE() { return GetToken(CobraParser.LBRACE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RBRACE() { return GetToken(CobraParser.RBRACE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public SwitchBlockContext[] switchBlock() {
+			return GetRuleContexts<SwitchBlockContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public SwitchBlockContext switchBlock(int i) {
+			return GetRuleContext<SwitchBlockContext>(i);
+		}
+		public SwitchStatementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_switchStatement; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterSwitchStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitSwitchStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitSwitchStatement(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public SwitchStatementContext switchStatement() {
+		SwitchStatementContext _localctx = new SwitchStatementContext(Context, State);
+		EnterRule(_localctx, 46, RULE_switchStatement);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 274;
+			Match(SWITCH);
+			State = 275;
+			Match(LPAREN);
+			State = 276;
+			assignmentExpression();
+			State = 277;
+			Match(RPAREN);
+			State = 278;
+			Match(LBRACE);
+			State = 282;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==CASE || _la==DEFAULT) {
+				{
+				{
+				State = 279;
+				switchBlock();
+				}
+				}
+				State = 284;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			State = 285;
+			Match(RBRACE);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class SwitchBlockContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public SwitchLabelContext[] switchLabel() {
+			return GetRuleContexts<SwitchLabelContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public SwitchLabelContext switchLabel(int i) {
+			return GetRuleContext<SwitchLabelContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public StatementContext[] statement() {
+			return GetRuleContexts<StatementContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public StatementContext statement(int i) {
+			return GetRuleContext<StatementContext>(i);
+		}
+		public SwitchBlockContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_switchBlock; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterSwitchBlock(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitSwitchBlock(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitSwitchBlock(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public SwitchBlockContext switchBlock() {
+		SwitchBlockContext _localctx = new SwitchBlockContext(Context, State);
+		EnterRule(_localctx, 48, RULE_switchBlock);
+		int _la;
+		try {
+			int _alt;
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 288;
+			ErrorHandler.Sync(this);
+			_alt = 1;
+			do {
+				switch (_alt) {
+				case 1:
+					{
+					{
+					State = 287;
+					switchLabel();
+					}
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
+				}
+				State = 290;
+				ErrorHandler.Sync(this);
+				_alt = Interpreter.AdaptivePredict(TokenStream,22,Context);
+			} while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER );
+			State = 295;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & -6771148828432361632L) != 0) || ((((_la - 65)) & ~0x3f) == 0 && ((1L << (_la - 65)) & 1985L) != 0)) {
+				{
+				{
+				State = 292;
+				statement();
+				}
+				}
+				State = 297;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class SwitchLabelContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CASE() { return GetToken(CobraParser.CASE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression() {
+			return GetRuleContext<AssignmentExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLON() { return GetToken(CobraParser.COLON, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEFAULT() { return GetToken(CobraParser.DEFAULT, 0); }
+		public SwitchLabelContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_switchLabel; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterSwitchLabel(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitSwitchLabel(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitSwitchLabel(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public SwitchLabelContext switchLabel() {
+		SwitchLabelContext _localctx = new SwitchLabelContext(Context, State);
+		EnterRule(_localctx, 50, RULE_switchLabel);
+		try {
+			State = 304;
+			ErrorHandler.Sync(this);
+			switch (TokenStream.LA(1)) {
+			case CASE:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 298;
+				Match(CASE);
+				State = 299;
+				assignmentExpression();
+				State = 300;
+				Match(COLON);
+				}
+				break;
+			case DEFAULT:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 302;
+				Match(DEFAULT);
+				State = 303;
+				Match(COLON);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class TryStatementContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRY() { return GetToken(CobraParser.TRY, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public BlockContext[] block() {
+			return GetRuleContexts<BlockContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public BlockContext block(int i) {
+			return GetRuleContext<BlockContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CATCH() { return GetToken(CobraParser.CATCH, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ParameterContext parameter() {
+			return GetRuleContext<ParameterContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FINALLY() { return GetToken(CobraParser.FINALLY, 0); }
+		public TryStatementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_tryStatement; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterTryStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitTryStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitTryStatement(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public TryStatementContext tryStatement() {
+		TryStatementContext _localctx = new TryStatementContext(Context, State);
+		EnterRule(_localctx, 52, RULE_tryStatement);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 306;
+			Match(TRY);
+			State = 307;
+			block();
+			State = 314;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (_la==CATCH) {
+				{
+				State = 308;
+				Match(CATCH);
+				State = 309;
+				Match(LPAREN);
+				State = 310;
+				parameter();
+				State = 311;
+				Match(RPAREN);
+				State = 312;
+				block();
+				}
+			}
+
+			State = 318;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (_la==FINALLY) {
+				{
+				State = 316;
+				Match(FINALLY);
+				State = 317;
+				block();
+				}
+			}
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class JumpStatementContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RETURN() { return GetToken(CobraParser.RETURN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON() { return GetToken(CobraParser.SEMICOLON, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression() {
+			return GetRuleContext<AssignmentExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BREAK() { return GetToken(CobraParser.BREAK, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONTINUE() { return GetToken(CobraParser.CONTINUE, 0); }
+		public JumpStatementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_jumpStatement; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterJumpStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitJumpStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitJumpStatement(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public JumpStatementContext jumpStatement() {
+		JumpStatementContext _localctx = new JumpStatementContext(Context, State);
+		EnterRule(_localctx, 54, RULE_jumpStatement);
+		int _la;
+		try {
+			State = 329;
+			ErrorHandler.Sync(this);
+			switch (TokenStream.LA(1)) {
+			case RETURN:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 320;
+				Match(RETURN);
+				State = 322;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				if (((((_la - 21)) & ~0x3f) == 0 && ((1L << (_la - 21)) & 34926056655822847L) != 0)) {
+					{
+					State = 321;
+					assignmentExpression();
+					}
+				}
+
+				State = 324;
+				Match(SEMICOLON);
+				}
+				break;
+			case BREAK:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 325;
+				Match(BREAK);
+				State = 326;
+				Match(SEMICOLON);
+				}
+				break;
+			case CONTINUE:
+				EnterOuterAlt(_localctx, 3);
+				{
+				State = 327;
+				Match(CONTINUE);
+				State = 328;
+				Match(SEMICOLON);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ExpressionStatementContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression() {
+			return GetRuleContext<AssignmentExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON() { return GetToken(CobraParser.SEMICOLON, 0); }
+		public ExpressionStatementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_expressionStatement; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterExpressionStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitExpressionStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitExpressionStatement(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ExpressionStatementContext expressionStatement() {
+		ExpressionStatementContext _localctx = new ExpressionStatementContext(Context, State);
+		EnterRule(_localctx, 56, RULE_expressionStatement);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 331;
+			assignmentExpression();
+			State = 332;
+			Match(SEMICOLON);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class AssignmentExpressionContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public LeftHandSideContext leftHandSide() {
+			return GetRuleContext<LeftHandSideContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentOperatorContext assignmentOperator() {
+			return GetRuleContext<AssignmentOperatorContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext[] assignmentExpression() {
+			return GetRuleContexts<AssignmentExpressionContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression(int i) {
+			return GetRuleContext<AssignmentExpressionContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public BinaryExpressionContext binaryExpression() {
+			return GetRuleContext<BinaryExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode QUESTION() { return GetToken(CobraParser.QUESTION, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLON() { return GetToken(CobraParser.COLON, 0); }
+		public AssignmentExpressionContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_assignmentExpression; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterAssignmentExpression(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitAssignmentExpression(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitAssignmentExpression(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public AssignmentExpressionContext assignmentExpression() {
+		AssignmentExpressionContext _localctx = new AssignmentExpressionContext(Context, State);
+		EnterRule(_localctx, 58, RULE_assignmentExpression);
+		int _la;
+		try {
+			State = 346;
+			ErrorHandler.Sync(this);
+			switch ( Interpreter.AdaptivePredict(TokenStream,30,Context) ) {
+			case 1:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 334;
+				leftHandSide();
+				State = 335;
+				assignmentOperator();
+				State = 336;
+				assignmentExpression();
+				}
+				break;
+			case 2:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 338;
+				binaryExpression();
+				State = 344;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				if (_la==QUESTION) {
+					{
+					State = 339;
+					Match(QUESTION);
+					State = 340;
+					assignmentExpression();
+					State = 341;
+					Match(COLON);
+					State = 342;
+					assignmentExpression();
+					}
+				}
+
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class BinaryExpressionContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] OR() { return GetTokens(CobraParser.OR); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OR(int i) {
+			return GetToken(CobraParser.OR, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public PostfixExpressionContext[] postfixExpression() {
+			return GetRuleContexts<PostfixExpressionContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public PostfixExpressionContext postfixExpression(int i) {
+			return GetRuleContext<PostfixExpressionContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] AND() { return GetTokens(CobraParser.AND); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode AND(int i) {
+			return GetToken(CobraParser.AND, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public UnaryOpContext[] unaryOp() {
+			return GetRuleContexts<UnaryOpContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public UnaryOpContext unaryOp(int i) {
+			return GetRuleContext<UnaryOpContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] BITWISE_OR() { return GetTokens(CobraParser.BITWISE_OR); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BITWISE_OR(int i) {
+			return GetToken(CobraParser.BITWISE_OR, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] BITWISE_XOR() { return GetTokens(CobraParser.BITWISE_XOR); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BITWISE_XOR(int i) {
+			return GetToken(CobraParser.BITWISE_XOR, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] BITWISE_AND() { return GetTokens(CobraParser.BITWISE_AND); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BITWISE_AND(int i) {
+			return GetToken(CobraParser.BITWISE_AND, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] EQ() { return GetTokens(CobraParser.EQ); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EQ(int i) {
+			return GetToken(CobraParser.EQ, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] NEQ() { return GetTokens(CobraParser.NEQ); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NEQ(int i) {
+			return GetToken(CobraParser.NEQ, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] GT() { return GetTokens(CobraParser.GT); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GT(int i) {
+			return GetToken(CobraParser.GT, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] LT() { return GetTokens(CobraParser.LT); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LT(int i) {
+			return GetToken(CobraParser.LT, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] GTE() { return GetTokens(CobraParser.GTE); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode GTE(int i) {
+			return GetToken(CobraParser.GTE, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] LTE() { return GetTokens(CobraParser.LTE); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LTE(int i) {
+			return GetToken(CobraParser.LTE, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] SHL() { return GetTokens(CobraParser.SHL); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SHL(int i) {
+			return GetToken(CobraParser.SHL, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] SHR() { return GetTokens(CobraParser.SHR); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SHR(int i) {
+			return GetToken(CobraParser.SHR, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] PLUS() { return GetTokens(CobraParser.PLUS); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PLUS(int i) {
+			return GetToken(CobraParser.PLUS, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] MINUS() { return GetTokens(CobraParser.MINUS); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MINUS(int i) {
+			return GetToken(CobraParser.MINUS, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] MUL() { return GetTokens(CobraParser.MUL); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MUL(int i) {
+			return GetToken(CobraParser.MUL, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] DIV() { return GetTokens(CobraParser.DIV); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DIV(int i) {
+			return GetToken(CobraParser.DIV, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] MOD() { return GetTokens(CobraParser.MOD); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MOD(int i) {
+			return GetToken(CobraParser.MOD, i);
+		}
+		public BinaryExpressionContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_binaryExpression; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterBinaryExpression(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitBinaryExpression(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitBinaryExpression(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public BinaryExpressionContext binaryExpression() {
+		BinaryExpressionContext _localctx = new BinaryExpressionContext(Context, State);
+		EnterRule(_localctx, 60, RULE_binaryExpression);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			{
+			{
+			{
+			{
+			{
+			{
+			{
+			{
+			{
+			{
+			State = 351;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 146380194913976320L) != 0)) {
+				{
+				{
+				State = 348;
+				unaryOp();
+				}
+				}
+				State = 353;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			State = 354;
+			postfixExpression();
+			State = 365;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 120259084288L) != 0)) {
+				{
+				{
+				State = 355;
+				_la = TokenStream.LA(1);
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 120259084288L) != 0)) ) {
+				ErrorHandler.RecoverInline(this);
+				}
+				else {
+					ErrorHandler.ReportMatch(this);
+				    Consume();
+				}
+				State = 359;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 146380194913976320L) != 0)) {
+					{
+					{
+					State = 356;
+					unaryOp();
+					}
+					}
+					State = 361;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				State = 362;
+				postfixExpression();
+				}
+				}
+				State = 367;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			}
+			State = 378;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==PLUS || _la==MINUS) {
+				{
+				{
+				State = 368;
+				_la = TokenStream.LA(1);
+				if ( !(_la==PLUS || _la==MINUS) ) {
+				ErrorHandler.RecoverInline(this);
+				}
+				else {
+					ErrorHandler.ReportMatch(this);
+				    Consume();
+				}
+				State = 372;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 146380194913976320L) != 0)) {
+					{
+					{
+					State = 369;
+					unaryOp();
+					}
+					}
+					State = 374;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				State = 375;
+				postfixExpression();
+				}
+				}
+				State = 380;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			}
+			State = 391;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==SHL || _la==SHR) {
+				{
+				{
+				State = 381;
+				_la = TokenStream.LA(1);
+				if ( !(_la==SHL || _la==SHR) ) {
+				ErrorHandler.RecoverInline(this);
+				}
+				else {
+					ErrorHandler.ReportMatch(this);
+				    Consume();
+				}
+				State = 385;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 146380194913976320L) != 0)) {
+					{
+					{
+					State = 382;
+					unaryOp();
+					}
+					}
+					State = 387;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				State = 388;
+				postfixExpression();
+				}
+				}
+				State = 393;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			}
+			State = 404;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 2111062325329920L) != 0)) {
+				{
+				{
+				State = 394;
+				_la = TokenStream.LA(1);
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 2111062325329920L) != 0)) ) {
+				ErrorHandler.RecoverInline(this);
+				}
+				else {
+					ErrorHandler.ReportMatch(this);
+				    Consume();
+				}
+				State = 398;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 146380194913976320L) != 0)) {
+					{
+					{
+					State = 395;
+					unaryOp();
+					}
+					}
+					State = 400;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				State = 401;
+				postfixExpression();
+				}
+				}
+				State = 406;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			}
+			State = 417;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==EQ || _la==NEQ) {
+				{
+				{
+				State = 407;
+				_la = TokenStream.LA(1);
+				if ( !(_la==EQ || _la==NEQ) ) {
+				ErrorHandler.RecoverInline(this);
+				}
+				else {
+					ErrorHandler.ReportMatch(this);
+				    Consume();
+				}
+				State = 411;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 146380194913976320L) != 0)) {
+					{
+					{
+					State = 408;
+					unaryOp();
+					}
+					}
+					State = 413;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				State = 414;
+				postfixExpression();
+				}
+				}
+				State = 419;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			}
+			State = 430;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==BITWISE_AND) {
+				{
+				{
+				State = 420;
+				Match(BITWISE_AND);
+				State = 424;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 146380194913976320L) != 0)) {
+					{
+					{
+					State = 421;
+					unaryOp();
+					}
+					}
+					State = 426;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				State = 427;
+				postfixExpression();
+				}
+				}
+				State = 432;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			}
+			State = 443;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==BITWISE_XOR) {
+				{
+				{
+				State = 433;
+				Match(BITWISE_XOR);
+				State = 437;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 146380194913976320L) != 0)) {
+					{
+					{
+					State = 434;
+					unaryOp();
+					}
+					}
+					State = 439;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				State = 440;
+				postfixExpression();
+				}
+				}
+				State = 445;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			}
+			State = 456;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==BITWISE_OR) {
+				{
+				{
+				State = 446;
+				Match(BITWISE_OR);
+				State = 450;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 146380194913976320L) != 0)) {
+					{
+					{
+					State = 447;
+					unaryOp();
+					}
+					}
+					State = 452;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				State = 453;
+				postfixExpression();
+				}
+				}
+				State = 458;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			}
+			State = 469;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==AND) {
+				{
+				{
+				State = 459;
+				Match(AND);
+				State = 463;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 146380194913976320L) != 0)) {
+					{
+					{
+					State = 460;
+					unaryOp();
+					}
+					}
+					State = 465;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				State = 466;
+				postfixExpression();
+				}
+				}
+				State = 471;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			}
+			State = 482;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==OR) {
+				{
+				{
+				State = 472;
+				Match(OR);
+				State = 476;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 146380194913976320L) != 0)) {
+					{
+					{
+					State = 473;
+					unaryOp();
+					}
+					}
+					State = 478;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				State = 479;
+				postfixExpression();
+				}
+				}
+				State = 484;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class UnaryOpContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PLUS() { return GetToken(CobraParser.PLUS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MINUS() { return GetToken(CobraParser.MINUS, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NOT() { return GetToken(CobraParser.NOT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BITWISE_NOT() { return GetToken(CobraParser.BITWISE_NOT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INC() { return GetToken(CobraParser.INC, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEC() { return GetToken(CobraParser.DEC, 0); }
+		public UnaryOpContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_unaryOp; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterUnaryOp(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitUnaryOp(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitUnaryOp(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public UnaryOpContext unaryOp() {
+		UnaryOpContext _localctx = new UnaryOpContext(Context, State);
+		EnterRule(_localctx, 62, RULE_unaryOp);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 485;
+			_la = TokenStream.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 146380194913976320L) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
@@ -3968,48 +3136,151 @@ public partial class CobraParser : Parser {
 		return _localctx;
 	}
 
-	public partial class ImportStatementContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IMPORT() { return GetToken(CobraParser.IMPORT, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public QualifiedNameContext qualifiedName() {
-			return GetRuleContext<QualifiedNameContext>(0);
+	public partial class PostfixExpressionContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public PrimaryContext primary() {
+			return GetRuleContext<PrimaryContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SEMICOLON() { return GetToken(CobraParser.SEMICOLON, 0); }
-		public ImportStatementContext(ParserRuleContext parent, int invokingState)
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] LPAREN() { return GetTokens(CobraParser.LPAREN); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN(int i) {
+			return GetToken(CobraParser.LPAREN, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] RPAREN() { return GetTokens(CobraParser.RPAREN); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN(int i) {
+			return GetToken(CobraParser.RPAREN, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] LBRACKET() { return GetTokens(CobraParser.LBRACKET); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LBRACKET(int i) {
+			return GetToken(CobraParser.LBRACKET, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext[] assignmentExpression() {
+			return GetRuleContexts<AssignmentExpressionContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression(int i) {
+			return GetRuleContext<AssignmentExpressionContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] RBRACKET() { return GetTokens(CobraParser.RBRACKET); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RBRACKET(int i) {
+			return GetToken(CobraParser.RBRACKET, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] DOT() { return GetTokens(CobraParser.DOT); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DOT(int i) {
+			return GetToken(CobraParser.DOT, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] ID() { return GetTokens(CobraParser.ID); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID(int i) {
+			return GetToken(CobraParser.ID, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] INC() { return GetTokens(CobraParser.INC); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INC(int i) {
+			return GetToken(CobraParser.INC, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] DEC() { return GetTokens(CobraParser.DEC); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DEC(int i) {
+			return GetToken(CobraParser.DEC, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ArgumentListContext[] argumentList() {
+			return GetRuleContexts<ArgumentListContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ArgumentListContext argumentList(int i) {
+			return GetRuleContext<ArgumentListContext>(i);
+		}
+		public PostfixExpressionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_importStatement; } }
+		public override int RuleIndex { get { return RULE_postfixExpression; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterImportStatement(this);
+			if (typedListener != null) typedListener.EnterPostfixExpression(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitImportStatement(this);
+			if (typedListener != null) typedListener.ExitPostfixExpression(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitImportStatement(this);
+			if (typedVisitor != null) return typedVisitor.VisitPostfixExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public ImportStatementContext importStatement() {
-		ImportStatementContext _localctx = new ImportStatementContext(Context, State);
-		EnterRule(_localctx, 92, RULE_importStatement);
+	public PostfixExpressionContext postfixExpression() {
+		PostfixExpressionContext _localctx = new PostfixExpressionContext(Context, State);
+		EnterRule(_localctx, 64, RULE_postfixExpression);
+		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 504;
-			Match(IMPORT);
-			State = 505;
-			qualifiedName();
-			State = 506;
-			Match(SEMICOLON);
+			State = 487;
+			primary();
+			State = 503;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (((((_la - 42)) & ~0x3f) == 0 && ((1L << (_la - 42)) & 277348355L) != 0)) {
+				{
+				State = 501;
+				ErrorHandler.Sync(this);
+				switch (TokenStream.LA(1)) {
+				case LPAREN:
+					{
+					State = 488;
+					Match(LPAREN);
+					State = 490;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+					if (((((_la - 21)) & ~0x3f) == 0 && ((1L << (_la - 21)) & 34926056655822847L) != 0)) {
+						{
+						State = 489;
+						argumentList();
+						}
+					}
+
+					State = 492;
+					Match(RPAREN);
+					}
+					break;
+				case LBRACKET:
+					{
+					State = 493;
+					Match(LBRACKET);
+					State = 494;
+					assignmentExpression();
+					State = 495;
+					Match(RBRACKET);
+					}
+					break;
+				case DOT:
+					{
+					State = 497;
+					Match(DOT);
+					State = 498;
+					Match(ID);
+					}
+					break;
+				case INC:
+					{
+					State = 499;
+					Match(INC);
+					}
+					break;
+				case DEC:
+					{
+					State = 500;
+					Match(DEC);
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
+				}
+				}
+				State = 505;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -4023,64 +3294,620 @@ public partial class CobraParser : Parser {
 		return _localctx;
 	}
 
-	public partial class QualifiedNameContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] ID() { return GetTokens(CobraParser.ID); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID(int i) {
-			return GetToken(CobraParser.ID, i);
+	public partial class LeftHandSideContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public PrimaryContext primary() {
+			return GetRuleContext<PrimaryContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] LBRACKET() { return GetTokens(CobraParser.LBRACKET); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LBRACKET(int i) {
+			return GetToken(CobraParser.LBRACKET, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext[] assignmentExpression() {
+			return GetRuleContexts<AssignmentExpressionContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression(int i) {
+			return GetRuleContext<AssignmentExpressionContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] RBRACKET() { return GetTokens(CobraParser.RBRACKET); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RBRACKET(int i) {
+			return GetToken(CobraParser.RBRACKET, i);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] DOT() { return GetTokens(CobraParser.DOT); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DOT(int i) {
 			return GetToken(CobraParser.DOT, i);
 		}
-		public QualifiedNameContext(ParserRuleContext parent, int invokingState)
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] ID() { return GetTokens(CobraParser.ID); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID(int i) {
+			return GetToken(CobraParser.ID, i);
+		}
+		public LeftHandSideContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_qualifiedName; } }
+		public override int RuleIndex { get { return RULE_leftHandSide; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.EnterQualifiedName(this);
+			if (typedListener != null) typedListener.EnterLeftHandSide(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			ICobraListener typedListener = listener as ICobraListener;
-			if (typedListener != null) typedListener.ExitQualifiedName(this);
+			if (typedListener != null) typedListener.ExitLeftHandSide(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitQualifiedName(this);
+			if (typedVisitor != null) return typedVisitor.VisitLeftHandSide(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public QualifiedNameContext qualifiedName() {
-		QualifiedNameContext _localctx = new QualifiedNameContext(Context, State);
-		EnterRule(_localctx, 94, RULE_qualifiedName);
+	public LeftHandSideContext leftHandSide() {
+		LeftHandSideContext _localctx = new LeftHandSideContext(Context, State);
+		EnterRule(_localctx, 66, RULE_leftHandSide);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 508;
-			Match(ID);
-			State = 513;
+			State = 506;
+			primary();
+			State = 515;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while (_la==DOT) {
+			while (_la==LBRACKET || _la==DOT) {
 				{
-				{
-				State = 509;
-				Match(DOT);
-				State = 510;
-				Match(ID);
+				State = 513;
+				ErrorHandler.Sync(this);
+				switch (TokenStream.LA(1)) {
+				case LBRACKET:
+					{
+					State = 507;
+					Match(LBRACKET);
+					State = 508;
+					assignmentExpression();
+					State = 509;
+					Match(RBRACKET);
+					}
+					break;
+				case DOT:
+					{
+					State = 511;
+					Match(DOT);
+					State = 512;
+					Match(ID);
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
 				}
 				}
-				State = 515;
+				State = 517;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class PrimaryContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression() {
+			return GetRuleContext<AssignmentExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public LiteralContext literal() {
+			return GetRuleContext<LiteralContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID() { return GetToken(CobraParser.ID, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public FunctionExpressionContext functionExpression() {
+			return GetRuleContext<FunctionExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ArrayLiteralContext arrayLiteral() {
+			return GetRuleContext<ArrayLiteralContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public DictLiteralContext dictLiteral() {
+			return GetRuleContext<DictLiteralContext>(0);
+		}
+		public PrimaryContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_primary; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterPrimary(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitPrimary(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitPrimary(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public PrimaryContext primary() {
+		PrimaryContext _localctx = new PrimaryContext(Context, State);
+		EnterRule(_localctx, 68, RULE_primary);
+		try {
+			State = 527;
+			ErrorHandler.Sync(this);
+			switch (TokenStream.LA(1)) {
+			case LPAREN:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 518;
+				Match(LPAREN);
+				State = 519;
+				assignmentExpression();
+				State = 520;
+				Match(RPAREN);
+				}
+				break;
+			case NULL:
+			case TRUE:
+			case FALSE:
+			case STRING_LITERAL:
+			case BACKTICK_STRING:
+			case INTEGER:
+			case FLOAT_LITERAL:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 522;
+				literal();
+				}
+				break;
+			case ID:
+				EnterOuterAlt(_localctx, 3);
+				{
+				State = 523;
+				Match(ID);
+				}
+				break;
+			case INT:
+			case FLOAT:
+			case STRING:
+			case BOOL:
+			case VOID:
+			case FUN:
+			case MARKUP:
+			case DICT:
+				EnterOuterAlt(_localctx, 4);
+				{
+				State = 524;
+				functionExpression();
+				}
+				break;
+			case LBRACKET:
+				EnterOuterAlt(_localctx, 5);
+				{
+				State = 525;
+				arrayLiteral();
+				}
+				break;
+			case LBRACE:
+				EnterOuterAlt(_localctx, 6);
+				{
+				State = 526;
+				dictLiteral();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ArgumentListContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext[] assignmentExpression() {
+			return GetRuleContexts<AssignmentExpressionContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression(int i) {
+			return GetRuleContext<AssignmentExpressionContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(CobraParser.COMMA); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
+			return GetToken(CobraParser.COMMA, i);
+		}
+		public ArgumentListContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_argumentList; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterArgumentList(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitArgumentList(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitArgumentList(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ArgumentListContext argumentList() {
+		ArgumentListContext _localctx = new ArgumentListContext(Context, State);
+		EnterRule(_localctx, 70, RULE_argumentList);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 529;
+			assignmentExpression();
+			State = 534;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==COMMA) {
+				{
+				{
+				State = 530;
+				Match(COMMA);
+				State = 531;
+				assignmentExpression();
+				}
+				}
+				State = 536;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class FunctionExpressionContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public TypeContext type() {
+			return GetRuleContext<TypeContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(CobraParser.LPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(CobraParser.RPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public BlockContext block() {
+			return GetRuleContext<BlockContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ParameterListContext parameterList() {
+			return GetRuleContext<ParameterListContext>(0);
+		}
+		public FunctionExpressionContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_functionExpression; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterFunctionExpression(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitFunctionExpression(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitFunctionExpression(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public FunctionExpressionContext functionExpression() {
+		FunctionExpressionContext _localctx = new FunctionExpressionContext(Context, State);
+		EnterRule(_localctx, 72, RULE_functionExpression);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 537;
+			type();
+			State = 538;
+			Match(LPAREN);
+			State = 540;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 1004535808L) != 0)) {
+				{
+				State = 539;
+				parameterList();
+				}
+			}
+
+			State = 542;
+			Match(RPAREN);
+			State = 543;
+			block();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ArrayLiteralContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LBRACKET() { return GetToken(CobraParser.LBRACKET, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RBRACKET() { return GetToken(CobraParser.RBRACKET, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext[] assignmentExpression() {
+			return GetRuleContexts<AssignmentExpressionContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression(int i) {
+			return GetRuleContext<AssignmentExpressionContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(CobraParser.COMMA); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
+			return GetToken(CobraParser.COMMA, i);
+		}
+		public ArrayLiteralContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_arrayLiteral; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterArrayLiteral(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitArrayLiteral(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitArrayLiteral(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ArrayLiteralContext arrayLiteral() {
+		ArrayLiteralContext _localctx = new ArrayLiteralContext(Context, State);
+		EnterRule(_localctx, 74, RULE_arrayLiteral);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 545;
+			Match(LBRACKET);
+			State = 554;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (((((_la - 21)) & ~0x3f) == 0 && ((1L << (_la - 21)) & 34926056655822847L) != 0)) {
+				{
+				State = 546;
+				assignmentExpression();
+				State = 551;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while (_la==COMMA) {
+					{
+					{
+					State = 547;
+					Match(COMMA);
+					State = 548;
+					assignmentExpression();
+					}
+					}
+					State = 553;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				}
+			}
+
+			State = 556;
+			Match(RBRACKET);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class DictLiteralContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LBRACE() { return GetToken(CobraParser.LBRACE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RBRACE() { return GetToken(CobraParser.RBRACE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public DictEntryContext[] dictEntry() {
+			return GetRuleContexts<DictEntryContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public DictEntryContext dictEntry(int i) {
+			return GetRuleContext<DictEntryContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] COMMA() { return GetTokens(CobraParser.COMMA); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COMMA(int i) {
+			return GetToken(CobraParser.COMMA, i);
+		}
+		public DictLiteralContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_dictLiteral; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterDictLiteral(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitDictLiteral(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDictLiteral(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public DictLiteralContext dictLiteral() {
+		DictLiteralContext _localctx = new DictLiteralContext(Context, State);
+		EnterRule(_localctx, 76, RULE_dictLiteral);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 558;
+			Match(LBRACE);
+			State = 568;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (_la==ID || _la==STRING_LITERAL) {
+				{
+				State = 559;
+				dictEntry();
+				State = 565;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				while (_la==COMMA) {
+					{
+					State = 563;
+					ErrorHandler.Sync(this);
+					switch ( Interpreter.AdaptivePredict(TokenStream,62,Context) ) {
+					case 1:
+						{
+						State = 560;
+						Match(COMMA);
+						State = 561;
+						dictEntry();
+						}
+						break;
+					case 2:
+						{
+						State = 562;
+						Match(COMMA);
+						}
+						break;
+					}
+					}
+					State = 567;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				}
+			}
+
+			State = 570;
+			Match(RBRACE);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class DictEntryContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLON() { return GetToken(CobraParser.COLON, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public AssignmentExpressionContext assignmentExpression() {
+			return GetRuleContext<AssignmentExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode STRING_LITERAL() { return GetToken(CobraParser.STRING_LITERAL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ID() { return GetToken(CobraParser.ID, 0); }
+		public DictEntryContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_dictEntry; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterDictEntry(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitDictEntry(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitDictEntry(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public DictEntryContext dictEntry() {
+		DictEntryContext _localctx = new DictEntryContext(Context, State);
+		EnterRule(_localctx, 78, RULE_dictEntry);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 572;
+			_la = TokenStream.LA(1);
+			if ( !(_la==ID || _la==STRING_LITERAL) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
+			State = 573;
+			Match(COLON);
+			State = 574;
+			assignmentExpression();
 			}
 		}
 		catch (RecognitionException re) {
@@ -4098,7 +3925,9 @@ public partial class CobraParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode INTEGER() { return GetToken(CobraParser.INTEGER, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FLOAT_LITERAL() { return GetToken(CobraParser.FLOAT_LITERAL, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode STRING_LITERAL() { return GetToken(CobraParser.STRING_LITERAL, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BOOLEAN_LITERAL() { return GetToken(CobraParser.BOOLEAN_LITERAL, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BACKTICK_STRING() { return GetToken(CobraParser.BACKTICK_STRING, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRUE() { return GetToken(CobraParser.TRUE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FALSE() { return GetToken(CobraParser.FALSE, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode NULL() { return GetToken(CobraParser.NULL, 0); }
 		public LiteralContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -4126,14 +3955,74 @@ public partial class CobraParser : Parser {
 	[RuleVersion(0)]
 	public LiteralContext literal() {
 		LiteralContext _localctx = new LiteralContext(Context, State);
-		EnterRule(_localctx, 96, RULE_literal);
+		EnterRule(_localctx, 80, RULE_literal);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 516;
+			State = 576;
 			_la = TokenStream.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 8057257984L) != 0)) ) {
+			if ( !(((((_la - 26)) & ~0x3f) == 0 && ((1L << (_la - 26)) & 1055531162665009L) != 0)) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+				ErrorHandler.ReportMatch(this);
+			    Consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class AssignmentOperatorContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ASSIGN() { return GetToken(CobraParser.ASSIGN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode PLUS_ASSIGN() { return GetToken(CobraParser.PLUS_ASSIGN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MINUS_ASSIGN() { return GetToken(CobraParser.MINUS_ASSIGN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MUL_ASSIGN() { return GetToken(CobraParser.MUL_ASSIGN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DIV_ASSIGN() { return GetToken(CobraParser.DIV_ASSIGN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode MOD_ASSIGN() { return GetToken(CobraParser.MOD_ASSIGN, 0); }
+		public AssignmentOperatorContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_assignmentOperator; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.EnterAssignmentOperator(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			ICobraListener typedListener = listener as ICobraListener;
+			if (typedListener != null) typedListener.ExitAssignmentOperator(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			ICobraVisitor<TResult> typedVisitor = visitor as ICobraVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitAssignmentOperator(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public AssignmentOperatorContext assignmentOperator() {
+		AssignmentOperatorContext _localctx = new AssignmentOperatorContext(Context, State);
+		EnterRule(_localctx, 82, RULE_assignmentOperator);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 578;
+			_la = TokenStream.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 21852793602048L) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
@@ -4154,179 +4043,205 @@ public partial class CobraParser : Parser {
 	}
 
 	private static int[] _serializedATN = {
-		4,1,75,519,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
+		4,1,78,581,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
 		7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,14,
 		2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,7,20,2,21,7,21,
 		2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,7,27,2,28,7,28,
 		2,29,7,29,2,30,7,30,2,31,7,31,2,32,7,32,2,33,7,33,2,34,7,34,2,35,7,35,
-		2,36,7,36,2,37,7,37,2,38,7,38,2,39,7,39,2,40,7,40,2,41,7,41,2,42,7,42,
-		2,43,7,43,2,44,7,44,2,45,7,45,2,46,7,46,2,47,7,47,2,48,7,48,1,0,1,0,1,
-		0,1,0,1,0,1,0,5,0,105,8,0,10,0,12,0,108,9,0,1,0,1,0,1,1,1,1,1,1,1,1,3,
-		1,116,8,1,1,1,1,1,5,1,120,8,1,10,1,12,1,123,9,1,1,1,1,1,1,2,1,2,1,3,3,
-		3,130,8,3,1,3,1,3,1,3,3,3,135,8,3,1,4,1,4,1,4,1,4,3,4,141,8,4,1,4,1,4,
-		1,5,1,5,1,5,1,5,3,5,149,8,5,1,5,1,5,1,5,1,6,1,6,1,6,3,6,157,8,6,1,6,1,
-		6,1,6,1,7,1,7,1,7,1,7,1,7,3,7,167,8,7,1,7,1,7,1,7,1,8,1,8,1,8,1,8,3,8,
-		176,8,8,1,8,1,8,1,8,1,9,1,9,1,9,1,9,3,9,185,8,9,1,9,1,9,1,9,1,9,1,9,1,
-		9,1,9,3,9,194,8,9,1,9,1,9,3,9,198,8,9,1,10,1,10,1,10,1,10,1,10,1,10,1,
-		10,1,10,1,10,1,10,3,10,210,8,10,1,11,1,11,5,11,214,8,11,10,11,12,11,217,
-		9,11,1,11,1,11,1,12,1,12,1,13,1,13,1,13,1,14,1,14,1,14,1,14,1,14,1,14,
-		1,14,3,14,233,8,14,1,15,1,15,1,15,1,15,1,15,1,15,1,16,1,16,1,16,1,16,1,
-		16,1,16,1,16,1,16,1,17,1,17,1,17,1,17,1,17,1,17,1,18,1,18,3,18,257,8,18,
-		1,18,1,18,3,18,261,8,18,1,18,3,18,264,8,18,1,18,1,18,3,18,268,8,18,1,18,
-		1,18,3,18,272,8,18,1,18,1,18,1,18,1,18,1,18,3,18,279,8,18,1,19,1,19,1,
-		19,1,19,1,19,1,19,5,19,287,8,19,10,19,12,19,290,9,19,1,19,1,19,1,20,4,
-		20,295,8,20,11,20,12,20,296,1,20,5,20,300,8,20,10,20,12,20,303,9,20,1,
-		21,1,21,1,21,1,21,1,21,1,21,3,21,311,8,21,1,22,1,22,3,22,315,8,22,1,22,
-		1,22,1,22,1,22,1,22,3,22,322,8,22,1,23,1,23,1,24,1,24,1,24,1,24,1,24,3,
-		24,331,8,24,1,25,1,25,1,25,1,25,1,25,1,25,3,25,339,8,25,1,26,1,26,1,26,
-		5,26,344,8,26,10,26,12,26,347,9,26,1,27,1,27,1,27,5,27,352,8,27,10,27,
-		12,27,355,9,27,1,28,1,28,1,28,5,28,360,8,28,10,28,12,28,363,9,28,1,29,
-		1,29,1,29,5,29,368,8,29,10,29,12,29,371,9,29,1,30,1,30,1,30,5,30,376,8,
-		30,10,30,12,30,379,9,30,1,31,1,31,1,31,5,31,384,8,31,10,31,12,31,387,9,
-		31,1,32,1,32,1,32,5,32,392,8,32,10,32,12,32,395,9,32,1,33,1,33,1,33,5,
-		33,400,8,33,10,33,12,33,403,9,33,1,34,1,34,1,34,5,34,408,8,34,10,34,12,
-		34,411,9,34,1,35,1,35,1,35,5,35,416,8,35,10,35,12,35,419,9,35,1,36,1,36,
-		1,36,3,36,424,8,36,1,37,1,37,1,37,3,37,429,8,37,1,37,1,37,1,37,1,37,1,
-		37,1,37,1,37,1,37,1,37,5,37,440,8,37,10,37,12,37,443,9,37,1,38,1,38,1,
-		38,1,38,1,38,1,38,1,38,1,38,1,38,1,38,1,38,1,38,1,38,3,38,458,8,38,1,38,
-		1,38,1,38,1,38,1,38,3,38,465,8,38,3,38,467,8,38,1,39,1,39,1,39,5,39,472,
-		8,39,10,39,12,39,475,9,39,1,40,1,40,1,40,1,40,5,40,481,8,40,10,40,12,40,
-		484,9,40,1,41,1,41,3,41,488,8,41,1,42,1,42,1,43,1,43,1,43,5,43,495,8,43,
-		10,43,12,43,498,9,43,1,44,1,44,1,44,1,45,1,45,1,46,1,46,1,46,1,46,1,47,
-		1,47,1,47,5,47,512,8,47,10,47,12,47,515,9,47,1,48,1,48,1,48,0,0,49,0,2,
-		4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,
-		54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,88,90,92,94,96,0,11,
-		1,0,47,51,1,0,41,42,1,0,43,46,1,0,58,59,1,0,33,34,1,0,35,37,4,0,33,34,
-		40,40,52,53,57,57,1,0,60,61,1,0,24,28,1,0,19,21,2,0,22,22,29,32,545,0,
-		106,1,0,0,0,2,111,1,0,0,0,4,126,1,0,0,0,6,129,1,0,0,0,8,136,1,0,0,0,10,
-		144,1,0,0,0,12,153,1,0,0,0,14,161,1,0,0,0,16,171,1,0,0,0,18,197,1,0,0,
-		0,20,209,1,0,0,0,22,211,1,0,0,0,24,220,1,0,0,0,26,222,1,0,0,0,28,225,1,
-		0,0,0,30,234,1,0,0,0,32,240,1,0,0,0,34,248,1,0,0,0,36,278,1,0,0,0,38,280,
-		1,0,0,0,40,294,1,0,0,0,42,310,1,0,0,0,44,321,1,0,0,0,46,323,1,0,0,0,48,
-		330,1,0,0,0,50,332,1,0,0,0,52,340,1,0,0,0,54,348,1,0,0,0,56,356,1,0,0,
-		0,58,364,1,0,0,0,60,372,1,0,0,0,62,380,1,0,0,0,64,388,1,0,0,0,66,396,1,
-		0,0,0,68,404,1,0,0,0,70,412,1,0,0,0,72,423,1,0,0,0,74,425,1,0,0,0,76,466,
-		1,0,0,0,78,468,1,0,0,0,80,476,1,0,0,0,82,487,1,0,0,0,84,489,1,0,0,0,86,
-		491,1,0,0,0,88,499,1,0,0,0,90,502,1,0,0,0,92,504,1,0,0,0,94,508,1,0,0,
-		0,96,516,1,0,0,0,98,105,3,92,46,0,99,105,3,14,7,0,100,105,3,16,8,0,101,
-		105,3,2,1,0,102,105,3,18,9,0,103,105,3,20,10,0,104,98,1,0,0,0,104,99,1,
-		0,0,0,104,100,1,0,0,0,104,101,1,0,0,0,104,102,1,0,0,0,104,103,1,0,0,0,
-		105,108,1,0,0,0,106,104,1,0,0,0,106,107,1,0,0,0,107,109,1,0,0,0,108,106,
-		1,0,0,0,109,110,5,0,0,1,110,1,1,0,0,0,111,112,5,3,0,0,112,115,5,72,0,0,
-		113,114,5,4,0,0,114,116,3,82,41,0,115,113,1,0,0,0,115,116,1,0,0,0,116,
-		117,1,0,0,0,117,121,5,65,0,0,118,120,3,4,2,0,119,118,1,0,0,0,120,123,1,
-		0,0,0,121,119,1,0,0,0,121,122,1,0,0,0,122,124,1,0,0,0,123,121,1,0,0,0,
-		124,125,5,66,0,0,125,3,1,0,0,0,126,127,3,6,3,0,127,5,1,0,0,0,128,130,3,
-		90,45,0,129,128,1,0,0,0,129,130,1,0,0,0,130,134,1,0,0,0,131,135,3,8,4,
-		0,132,135,3,10,5,0,133,135,3,12,6,0,134,131,1,0,0,0,134,132,1,0,0,0,134,
-		133,1,0,0,0,135,7,1,0,0,0,136,137,3,80,40,0,137,140,5,72,0,0,138,139,5,
-		47,0,0,139,141,3,46,23,0,140,138,1,0,0,0,140,141,1,0,0,0,141,142,1,0,0,
-		0,142,143,5,69,0,0,143,9,1,0,0,0,144,145,3,80,40,0,145,146,5,72,0,0,146,
-		148,5,63,0,0,147,149,3,86,43,0,148,147,1,0,0,0,148,149,1,0,0,0,149,150,
-		1,0,0,0,150,151,5,64,0,0,151,152,3,22,11,0,152,11,1,0,0,0,153,154,5,72,
-		0,0,154,156,5,63,0,0,155,157,3,86,43,0,156,155,1,0,0,0,156,157,1,0,0,0,
-		157,158,1,0,0,0,158,159,5,64,0,0,159,160,3,22,11,0,160,13,1,0,0,0,161,
-		162,5,2,0,0,162,163,3,80,40,0,163,164,5,72,0,0,164,166,5,63,0,0,165,167,
-		3,86,43,0,166,165,1,0,0,0,166,167,1,0,0,0,167,168,1,0,0,0,168,169,5,64,
-		0,0,169,170,5,69,0,0,170,15,1,0,0,0,171,172,3,80,40,0,172,173,5,72,0,0,
-		173,175,5,63,0,0,174,176,3,86,43,0,175,174,1,0,0,0,175,176,1,0,0,0,176,
-		177,1,0,0,0,177,178,5,64,0,0,178,179,3,22,11,0,179,17,1,0,0,0,180,181,
-		3,80,40,0,181,184,5,72,0,0,182,183,5,47,0,0,183,185,3,46,23,0,184,182,
-		1,0,0,0,184,185,1,0,0,0,185,186,1,0,0,0,186,187,5,69,0,0,187,198,1,0,0,
-		0,188,189,5,23,0,0,189,190,3,80,40,0,190,193,5,72,0,0,191,192,5,47,0,0,
-		192,194,3,46,23,0,193,191,1,0,0,0,193,194,1,0,0,0,194,195,1,0,0,0,195,
-		196,5,69,0,0,196,198,1,0,0,0,197,180,1,0,0,0,197,188,1,0,0,0,198,19,1,
-		0,0,0,199,210,3,22,11,0,200,210,3,18,9,0,201,210,3,28,14,0,202,210,3,30,
-		15,0,203,210,3,32,16,0,204,210,3,34,17,0,205,210,3,92,46,0,206,210,3,38,
-		19,0,207,210,3,44,22,0,208,210,3,26,13,0,209,199,1,0,0,0,209,200,1,0,0,
-		0,209,201,1,0,0,0,209,202,1,0,0,0,209,203,1,0,0,0,209,204,1,0,0,0,209,
-		205,1,0,0,0,209,206,1,0,0,0,209,207,1,0,0,0,209,208,1,0,0,0,210,21,1,0,
-		0,0,211,215,5,65,0,0,212,214,3,20,10,0,213,212,1,0,0,0,214,217,1,0,0,0,
-		215,213,1,0,0,0,215,216,1,0,0,0,216,218,1,0,0,0,217,215,1,0,0,0,218,219,
-		5,66,0,0,219,23,1,0,0,0,220,221,7,0,0,0,221,25,1,0,0,0,222,223,3,46,23,
-		0,223,224,5,69,0,0,224,27,1,0,0,0,225,226,5,7,0,0,226,227,5,63,0,0,227,
-		228,3,46,23,0,228,229,5,64,0,0,229,232,3,20,10,0,230,231,5,8,0,0,231,233,
-		3,20,10,0,232,230,1,0,0,0,232,233,1,0,0,0,233,29,1,0,0,0,234,235,5,9,0,
-		0,235,236,5,63,0,0,236,237,3,46,23,0,237,238,5,64,0,0,238,239,3,20,10,
-		0,239,31,1,0,0,0,240,241,5,10,0,0,241,242,3,20,10,0,242,243,5,9,0,0,243,
-		244,5,63,0,0,244,245,3,46,23,0,245,246,5,64,0,0,246,247,5,69,0,0,247,33,
-		1,0,0,0,248,249,5,11,0,0,249,250,5,63,0,0,250,251,3,36,18,0,251,252,5,
-		64,0,0,252,253,3,20,10,0,253,35,1,0,0,0,254,256,3,18,9,0,255,257,3,46,
-		23,0,256,255,1,0,0,0,256,257,1,0,0,0,257,258,1,0,0,0,258,260,5,69,0,0,
-		259,261,3,46,23,0,260,259,1,0,0,0,260,261,1,0,0,0,261,279,1,0,0,0,262,
-		264,3,46,23,0,263,262,1,0,0,0,263,264,1,0,0,0,264,265,1,0,0,0,265,267,
-		5,69,0,0,266,268,3,46,23,0,267,266,1,0,0,0,267,268,1,0,0,0,268,269,1,0,
-		0,0,269,271,5,69,0,0,270,272,3,46,23,0,271,270,1,0,0,0,271,272,1,0,0,0,
-		272,279,1,0,0,0,273,274,3,80,40,0,274,275,5,72,0,0,275,276,5,12,0,0,276,
-		277,3,46,23,0,277,279,1,0,0,0,278,254,1,0,0,0,278,263,1,0,0,0,278,273,
-		1,0,0,0,279,37,1,0,0,0,280,281,5,13,0,0,281,282,5,63,0,0,282,283,3,46,
-		23,0,283,284,5,64,0,0,284,288,5,65,0,0,285,287,3,40,20,0,286,285,1,0,0,
-		0,287,290,1,0,0,0,288,286,1,0,0,0,288,289,1,0,0,0,289,291,1,0,0,0,290,
-		288,1,0,0,0,291,292,5,66,0,0,292,39,1,0,0,0,293,295,3,42,21,0,294,293,
-		1,0,0,0,295,296,1,0,0,0,296,294,1,0,0,0,296,297,1,0,0,0,297,301,1,0,0,
-		0,298,300,3,20,10,0,299,298,1,0,0,0,300,303,1,0,0,0,301,299,1,0,0,0,301,
-		302,1,0,0,0,302,41,1,0,0,0,303,301,1,0,0,0,304,305,5,14,0,0,305,306,3,
-		46,23,0,306,307,5,71,0,0,307,311,1,0,0,0,308,309,5,15,0,0,309,311,5,71,
-		0,0,310,304,1,0,0,0,310,308,1,0,0,0,311,43,1,0,0,0,312,314,5,16,0,0,313,
-		315,3,46,23,0,314,313,1,0,0,0,314,315,1,0,0,0,315,316,1,0,0,0,316,322,
-		5,69,0,0,317,318,5,17,0,0,318,322,5,69,0,0,319,320,5,18,0,0,320,322,5,
-		69,0,0,321,312,1,0,0,0,321,317,1,0,0,0,321,319,1,0,0,0,322,45,1,0,0,0,
-		323,324,3,48,24,0,324,47,1,0,0,0,325,331,3,50,25,0,326,327,3,74,37,0,327,
-		328,3,24,12,0,328,329,3,48,24,0,329,331,1,0,0,0,330,325,1,0,0,0,330,326,
-		1,0,0,0,331,49,1,0,0,0,332,338,3,52,26,0,333,334,5,62,0,0,334,335,3,46,
-		23,0,335,336,5,71,0,0,336,337,3,46,23,0,337,339,1,0,0,0,338,333,1,0,0,
-		0,338,339,1,0,0,0,339,51,1,0,0,0,340,345,3,54,27,0,341,342,5,39,0,0,342,
-		344,3,54,27,0,343,341,1,0,0,0,344,347,1,0,0,0,345,343,1,0,0,0,345,346,
-		1,0,0,0,346,53,1,0,0,0,347,345,1,0,0,0,348,353,3,56,28,0,349,350,5,38,
-		0,0,350,352,3,56,28,0,351,349,1,0,0,0,352,355,1,0,0,0,353,351,1,0,0,0,
-		353,354,1,0,0,0,354,55,1,0,0,0,355,353,1,0,0,0,356,361,3,58,29,0,357,358,
-		5,55,0,0,358,360,3,58,29,0,359,357,1,0,0,0,360,363,1,0,0,0,361,359,1,0,
-		0,0,361,362,1,0,0,0,362,57,1,0,0,0,363,361,1,0,0,0,364,369,3,60,30,0,365,
-		366,5,56,0,0,366,368,3,60,30,0,367,365,1,0,0,0,368,371,1,0,0,0,369,367,
-		1,0,0,0,369,370,1,0,0,0,370,59,1,0,0,0,371,369,1,0,0,0,372,377,3,62,31,
-		0,373,374,5,54,0,0,374,376,3,62,31,0,375,373,1,0,0,0,376,379,1,0,0,0,377,
-		375,1,0,0,0,377,378,1,0,0,0,378,61,1,0,0,0,379,377,1,0,0,0,380,385,3,64,
-		32,0,381,382,7,1,0,0,382,384,3,64,32,0,383,381,1,0,0,0,384,387,1,0,0,0,
-		385,383,1,0,0,0,385,386,1,0,0,0,386,63,1,0,0,0,387,385,1,0,0,0,388,393,
-		3,66,33,0,389,390,7,2,0,0,390,392,3,66,33,0,391,389,1,0,0,0,392,395,1,
-		0,0,0,393,391,1,0,0,0,393,394,1,0,0,0,394,65,1,0,0,0,395,393,1,0,0,0,396,
-		401,3,68,34,0,397,398,7,3,0,0,398,400,3,68,34,0,399,397,1,0,0,0,400,403,
-		1,0,0,0,401,399,1,0,0,0,401,402,1,0,0,0,402,67,1,0,0,0,403,401,1,0,0,0,
-		404,409,3,70,35,0,405,406,7,4,0,0,406,408,3,70,35,0,407,405,1,0,0,0,408,
-		411,1,0,0,0,409,407,1,0,0,0,409,410,1,0,0,0,410,69,1,0,0,0,411,409,1,0,
-		0,0,412,417,3,72,36,0,413,414,7,5,0,0,414,416,3,72,36,0,415,413,1,0,0,
-		0,416,419,1,0,0,0,417,415,1,0,0,0,417,418,1,0,0,0,418,71,1,0,0,0,419,417,
-		1,0,0,0,420,421,7,6,0,0,421,424,3,72,36,0,422,424,3,74,37,0,423,420,1,
-		0,0,0,423,422,1,0,0,0,424,73,1,0,0,0,425,441,3,76,38,0,426,428,5,63,0,
-		0,427,429,3,78,39,0,428,427,1,0,0,0,428,429,1,0,0,0,429,430,1,0,0,0,430,
-		440,5,64,0,0,431,432,5,67,0,0,432,433,3,46,23,0,433,434,5,68,0,0,434,440,
-		1,0,0,0,435,436,7,7,0,0,436,440,5,72,0,0,437,440,5,52,0,0,438,440,5,53,
-		0,0,439,426,1,0,0,0,439,431,1,0,0,0,439,435,1,0,0,0,439,437,1,0,0,0,439,
-		438,1,0,0,0,440,443,1,0,0,0,441,439,1,0,0,0,441,442,1,0,0,0,442,75,1,0,
-		0,0,443,441,1,0,0,0,444,445,5,63,0,0,445,446,3,46,23,0,446,447,5,64,0,
-		0,447,467,1,0,0,0,448,467,3,96,48,0,449,467,5,72,0,0,450,451,5,54,0,0,
-		451,467,5,72,0,0,452,467,5,6,0,0,453,454,5,5,0,0,454,464,3,82,41,0,455,
-		457,5,63,0,0,456,458,3,78,39,0,457,456,1,0,0,0,457,458,1,0,0,0,458,459,
-		1,0,0,0,459,465,5,64,0,0,460,461,5,67,0,0,461,462,3,46,23,0,462,463,5,
-		68,0,0,463,465,1,0,0,0,464,455,1,0,0,0,464,460,1,0,0,0,465,467,1,0,0,0,
-		466,444,1,0,0,0,466,448,1,0,0,0,466,449,1,0,0,0,466,450,1,0,0,0,466,452,
-		1,0,0,0,466,453,1,0,0,0,467,77,1,0,0,0,468,473,3,46,23,0,469,470,5,70,
-		0,0,470,472,3,46,23,0,471,469,1,0,0,0,472,475,1,0,0,0,473,471,1,0,0,0,
-		473,474,1,0,0,0,474,79,1,0,0,0,475,473,1,0,0,0,476,482,3,82,41,0,477,478,
-		5,67,0,0,478,481,5,68,0,0,479,481,5,35,0,0,480,477,1,0,0,0,480,479,1,0,
-		0,0,481,484,1,0,0,0,482,480,1,0,0,0,482,483,1,0,0,0,483,81,1,0,0,0,484,
-		482,1,0,0,0,485,488,3,84,42,0,486,488,5,72,0,0,487,485,1,0,0,0,487,486,
-		1,0,0,0,488,83,1,0,0,0,489,490,7,8,0,0,490,85,1,0,0,0,491,496,3,88,44,
-		0,492,493,5,70,0,0,493,495,3,88,44,0,494,492,1,0,0,0,495,498,1,0,0,0,496,
-		494,1,0,0,0,496,497,1,0,0,0,497,87,1,0,0,0,498,496,1,0,0,0,499,500,3,80,
-		40,0,500,501,5,72,0,0,501,89,1,0,0,0,502,503,7,9,0,0,503,91,1,0,0,0,504,
-		505,5,1,0,0,505,506,3,94,47,0,506,507,5,69,0,0,507,93,1,0,0,0,508,513,
-		5,72,0,0,509,510,5,60,0,0,510,512,5,72,0,0,511,509,1,0,0,0,512,515,1,0,
-		0,0,513,511,1,0,0,0,513,514,1,0,0,0,514,95,1,0,0,0,515,513,1,0,0,0,516,
-		517,7,10,0,0,517,97,1,0,0,0,54,104,106,115,121,129,134,140,148,156,166,
-		175,184,193,197,209,215,232,256,260,263,267,271,278,288,296,301,310,314,
-		321,330,338,345,353,361,369,377,385,393,401,409,417,423,428,439,441,457,
-		464,466,473,480,482,487,496,513
+		2,36,7,36,2,37,7,37,2,38,7,38,2,39,7,39,2,40,7,40,2,41,7,41,1,0,1,0,1,
+		0,1,0,1,0,5,0,90,8,0,10,0,12,0,93,9,0,1,0,1,0,1,1,1,1,1,1,1,1,1,2,1,2,
+		1,2,1,2,1,3,1,3,1,3,1,3,1,3,1,3,5,3,111,8,3,10,3,12,3,114,9,3,1,3,1,3,
+		1,4,1,4,1,4,5,4,121,8,4,10,4,12,4,124,9,4,1,5,1,5,1,5,1,5,3,5,130,8,5,
+		1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,3,7,143,8,7,1,7,1,7,1,8,1,
+		8,1,8,1,8,3,8,151,8,8,1,8,1,8,1,8,1,9,1,9,1,9,1,9,1,9,3,9,161,8,9,1,9,
+		1,9,1,9,1,10,1,10,1,10,5,10,169,8,10,10,10,12,10,172,9,10,1,10,1,10,1,
+		10,5,10,177,8,10,10,10,12,10,180,9,10,3,10,182,8,10,1,11,1,11,1,12,1,12,
+		1,13,1,13,1,13,5,13,191,8,13,10,13,12,13,194,9,13,1,14,1,14,1,14,1,15,
+		1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,1,15,3,15,210,8,15,1,16,1,
+		16,3,16,214,8,16,1,17,1,17,1,17,5,17,219,8,17,10,17,12,17,222,9,17,1,17,
+		1,17,1,18,1,18,1,18,1,18,1,18,1,18,1,18,3,18,233,8,18,1,19,1,19,1,19,1,
+		19,1,19,1,19,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,21,1,21,1,21,1,
+		21,1,21,3,21,254,8,21,1,21,3,21,257,8,21,1,21,1,21,3,21,261,8,21,1,21,
+		1,21,1,21,1,22,1,22,1,22,1,22,1,22,1,22,1,22,1,22,1,22,1,23,1,23,1,23,
+		1,23,1,23,1,23,5,23,281,8,23,10,23,12,23,284,9,23,1,23,1,23,1,24,4,24,
+		289,8,24,11,24,12,24,290,1,24,5,24,294,8,24,10,24,12,24,297,9,24,1,25,
+		1,25,1,25,1,25,1,25,1,25,3,25,305,8,25,1,26,1,26,1,26,1,26,1,26,1,26,1,
+		26,1,26,3,26,315,8,26,1,26,1,26,3,26,319,8,26,1,27,1,27,3,27,323,8,27,
+		1,27,1,27,1,27,1,27,1,27,3,27,330,8,27,1,28,1,28,1,28,1,29,1,29,1,29,1,
+		29,1,29,1,29,1,29,1,29,1,29,1,29,3,29,345,8,29,3,29,347,8,29,1,30,5,30,
+		350,8,30,10,30,12,30,353,9,30,1,30,1,30,1,30,5,30,358,8,30,10,30,12,30,
+		361,9,30,1,30,5,30,364,8,30,10,30,12,30,367,9,30,1,30,1,30,5,30,371,8,
+		30,10,30,12,30,374,9,30,1,30,5,30,377,8,30,10,30,12,30,380,9,30,1,30,1,
+		30,5,30,384,8,30,10,30,12,30,387,9,30,1,30,5,30,390,8,30,10,30,12,30,393,
+		9,30,1,30,1,30,5,30,397,8,30,10,30,12,30,400,9,30,1,30,5,30,403,8,30,10,
+		30,12,30,406,9,30,1,30,1,30,5,30,410,8,30,10,30,12,30,413,9,30,1,30,5,
+		30,416,8,30,10,30,12,30,419,9,30,1,30,1,30,5,30,423,8,30,10,30,12,30,426,
+		9,30,1,30,5,30,429,8,30,10,30,12,30,432,9,30,1,30,1,30,5,30,436,8,30,10,
+		30,12,30,439,9,30,1,30,5,30,442,8,30,10,30,12,30,445,9,30,1,30,1,30,5,
+		30,449,8,30,10,30,12,30,452,9,30,1,30,5,30,455,8,30,10,30,12,30,458,9,
+		30,1,30,1,30,5,30,462,8,30,10,30,12,30,465,9,30,1,30,5,30,468,8,30,10,
+		30,12,30,471,9,30,1,30,1,30,5,30,475,8,30,10,30,12,30,478,9,30,1,30,5,
+		30,481,8,30,10,30,12,30,484,9,30,1,31,1,31,1,32,1,32,1,32,3,32,491,8,32,
+		1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,1,32,5,32,502,8,32,10,32,12,32,
+		505,9,32,1,33,1,33,1,33,1,33,1,33,1,33,1,33,5,33,514,8,33,10,33,12,33,
+		517,9,33,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,1,34,3,34,528,8,34,1,
+		35,1,35,1,35,5,35,533,8,35,10,35,12,35,536,9,35,1,36,1,36,1,36,3,36,541,
+		8,36,1,36,1,36,1,36,1,37,1,37,1,37,1,37,5,37,550,8,37,10,37,12,37,553,
+		9,37,3,37,555,8,37,1,37,1,37,1,38,1,38,1,38,1,38,1,38,5,38,564,8,38,10,
+		38,12,38,567,9,38,3,38,569,8,38,1,38,1,38,1,39,1,39,1,39,1,39,1,40,1,40,
+		1,41,1,41,1,41,0,0,42,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,
+		36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,
+		0,11,1,0,27,29,1,0,21,25,1,0,34,36,1,0,32,33,1,0,58,59,1,0,47,50,1,0,45,
+		46,4,0,32,33,42,43,51,51,57,57,1,0,71,72,3,0,26,26,30,31,72,75,2,0,37,
+		41,44,44,628,0,91,1,0,0,0,2,96,1,0,0,0,4,100,1,0,0,0,6,104,1,0,0,0,8,117,
+		1,0,0,0,10,129,1,0,0,0,12,131,1,0,0,0,14,138,1,0,0,0,16,146,1,0,0,0,18,
+		155,1,0,0,0,20,181,1,0,0,0,22,183,1,0,0,0,24,185,1,0,0,0,26,187,1,0,0,
+		0,28,195,1,0,0,0,30,209,1,0,0,0,32,213,1,0,0,0,34,215,1,0,0,0,36,225,1,
+		0,0,0,38,234,1,0,0,0,40,240,1,0,0,0,42,248,1,0,0,0,44,265,1,0,0,0,46,274,
+		1,0,0,0,48,288,1,0,0,0,50,304,1,0,0,0,52,306,1,0,0,0,54,329,1,0,0,0,56,
+		331,1,0,0,0,58,346,1,0,0,0,60,351,1,0,0,0,62,485,1,0,0,0,64,487,1,0,0,
+		0,66,506,1,0,0,0,68,527,1,0,0,0,70,529,1,0,0,0,72,537,1,0,0,0,74,545,1,
+		0,0,0,76,558,1,0,0,0,78,572,1,0,0,0,80,576,1,0,0,0,82,578,1,0,0,0,84,90,
+		3,2,1,0,85,90,3,4,2,0,86,90,3,6,3,0,87,90,3,10,5,0,88,90,3,30,15,0,89,
+		84,1,0,0,0,89,85,1,0,0,0,89,86,1,0,0,0,89,87,1,0,0,0,89,88,1,0,0,0,90,
+		93,1,0,0,0,91,89,1,0,0,0,91,92,1,0,0,0,92,94,1,0,0,0,93,91,1,0,0,0,94,
+		95,5,0,0,1,95,1,1,0,0,0,96,97,5,1,0,0,97,98,5,72,0,0,98,99,5,67,0,0,99,
+		3,1,0,0,0,100,101,5,2,0,0,101,102,5,72,0,0,102,103,5,67,0,0,103,5,1,0,
+		0,0,104,105,5,3,0,0,105,106,3,8,4,0,106,112,5,63,0,0,107,111,3,10,5,0,
+		108,111,3,30,15,0,109,111,3,18,9,0,110,107,1,0,0,0,110,108,1,0,0,0,110,
+		109,1,0,0,0,111,114,1,0,0,0,112,110,1,0,0,0,112,113,1,0,0,0,113,115,1,
+		0,0,0,114,112,1,0,0,0,115,116,5,64,0,0,116,7,1,0,0,0,117,122,5,71,0,0,
+		118,119,5,70,0,0,119,121,5,71,0,0,120,118,1,0,0,0,121,124,1,0,0,0,122,
+		120,1,0,0,0,122,123,1,0,0,0,123,9,1,0,0,0,124,122,1,0,0,0,125,130,3,12,
+		6,0,126,130,3,14,7,0,127,130,3,16,8,0,128,130,3,18,9,0,129,125,1,0,0,0,
+		129,126,1,0,0,0,129,127,1,0,0,0,129,128,1,0,0,0,130,11,1,0,0,0,131,132,
+		5,5,0,0,132,133,3,20,10,0,133,134,5,71,0,0,134,135,5,44,0,0,135,136,3,
+		58,29,0,136,137,5,67,0,0,137,13,1,0,0,0,138,139,3,20,10,0,139,142,5,71,
+		0,0,140,141,5,44,0,0,141,143,3,58,29,0,142,140,1,0,0,0,142,143,1,0,0,0,
+		143,144,1,0,0,0,144,145,5,67,0,0,145,15,1,0,0,0,146,147,3,20,10,0,147,
+		148,5,71,0,0,148,150,5,61,0,0,149,151,3,26,13,0,150,149,1,0,0,0,150,151,
+		1,0,0,0,151,152,1,0,0,0,152,153,5,62,0,0,153,154,3,34,17,0,154,17,1,0,
+		0,0,155,156,5,4,0,0,156,157,3,20,10,0,157,158,5,71,0,0,158,160,5,61,0,
+		0,159,161,3,26,13,0,160,159,1,0,0,0,160,161,1,0,0,0,161,162,1,0,0,0,162,
+		163,5,62,0,0,163,164,5,67,0,0,164,19,1,0,0,0,165,170,3,24,12,0,166,167,
+		5,65,0,0,167,169,5,66,0,0,168,166,1,0,0,0,169,172,1,0,0,0,170,168,1,0,
+		0,0,170,171,1,0,0,0,171,182,1,0,0,0,172,170,1,0,0,0,173,178,3,22,11,0,
+		174,175,5,65,0,0,175,177,5,66,0,0,176,174,1,0,0,0,177,180,1,0,0,0,178,
+		176,1,0,0,0,178,179,1,0,0,0,179,182,1,0,0,0,180,178,1,0,0,0,181,165,1,
+		0,0,0,181,173,1,0,0,0,182,21,1,0,0,0,183,184,7,0,0,0,184,23,1,0,0,0,185,
+		186,7,1,0,0,186,25,1,0,0,0,187,192,3,28,14,0,188,189,5,68,0,0,189,191,
+		3,28,14,0,190,188,1,0,0,0,191,194,1,0,0,0,192,190,1,0,0,0,192,193,1,0,
+		0,0,193,27,1,0,0,0,194,192,1,0,0,0,195,196,3,20,10,0,196,197,5,71,0,0,
+		197,29,1,0,0,0,198,210,3,34,17,0,199,210,3,32,16,0,200,210,3,36,18,0,201,
+		210,3,38,19,0,202,210,3,40,20,0,203,210,3,42,21,0,204,210,3,44,22,0,205,
+		210,3,46,23,0,206,210,3,52,26,0,207,210,3,54,27,0,208,210,3,56,28,0,209,
+		198,1,0,0,0,209,199,1,0,0,0,209,200,1,0,0,0,209,201,1,0,0,0,209,202,1,
+		0,0,0,209,203,1,0,0,0,209,204,1,0,0,0,209,205,1,0,0,0,209,206,1,0,0,0,
+		209,207,1,0,0,0,209,208,1,0,0,0,210,31,1,0,0,0,211,214,3,12,6,0,212,214,
+		3,14,7,0,213,211,1,0,0,0,213,212,1,0,0,0,214,33,1,0,0,0,215,220,5,63,0,
+		0,216,219,3,32,16,0,217,219,3,30,15,0,218,216,1,0,0,0,218,217,1,0,0,0,
+		219,222,1,0,0,0,220,218,1,0,0,0,220,221,1,0,0,0,221,223,1,0,0,0,222,220,
+		1,0,0,0,223,224,5,64,0,0,224,35,1,0,0,0,225,226,5,6,0,0,226,227,5,61,0,
+		0,227,228,3,58,29,0,228,229,5,62,0,0,229,232,3,30,15,0,230,231,5,7,0,0,
+		231,233,3,30,15,0,232,230,1,0,0,0,232,233,1,0,0,0,233,37,1,0,0,0,234,235,
+		5,8,0,0,235,236,5,61,0,0,236,237,3,58,29,0,237,238,5,62,0,0,238,239,3,
+		30,15,0,239,39,1,0,0,0,240,241,5,9,0,0,241,242,3,30,15,0,242,243,5,8,0,
+		0,243,244,5,61,0,0,244,245,3,58,29,0,245,246,5,62,0,0,246,247,5,67,0,0,
+		247,41,1,0,0,0,248,249,5,10,0,0,249,253,5,61,0,0,250,254,3,14,7,0,251,
+		254,3,56,28,0,252,254,5,67,0,0,253,250,1,0,0,0,253,251,1,0,0,0,253,252,
+		1,0,0,0,253,254,1,0,0,0,254,256,1,0,0,0,255,257,3,58,29,0,256,255,1,0,
+		0,0,256,257,1,0,0,0,257,258,1,0,0,0,258,260,5,67,0,0,259,261,3,58,29,0,
+		260,259,1,0,0,0,260,261,1,0,0,0,261,262,1,0,0,0,262,263,5,62,0,0,263,264,
+		3,30,15,0,264,43,1,0,0,0,265,266,5,10,0,0,266,267,5,61,0,0,267,268,3,20,
+		10,0,268,269,5,71,0,0,269,270,5,11,0,0,270,271,3,58,29,0,271,272,5,62,
+		0,0,272,273,3,30,15,0,273,45,1,0,0,0,274,275,5,12,0,0,275,276,5,61,0,0,
+		276,277,3,58,29,0,277,278,5,62,0,0,278,282,5,63,0,0,279,281,3,48,24,0,
+		280,279,1,0,0,0,281,284,1,0,0,0,282,280,1,0,0,0,282,283,1,0,0,0,283,285,
+		1,0,0,0,284,282,1,0,0,0,285,286,5,64,0,0,286,47,1,0,0,0,287,289,3,50,25,
+		0,288,287,1,0,0,0,289,290,1,0,0,0,290,288,1,0,0,0,290,291,1,0,0,0,291,
+		295,1,0,0,0,292,294,3,30,15,0,293,292,1,0,0,0,294,297,1,0,0,0,295,293,
+		1,0,0,0,295,296,1,0,0,0,296,49,1,0,0,0,297,295,1,0,0,0,298,299,5,13,0,
+		0,299,300,3,58,29,0,300,301,5,69,0,0,301,305,1,0,0,0,302,303,5,14,0,0,
+		303,305,5,69,0,0,304,298,1,0,0,0,304,302,1,0,0,0,305,51,1,0,0,0,306,307,
+		5,15,0,0,307,314,3,34,17,0,308,309,5,16,0,0,309,310,5,61,0,0,310,311,3,
+		28,14,0,311,312,5,62,0,0,312,313,3,34,17,0,313,315,1,0,0,0,314,308,1,0,
+		0,0,314,315,1,0,0,0,315,318,1,0,0,0,316,317,5,17,0,0,317,319,3,34,17,0,
+		318,316,1,0,0,0,318,319,1,0,0,0,319,53,1,0,0,0,320,322,5,18,0,0,321,323,
+		3,58,29,0,322,321,1,0,0,0,322,323,1,0,0,0,323,324,1,0,0,0,324,330,5,67,
+		0,0,325,326,5,19,0,0,326,330,5,67,0,0,327,328,5,20,0,0,328,330,5,67,0,
+		0,329,320,1,0,0,0,329,325,1,0,0,0,329,327,1,0,0,0,330,55,1,0,0,0,331,332,
+		3,58,29,0,332,333,5,67,0,0,333,57,1,0,0,0,334,335,3,66,33,0,335,336,3,
+		82,41,0,336,337,3,58,29,0,337,347,1,0,0,0,338,344,3,60,30,0,339,340,5,
+		60,0,0,340,341,3,58,29,0,341,342,5,69,0,0,342,343,3,58,29,0,343,345,1,
+		0,0,0,344,339,1,0,0,0,344,345,1,0,0,0,345,347,1,0,0,0,346,334,1,0,0,0,
+		346,338,1,0,0,0,347,59,1,0,0,0,348,350,3,62,31,0,349,348,1,0,0,0,350,353,
+		1,0,0,0,351,349,1,0,0,0,351,352,1,0,0,0,352,354,1,0,0,0,353,351,1,0,0,
+		0,354,365,3,64,32,0,355,359,7,2,0,0,356,358,3,62,31,0,357,356,1,0,0,0,
+		358,361,1,0,0,0,359,357,1,0,0,0,359,360,1,0,0,0,360,362,1,0,0,0,361,359,
+		1,0,0,0,362,364,3,64,32,0,363,355,1,0,0,0,364,367,1,0,0,0,365,363,1,0,
+		0,0,365,366,1,0,0,0,366,378,1,0,0,0,367,365,1,0,0,0,368,372,7,3,0,0,369,
+		371,3,62,31,0,370,369,1,0,0,0,371,374,1,0,0,0,372,370,1,0,0,0,372,373,
+		1,0,0,0,373,375,1,0,0,0,374,372,1,0,0,0,375,377,3,64,32,0,376,368,1,0,
+		0,0,377,380,1,0,0,0,378,376,1,0,0,0,378,379,1,0,0,0,379,391,1,0,0,0,380,
+		378,1,0,0,0,381,385,7,4,0,0,382,384,3,62,31,0,383,382,1,0,0,0,384,387,
+		1,0,0,0,385,383,1,0,0,0,385,386,1,0,0,0,386,388,1,0,0,0,387,385,1,0,0,
+		0,388,390,3,64,32,0,389,381,1,0,0,0,390,393,1,0,0,0,391,389,1,0,0,0,391,
+		392,1,0,0,0,392,404,1,0,0,0,393,391,1,0,0,0,394,398,7,5,0,0,395,397,3,
+		62,31,0,396,395,1,0,0,0,397,400,1,0,0,0,398,396,1,0,0,0,398,399,1,0,0,
+		0,399,401,1,0,0,0,400,398,1,0,0,0,401,403,3,64,32,0,402,394,1,0,0,0,403,
+		406,1,0,0,0,404,402,1,0,0,0,404,405,1,0,0,0,405,417,1,0,0,0,406,404,1,
+		0,0,0,407,411,7,6,0,0,408,410,3,62,31,0,409,408,1,0,0,0,410,413,1,0,0,
+		0,411,409,1,0,0,0,411,412,1,0,0,0,412,414,1,0,0,0,413,411,1,0,0,0,414,
+		416,3,64,32,0,415,407,1,0,0,0,416,419,1,0,0,0,417,415,1,0,0,0,417,418,
+		1,0,0,0,418,430,1,0,0,0,419,417,1,0,0,0,420,424,5,54,0,0,421,423,3,62,
+		31,0,422,421,1,0,0,0,423,426,1,0,0,0,424,422,1,0,0,0,424,425,1,0,0,0,425,
+		427,1,0,0,0,426,424,1,0,0,0,427,429,3,64,32,0,428,420,1,0,0,0,429,432,
+		1,0,0,0,430,428,1,0,0,0,430,431,1,0,0,0,431,443,1,0,0,0,432,430,1,0,0,
+		0,433,437,5,56,0,0,434,436,3,62,31,0,435,434,1,0,0,0,436,439,1,0,0,0,437,
+		435,1,0,0,0,437,438,1,0,0,0,438,440,1,0,0,0,439,437,1,0,0,0,440,442,3,
+		64,32,0,441,433,1,0,0,0,442,445,1,0,0,0,443,441,1,0,0,0,443,444,1,0,0,
+		0,444,456,1,0,0,0,445,443,1,0,0,0,446,450,5,55,0,0,447,449,3,62,31,0,448,
+		447,1,0,0,0,449,452,1,0,0,0,450,448,1,0,0,0,450,451,1,0,0,0,451,453,1,
+		0,0,0,452,450,1,0,0,0,453,455,3,64,32,0,454,446,1,0,0,0,455,458,1,0,0,
+		0,456,454,1,0,0,0,456,457,1,0,0,0,457,469,1,0,0,0,458,456,1,0,0,0,459,
+		463,5,52,0,0,460,462,3,62,31,0,461,460,1,0,0,0,462,465,1,0,0,0,463,461,
+		1,0,0,0,463,464,1,0,0,0,464,466,1,0,0,0,465,463,1,0,0,0,466,468,3,64,32,
+		0,467,459,1,0,0,0,468,471,1,0,0,0,469,467,1,0,0,0,469,470,1,0,0,0,470,
+		482,1,0,0,0,471,469,1,0,0,0,472,476,5,53,0,0,473,475,3,62,31,0,474,473,
+		1,0,0,0,475,478,1,0,0,0,476,474,1,0,0,0,476,477,1,0,0,0,477,479,1,0,0,
+		0,478,476,1,0,0,0,479,481,3,64,32,0,480,472,1,0,0,0,481,484,1,0,0,0,482,
+		480,1,0,0,0,482,483,1,0,0,0,483,61,1,0,0,0,484,482,1,0,0,0,485,486,7,7,
+		0,0,486,63,1,0,0,0,487,503,3,68,34,0,488,490,5,61,0,0,489,491,3,70,35,
+		0,490,489,1,0,0,0,490,491,1,0,0,0,491,492,1,0,0,0,492,502,5,62,0,0,493,
+		494,5,65,0,0,494,495,3,58,29,0,495,496,5,66,0,0,496,502,1,0,0,0,497,498,
+		5,70,0,0,498,502,5,71,0,0,499,502,5,42,0,0,500,502,5,43,0,0,501,488,1,
+		0,0,0,501,493,1,0,0,0,501,497,1,0,0,0,501,499,1,0,0,0,501,500,1,0,0,0,
+		502,505,1,0,0,0,503,501,1,0,0,0,503,504,1,0,0,0,504,65,1,0,0,0,505,503,
+		1,0,0,0,506,515,3,68,34,0,507,508,5,65,0,0,508,509,3,58,29,0,509,510,5,
+		66,0,0,510,514,1,0,0,0,511,512,5,70,0,0,512,514,5,71,0,0,513,507,1,0,0,
+		0,513,511,1,0,0,0,514,517,1,0,0,0,515,513,1,0,0,0,515,516,1,0,0,0,516,
+		67,1,0,0,0,517,515,1,0,0,0,518,519,5,61,0,0,519,520,3,58,29,0,520,521,
+		5,62,0,0,521,528,1,0,0,0,522,528,3,80,40,0,523,528,5,71,0,0,524,528,3,
+		72,36,0,525,528,3,74,37,0,526,528,3,76,38,0,527,518,1,0,0,0,527,522,1,
+		0,0,0,527,523,1,0,0,0,527,524,1,0,0,0,527,525,1,0,0,0,527,526,1,0,0,0,
+		528,69,1,0,0,0,529,534,3,58,29,0,530,531,5,68,0,0,531,533,3,58,29,0,532,
+		530,1,0,0,0,533,536,1,0,0,0,534,532,1,0,0,0,534,535,1,0,0,0,535,71,1,0,
+		0,0,536,534,1,0,0,0,537,538,3,20,10,0,538,540,5,61,0,0,539,541,3,26,13,
+		0,540,539,1,0,0,0,540,541,1,0,0,0,541,542,1,0,0,0,542,543,5,62,0,0,543,
+		544,3,34,17,0,544,73,1,0,0,0,545,554,5,65,0,0,546,551,3,58,29,0,547,548,
+		5,68,0,0,548,550,3,58,29,0,549,547,1,0,0,0,550,553,1,0,0,0,551,549,1,0,
+		0,0,551,552,1,0,0,0,552,555,1,0,0,0,553,551,1,0,0,0,554,546,1,0,0,0,554,
+		555,1,0,0,0,555,556,1,0,0,0,556,557,5,66,0,0,557,75,1,0,0,0,558,568,5,
+		63,0,0,559,565,3,78,39,0,560,561,5,68,0,0,561,564,3,78,39,0,562,564,5,
+		68,0,0,563,560,1,0,0,0,563,562,1,0,0,0,564,567,1,0,0,0,565,563,1,0,0,0,
+		565,566,1,0,0,0,566,569,1,0,0,0,567,565,1,0,0,0,568,559,1,0,0,0,568,569,
+		1,0,0,0,569,570,1,0,0,0,570,571,5,64,0,0,571,77,1,0,0,0,572,573,7,8,0,
+		0,573,574,5,69,0,0,574,575,3,58,29,0,575,79,1,0,0,0,576,577,7,9,0,0,577,
+		81,1,0,0,0,578,579,7,10,0,0,579,83,1,0,0,0,65,89,91,110,112,122,129,142,
+		150,160,170,178,181,192,209,213,218,220,232,253,256,260,282,290,295,304,
+		314,318,322,329,344,346,351,359,365,372,378,385,391,398,404,411,417,424,
+		430,437,443,450,456,463,469,476,482,490,501,503,513,515,527,534,540,551,
+		554,563,565,568
 	};
 
 	public static readonly ATN _ATN =

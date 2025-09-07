@@ -1,152 +1,114 @@
 # Cobra
 
-A simple, statically-typed, C-style programming language built with .NET, ANTLR, and LLVM.
+A simple, statically-typed, C-style programming language now built as an **interpreter** with .NET and ANTLR4.
 
 
+## ⚡ Major Vision Update
+
+Cobra is no longer just about writing a C-like interpreted language. The long-term goal is to make Cobra **a single language that can power entire websites and applications without needing separate HTML, CSS, and JavaScript.**
+
+- Instead of switching between multiple languages and runtimes, developers will write everything in Cobra.
+- A custom-built **Cobra Web Browser** will parse and render `.cb` files directly, giving Cobra full control over layout, styling, interactivity, and logic.
+- This means Cobra isn’t just an interpreter—it’s a foundation for a self-contained **programming + rendering ecosystem**.
+
+The project started as a native-code LLVM compiler, then pivoted into an extensible .NET interpreter, and is now moving toward integrating a **runtime + frontend rendering engine**, designed from scratch.
 
 ## About The Project
 
-Cobra is an educational project designed to explore the principles of compiler construction. It takes source code written in the Cobra language (`.cb` files), parses it using an ANTLR-generated parser, and compiles it down to native machine code by generating LLVM Intermediate Representation (IR). The final executable is produced by linking the resulting object files with a C++ linker (`g++`).
+Cobra is an educational project for learning about interpreters and language design. It parses `.cb` files using an ANTLR-generated parser, then evaluates code directly with an interpreter written in C#.
 
-The language aims to be a familiar, C-like language with modern features like a simple module system.
+The language continues to be C-like, but now emphasizes rapid turnaround and extensibility through interpretation.
 
 ### Built With
 
 *   [.NET 9](https://dotnet.microsoft.com/en-us/download)
 *   [ANTLR4](https://www.antlr.org/) for parsing
-*   [LLVMSharp.Interop](https://github.com/dotnet/LLVMSharp) for LLVM bindings
 *   [CommandLineParser](https://github.com/commandlineparser/commandline) for CLI handling
 
-## Features
+## 🚧 Feature Checklist
+### Cobra Interpreter Checklist
 
-The Cobra compiler currently supports:
+- [x] Define grammar in ANTLR
+- [x] Set up project foundation and interpreter main loop
+- [x] Create lexical analyzer using the generated lexer
+- [x] Implement parser integration (parse input to syntax tree)
+- [x] Build interpreter environment (scopes, variables, type system)
+- [x] Implement statement execution:
+    - [x] Variable declarations (`var`, `const`)
+    - [x] Assignment and expressions
+    - [x] Control flow (`if`, `while`, `for`)
+    - [ ] Function declarations and calls
+    - [ ] Modules and imports
+    - [ ] External functions and linking
+    - [ ] Error handling (try/catch/finally)
+    - [x] Jump statements (`return`, `break`, `continue`)
+    - [ ] `do-while`, `foreach`, `switch` (remaining control flow)
+- [x] Array and dictionary literals
+- [x] Data type system (primitive types)
+- [x] Expression evaluation (precedence, operators)
+- [x] Built-in functions and standard library (e.g., `print`)
+- [ ] Runtime error reporting and diagnostics (basic implementation exists)
+- [ ] Testing and sample programs
+- [ ] Documentation and usage guide
 
-*   **Variable Declarations**: Local and global variables with type inference.
-*   **Primitive Types**: `int`, `float`, `string`, `bool`, `void`.
-*   **Operators**: Full set of arithmetic, comparison, logical, and bitwise operators.
-*   **Control Flow**: `if-else` statements, `while`, `do-while`, and C-style `for` loops.
-*   **Functions**: Function declarations, calls, and `return` statements.
-*   **External Functions**: Ability to call C functions like `printf` using `extern`.
-*   **Module System**: A multi-file architecture with an `import` statement for dependency management.
-    *   Automatic dependency resolution.
-    *   Namespaced function calls (e.g., `modulename.function()`).
+### Cobra Web Rendering Engine (Planned)
 
-## The Cobra Language: A Quick Look
+- [ ] Define Cobra rendering grammar extensions (layout, elements, UI controls)
+- [ ] Implement a rendering engine in C# (browser-like environment)
+- [ ] Integrate event handling (click, hover, input)
+- [ ] Build a DOM-like tree but powered by Cobra values/types
+- [ ] Create a runtime UI library (buttons, text, images)
+- [ ] Support interactive sites fully in Cobra
 
-Cobra's syntax is heavily inspired by C and Java.
+## 🚀 Why This Matters
 
-### Example 1: Hello World
+The ultimate goal is to allow developers to:
 
-```c
-// example.cb
-extern int printf(string format);
+- Launch a `.cb` file directly in the Cobra Browser, and see it render just like a webpage.
+- Write interfaces, styling, and logic *in one unified language*.
+- Eliminate the overhead of managing multiple web tech stacks.
 
-printf("Hello from Cobra!\n");
-```
-*This program calls the external C standard library function `printf`.*
+Think of Cobra as a **language + runtime + browser** combined into one.
 
-### Example 2: Using the Module System
 
-Cobra supports splitting code across multiple files. The compiler automatically finds and links all necessary dependencies.
+### 🐍 Clone the Project
 
-**File: `utils/math.cb`**
-```c
-// This function will be part of the 'math' module.
-int add(int a, int b) {
-    return a + b;
-}
-```
-
-**File: `main.cb`**
-```c
-// Import the math module from the utils directory.
-import utils.math;
-
-// Declare the C printf function to print the result.
-extern int printf(string format, int value);
-
-int result = add(10, 32);
-
-printf("The result is: %d\n", result);
-```
-
-## Getting Started
-
-Follow these steps to build and run the Cobra compiler on your own machine.
-
-### Prerequisites
-
-You will need the following software installed:
-
-*   **.NET 9 SDK**
-    *   [Download & Install .NET](https://dotnet.microsoft.com/download)
-*   **A C++ toolchain (g++)**
-    *   **On Linux (Debian/Ubuntu):** `sudo apt-get install build-essential`
-    *   **On Windows:** Install MinGW-w64 (and ensure `g++.exe` is in your system's PATH).
-    *   **On macOS:** Install Xcode Command Line Tools: `xcode-select --install`
-
-### Building and Running
-
-The project includes a `Makefile` that simplifies the entire process.
-
-1.  **Clone the repository:**
-    ```sh
-    git clone https://github.com/SujalChoudhari/Cobra
+1. Open a terminal.
+2. Run:
+    ```    git clone https://github.com/SujalChoudhari/Cobra.git
     cd Cobra
     ```
 
-2.  **Run the compiler and your program:**
-    The `Makefile` is configured to compile `example.cb` by default. The following command will:
-    a. Build the Cobra compiler using `dotnet`.
-    b. Run the compiler on `example.cb`, which will resolve its dependencies and produce an executable named `build.app`.
-    c. Run the resulting `build.app`.
+### 🤝 Contributor Workflow
 
-    ```sh
-    make run-release
+- The project has a functional core interpreter! The foundation is solid.
+- New feature branches and PRs are welcome for:
+    - Implementing remaining control flow (`switch`, `foreach`)
+    - Building the module/import system
+    - Adding error handling (`try-catch`)
+    - Creating more built-in functions
+
+#### Suggested Steps:
+
+1. **Create your own branch:**
     ```
+    git checkout -b <feature-or-bugfix-name>
+    ```
+2. **Start work:**
+   Add new interpreter code, tests, or documentation.
+3. **Commit changes:**
+    ```
+    git add .
+    git commit -m "Short but clear summary of your changes"
+    ```
+4. **Push your branch:**
+    ```
+    git push origin <your-branch-name>
+    ```
+5. **Open a Pull Request on GitHub.**
+    - Briefly describe what you implemented or fixed.
 
-### Makefile Commands
+---
 
-*   `make release`: Builds the compiler and compiles `example.cb` into a release executable.
-*   `make run-release`: Does the above, then runs the compiled executable.
-*   `make debug`: Builds the compiler and compiles `example.cb` in debug mode (keeping intermediate `.ll` and `.o` files).
-*   `make run-debug`: Does the above, then runs the compiled executable.
-*   `make clean`: Removes all build artifacts.
-
-## Project Architecture
-
-The compiler is organized into several distinct layers:
-
-#### `CLI/`
-Handles command-line argument parsing (`Options.cs`) and orchestrates the overall compilation workflow (`Runner.cs`). It is responsible for dependency resolution and invoking the `CobraBuilder` for each source file.
-
-#### `Frontend/`
-Contains the ANTLR grammar (`Cobra.g4`) which defines the Cobra language syntax. All other files in this directory are auto-generated by ANTLR to create the lexer and parser.
-
-#### `Compiler/`
-The core of the compiler where the magic happens.
-*   `CobraBuilder.cs`: Manages the compilation of a single source file, from parsing to generating an object file. It also contains the final linking logic that invokes `g++`.
-*   `CobraScopeManagement.cs`: A helper class for managing variable scopes.
-*   `CobraTypeResolver.cs`: Translates Cobra type names into LLVM types.
-
-#### `Compiler/Visitors/`
-These classes implement the Visitor pattern to traverse the ANTLR parse tree and generate LLVM IR. Each visitor is specialized for a specific part of the language grammar (e.g., statements, arithmetic expressions, function calls).
-
-#### `Utils/`
-Contains utility classes for logging (`CobraLogger.cs`) and generating a visual representation of the Abstract Syntax Tree (`CobraASTGenerator.cs`).
-
-### Compilation Flow
-
-1.  **Dependency Resolution**: The `Runner` starts with an entry-point file and recursively scans `import` statements to build a list of all source files to be compiled.
-2.  **Parsing**: For each file, the source code is fed into the ANTLR-generated `CobraLexer` and `CobraParser` to produce a Parse Tree.
-3.  **LLVM IR Generation**: The `CobraProgramVisitor` traverses the Parse Tree. For each node, it emits corresponding LLVM IR instructions using `LLVMSharp`. Imported modules are parsed to declare their function prototypes.
-4.  **Object File Generation**: The generated LLVM IR is compiled into a native object file (`.o`) for the host system's architecture.
-5.  **Linking**: A small C++ wrapper is created to call the program's main entry point. `g++` is then used to link this wrapper with all the generated object files into a final, standalone executable.
-
-## Future Work
-
--   [ ] **Object-Oriented Programming**: Implement `class`, `new`, `this`, and member access.
--   [ ] **Standard Library**: Create a core library of built-in functions.
--   [ ] **More Complex Types**: Add support for structs and user-defined types.
--   [ ] **Improved Error Reporting**: Provide more detailed error messages with line and column numbers.
--   [ ] **Garbage Collection**: Integrate a simple garbage collector for memory management.
+**Tip:**
+Check out the `Frontend/Cobra.g4` file to see the remaining grammar rules that need to be implemented in the interpreter!

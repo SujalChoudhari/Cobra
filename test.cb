@@ -1,0 +1,17 @@
+dict x = {
+    y: 2,
+    op: int(int m) {
+        return m + 1;
+    },
+    z: 3,
+    more: {
+        x: 2,
+        y: 4
+    }
+};
+
+int a = x.y;
+int b = x.op(1);
+int c = x.z;
+
+print(a, b, c, x.more.x);

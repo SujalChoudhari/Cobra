@@ -1,371 +1,370 @@
 grammar Cobra;
 
-// The starting point of a program file
+// Entry
 program
-    : (importStatement| externDeclaration | functionDeclaration | classDeclaration | declarationStatement | statement)* EOF
-    ;
-
-/*
- * =============================================================================
- * 1. Declarations
- * =============================================================================
- */
-
-// Class declaration with inheritance and a body
-classDeclaration
-    : CLASS ID (EXTENDS typeSpecifier)? LBRACE classBody* RBRACE
-    ;
-
-// Body of a class can contain fields, methods, or constructors
-classBody
-    : memberDeclaration
-    ;
-
-memberDeclaration
-    : accessModifier? (fieldDeclaration | methodDeclaration | constructorDeclaration)
-    ;
-
-fieldDeclaration
-    : type ID (ASSIGN expression)? SEMICOLON
-    ;
-
-methodDeclaration
-    : type ID LPAREN parameterList? RPAREN block
-    ;
-
-constructorDeclaration
-    : ID LPAREN parameterList? RPAREN block // Constructor name must match class name
-    ;
-
-externDeclaration
-    : EXTERN type ID LPAREN parameterList? RPAREN SEMICOLON
-    ;
-
-// Function (non-method) declaration
-functionDeclaration
-    : type ID LPAREN parameterList? RPAREN block
-    ;
-
-// Variable declaration statement (can be used inside blocks)
-declarationStatement
-    : type ID (ASSIGN expression)? SEMICOLON
-    | GLOBAL type ID (ASSIGN expression)? SEMICOLON
-    ;
-
-
-/*
- * =============================================================================
- * 2. Statements
- * =============================================================================
- */
-
-statement
-    : block
-    | declarationStatement
-    | ifStatement
-    | whileStatement
-    | doWhileStatement
-    | forStatement
+  : (linkStatement
     | importStatement
-    | switchStatement
-    | jumpStatement
-    | expressionStatement
-    ;
+    | namespaceDeclaration
+    | topLevelDeclaration
+    | statement
+    )* EOF
+  ;
 
-// A block is a sequence of statements
-block
-    : LBRACE statement* RBRACE
-    ;
-
-
-assignmentOperator
-    : ASSIGN | PLUS_ASSIGN | MINUS_ASSIGN | MUL_ASSIGN | DIV_ASSIGN
-    ;
-
-expressionStatement
-    : expression SEMICOLON
-    ;
-
-// Control flow statements
-ifStatement
-    : IF LPAREN expression RPAREN statement (ELSE statement)?
-    ;
-
-whileStatement
-    : WHILE LPAREN expression RPAREN statement
-    ;
-
-doWhileStatement
-    : DO statement WHILE LPAREN expression RPAREN SEMICOLON
-    ;
-
-forStatement
-    : FOR LPAREN forControl RPAREN statement
-    ;
-
-forControl
-    : declarationStatement expression? SEMICOLON expression?
-    | expression? SEMICOLON expression? SEMICOLON expression?   // non-declaration init
-    | type ID IN expression
-    ;
-
-// Switch/Case statement
-switchStatement
-    : SWITCH LPAREN expression RPAREN LBRACE switchBlockStatementGroup* RBRACE
-    ;
-
-switchBlockStatementGroup
-    : switchLabel+ statement*
-    ;
-
-switchLabel
-    : CASE expression COLON
-    | DEFAULT COLON
-    ;
-
-// Return, break, continue
-jumpStatement
-    : RETURN expression? SEMICOLON
-    | BREAK SEMICOLON
-    | CONTINUE SEMICOLON
-    ;
-
-
-/*
- * =============================================================================
- * 3. Expressions (ordered by precedence)
- * =============================================================================
- */
-
-expression
-    : assignmentExpression
-    ;
-    
-assignmentExpression
-    : conditionalExpression
-    | postfixExpression assignmentOperator assignmentExpression  // right-associative
-    ;
-
-
-conditionalExpression // Ternary operator
-    : logicalOrExpression (QUESTION_MARK expression COLON expression)?
-    ;
-
-logicalOrExpression
-    : logicalAndExpression (OR logicalAndExpression)*
-    ;
-
-logicalAndExpression
-    : bitwiseOrExpression (AND bitwiseOrExpression)*
-    ;
-
-bitwiseOrExpression
-    : bitwiseXorExpression (BITWISE_OR bitwiseXorExpression)*
-    ;
-
-bitwiseXorExpression
-    : bitwiseAndExpression (BITWISE_XOR bitwiseAndExpression)*
-    ;
-
-bitwiseAndExpression
-    : equalityExpression (BITWISE_AND equalityExpression)*
-    ;
-
-equalityExpression
-    : comparisonExpression ((EQ | NEQ) comparisonExpression)*
-    ;
-
-comparisonExpression
-    : bitwiseShiftExpression ((GT | LT | GTE | LTE) bitwiseShiftExpression)*
-    ;
-
-bitwiseShiftExpression
-    : additiveExpression ((BITWISE_LEFT_SHIFT | BITWISE_RIGHT_SHIFT) additiveExpression)*
-    ;
-
-additiveExpression
-    : multiplicativeExpression ((PLUS | MINUS) multiplicativeExpression)*
-    ;
-
-multiplicativeExpression
-    : unaryExpression ((MUL | DIV | MOD) unaryExpression)*
-    ;
-
-unaryExpression
-    : (PLUS | MINUS | NOT | BITWISE_NOT | INC | DEC) unaryExpression
-    | postfixExpression
-    ;
-
-// Handles function calls, member access, array access, and postfix inc/dec
-postfixExpression
-    : primary (
-        LPAREN argumentList? RPAREN        // Function call
-      | LBRACKET expression RBRACKET      // Array access
-      | (DOT | ARROW) ID                  // Member access
-      | INC | DEC                         // Postfix inc/dec
-    )*
-    ;
-
-primary
-    : LPAREN expression RPAREN
-    | literal
-    | ID
-    | BITWISE_AND ID
-    | THIS
-    | NEW typeSpecifier (LPAREN argumentList? RPAREN | LBRACKET expression RBRACKET) // Object or Array instantiation
-    ;
-
-// List of expressions for function calls
-argumentList
-    : expression (COMMA expression)*
-    ;
-
-
-/*
- * =============================================================================
- * 4. Types, Parameters, and Misc
- * =============================================================================
- */
-
-// A type can be a primitive or a class name, with multiple array dimensions
-type
-    : typeSpecifier (LBRACKET RBRACKET | MUL)*
-    ;
-
-// The base name of a type
-typeSpecifier
-    : primitiveType
-    | ID // For class types
-    ;
-
-primitiveType
-    : INT | FLOAT | STRING | BOOL | VOID
-    ;
-
-// Function parameters
-parameterList
-    : parameter (COMMA parameter)*
-    ;
-
-parameter
-    : type ID
-    ;
-
-accessModifier
-    : PUBLIC | PRIVATE | PROTECTED
-    ;
+// Modules / Linking / Import
+linkStatement
+  : LINK STRING_LITERAL SEMICOLON
+  ;
 
 importStatement
-    : IMPORT qualifiedName SEMICOLON
-    ;
-    
+  : IMPORT STRING_LITERAL SEMICOLON
+  ;
+
+// Namespaces
+namespaceDeclaration
+  : NAMESPACE qualifiedName LBRACE (topLevelDeclaration | statement | externDeclaration)* RBRACE
+  ;
+
 qualifiedName
-    : ID (DOT ID)*
-    ;
+  : ID (DOT ID)*
+  ;
+
+// Top-level declarations
+topLevelDeclaration
+  : constDeclaration
+  | varDeclaration
+  | functionDeclaration
+  | externDeclaration
+  ;
+
+constDeclaration
+  : CONST type ID ASSIGN assignmentExpression SEMICOLON
+  ;
+
+varDeclaration
+  : type ID (ASSIGN assignmentExpression)? SEMICOLON
+  ;
+
+functionDeclaration
+  : type ID LPAREN parameterList? RPAREN block
+  ;
+
+externDeclaration
+  : EXTERNAL type ID LPAREN parameterList? RPAREN SEMICOLON
+  ;
+
+// Types & Parameters
+type
+  : primitiveType (LBRACKET RBRACKET)*  
+  | secondaryType (LBRACKET RBRACKET)*  
+  ;
+  
+secondaryType
+  : FUN
+  | MARKUP
+  | DICT
+  ;
+
+primitiveType
+  : INT
+  | FLOAT
+  | BOOL
+  | STRING
+  | VOID  
+  ;
+
+parameterList
+  : parameter (COMMA parameter)*
+  ;
+
+parameter
+  : type ID
+  ;
+
+// Statements & Blocks
+statement
+  : block
+  | declarationStatement
+  | ifStatement
+  | whileStatement
+  | doWhileStatement
+  | forStatement
+  | forEachStatement
+  | switchStatement
+  | tryStatement
+  | jumpStatement
+  | expressionStatement
+  ;
+
+declarationStatement
+  : constDeclaration
+  | varDeclaration
+  ;
+
+block
+  : LBRACE (declarationStatement | statement)* RBRACE
+  ;
+
+ifStatement
+  : IF LPAREN assignmentExpression RPAREN statement (ELSE statement)?
+  ;
+
+whileStatement
+  : WHILE LPAREN assignmentExpression RPAREN statement
+  ;
+
+doWhileStatement
+  : DO statement WHILE LPAREN assignmentExpression RPAREN SEMICOLON
+  ;
+
+forStatement
+  : FOR LPAREN (varDeclaration | expressionStatement | SEMICOLON)? assignmentExpression? SEMICOLON assignmentExpression? RPAREN statement
+  ;
+
+forEachStatement
+  : FOR LPAREN type ID IN assignmentExpression RPAREN statement
+  ;
+
+switchStatement
+  : SWITCH LPAREN assignmentExpression RPAREN LBRACE switchBlock* RBRACE
+  ;
+
+switchBlock
+  : switchLabel+ statement*
+  ;
+
+switchLabel
+  : CASE assignmentExpression COLON
+  | DEFAULT COLON
+  ;
+
+tryStatement
+  : TRY block (CATCH LPAREN parameter RPAREN block)? (FINALLY block)?
+  ;
+
+jumpStatement
+  : RETURN assignmentExpression? SEMICOLON
+  | BREAK SEMICOLON
+  | CONTINUE SEMICOLON
+  ;
+
+expressionStatement
+  : assignmentExpression SEMICOLON
+  ;
+
+
+// Expressions (precedence)
+assignmentExpression
+  : leftHandSide assignmentOperator assignmentExpression
+  | binaryExpression (QUESTION assignmentExpression COLON assignmentExpression)?
+  ;
+
+binaryExpression
+  : ( // logicalOr
+      ( // logicalAnd
+        ( // bitwiseOr
+          ( // bitwiseXor
+            ( // bitwiseAnd
+              ( // equality
+                ( // relational
+                  ( // shift
+                    ( // additive
+                      ( // multiplicative
+                        unaryOp* postfixExpression
+                        ((MUL | DIV | MOD) unaryOp* postfixExpression)*
+                      )
+                      ((PLUS | MINUS) unaryOp* postfixExpression)*
+                    )
+                    ((SHL | SHR) unaryOp* postfixExpression)*
+                  )
+                  ((GT | LT | GTE | LTE) unaryOp* postfixExpression)*
+                )
+                ((EQ | NEQ ) unaryOp* postfixExpression)*
+              )
+              (BITWISE_AND unaryOp* postfixExpression)*
+            )
+            (BITWISE_XOR unaryOp* postfixExpression)*
+          )
+          (BITWISE_OR unaryOp* postfixExpression)*
+        )
+        (AND unaryOp* postfixExpression)*
+      )
+      (OR unaryOp* postfixExpression)*
+    )
+  ;
+
+unaryOp
+  : PLUS | MINUS | NOT | BITWISE_NOT | INC | DEC
+  ;
+
+postfixExpression
+  : primary ( LPAREN argumentList? RPAREN
+            | LBRACKET assignmentExpression RBRACKET
+            | DOT ID
+            | INC
+            | DEC
+            )*
+  ;
+
+leftHandSide
+  : primary ( LBRACKET assignmentExpression RBRACKET
+            | DOT ID
+            )*
+  ;
+
+primary
+  : LPAREN assignmentExpression RPAREN
+  | literal
+  | ID
+  | functionExpression
+  | arrayLiteral
+  | dictLiteral
+  ;
+
+argumentList
+  : assignmentExpression (COMMA assignmentExpression)*
+  ;
+
+functionExpression
+  : type LPAREN parameterList? RPAREN block
+  ;
+
+arrayLiteral
+  : LBRACKET (assignmentExpression (COMMA assignmentExpression)*)? RBRACKET
+  ;
+
+dictLiteral
+  : LBRACE (dictEntry (COMMA dictEntry | COMMA)*)? RBRACE
+  ;
+
+dictEntry
+  : (STRING_LITERAL | ID) COLON assignmentExpression
+  ;
 
 literal
-    : INTEGER
-    | FLOAT_LITERAL
-    | STRING_LITERAL
-    | BOOLEAN_LITERAL
-    | NULL
-    ;
+  : INTEGER
+  | FLOAT_LITERAL
+  | STRING_LITERAL
+  | BACKTICK_STRING
+  | TRUE
+  | FALSE
+  | NULL
+  ;
 
-/*
- * =============================================================================
- * Lexer Tokens
- * =============================================================================
- */
+assignmentOperator
+  : ASSIGN
+  | PLUS_ASSIGN
+  | MINUS_ASSIGN
+  | MUL_ASSIGN
+  | DIV_ASSIGN
+  | MOD_ASSIGN
+  ;
 
-// Keywords
-IMPORT: 'import';
-EXTERN: 'extern';
-CLASS: 'class';
-EXTENDS: 'extends';
-NEW: 'new';
-THIS: 'this';
-IF: 'if';
-ELSE: 'else';
-WHILE: 'while';
-DO: 'do';
-FOR: 'for';
-IN: 'in';
-SWITCH: 'switch';
-CASE: 'case';
-DEFAULT: 'default';
-RETURN: 'return';
-BREAK: 'break';
-CONTINUE: 'continue';
-PUBLIC: 'public';
-PRIVATE: 'private';
-PROTECTED: 'protected';
-NULL: 'null';
-GLOBAL: 'global';
+// Lexer
+LINK:       'link';
+IMPORT:     'import';
+NAMESPACE:  'namespace';
+EXTERNAL:   'external';
+CONST:      'const';
+IF:         'if';
+ELSE:       'else';
+WHILE:      'while';
+DO:         'do';
+FOR:        'for';
+IN:         'in';
+SWITCH:     'switch';
+CASE:       'case';
+DEFAULT:    'default';
+TRY:        'try';
+CATCH:      'catch';
+FINALLY:    'finally';
+RETURN:     'return';
+BREAK:      'break';
+CONTINUE:   'continue';
 
-// Type Keywords
-INT: 'int';
-FLOAT: 'float';
+INT:    'int';
+FLOAT:  'float';
 STRING: 'string';
-BOOL: 'bool';
-VOID: 'void';
+BOOL:   'bool';
+VOID:   'void';
+NULL:   'null';
 
-// Literals
-INTEGER: [0-9]+;
-FLOAT_LITERAL: [0-9]+ '.' [0-9]* | '.' [0-9]+ | [0-9]+ ('e'|'E') ('-'|'+')? [0-9]+;
-STRING_LITERAL: '"' ( EscapeSequence | ~('\\'|'"') )* '"';
-BOOLEAN_LITERAL: 'true' | 'false';
+FUN:    'fun';
+MARKUP: 'markup';
+DICT: 'dict';
 
-fragment EscapeSequence
-    : '\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\') // Standard escape sequences
-    ;
+TRUE:   'true';
+FALSE:  'false';
 
-// Operators
-PLUS: '+';
-MINUS: '-';
-MUL: '*';
-DIV: '/';
-MOD: '%';
-AND: '&&';
-OR: '||';
-NOT: '!';
-EQ: '==';
-NEQ: '!=';
-GT: '>';
-LT: '<';
-GTE: '>=';
-LTE: '<=';
-ASSIGN: '=';
-PLUS_ASSIGN: '+=';
-MINUS_ASSIGN: '-=';
-MUL_ASSIGN: '*=';
-DIV_ASSIGN: '/=';
-INC: '++';
-DEC: '--';
-BITWISE_AND: '&';
-BITWISE_OR: '|';
-BITWISE_XOR: '^';
-BITWISE_NOT: '~';
-BITWISE_LEFT_SHIFT: '<<';
-BITWISE_RIGHT_SHIFT: '>>';
-DOT: '.';
-ARROW: '->';
-QUESTION_MARK: '?';
+PLUS:           '+';
+MINUS:          '-';
+MUL:            '*';
+DIV:            '/';
+MOD:            '%';
+PLUS_ASSIGN:    '+=';
+MINUS_ASSIGN:   '-=';
+MUL_ASSIGN:     '*=';
+DIV_ASSIGN:     '/=';
+MOD_ASSIGN:     '%=';
+INC:            '++';
+DEC:            '--';
+ASSIGN:         '=';
+EQ:             '==';
+NEQ:            '!=';
+GT:             '>';
+LT:             '<';
+GTE:            '>=';
+LTE:            '<=';
+NOT:            '!';
+AND:            '&&';
+OR:             '||';
+BITWISE_AND:    '&';
+BITWISE_OR:     '|';
+BITWISE_XOR:    '^';
+BITWISE_NOT:    '~';
+SHL:            '<<';
+SHR:            '>>';
+QUESTION:       '?';
 
-// Punctuation
-LPAREN: '(';
-RPAREN: ')';
-LBRACE: '{';
-RBRACE: '}';
-LBRACKET: '[';
-RBRACKET: ']';
-SEMICOLON: ';';
-COMMA: ',';
-COLON: ':';
+LPAREN:     '(';
+RPAREN:     ')';
+LBRACE:     '{';
+RBRACE:     '}';
+LBRACKET:   '[';
+RBRACKET:   ']';
+SEMICOLON:  ';';
+COMMA:      ',';
+COLON:      ':';
+DOT:        '.';
 
-// Identifiers
+
 ID: [a-zA-Z_] [a-zA-Z_0-9]*;
 
-// Ignored tokens
-WHITESPACE: [ \t\r\n]+ -> skip;
-COMMENT: '//' ~[\r\n]* -> skip;
+STRING_LITERAL
+  : '"' ALL* '"'
+  ;
+
+BACKTICK_STRING
+  : '`' ( ~'`' | '``' )* '`'
+  ;
+
+INTEGER
+  : [0-9]+
+  ;
+
+FLOAT_LITERAL
+  : [0-9]+ '.' [0-9]* ([eE][+-]?[0-9]+)?
+  | '.' [0-9]+ ([eE][+-]?[0-9]+)?
+  | [0-9]+ [eE][+-]?[0-9]+
+  ;
+
+LINE_COMMENT: '//' ~[\r\n]* -> skip;
 BLOCK_COMMENT: '/*' .*? '*/' -> skip;
+WS: [ \t\r\n]+ -> skip;
+
+fragment ALL
+    : ( EscapeSequence | ~('\\'|'"') )
+    ;
+
+fragment EscapeSequence
+  : '\\' [btnfr"'\\/]
+  ;

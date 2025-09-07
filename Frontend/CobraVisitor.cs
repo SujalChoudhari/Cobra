@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from /home/sujal/Code/Cobra/Frontend/Cobra.g4 by ANTLR 4.13.2
+// Generated from F:/Workspace/Cobra/Frontend/Cobra.g4 by ANTLR 4.13.2
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -38,47 +38,47 @@ public interface ICobraVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitProgram([NotNull] CobraParser.ProgramContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.classDeclaration"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.linkStatement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitClassDeclaration([NotNull] CobraParser.ClassDeclarationContext context);
+	Result VisitLinkStatement([NotNull] CobraParser.LinkStatementContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.classBody"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.importStatement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitClassBody([NotNull] CobraParser.ClassBodyContext context);
+	Result VisitImportStatement([NotNull] CobraParser.ImportStatementContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.memberDeclaration"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.namespaceDeclaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitMemberDeclaration([NotNull] CobraParser.MemberDeclarationContext context);
+	Result VisitNamespaceDeclaration([NotNull] CobraParser.NamespaceDeclarationContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.fieldDeclaration"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.qualifiedName"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitFieldDeclaration([NotNull] CobraParser.FieldDeclarationContext context);
+	Result VisitQualifiedName([NotNull] CobraParser.QualifiedNameContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.methodDeclaration"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.topLevelDeclaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitMethodDeclaration([NotNull] CobraParser.MethodDeclarationContext context);
+	Result VisitTopLevelDeclaration([NotNull] CobraParser.TopLevelDeclarationContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.constructorDeclaration"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.constDeclaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitConstructorDeclaration([NotNull] CobraParser.ConstructorDeclarationContext context);
+	Result VisitConstDeclaration([NotNull] CobraParser.ConstDeclarationContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.externDeclaration"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.varDeclaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitExternDeclaration([NotNull] CobraParser.ExternDeclarationContext context);
+	Result VisitVarDeclaration([NotNull] CobraParser.VarDeclarationContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.functionDeclaration"/>.
 	/// </summary>
@@ -86,11 +86,41 @@ public interface ICobraVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitFunctionDeclaration([NotNull] CobraParser.FunctionDeclarationContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.declarationStatement"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.externDeclaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitDeclarationStatement([NotNull] CobraParser.DeclarationStatementContext context);
+	Result VisitExternDeclaration([NotNull] CobraParser.ExternDeclarationContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.type"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitType([NotNull] CobraParser.TypeContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.secondaryType"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSecondaryType([NotNull] CobraParser.SecondaryTypeContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.primitiveType"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitPrimitiveType([NotNull] CobraParser.PrimitiveTypeContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.parameterList"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitParameterList([NotNull] CobraParser.ParameterListContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.parameter"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitParameter([NotNull] CobraParser.ParameterContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.statement"/>.
 	/// </summary>
@@ -98,23 +128,17 @@ public interface ICobraVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitStatement([NotNull] CobraParser.StatementContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.declarationStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDeclarationStatement([NotNull] CobraParser.DeclarationStatementContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.block"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitBlock([NotNull] CobraParser.BlockContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.assignmentOperator"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitAssignmentOperator([NotNull] CobraParser.AssignmentOperatorContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.expressionStatement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitExpressionStatement([NotNull] CobraParser.ExpressionStatementContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.ifStatement"/>.
 	/// </summary>
@@ -140,11 +164,11 @@ public interface ICobraVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitForStatement([NotNull] CobraParser.ForStatementContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.forControl"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.forEachStatement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitForControl([NotNull] CobraParser.ForControlContext context);
+	Result VisitForEachStatement([NotNull] CobraParser.ForEachStatementContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.switchStatement"/>.
 	/// </summary>
@@ -152,11 +176,11 @@ public interface ICobraVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitSwitchStatement([NotNull] CobraParser.SwitchStatementContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.switchBlockStatementGroup"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.switchBlock"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitSwitchBlockStatementGroup([NotNull] CobraParser.SwitchBlockStatementGroupContext context);
+	Result VisitSwitchBlock([NotNull] CobraParser.SwitchBlockContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.switchLabel"/>.
 	/// </summary>
@@ -164,17 +188,23 @@ public interface ICobraVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitSwitchLabel([NotNull] CobraParser.SwitchLabelContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.tryStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTryStatement([NotNull] CobraParser.TryStatementContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.jumpStatement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitJumpStatement([NotNull] CobraParser.JumpStatementContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.expression"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.expressionStatement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitExpression([NotNull] CobraParser.ExpressionContext context);
+	Result VisitExpressionStatement([NotNull] CobraParser.ExpressionStatementContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.assignmentExpression"/>.
 	/// </summary>
@@ -182,83 +212,29 @@ public interface ICobraVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitAssignmentExpression([NotNull] CobraParser.AssignmentExpressionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.conditionalExpression"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.binaryExpression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitConditionalExpression([NotNull] CobraParser.ConditionalExpressionContext context);
+	Result VisitBinaryExpression([NotNull] CobraParser.BinaryExpressionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.logicalOrExpression"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.unaryOp"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitLogicalOrExpression([NotNull] CobraParser.LogicalOrExpressionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.logicalAndExpression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitLogicalAndExpression([NotNull] CobraParser.LogicalAndExpressionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.bitwiseOrExpression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitBitwiseOrExpression([NotNull] CobraParser.BitwiseOrExpressionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.bitwiseXorExpression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitBitwiseXorExpression([NotNull] CobraParser.BitwiseXorExpressionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.bitwiseAndExpression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitBitwiseAndExpression([NotNull] CobraParser.BitwiseAndExpressionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.equalityExpression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitEqualityExpression([NotNull] CobraParser.EqualityExpressionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.comparisonExpression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitComparisonExpression([NotNull] CobraParser.ComparisonExpressionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.bitwiseShiftExpression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitBitwiseShiftExpression([NotNull] CobraParser.BitwiseShiftExpressionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.additiveExpression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitAdditiveExpression([NotNull] CobraParser.AdditiveExpressionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.multiplicativeExpression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitMultiplicativeExpression([NotNull] CobraParser.MultiplicativeExpressionContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.unaryExpression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitUnaryExpression([NotNull] CobraParser.UnaryExpressionContext context);
+	Result VisitUnaryOp([NotNull] CobraParser.UnaryOpContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.postfixExpression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitPostfixExpression([NotNull] CobraParser.PostfixExpressionContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.leftHandSide"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitLeftHandSide([NotNull] CobraParser.LeftHandSideContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.primary"/>.
 	/// </summary>
@@ -272,57 +248,39 @@ public interface ICobraVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitArgumentList([NotNull] CobraParser.ArgumentListContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.type"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.functionExpression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitType([NotNull] CobraParser.TypeContext context);
+	Result VisitFunctionExpression([NotNull] CobraParser.FunctionExpressionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.typeSpecifier"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.arrayLiteral"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitTypeSpecifier([NotNull] CobraParser.TypeSpecifierContext context);
+	Result VisitArrayLiteral([NotNull] CobraParser.ArrayLiteralContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.primitiveType"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.dictLiteral"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitPrimitiveType([NotNull] CobraParser.PrimitiveTypeContext context);
+	Result VisitDictLiteral([NotNull] CobraParser.DictLiteralContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.parameterList"/>.
+	/// Visit a parse tree produced by <see cref="CobraParser.dictEntry"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitParameterList([NotNull] CobraParser.ParameterListContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.parameter"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitParameter([NotNull] CobraParser.ParameterContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.accessModifier"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitAccessModifier([NotNull] CobraParser.AccessModifierContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.importStatement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitImportStatement([NotNull] CobraParser.ImportStatementContext context);
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="CobraParser.qualifiedName"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitQualifiedName([NotNull] CobraParser.QualifiedNameContext context);
+	Result VisitDictEntry([NotNull] CobraParser.DictEntryContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.literal"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitLiteral([NotNull] CobraParser.LiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.assignmentOperator"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitAssignmentOperator([NotNull] CobraParser.AssignmentOperatorContext context);
 }

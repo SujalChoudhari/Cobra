@@ -1,11 +1,11 @@
-﻿using Cobra.CLI;
+using Cobra.Utils;
 
 namespace Cobra;
 
-public class Program
+public class Cobra
 {
     public static void Main(string[] args)
     {
-        Runner.Run(args);
+        CobraCommandLine.Run(args);
     }
 }

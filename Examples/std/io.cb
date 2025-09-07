@@ -1,7 +1,0 @@
-extern int printf(string format);
-extern int scanf(string format);
-
-
-void print_int(int x){
-    printf("%d\n", x);
-}

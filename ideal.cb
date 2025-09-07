@@ -1,0 +1,84 @@
+link "stdlib.cobra";
+import "math";
+
+namespace App.Main {
+
+    external int nativeAdd(int a, int b);
+
+    const int MAX = 100;
+
+    int counter = 0;
+    float ratio = 1.5;
+
+    // Dictionary and array
+    dict myDict = { key1: 10, "key2": 20 };
+    dict[] arr = [{ key1: 10, "key2": 20 }, { key1: 10, "key2": 20 }];
+    int[] numbers = [1, 2, 3, 4];
+
+    // Named function
+    int add(int a, int b) {
+        return a + b;
+    }
+    
+    ratio = 3.5;
+
+    // Function literal assigned to fun type
+    fun op = int (int x, int y) {
+        return x * y;
+    };
+
+    // Function with markup return
+    markup render() {
+        return `<div class="container" style={ "color: red" }>
+                { add(1, 2) }
+                <span>Hello World</span>
+                <img src="logo.png" />
+            </div>`;
+    }
+
+    // Control flow examples
+    void run() {
+        // If-else
+        if (counter < MAX) {
+            counter++;
+        } else {
+            counter = 0;
+        }
+
+        // While loop
+        while (counter < 10) {
+            counter++;
+        }
+
+        // Do-while
+        do {
+            counter--;
+        } while (counter > 0);
+
+        // For loop
+        for (int i = 0; i < 5; i++) {
+            numbers[i] += 1;
+        }
+
+        // For-each loop
+        for (int n in numbers) {
+            print(n);
+        }
+
+        // Switch statement
+        switch (counter) {
+            case 0: print("Zero"); break;
+            case 1: print("One"); break;
+            default: print("Other");
+        }
+
+        // Try-catch-finally - use 'string' for error payload (define your own Exception type later if needed)
+        try {
+            riskyOperation();
+        } catch (string e) {
+            print(e);
+        } finally {
+            print("Done");
+        }
+    }
+}
