@@ -2,16 +2,17 @@ namespace Cobra.Environment;
 
 public class CobraVariableDefinition(
     string name,
-    Type type,
+    CobraRuntimeTypes runtimeType,
     object? value = null,
     bool isConst = false,
     bool isArray = false)
 {
     public string Name { get; } = name;
-    public Type Type { get; } = type;
+    public CobraRuntimeTypes RuntimeType { get; } = runtimeType;
     public object? Value { get; set; } = value;
     public bool IsConst { get; } = isConst;
     public bool IsArray { get; } = isArray;
 
-    public bool IsFunction => Value is CobraFunctionDefinition;
+    public bool IsFunction => RuntimeType == CobraRuntimeTypes.Function;
+    public bool IsMarkup => RuntimeType == CobraRuntimeTypes.Markup;
 }

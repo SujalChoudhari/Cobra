@@ -9,8 +9,27 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
         if (_variables.ContainsKey(name))
             throw new Exception($"Variable '{name}' is already defined in this scope.");
 
-        _variables[name] = new CobraVariableDefinition(name, value?.GetType() ?? typeof(object), value, isConst, isArray);
+        var runtimeType = InferRuntimeType(value);
+        _variables[name] = new CobraVariableDefinition(name, runtimeType, value, isConst, isArray);
     }
+
+    private CobraRuntimeTypes InferRuntimeType(object? value)
+    {
+        if (value == null) return CobraRuntimeTypes.Null;
+        return value switch
+        {
+            int => CobraRuntimeTypes.Int,
+            float or double => CobraRuntimeTypes.Float,
+            bool => CobraRuntimeTypes.Bool,
+            string => CobraRuntimeTypes.String,
+            Dictionary<string, object> => CobraRuntimeTypes.Dict,
+            List<object> => CobraRuntimeTypes.List,
+            CobraFunctionDefinition => CobraRuntimeTypes.Function,
+            CobraMarkup => CobraRuntimeTypes.Markup,
+            _ => throw new Exception($"Unsupported runtime type: {value.GetType().Name}")
+        };
+    }
+
 
     public void AssignVariable(string name, object value)
     {
