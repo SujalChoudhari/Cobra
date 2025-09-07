@@ -21,34 +21,33 @@ The language continues to be C-like, but now emphasizes rapid turnaround and ext
 
 ### Built With
 
-*   [.NET 9](https://dotnet.microsoft.com/en-us/download)  
-*   [ANTLR4](https://www.antlr.org/) for parsing  
-*   [CommandLineParser](https://github.com/commandlineparser/commandline) for CLI handling  
+*   [.NET 9](https://dotnet.microsoft.com/en-us/download)
+*   [ANTLR4](https://www.antlr.org/) for parsing
+*   [CommandLineParser](https://github.com/commandlineparser/commandline) for CLI handling
 
 ## 🚧 Feature Checklist
 ### Cobra Interpreter Checklist
 
 - [x] Define grammar in ANTLR
-- [ ] Set up project foundation and interpreter main loop
-- [ ] Create lexical analyzer using the generated lexer
-- [ ] Implement parser integration (parse input to syntax tree)
-- [ ] Build interpreter environment (scopes, variables, type system)
-- [ ] Implement statement execution:
-    - [ ] Variable declarations (`var`, `const`)
-    - [ ] Assignment and expressions
-    - [ ] Control flow (`if`, `while`, `do-while`, `for`, `foreach`, `switch`)
+- [x] Set up project foundation and interpreter main loop
+- [x] Create lexical analyzer using the generated lexer
+- [x] Implement parser integration (parse input to syntax tree)
+- [x] Build interpreter environment (scopes, variables, type system)
+- [x] Implement statement execution:
+    - [x] Variable declarations (`var`, `const`)
+    - [x] Assignment and expressions
+    - [x] Control flow (`if`, `while`, `for`)
     - [ ] Function declarations and calls
     - [ ] Modules and imports
-    - [ ] External functions and linking (if needed)
-    - [ ] Print statements
+    - [ ] External functions and linking
     - [ ] Error handling (try/catch/finally)
-    - [ ] Jump statements (`return`, `break`, `continue`)
-- [ ] Array and dictionary literals
-- [ ] Data type system (primitive types, user-defined types)
-- [ ] Expression evaluation (precedence, operators)
-- [ ] Built-in functions and standard library
-- [ ] Object-oriented features (`class`, `new`, member access)
-- [ ] Runtime error reporting and diagnostics
+    - [x] Jump statements (`return`, `break`, `continue`)
+    - [ ] `do-while`, `foreach`, `switch` (remaining control flow)
+- [x] Array and dictionary literals
+- [x] Data type system (primitive types)
+- [x] Expression evaluation (precedence, operators)
+- [x] Built-in functions and standard library (e.g., `print`)
+- [ ] Runtime error reporting and diagnostics (basic implementation exists)
 - [ ] Testing and sample programs
 - [ ] Documentation and usage guide
 
@@ -76,19 +75,18 @@ Think of Cobra as a **language + runtime + browser** combined into one.
 
 1. Open a terminal.
 2. Run:
-    ```
-    git clone https://github.com/SujalChoudhari/Cobra.git
+    ```    git clone https://github.com/SujalChoudhari/Cobra.git
     cd Cobra
     ```
 
 ### 🤝 Contributor Workflow
 
-- The project is in the **early work-in-progress stage**—just the grammar file exists, no interpreter is implemented yet.
+- The project has a functional core interpreter! The foundation is solid.
 - New feature branches and PRs are welcome for:
-    - Interpreter architecture setup
-    - Implementing grammar rules
-    - Adding documentation/comments
-    - Creating test programs
+    - Implementing remaining control flow (`switch`, `foreach`)
+    - Building the module/import system
+    - Adding error handling (`try-catch`)
+    - Creating more built-in functions
 
 #### Suggested Steps:
 
@@ -96,7 +94,7 @@ Think of Cobra as a **language + runtime + browser** combined into one.
     ```
     git checkout -b <feature-or-bugfix-name>
     ```
-2. **Start work:**  
+2. **Start work:**
    Add new interpreter code, tests, or documentation.
 3. **Commit changes:**
     ```
@@ -112,5 +110,5 @@ Think of Cobra as a **language + runtime + browser** combined into one.
 
 ---
 
-**Tip:**  
-Check out the `Frontend/Cobra.g4` file to see the current grammar definition and decide which part you want to tackle!
+**Tip:**
+Check out the `Frontend/Cobra.g4` file to see the remaining grammar rules that need to be implemented in the interpreter!
