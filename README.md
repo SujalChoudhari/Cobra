@@ -37,7 +37,8 @@ The language continues to be C-like, but now emphasizes rapid turnaround and ext
     - [x] Variable declarations (`var`, `const`)
     - [x] Assignment and expressions
     - [x] Control flow (`if`, `while`, `for`)
-    - [ ] Function declarations and calls
+    - [x] Function declarations and calls
+    - [x] Functions in dicts and arrays
     - [ ] Modules and imports
     - [ ] External functions and linking
     - [ ] Error handling (try/catch/finally)
