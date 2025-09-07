@@ -93,7 +93,6 @@ statement
   | tryStatement
   | jumpStatement
   | expressionStatement
-  | printStatement
   ;
 
 declarationStatement
@@ -152,9 +151,6 @@ expressionStatement
   : assignmentExpression SEMICOLON
   ;
 
-printStatement
-  : PRINT LPAREN assignmentExpression RPAREN SEMICOLON
-  ;
 
 // Expressions (precedence)
 assignmentExpression
@@ -182,7 +178,7 @@ binaryExpression
                   )
                   ((GT | LT | GTE | LTE) unaryOp* postfixExpression)*
                 )
-                ((EQ | NEQ) unaryOp* postfixExpression)*
+                ((EQ | NEQ ) unaryOp* postfixExpression)*
               )
               (BITWISE_AND unaryOp* postfixExpression)*
             )
@@ -284,7 +280,6 @@ FINALLY:    'finally';
 RETURN:     'return';
 BREAK:      'break';
 CONTINUE:   'continue';
-PRINT:      'print';
 
 INT:    'int';
 FLOAT:  'float';
@@ -341,8 +336,6 @@ COMMA:      ',';
 COLON:      ':';
 DOT:        '.';
 
-OPEN_FRAGMENT: '<>';
-CLOSE_FRAGMENT: '</>';
 
 ID: [a-zA-Z_] [a-zA-Z_0-9]*;
 
