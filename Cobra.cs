@@ -2,7 +2,7 @@ using Cobra.Utils;
 
 namespace Cobra;
 
-public class Program
+public class Cobra
 {
     public static void Main(string[] args)
     {
