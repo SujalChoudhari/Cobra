@@ -52,6 +52,7 @@ namespace Cobra.Utils
             [CallerMemberName] string member = "")
         {
             Log("ERROR", message, ConsoleColor.Red, file, line, member);
+            throw new Exception(message);
         }
 
         public void Debug(string message,

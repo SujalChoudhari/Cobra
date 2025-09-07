@@ -31,10 +31,8 @@ public abstract class CobraCommandLine
         }
 
         Log.Info($"Running: {opts.File}");
-        Log.Info("Library folders:");
         foreach (var lib in opts.LibPaths)
             Log.Info($"  {lib}");
-        Log.Info("Definitions:");
         foreach (var def in opts.Defines)
             Log.Info($"  {def}");
 
