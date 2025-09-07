@@ -2,7 +2,7 @@ using CommandLine;
 
 namespace Cobra.Utils;
 
-public static class CLI
+public static class CobraCommandLine
 {
     public static int Run(string[] args)
     {
@@ -38,7 +38,7 @@ public static class CLI
     private static int StartRepl(ReplOptions opts)
     {
         Console.WriteLine("Starting REPL...");
-        // TODO: Launch interpreter in REPL mode
+        
         return 0;
     }
 }
