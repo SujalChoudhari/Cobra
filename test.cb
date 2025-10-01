@@ -1,17 +1,14 @@
-dict x = {
-    y: 2,
-    op: int(int m) {
-        return m + 1;
-    },
-    z: 3,
-    more: {
-        x: 2,
-        y: 4
-    }
-};
 
-int a = x.y;
-int b = x.op(1);
-int c = x.z;
+fun[] maths = [
+    int (int a, int b) {return a + b;},
+    int (int a, int b) {return a - b;},
+    int (int a, int b) {return a * b;},
+    int (int a, int b) {return a / b;}
+];
 
-print(a, b, c, x.more.x);
+int x = maths[0](1, 2);
+int y = maths[1](1, 7);
+int z = maths[2](1, 2);
+int w = maths[3](6, 4);
+
+print(x,y,z,w);
