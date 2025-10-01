@@ -1,6 +1,6 @@
 namespace Cobra.Environment;
 
-public class UserDefinedFunction(
+public class CobraUserDefinedFunction(
     string name,
     List<(CobraRuntimeTypes Type, string Name)> parameters,
     CobraParser.BlockContext body,

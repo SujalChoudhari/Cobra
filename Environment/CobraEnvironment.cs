@@ -9,7 +9,7 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
     {
         var env = new CobraEnvironment();
 
-        var printFunc = new BuiltinFunction("print", (args) =>
+        var printFunc = new CobraBuiltinFunction("print", (args) =>
         {
             var output = string.Join(" ", args.Select(a => a?.ToString() ?? "null"));
             Console.WriteLine(output);

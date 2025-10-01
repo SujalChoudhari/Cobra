@@ -1,11 +1,8 @@
 using System.Globalization;
+using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 using Cobra.Environment;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System;
-using Antlr4.Runtime;
+using Cobra.Utils;
 
 namespace Cobra.Interpreter
 {
@@ -128,9 +125,9 @@ namespace Cobra.Interpreter
                 return Path.GetFullPath(Path.Combine(currentDir!, path));
             }
             
-            if (!path.EndsWith(".cb"))
+            if (!path.EndsWith(CobraConstants.FILE_EXTENSION))
             {
-                path += ".cb";
+                path += CobraConstants.FILE_EXTENSION;
             }
 
             var assemblyLocation = AppDomain.CurrentDomain.BaseDirectory;
@@ -141,7 +138,7 @@ namespace Cobra.Interpreter
                 return exeRelativePath;
             }
 
-            var stdlibPath = Path.GetFullPath(Path.Combine(assemblyLocation, "stdlib", path));
+            var stdlibPath = Path.GetFullPath(Path.Combine(assemblyLocation, CobraConstants.STDLIB_DIRECTORY, path));
             if (File.Exists(stdlibPath))
             {
                 return stdlibPath;
@@ -223,7 +220,7 @@ namespace Cobra.Interpreter
             var parameters = context.parameterList()?.parameter()
                                  .Select(p => (CobraRuntimeTypes.Void, p.ID().GetText())).ToList() ??
                              new List<(CobraRuntimeTypes, string)>();
-            var function = new UserDefinedFunction(funcName, parameters, context.block(), _currentEnvironment);
+            var function = new CobraUserDefinedFunction(funcName, parameters, context.block(), _currentEnvironment);
             _currentEnvironment.DefineVariable(funcName, function, isConst: true);
             return null;
         }
@@ -439,7 +436,7 @@ namespace Cobra.Interpreter
             var parameters = context.parameterList()?.parameter()
                                  .Select(p => (CobraRuntimeTypes.Void, p.ID().GetText())).ToList() ??
                              new List<(CobraRuntimeTypes, string)>();
-            return new UserDefinedFunction("", parameters, context.block(), _currentEnvironment);
+            return new CobraUserDefinedFunction("", parameters, context.block(), _currentEnvironment);
         }
 
         #endregion
@@ -551,7 +548,7 @@ namespace Cobra.Interpreter
         {
             switch (funcObject)
             {
-                case UserDefinedFunction userFunc:
+                case CobraUserDefinedFunction userFunc:
                 {
                     if (args.Count != userFunc.Parameters.Count)
                         throw new Exception(
@@ -574,7 +571,7 @@ namespace Cobra.Interpreter
                         _currentEnvironment = previous;
                     }
                 }
-                case BuiltinFunction builtinFunc:
+                case CobraBuiltinFunction builtinFunc:
                 {
                     return builtinFunc.Action(args);
                 }
