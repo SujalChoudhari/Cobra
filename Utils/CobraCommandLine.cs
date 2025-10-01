@@ -37,7 +37,7 @@ public abstract class CobraCommandLine
             Log.Info($"  {def}");
 
         CobraRunner runner = new();
-        runner.Run(File.ReadAllText(opts.File));
+        runner.Run(File.ReadAllText(opts.File), opts.File);
 
         return 0;
     }

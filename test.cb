@@ -1,3 +1,9 @@
+import "one";
+
+
+print(one);
+print(two(10,"LOL"));
+
 
 fun[] maths = [
     int (int a, int b) {return a + b;},

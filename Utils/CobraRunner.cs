@@ -1,5 +1,4 @@
 using Antlr4.Runtime;
-using Antlr4.Runtime.Tree;
 using Cobra.Interpreter;
 
 namespace Cobra.Utils;
@@ -14,7 +13,7 @@ public class CobraRunner
         _interpreter = new CobraInterpreter();
     }
 
-    public void Run(string code)
+    public void Run(string code, string? sourcePath = null)
     {
         var inputStream = new AntlrInputStream(code);
         var lexer = new CobraLexer(inputStream);
@@ -23,7 +22,7 @@ public class CobraRunner
 
         var tree = parser.program();
 
-        _interpreter.Visit(tree);
+        _interpreter.Interpret(tree, sourcePath);
     }
 
     public void StartRepl()
@@ -44,7 +43,11 @@ public class CobraRunner
             }
             catch (Exception ex)
             {
-                Log.Error($"Error: {ex.Message}");
+                // Use a non-throwing logger for REPL errors
+                var previousColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Error: {ex.Message}");
+                Console.ForegroundColor = previousColor;
             }
         }
     }

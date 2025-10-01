@@ -1,12 +1,19 @@
 using System.Globalization;
 using Antlr4.Runtime.Tree;
 using Cobra.Environment;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System;
+using Antlr4.Runtime;
 
 namespace Cobra.Interpreter
 {
     public class CobraInterpreter : CobraBaseVisitor<object?>
     {
         private CobraEnvironment _currentEnvironment = CobraEnvironment.CreateGlobalEnvironment();
+        private readonly Stack<string> _sourceFileStack = new();
+        private readonly HashSet<string> _alreadyImported = new();
 
         private class LValue(object? container, object? key)
         {
@@ -29,6 +36,29 @@ namespace Cobra.Interpreter
             }
         }
 
+        public void Interpret(IParseTree tree, string? sourcePath)
+        {
+            string? fullPath = null;
+            if (!string.IsNullOrEmpty(sourcePath))
+            {
+                fullPath = Path.GetFullPath(sourcePath);
+                _sourceFileStack.Push(fullPath);
+                _alreadyImported.Add(fullPath);
+            }
+
+            try
+            {
+                Visit(tree);
+            }
+            finally
+            {
+                if (fullPath != null)
+                {
+                    _sourceFileStack.Pop();
+                }
+            }
+        }
+
         public override object? VisitProgram(CobraParser.ProgramContext context)
         {
             foreach (var statement in context.children)
@@ -38,6 +68,94 @@ namespace Cobra.Interpreter
 
             return null;
         }
+
+        #region Modules and Imports
+
+        public override object? VisitImportStatement(CobraParser.ImportStatementContext context)
+        {
+            var importPathRaw = CobraLiteralHelper.UnescapeString(context.STRING_LITERAL().GetText());
+            var resolvedPath = ResolveImportPath(importPathRaw);
+
+            if (string.IsNullOrEmpty(resolvedPath) || !File.Exists(resolvedPath))
+            {
+                throw new FileNotFoundException($"Could not find module to import: '{importPathRaw}'");
+            }
+
+            ExecuteFile(resolvedPath);
+            return null;
+        }
+
+        private void ExecuteFile(string path)
+        {
+            var fullPath = Path.GetFullPath(path);
+
+            if (_alreadyImported.Contains(fullPath))
+                return;
+
+            _alreadyImported.Add(fullPath);
+            _sourceFileStack.Push(fullPath);
+
+            try
+            {
+                var code = File.ReadAllText(fullPath);
+                var inputStream = new AntlrInputStream(code);
+                var lexer = new CobraLexer(inputStream);
+                var tokenStream = new CommonTokenStream(lexer);
+                var parser = new CobraParser(tokenStream);
+                var tree = parser.program();
+                Visit(tree);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error importing file '{path}': {ex.Message}", ex);
+            }
+            finally
+            {
+                _sourceFileStack.Pop();
+            }
+        }
+
+        private string? ResolveImportPath(string path)
+        {
+            path = path.Replace('/', Path.DirectorySeparatorChar).Replace('\\', Path.DirectorySeparatorChar);
+
+            if (path.StartsWith("." + Path.DirectorySeparatorChar) || path.StartsWith(".." + Path.DirectorySeparatorChar))
+            {
+                if (_sourceFileStack.Count == 0)
+                    throw new InvalidOperationException("Cannot resolve relative path import from REPL or an unknown source.");
+
+                var currentDir = Path.GetDirectoryName(_sourceFileStack.Peek());
+                return Path.GetFullPath(Path.Combine(currentDir!, path));
+            }
+            
+            if (!path.EndsWith(".cb"))
+            {
+                path += ".cb";
+            }
+
+            var assemblyLocation = AppDomain.CurrentDomain.BaseDirectory;
+
+            var exeRelativePath = Path.GetFullPath(Path.Combine(assemblyLocation, path));
+            if (File.Exists(exeRelativePath))
+            {
+                return exeRelativePath;
+            }
+
+            var stdlibPath = Path.GetFullPath(Path.Combine(assemblyLocation, "stdlib", path));
+            if (File.Exists(stdlibPath))
+            {
+                return stdlibPath;
+            }
+
+            if (Path.IsPathRooted(path) && File.Exists(path))
+            {
+                return path;
+            }
+
+            return null;
+        }
+
+        #endregion
 
         #region Scoping and Blocks
 
