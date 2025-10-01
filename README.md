@@ -41,6 +41,7 @@ The language continues to be C-like, but now emphasizes rapid turnaround and ext
     - [x] Functions in dicts and arrays
     - [x] Modules and imports
     - [ ] External functions and linking
+    - [x] Namespaces
     - [ ] Error handling (try/catch/finally)
     - [x] Jump statements (`return`, `break`, `continue`)
     - [ ] `do-while`, `foreach`, `switch` (remaining control flow)
