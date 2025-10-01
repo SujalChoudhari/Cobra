@@ -1,8 +1,8 @@
 import "one";
 
 
-print(one);
-print(two(10,"LOL"));
+print(one.var.var1);
+print(one.var.func1());
 
 
 fun[] maths = [

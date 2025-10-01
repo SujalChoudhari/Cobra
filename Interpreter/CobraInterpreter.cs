@@ -2,7 +2,6 @@ using System.Globalization;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 using Cobra.Environment;
-using Cobra.Utils;
 
 namespace Cobra.Interpreter
 {
@@ -21,6 +20,9 @@ namespace Cobra.Interpreter
             {
                 switch (Container)
                 {
+                    case CobraNamespace ns when Key is string name:
+                        ns.Environment.AssignVariable(name, value);
+                        break;
                     case List<object?> list when Key is long or int:
                         list[Convert.ToInt32(Key)] = value;
                         break;
@@ -66,7 +68,60 @@ namespace Cobra.Interpreter
             return null;
         }
 
-        #region Modules and Imports
+        #region Namespaces and Modules
+
+        public override object? VisitNamespaceDeclaration(CobraParser.NamespaceDeclarationContext context)
+        {
+            var parts = context.qualifiedName().ID().Select(id => id.GetText()).ToList();
+            var targetEnvironment = _currentEnvironment;
+            CobraNamespace? currentNamespace = null;
+
+            foreach (var part in parts)
+            {
+                object? existing;
+                try
+                {
+                    existing = targetEnvironment.GetVariable(part);
+                }
+                catch (Exception)
+                {
+                    existing = null;
+                }
+
+                if (existing is CobraNamespace nextNamespace)
+                {
+                    currentNamespace = nextNamespace;
+                }
+                else if (existing == null)
+                {
+                    currentNamespace = new CobraNamespace(part, targetEnvironment);
+                    targetEnvironment.DefineVariable(part, currentNamespace, isConst: true);
+                }
+                else
+                {
+                    throw new Exception($"Identifier '{part}' already exists and is not a namespace.");
+                }
+
+                targetEnvironment = currentNamespace.Environment;
+            }
+
+            var previousEnv = _currentEnvironment;
+            _currentEnvironment = targetEnvironment;
+            try
+            {
+                foreach (var decl in context.children)
+                {
+                    if (decl is not ITerminalNode)
+                        Visit(decl);
+                }
+            }
+            finally
+            {
+                _currentEnvironment = previousEnv;
+            }
+
+            return null;
+        }
 
         public override object? VisitImportStatement(CobraParser.ImportStatementContext context)
         {
@@ -116,18 +171,20 @@ namespace Cobra.Interpreter
         {
             path = path.Replace('/', Path.DirectorySeparatorChar).Replace('\\', Path.DirectorySeparatorChar);
 
-            if (path.StartsWith("." + Path.DirectorySeparatorChar) || path.StartsWith(".." + Path.DirectorySeparatorChar))
+            if (path.StartsWith("." + Path.DirectorySeparatorChar) ||
+                path.StartsWith(".." + Path.DirectorySeparatorChar))
             {
                 if (_sourceFileStack.Count == 0)
-                    throw new InvalidOperationException("Cannot resolve relative path import from REPL or an unknown source.");
+                    throw new InvalidOperationException(
+                        "Cannot resolve relative path import from REPL or an unknown source.");
 
                 var currentDir = Path.GetDirectoryName(_sourceFileStack.Peek());
                 return Path.GetFullPath(Path.Combine(currentDir!, path));
             }
-            
-            if (!path.EndsWith(CobraConstants.FILE_EXTENSION))
+
+            if (!path.EndsWith(".cb"))
             {
-                path += CobraConstants.FILE_EXTENSION;
+                path += ".cb";
             }
 
             var assemblyLocation = AppDomain.CurrentDomain.BaseDirectory;
@@ -138,7 +195,7 @@ namespace Cobra.Interpreter
                 return exeRelativePath;
             }
 
-            var stdlibPath = Path.GetFullPath(Path.Combine(assemblyLocation, CobraConstants.STDLIB_DIRECTORY, path));
+            var stdlibPath = Path.GetFullPath(Path.Combine(assemblyLocation, "stdlib", path));
             if (File.Exists(stdlibPath))
             {
                 return stdlibPath;
@@ -536,12 +593,15 @@ namespace Cobra.Interpreter
 
         private object? GetMember(object? collection, string key)
         {
-            if (collection is Dictionary<string, object?> dict)
+            switch (collection)
             {
-                return dict.GetValueOrDefault(key);
+                case Dictionary<string, object?> dict:
+                    return dict.GetValueOrDefault(key);
+                case CobraNamespace ns:
+                    return ns.Environment.GetVariable(key);
+                default:
+                    throw new Exception("Object does not have members access with '.' operator.");
             }
-
-            throw new Exception("Object does not have members access with '.' operator.");
         }
 
         private object? ExecuteFunctionCall(object? funcObject, List<object?> args, string funcNameForError)

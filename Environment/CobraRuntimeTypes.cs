@@ -11,5 +11,6 @@ public enum CobraRuntimeTypes
     Dict,
     List,
     Function,
-    Markup
+    Markup,
+    Namespace
 }

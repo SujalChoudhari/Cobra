@@ -15,7 +15,7 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
             Console.WriteLine(output);
             return null;
         });
-        
+
         env.DefineVariable("print", printFunc, isConst: true);
 
         return env;
@@ -43,6 +43,7 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
             List<object> => CobraRuntimeTypes.List,
             CobraFunctionDefinition => CobraRuntimeTypes.Function,
             CobraMarkup => CobraRuntimeTypes.Markup,
+            CobraNamespace => CobraRuntimeTypes.Namespace,
             _ => throw new Exception($"Unsupported runtime type: {value.GetType().Name}")
         };
     }
