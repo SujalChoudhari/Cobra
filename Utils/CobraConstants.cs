@@ -2,11 +2,11 @@ namespace Cobra.Utils;
 
 public static class CobraConstants
 {
-    public const string VERSION = "0.1.0";
-    public const string NAME = "Cobra";
-    public const string AUTHOR = "Sujal Choudhari";
+    public const string Version = "0.1.0";
+    public const string Name = "Cobra";
+    public const string Author = "Sujal Choudhari";
     
-    public const string FILE_EXTENSION = ".cb";
+    public const string FileExtension = ".cb";
     
-    public const string STDLIB_DIRECTORY = "StdLib";
+    public const string StdlibDirectory = "StdLib";
 }

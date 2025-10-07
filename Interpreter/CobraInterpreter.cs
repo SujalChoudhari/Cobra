@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 using Cobra.Environment;
+using Cobra.Utils;
 
 namespace Cobra.Interpreter
 {
@@ -222,7 +223,7 @@ namespace Cobra.Interpreter
             if (File.Exists(exeRelativePath))
                 return exeRelativePath;
 
-            var stdlibPath = Path.GetFullPath(Path.Combine(assemblyLocation, "stdlib", path));
+            var stdlibPath = Path.GetFullPath(Path.Combine(assemblyLocation, CobraConstants.StdlibDirectory, path));
             if (File.Exists(stdlibPath))
                 return stdlibPath;
 
