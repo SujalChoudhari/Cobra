@@ -44,6 +44,7 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
             CobraFunctionDefinition => CobraRuntimeTypes.Function,
             CobraMarkup => CobraRuntimeTypes.Markup,
             CobraNamespace => CobraRuntimeTypes.Namespace,
+            CobraHandle => CobraRuntimeTypes.Handle,
             _ => throw new Exception($"Unsupported runtime type: {value.GetType().Name}")
         };
     }

@@ -1,4 +1,6 @@
 using System.Globalization;
+using System.Linq.Expressions;
+using System.Runtime.InteropServices;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 using Cobra.Environment;
@@ -11,7 +13,10 @@ namespace Cobra.Interpreter
         private readonly Stack<string> _sourceFileStack = new();
         private readonly HashSet<string> _alreadyImported = new();
 
-        private class LValue(object? container, object? key)
+        private readonly Dictionary<string, IntPtr> _loadedLibraries = new();
+        private string? _currentLinkingLibraryPath;
+
+        private class CobraLValue(object? container, object? key)
         {
             public object? Container { get; } = container;
             public object? Key { get; } = key;
@@ -68,13 +73,12 @@ namespace Cobra.Interpreter
             return null;
         }
 
-        #region Namespaces and Modules
+        #region Namespaces, Modules, and Linking
 
         public override object? VisitNamespaceDeclaration(CobraParser.NamespaceDeclarationContext context)
         {
             var parts = context.qualifiedName().ID().Select(id => id.GetText()).ToList();
             var targetEnvironment = _currentEnvironment;
-            CobraNamespace? currentNamespace = null;
 
             foreach (var part in parts)
             {
@@ -88,6 +92,7 @@ namespace Cobra.Interpreter
                     existing = null;
                 }
 
+                CobraNamespace? currentNamespace;
                 if (existing is CobraNamespace nextNamespace)
                 {
                     currentNamespace = nextNamespace;
@@ -126,14 +131,104 @@ namespace Cobra.Interpreter
         public override object? VisitImportStatement(CobraParser.ImportStatementContext context)
         {
             var importPathRaw = CobraLiteralHelper.UnescapeString(context.STRING_LITERAL().GetText());
-            var resolvedPath = ResolveImportPath(importPathRaw);
+            var resolvedPath = ResolveModulePath(importPathRaw, ".cb");
 
             if (string.IsNullOrEmpty(resolvedPath) || !File.Exists(resolvedPath))
-            {
                 throw new FileNotFoundException($"Could not find module to import: '{importPathRaw}'");
-            }
 
             ExecuteFile(resolvedPath);
+            return null;
+        }
+
+        public override object? VisitLinkStatement(CobraParser.LinkStatementContext context)
+        {
+            var libPathRaw = CobraLiteralHelper.UnescapeString(context.STRING_LITERAL().GetText());
+            var resolvedPath = ResolveModulePath(libPathRaw, GetNativeLibExtension());
+
+            if (string.IsNullOrEmpty(resolvedPath) || !File.Exists(resolvedPath))
+                throw new FileNotFoundException($"Could not find native library to link: '{libPathRaw}'");
+
+            if (!_loadedLibraries.ContainsKey(resolvedPath))
+            {
+                var handle = NativeLibrary.Load(resolvedPath);
+                _loadedLibraries[resolvedPath] = handle;
+            }
+
+            _currentLinkingLibraryPath = resolvedPath;
+            return null;
+        }
+
+        public override object? VisitExternDeclaration(CobraParser.ExternDeclarationContext context)
+        {
+            if (_currentLinkingLibraryPath == null)
+                throw new InvalidOperationException("external declaration must be preceded by a link statement.");
+
+            var funcName = context.ID().GetText();
+            var returnType = ParseType(context.type());
+            var parameters = context.parameterList()?.parameter()
+                .Select(p => (ParseType(p.type()), p.ID().GetText()))
+                .ToList() ?? new List<(CobraRuntimeTypes, string)>();
+
+            var externalFunc = new CobraExternalFunction(funcName, returnType, parameters, _currentLinkingLibraryPath);
+            _currentEnvironment.DefineVariable(funcName, externalFunc, isConst: true);
+
+            _currentLinkingLibraryPath = null;
+            return null;
+        }
+
+        private CobraRuntimeTypes ParseType(CobraParser.TypeContext context)
+        {
+            return context.GetText() switch
+            {
+                "void" => CobraRuntimeTypes.Void,
+                "int" => CobraRuntimeTypes.Int,
+                "float" => CobraRuntimeTypes.Float,
+                "bool" => CobraRuntimeTypes.Bool,
+                "string" => CobraRuntimeTypes.String,
+                "handle" => CobraRuntimeTypes.Handle,
+                _ => throw new NotSupportedException(
+                    $"Type '{context.GetText()}' is not supported for external functions.")
+            };
+        }
+
+        private string GetNativeLibExtension()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) return ".dll";
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) return ".so";
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) return ".dylib";
+            throw new NotSupportedException("Operating System not supported for native linking.");
+        }
+
+        private string? ResolveModulePath(string path, string extension)
+        {
+            path = path.Replace('/', Path.DirectorySeparatorChar).Replace('\\', Path.DirectorySeparatorChar);
+
+            if (path.StartsWith("." + Path.DirectorySeparatorChar) ||
+                path.StartsWith(".." + Path.DirectorySeparatorChar))
+            {
+                if (_sourceFileStack.Count == 0)
+                    throw new InvalidOperationException("Cannot resolve relative path from REPL or an unknown source.");
+
+                var currentDir = Path.GetDirectoryName(_sourceFileStack.Peek());
+                return Path.GetFullPath(Path.Combine(currentDir!, path));
+            }
+
+            if (!path.EndsWith(extension))
+                path += extension;
+
+            var assemblyLocation = AppDomain.CurrentDomain.BaseDirectory;
+
+            var exeRelativePath = Path.GetFullPath(Path.Combine(assemblyLocation, path));
+            if (File.Exists(exeRelativePath))
+                return exeRelativePath;
+
+            var stdlibPath = Path.GetFullPath(Path.Combine(assemblyLocation, "stdlib", path));
+            if (File.Exists(stdlibPath))
+                return stdlibPath;
+
+            if (Path.IsPathRooted(path) && File.Exists(path))
+                return path;
+
             return null;
         }
 
@@ -141,10 +236,9 @@ namespace Cobra.Interpreter
         {
             var fullPath = Path.GetFullPath(path);
 
-            if (_alreadyImported.Contains(fullPath))
+            if (!_alreadyImported.Add(fullPath))
                 return;
 
-            _alreadyImported.Add(fullPath);
             _sourceFileStack.Push(fullPath);
 
             try
@@ -165,48 +259,6 @@ namespace Cobra.Interpreter
             {
                 _sourceFileStack.Pop();
             }
-        }
-
-        private string? ResolveImportPath(string path)
-        {
-            path = path.Replace('/', Path.DirectorySeparatorChar).Replace('\\', Path.DirectorySeparatorChar);
-
-            if (path.StartsWith("." + Path.DirectorySeparatorChar) ||
-                path.StartsWith(".." + Path.DirectorySeparatorChar))
-            {
-                if (_sourceFileStack.Count == 0)
-                    throw new InvalidOperationException(
-                        "Cannot resolve relative path import from REPL or an unknown source.");
-
-                var currentDir = Path.GetDirectoryName(_sourceFileStack.Peek());
-                return Path.GetFullPath(Path.Combine(currentDir!, path));
-            }
-
-            if (!path.EndsWith(".cb"))
-            {
-                path += ".cb";
-            }
-
-            var assemblyLocation = AppDomain.CurrentDomain.BaseDirectory;
-
-            var exeRelativePath = Path.GetFullPath(Path.Combine(assemblyLocation, path));
-            if (File.Exists(exeRelativePath))
-            {
-                return exeRelativePath;
-            }
-
-            var stdlibPath = Path.GetFullPath(Path.Combine(assemblyLocation, "stdlib", path));
-            if (File.Exists(stdlibPath))
-            {
-                return stdlibPath;
-            }
-
-            if (Path.IsPathRooted(path) && File.Exists(path))
-            {
-                return path;
-            }
-
-            return null;
         }
 
         #endregion
@@ -237,7 +289,7 @@ namespace Cobra.Interpreter
             foreach (var statement in context.statement() ?? [])
             {
                 var result = Visit(statement);
-                if (result is ReturnValue or BreakValue or ContinueValue)
+                if (result is CobraReturnValue or CobraBreakValue or CobraContinueValue)
                 {
                     return result;
                 }
@@ -312,8 +364,8 @@ namespace Cobra.Interpreter
             while (CobraLiteralHelper.IsTruthy(Visit(context.assignmentExpression())))
             {
                 var result = Visit(context.statement());
-                if (result is ReturnValue) return result;
-                if (result is BreakValue) break;
+                if (result is CobraReturnValue) return result;
+                if (result is CobraBreakValue) break;
             }
 
             return null;
@@ -331,8 +383,8 @@ namespace Cobra.Interpreter
                        CobraLiteralHelper.IsTruthy(Visit(context.assignmentExpression(0))))
                 {
                     var result = Visit(context.statement());
-                    if (result is ReturnValue) return result;
-                    if (result is BreakValue) break;
+                    if (result is CobraReturnValue) return result;
+                    if (result is CobraBreakValue) break;
 
                     if (context.assignmentExpression(1) != null) Visit(context.assignmentExpression(1));
                 }
@@ -349,13 +401,13 @@ namespace Cobra.Interpreter
         {
             if (context.RETURN() != null)
             {
-                return new ReturnValue(context.assignmentExpression() != null
+                return new CobraReturnValue(context.assignmentExpression() != null
                     ? Visit(context.assignmentExpression())
                     : null);
             }
 
-            if (context.BREAK() != null) return BreakValue.Instance;
-            if (context.CONTINUE() != null) return ContinueValue.Instance;
+            if (context.BREAK() != null) return CobraBreakValue.Instance;
+            if (context.CONTINUE() != null) return CobraContinueValue.Instance;
             return null;
         }
 
@@ -530,7 +582,7 @@ namespace Cobra.Interpreter
 
         #region Helpers
 
-        private LValue EvaluateLValue(CobraParser.LeftHandSideContext context)
+        private CobraLValue EvaluateLValue(CobraParser.LeftHandSideContext context)
         {
             object? container = Visit(context.primary());
             if (context.children.Count == 1) throw new Exception("Invalid LValue target.");
@@ -555,11 +607,11 @@ namespace Cobra.Interpreter
             if (lastOp.GetText() == "[")
             {
                 var indexExpr = context.assignmentExpression().Last();
-                return new LValue(container, Visit(indexExpr));
+                return new CobraLValue(container, Visit(indexExpr));
             }
 
             var idExpr = context.ID().Last();
-            return new LValue(container, idExpr.GetText());
+            return new CobraLValue(container, idExpr.GetText());
         }
 
         private int GetPostfixOperatorIndex(CobraParser.PostfixExpressionContext context, int opNodeIndex)
@@ -623,7 +675,7 @@ namespace Cobra.Interpreter
                         }
 
                         var result = ExecuteBlockStmts(userFunc.Body);
-                        if (result is ReturnValue rv) return rv.Value;
+                        if (result is CobraReturnValue rv) return rv.Value;
                         return null;
                     }
                     finally
@@ -635,9 +687,46 @@ namespace Cobra.Interpreter
                 {
                     return builtinFunc.Action(args);
                 }
+                case CobraExternalFunction externalFunc:
+                {
+                    return CallExternalFunction(externalFunc, args);
+                }
                 default:
                     throw new Exception($"'{funcNameForError}' is not a function.");
             }
+        }
+
+        private object? CallExternalFunction(CobraExternalFunction func, List<object?> args)
+        {
+            if (!_loadedLibraries.TryGetValue(func.LibraryPath, out var libHandle))
+                throw new InvalidOperationException($"Library '{func.LibraryPath}' not loaded.");
+
+            if (!NativeLibrary.TryGetExport(libHandle, func.Name, out var funcPtr))
+                throw new EntryPointNotFoundException(
+                    $"Function '{func.Name}' not found in library '{func.LibraryPath}'.");
+
+            var returnType = CobraTypeMarshaller.ToDotNetType(func.ReturnType);
+            var paramTypes = func.Parameters.Select(p => CobraTypeMarshaller.ToDotNetType(p.Type)).ToArray();
+
+            var delegateType =
+                Expression.GetDelegateType(paramTypes.Append(returnType).ToArray());
+            var delegateInstance = Marshal.GetDelegateForFunctionPointer(funcPtr, delegateType);
+
+            object?[] marshalledArgs = new object[args.Count];
+            for (int i = 0; i < args.Count; i++)
+            {
+                if (args[i] is CobraHandle handle)
+                    marshalledArgs[i] = handle.Pointer;
+                else
+                    marshalledArgs[i] = args[i]!;
+            }
+
+            object? result = delegateInstance.DynamicInvoke(marshalledArgs);
+
+            if (func.ReturnType == CobraRuntimeTypes.Handle && result is IntPtr ptr)
+                return new CobraHandle(ptr);
+
+            return result;
         }
 
         private object? EvaluateUnaryThenPostfix(CobraParser.BinaryExpressionContext context, ref int i)

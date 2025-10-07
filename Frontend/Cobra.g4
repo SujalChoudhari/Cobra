@@ -70,6 +70,7 @@ primitiveType
   | BOOL
   | STRING
   | VOID  
+  | HANDLE
   ;
 
 parameterList
@@ -287,6 +288,7 @@ STRING: 'string';
 BOOL:   'bool';
 VOID:   'void';
 NULL:   'null';
+HANDLE: 'handle';
 
 FUN:    'fun';
 MARKUP: 'markup';

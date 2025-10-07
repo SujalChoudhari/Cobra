@@ -14,10 +14,36 @@
 
     <ItemGroup>
       <Content Include="bin\Debug\net9.0\Cobra.exe" />
+      <Content Include="CobraStdLib\.idea\.gitignore" />
+      <Content Include="CobraStdLib\.idea\CobraStdLib.iml" />
+      <Content Include="CobraStdLib\.idea\editor.xml" />
+      <Content Include="CobraStdLib\.idea\misc.xml" />
+      <Content Include="CobraStdLib\.idea\modules.xml" />
+      <Content Include="CobraStdLib\.idea\vcs.xml" />
+      <Content Include="CobraStdLib\.idea\workspace.xml" />
+      <Content Include="CobraStdLib\cmake-build-debug\.cmake\api\v1\query\cache-v2" />
+      <Content Include="CobraStdLib\cmake-build-debug\.cmake\api\v1\query\cmakeFiles-v1" />
+      <Content Include="CobraStdLib\cmake-build-debug\.cmake\api\v1\query\codemodel-v2" />
+      <Content Include="CobraStdLib\cmake-build-debug\.cmake\api\v1\query\toolchains-v1" />
+      <Content Include="CobraStdLib\cmake-build-debug\.cmake\api\v1\reply\cache-v2-334dfd589820a523ee2e.json" />
+      <Content Include="CobraStdLib\cmake-build-debug\.cmake\api\v1\reply\cmakeFiles-v1-0e8df72d157752f004d2.json" />
+      <Content Include="CobraStdLib\cmake-build-debug\.cmake\api\v1\reply\codemodel-v2-6fa0c961b98f3228e9a2.json" />
+      <Content Include="CobraStdLib\cmake-build-debug\.cmake\api\v1\reply\directory-.-Debug-d0094a50bb2071803777.json" />
+      <Content Include="CobraStdLib\cmake-build-debug\.cmake\api\v1\reply\index-2025-10-07T03-13-04-0154.json" />
+      <Content Include="CobraStdLib\cmake-build-debug\.cmake\api\v1\reply\target-CobraStdLib-Debug-ed153e0a668f9df5fdcc.json" />
+      <Content Include="CobraStdLib\cmake-build-debug\.cmake\api\v1\reply\toolchains-v1-a09928fe4dc416162280.json" />
     </ItemGroup>
 
     <ItemGroup>
       <None Include="bin\Debug\net9.0\one.cb" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="CobraStdLib\cmake-build-debug\CMakeFiles\4.0.2\CompilerIdCXX\tmp\" />
+      <Folder Include="CobraStdLib\cmake-build-debug\CMakeFiles\4.0.2\CompilerIdC\tmp\" />
+      <Folder Include="CobraStdLib\cmake-build-debug\CMakeFiles\CMakeScratch\" />
+      <Folder Include="CobraStdLib\cmake-build-debug\CMakeFiles\CobraStdLib.dir\" />
+      <Folder Include="CobraStdLib\cmake-build-debug\CMakeFiles\pkgRedirects\" />
     </ItemGroup>
 
 </Project>

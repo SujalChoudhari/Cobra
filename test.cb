@@ -3,18 +3,3 @@ import "one";
 
 print(one.var.var1);
 print(one.var.func1());
-
-
-fun[] maths = [
-    int (int a, int b) {return a + b;},
-    int (int a, int b) {return a - b;},
-    int (int a, int b) {return a * b;},
-    int (int a, int b) {return a / b;}
-];
-
-int x = maths[0](1, 2);
-int y = maths[1](1, 7);
-int z = maths[2](1, 2);
-int w = maths[3](6, 4);
-
-print(x,y,z,w);
