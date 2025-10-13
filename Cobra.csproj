@@ -61,5 +61,22 @@
         <Message Text="Copied native libraries: @(NativeLibs) -> $(OutputPath)stdlib" Importance="high"/>
     </Target>
 
+    <Target Name="CopyStdLibIncludes" AfterTargets="Build">
+        <PropertyGroup>
+            <IncludeDir>./CobraStdLib/include</IncludeDir>
+        </PropertyGroup>
+
+        <ItemGroup>
+            <IncludeFiles Include="$(IncludeDir)/**/*.*"/>
+        </ItemGroup>
+
+        <Message Text="Looking for include files in: $(IncludeDir)" Importance="high"/>
+        <MakeDir Directories="$(OutputPath)stdlib/" Condition="!Exists('$(OutputPath)stdlib/')"/>
+        
+        <Copy SourceFiles="@(IncludeFiles)" DestinationFolder="$(OutputPath)stdlib/" SkipUnchangedFiles="true"/>
+        <Message Text="Copied include files: @(IncludeFiles) -> $(OutputPath)stdlib/" Importance="high"/>
+
+    </Target>
+
 
 </Project>

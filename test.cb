@@ -1,5 +1,1 @@
-import "one";
-
-
-print(one.var.var1);
-print(one.var.func1());
+import "math";

@@ -8,5 +8,5 @@ public static class CobraConstants
     
     public const string FileExtension = ".cb";
     
-    public const string StdlibDirectory = "StdLib";
+    public const string StdlibDirectory = "stdlib";
 }
