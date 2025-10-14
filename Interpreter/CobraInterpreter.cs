@@ -1,5 +1,4 @@
 using System.Globalization;
-using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
@@ -711,27 +710,54 @@ namespace Cobra.Interpreter
                 throw new EntryPointNotFoundException(
                     $"Function '{func.Name}' not found in library '{func.LibraryPath}'.");
 
+            if (func.ReturnType == CobraRuntimeTypes.String)
+            {
+                var delegateType = CobraDelegateFactory.Create(typeof(IntPtr),
+                    func.Parameters.Select(p => CobraTypeMarshaller.ToDotNetType(p.Type)).ToArray());
+                var delegateInstance = Marshal.GetDelegateForFunctionPointer(funcPtr, delegateType);
+
+                object?[] marshalledArgs = new object[args.Count];
+                for (int i = 0; i < args.Count; i++)
+                {
+                    marshalledArgs[i] = args[i] is CobraHandle handle ? handle.Pointer : args[i];
+                }
+
+                var stringPtr = (IntPtr)delegateInstance.DynamicInvoke(marshalledArgs)!;
+                if (stringPtr == IntPtr.Zero)
+                {
+                    return "";
+                }
+
+                var result = Marshal.PtrToStringAnsi(stringPtr);
+
+                if (!NativeLibrary.TryGetExport(libHandle, "str_free_string", out var freeFuncPtr)) return result;
+                var freeDelegateType = CobraDelegateFactory.Create(typeof(void), typeof(IntPtr));
+                var freeDelegate = Marshal.GetDelegateForFunctionPointer(freeFuncPtr, freeDelegateType);
+                freeDelegate.DynamicInvoke(stringPtr);
+                return result;
+            }
+
             var returnType = CobraTypeMarshaller.ToDotNetType(func.ReturnType);
             var paramTypes = func.Parameters.Select(p => CobraTypeMarshaller.ToDotNetType(p.Type)).ToArray();
 
-            var delegateType = CobraDelegateFactory.Create(returnType, paramTypes);
-            var delegateInstance = Marshal.GetDelegateForFunctionPointer(funcPtr, delegateType);
+            var defaultDelegateType = CobraDelegateFactory.Create(returnType, paramTypes);
+            var defaultDelegateInstance = Marshal.GetDelegateForFunctionPointer(funcPtr, defaultDelegateType);
 
-            object?[] marshalledArgs = new object[args.Count];
+            object?[] defaultMarshalledArgs = new object[args.Count];
             for (int i = 0; i < args.Count; i++)
             {
                 if (args[i] is CobraHandle handle)
-                    marshalledArgs[i] = handle.Pointer;
+                    defaultMarshalledArgs[i] = handle.Pointer;
                 else
-                    marshalledArgs[i] = args[i]!;
+                    defaultMarshalledArgs[i] = args[i]!;
             }
 
-            object? result = delegateInstance.DynamicInvoke(marshalledArgs);
+            object? resultObj = defaultDelegateInstance.DynamicInvoke(defaultMarshalledArgs);
 
-            if (func.ReturnType == CobraRuntimeTypes.Handle && result is IntPtr ptr)
+            if (func.ReturnType == CobraRuntimeTypes.Handle && resultObj is IntPtr ptr)
                 return new CobraHandle(ptr);
 
-            return result;
+            return resultObj;
         }
 
         private object? EvaluateUnaryThenPostfix(CobraParser.BinaryExpressionContext context, ref int i)

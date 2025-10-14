@@ -6,7 +6,7 @@ namespace App.Main {
     external int nativeAdd(int a, int b);
 
     const int MAX = 100;
-
+    
     int counter = 0;
     float ratio = 1.5;
 

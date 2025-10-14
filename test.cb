@@ -1,6 +1,28 @@
-import "math";
+import "str";
 
+namespace App.Main {
+    
+    string greeting = String.new("Hello");
+    string subject = String.new("World");
 
-int x = Math.isPrime(2);
+    string full_greeting = greeting.concatWrapper(subject); 
+    string with_punctuation = full_greeting.concat("!");
+    string shouting = with_punctuation.toUpper();
+    
+    print(full_greeting.toString());
+    print(with_punctuation.toString());
+    
+    print(shouting.toString());
+    print("Length: " + shouting.length()); 
 
-print(x);
+    bool are_equal = shouting.equals("HELLO_WORLD!");
+    print("Are they equal? " + are_equal); 
+
+    greeting.delete();
+    subject.delete();
+    full_greeting.delete();
+    with_punctuation.delete();
+    shouting.delete();
+
+    print("String manipulation complete.");
+}
