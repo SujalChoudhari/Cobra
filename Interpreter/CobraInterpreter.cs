@@ -709,8 +709,7 @@ namespace Cobra.Interpreter
             var returnType = CobraTypeMarshaller.ToDotNetType(func.ReturnType);
             var paramTypes = func.Parameters.Select(p => CobraTypeMarshaller.ToDotNetType(p.Type)).ToArray();
 
-            var delegateType =
-                Expression.GetDelegateType(paramTypes.Append(returnType).ToArray());
+            var delegateType = CobraDelegateFactory.Create(returnType, paramTypes);
             var delegateInstance = Marshal.GetDelegateForFunctionPointer(funcPtr, delegateType);
 
             object?[] marshalledArgs = new object[args.Count];
