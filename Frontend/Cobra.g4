@@ -49,7 +49,7 @@ functionDeclaration
   ;
 
 externDeclaration
-  : EXTERNAL type ID LPAREN parameterList? RPAREN SEMICOLON
+  : EXTERNAL type ID LPAREN parameterList? RPAREN (AS STRING_LITERAL)? SEMICOLON
   ;
 
 // Types & Parameters
@@ -296,6 +296,8 @@ DICT: 'dict';
 
 TRUE:   'true';
 FALSE:  'false';
+
+AS: 'as';
 
 PLUS:           '+';
 MINUS:          '-';

@@ -164,16 +164,21 @@ namespace Cobra.Interpreter
             if (_currentLinkingLibraryPath == null)
                 throw new InvalidOperationException("external declaration must be preceded by a link statement.");
 
-            var funcName = context.ID().GetText();
+            var nativeFuncName = context.STRING_LITERAL() != null
+                ? CobraLiteralHelper.UnescapeString(context.STRING_LITERAL().GetText())
+                : context.ID().GetText();
+
+            var cobraFuncName = context.ID().GetText();
             var returnType = ParseType(context.type());
             var parameters = context.parameterList()?.parameter()
                 .Select(p => (ParseType(p.type()), p.ID().GetText()))
-                .ToList() ?? new List<(CobraRuntimeTypes, string)>();
+                .ToList() ?? [];
 
-            var externalFunc = new CobraExternalFunction(funcName, returnType, parameters, _currentLinkingLibraryPath);
-            _currentEnvironment.DefineVariable(funcName, externalFunc, isConst: true);
+            var externalFunc =
+                new CobraExternalFunction(nativeFuncName, returnType, parameters, _currentLinkingLibraryPath);
 
-            _currentLinkingLibraryPath = null;
+            _currentEnvironment.DefineVariable(cobraFuncName, externalFunc, isConst: true);
+
             return null;
         }
 

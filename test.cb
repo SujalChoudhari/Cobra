@@ -1,7 +1,2 @@
-import "math";
-
-
-
-int a  = Math.abs(-2);
-
-print(a);
+import "path";
+handle z = Path.join("a", "b");
