@@ -1,2 +1,6 @@
-import "path";
-handle z = Path.join("a", "b");
+import "math";
+
+
+int x = Math.isPrime(2);
+
+print(x);
