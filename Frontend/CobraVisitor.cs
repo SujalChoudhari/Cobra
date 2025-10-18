@@ -68,6 +68,48 @@ public interface ICobraVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitTopLevelDeclaration([NotNull] CobraParser.TopLevelDeclarationContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.classDeclaration"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitClassDeclaration([NotNull] CobraParser.ClassDeclarationContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.memberDeclaration"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMemberDeclaration([NotNull] CobraParser.MemberDeclarationContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.accessModifier"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitAccessModifier([NotNull] CobraParser.AccessModifierContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.fieldDeclaration"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFieldDeclaration([NotNull] CobraParser.FieldDeclarationContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.methodDeclaration"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMethodDeclaration([NotNull] CobraParser.MethodDeclarationContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.constructorDeclaration"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitConstructorDeclaration([NotNull] CobraParser.ConstructorDeclarationContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.destructorDeclaration"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDestructorDeclaration([NotNull] CobraParser.DestructorDeclarationContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.constDeclaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -241,6 +283,12 @@ public interface ICobraVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitPrimary([NotNull] CobraParser.PrimaryContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.newExpression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitNewExpression([NotNull] CobraParser.NewExpressionContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.argumentList"/>.
 	/// </summary>

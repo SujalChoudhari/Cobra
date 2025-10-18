@@ -108,6 +108,90 @@ public partial class CobraBaseListener : ICobraListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitTopLevelDeclaration([NotNull] CobraParser.TopLevelDeclarationContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.classDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterClassDeclaration([NotNull] CobraParser.ClassDeclarationContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.classDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitClassDeclaration([NotNull] CobraParser.ClassDeclarationContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.memberDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterMemberDeclaration([NotNull] CobraParser.MemberDeclarationContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.memberDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitMemberDeclaration([NotNull] CobraParser.MemberDeclarationContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.accessModifier"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterAccessModifier([NotNull] CobraParser.AccessModifierContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.accessModifier"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitAccessModifier([NotNull] CobraParser.AccessModifierContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.fieldDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFieldDeclaration([NotNull] CobraParser.FieldDeclarationContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.fieldDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFieldDeclaration([NotNull] CobraParser.FieldDeclarationContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.methodDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterMethodDeclaration([NotNull] CobraParser.MethodDeclarationContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.methodDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitMethodDeclaration([NotNull] CobraParser.MethodDeclarationContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.constructorDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterConstructorDeclaration([NotNull] CobraParser.ConstructorDeclarationContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.constructorDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitConstructorDeclaration([NotNull] CobraParser.ConstructorDeclarationContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.destructorDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterDestructorDeclaration([NotNull] CobraParser.DestructorDeclarationContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.destructorDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitDestructorDeclaration([NotNull] CobraParser.DestructorDeclarationContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="CobraParser.constDeclaration"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -455,6 +539,18 @@ public partial class CobraBaseListener : ICobraListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitPrimary([NotNull] CobraParser.PrimaryContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.newExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterNewExpression([NotNull] CobraParser.NewExpressionContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.newExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitNewExpression([NotNull] CobraParser.NewExpressionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="CobraParser.argumentList"/>.
 	/// <para>The default implementation does nothing.</para>

@@ -1,74 +1,57 @@
+class Player {
+    // Static field: shared by all instances
+    static int playerCount = 0;
+
+    // Instance fields
+    private string name;
+    public int score;
+
+    // Constructor
+    constructor(string initialName) {
+        this.name = initialName;
+        this.score = 0;
+        Player.playerCount = Player.playerCount + 1;
+        print("Player '" + this.name + "' has joined the game.");
+    }
+
+    // Public instance method
+    public void printInfo() {
+        print("  - Name: " + this.name + ", Score: " + this.score);
+    }
+
+    // Static method
+    static void printPlayerCount() {
+        print("Total players online: " + Player.playerCount);
+    }
+
+    // Destructor
+    destructor() {
+        Player.playerCount = Player.playerCount - 1;
+        print("Player '" + this.name + "' is leaving. " + Player.playerCount + " players remain.");
+    }
+}
+
+
 namespace App.Main {
-    // --- Test 1: do-while loop ---
-    print("--- Testing do-while ---");
-    int i = 5;
-    do {
-        print("i is " + i);
-        i = i - 1;
-    } while (i > 0);
-    print("do-while loop finished.");
-    print("");
+    print("--- Destructor Test ---");
 
-    // Test do-while that executes only once
-    int j = 0;
-    do {
-        print("j is " + j);
-        j = j - 1;
-    } while (j > 0);
-    print("Second do-while loop finished.");
-    print("");
+    Player.printPlayerCount();
 
-
-    // --- Test 2: foreach loop ---
-    print("--- Testing foreach ---");
-    int[] numbers = [10, 20, 30, 40, 50];
-    for (int num in numbers) {
-        print("num from list is " + num);
-    }
-    print("foreach loop finished.");
-    print("");
-
-
-    // --- Test 3: switch statement ---
-    print("--- Testing switch ---");
+    print("Creating players p1 and p2...");
+    var p1 = new Player("Alice");
+    var p2 = new Player("Bob");
     
-    // Test case with a break
-    string fruit = "apple";
-    print("Testing fruit: " + fruit);
-    switch (fruit) {
-        case "banana": print("It's a banana."); break;
-        case "apple": print("It's an apple."); break;
-        default: print("It's some other fruit.");
-    }
-    print("");
+    Player.printPlayerCount();
     
-    // Test case with fall-through
-    int day = 3;
-    print("Testing day: " + day);
-    switch (day) {
-        case 1: print("Monday");
-        case 2: print("Tuesday");
-        case 3: print("Wednesday - starting point"); // Should print this
-        case 4: print("Thursday - fall-through");    // And this
-        case 5: print("Friday - fall-through");      // And this
-            print("It's a weekday.");
-            break;
-        case 6:
-        case 7:
-            print("It's the weekend.");
-            break;
-    }
-    print("");
+    print("\nDestroying p1...");
+    destroy(p1);
 
-    // Test case with default
-    string color = "blue";
-    print("Testing color: " + color);
-    switch (color) {
-        case "red": print("Color is red."); break;
-        case "green": print("Color is green."); break;
-        default: print("Default: Unknown color.");
-    }
-    print("");
+    Player.printPlayerCount();
 
-    print("All control flow tests complete.");
+    print("\nDestroying p2...");
+    destroy(p2);
+
+    Player.printPlayerCount();
+    
+    print("\nDestructor tests complete.");
 }

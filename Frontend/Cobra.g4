@@ -34,6 +34,37 @@ topLevelDeclaration
   | varDeclaration
   | functionDeclaration
   | externDeclaration
+  | classDeclaration
+  ;
+
+classDeclaration
+  : CLASS ID LBRACE memberDeclaration* RBRACE
+  ;
+
+memberDeclaration
+  : (accessModifier)? (STATIC)? (fieldDeclaration | methodDeclaration)
+  | constructorDeclaration
+  | destructorDeclaration
+  ;
+
+accessModifier
+  : PUBLIC | PRIVATE
+  ;
+
+fieldDeclaration
+  : varDeclaration
+  ;
+
+methodDeclaration
+  : functionDeclaration
+  ;
+
+constructorDeclaration
+  : CONSTRUCTOR LPAREN parameterList? RPAREN block
+  ;
+
+destructorDeclaration
+  : DESTRUCTOR LPAREN RPAREN block
   ;
 
 constDeclaration
@@ -54,10 +85,11 @@ externDeclaration
 
 // Types & Parameters
 type
-  : primitiveType (LBRACKET RBRACKET)*  
-  | secondaryType (LBRACKET RBRACKET)*  
+  : primitiveType (LBRACKET RBRACKET)*
+  | secondaryType (LBRACKET RBRACKET)*
+  | ID // For class types
   ;
-  
+
 secondaryType
   : FUN
   | MARKUP
@@ -69,7 +101,7 @@ primitiveType
   | FLOAT
   | BOOL
   | STRING
-  | VOID  
+  | VOID
   | HANDLE
   ;
 
@@ -216,9 +248,15 @@ primary
   : LPAREN assignmentExpression RPAREN
   | literal
   | ID
+  | THIS
+  | newExpression
   | functionExpression
   | arrayLiteral
   | dictLiteral
+  ;
+
+newExpression
+  : NEW ID LPAREN argumentList? RPAREN
   ;
 
 argumentList
@@ -282,6 +320,16 @@ RETURN:     'return';
 BREAK:      'break';
 CONTINUE:   'continue';
 
+CLASS:      'class';
+NEW:        'new';
+THIS:       'this';
+STATIC:     'static';
+PUBLIC:     'public';
+PRIVATE:    'private';
+CONSTRUCTOR: 'constructor';
+DESTRUCTOR:  'destructor';
+
+
 INT:    'int';
 FLOAT:  'float';
 STRING: 'string';
@@ -292,7 +340,7 @@ HANDLE: 'handle';
 
 FUN:    'fun';
 MARKUP: 'markup';
-DICT: 'dict';
+DICT:   'dict';
 
 TRUE:   'true';
 FALSE:  'false';

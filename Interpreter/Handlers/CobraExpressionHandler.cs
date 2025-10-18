@@ -1,3 +1,5 @@
+using Cobra.Environment;
+
 namespace Cobra.Interpreter;
 
 public partial class CobraInterpreter
@@ -5,67 +7,96 @@ public partial class CobraInterpreter
     public override object? VisitAssignmentExpression(CobraParser.AssignmentExpressionContext context)
     {
         if (context.leftHandSide() == null) return Visit(context.binaryExpression());
+        
         var lhs = context.leftHandSide();
         var valueToAssign = Visit(context.assignmentExpression(0));
         var op = context.assignmentOperator().GetText();
-        if (lhs.children.Count == 1 && lhs.primary()?.ID() != null)
-        {
-            var varName = lhs.GetText();
-            if (op != "=")
-            {
-                var currentValue = _currentEnvironment.GetVariable(varName);
-                valueToAssign = ApplyBinaryOperator(op.TrimEnd('='), currentValue, valueToAssign);
-            }
-
-            _currentEnvironment.AssignVariable(varName, valueToAssign);
-            return valueToAssign;
-        }
 
         var lvalue = EvaluateLValue(lhs);
+
         if (op != "=")
         {
-            var currentValue = GetIndex(lvalue.Container, lvalue.Key);
+            var currentValue = lvalue.Container switch
+            {
+                CobraEnvironment env => env.GetVariable(lvalue.Key as string ?? ""),
+                CobraInstance instance => instance.Get(lvalue.Key as string ?? ""),
+                CobraClass classDef => classDef.StaticEnvironment.GetVariable(lvalue.Key as string ?? ""),
+                _ => GetIndex(lvalue.Container, lvalue.Key)
+            };
+
             valueToAssign = ApplyBinaryOperator(op.TrimEnd('='), currentValue, valueToAssign);
         }
 
-        lvalue.Set(valueToAssign);
+        switch (lvalue.Container)
+        {
+            case CobraEnvironment env:
+                env.AssignVariable(lvalue.Key as string ?? "", valueToAssign);
+                break;
+            case CobraInstance instance:
+                instance.Set(lvalue.Key as string ?? "", valueToAssign);
+                break;
+            case CobraClass classDef:
+                classDef.StaticEnvironment.AssignVariable(lvalue.Key as string ?? "", valueToAssign);
+                break;
+            default:
+                lvalue.Set(valueToAssign);
+                break;
+        }
+
         return valueToAssign;
     }
 
     public override object? VisitPostfixExpression(CobraParser.PostfixExpressionContext context)
     {
-        object? result = Visit(context.primary());
-        for (int i = 1; i < context.ChildCount;)
+        var currentObject = Visit(context.primary());
+
+        var idIndex = 0;
+        var argListIndex = 0;
+        var exprIndex = 0;
+
+        for (var i = 1; i < context.ChildCount; )
         {
             var opNode = context.GetChild(i);
             switch (opNode)
             {
                 case Antlr4.Runtime.Tree.ITerminalNode { Symbol: { Type: CobraLexer.LPAREN } }:
                 {
-                    var argListCtx = context.argumentList(GetPostfixOperatorIndex(context, i));
-                    var args = argListCtx?.assignmentExpression().Select(Visit).ToList() ?? new List<object?>();
-                    result = ExecuteFunctionCall(result, args, context.primary().GetText());
-                    i += (argListCtx != null ? 2 : 1) + 1;
+                    var argListCtx = context.argumentList(argListIndex++);
+                    var args = argListCtx?.assignmentExpression().Select(Visit).ToList() ?? [];
+                    currentObject = ExecuteFunctionCall(currentObject, args, "function");
+                    i += argListCtx != null ? 3 : 2;
                     break;
                 }
                 case Antlr4.Runtime.Tree.ITerminalNode { Symbol: { Type: CobraLexer.LBRACKET } }:
                 {
-                    var index = Visit(context.assignmentExpression(GetPostfixOperatorIndex(context, i)));
-                    result = GetIndex(result, index);
-                    i += 2;
+                    var index = Visit(context.assignmentExpression(exprIndex++));
+                    currentObject = GetIndex(currentObject, index);
+                    i += 3;
                     break;
                 }
                 case Antlr4.Runtime.Tree.ITerminalNode { Symbol: { Type: CobraLexer.DOT } }:
                 {
-                    var memberName = context.ID(GetPostfixOperatorIndex(context, i)).GetText();
-                    result = GetMember(result, memberName);
-                    i += 2;
+                    var memberName = context.ID(idIndex++).GetText();
+                    var member = GetMember(currentObject, memberName);
+
+                    if (i + 2 < context.ChildCount && context.GetChild(i + 2) is Antlr4.Runtime.Tree.ITerminalNode { Symbol: { Type: CobraLexer.LPAREN } })
+                    {
+                        var argListCtx = context.argumentList(argListIndex++);
+                        var args = argListCtx?.assignmentExpression().Select(Visit).ToList() ?? new List<object?>();
+                        currentObject = ExecuteFunctionCall(member, args, memberName, currentObject as CobraInstance);
+                        i += argListCtx != null ? 4 : 3;
+                    }
+                    else
+                    {
+                        currentObject = member;
+                        i += 2;
+                    }
                     break;
                 }
                 case Antlr4.Runtime.Tree.ITerminalNode op when op.Symbol.Type is CobraLexer.INC or CobraLexer.DEC:
                 {
                     var varName = GetLValueName(context.primary());
-                    object? originalValue = result;
+                    object? originalValue = currentObject;
                     if (!CobraLiteralHelper.IsNumeric(originalValue))
                         throw new Exception("Postfix '++' and '--' can only be applied to numeric types.");
                     object newValue;
@@ -75,7 +106,7 @@ public partial class CobraInterpreter
                             ? Convert.ToInt64(originalValue) + 1
                             : Convert.ToInt64(originalValue) - 1;
                     _currentEnvironment.AssignVariable(varName, newValue);
-                    result = originalValue;
+                    currentObject = originalValue;
                     i++;
                     break;
                 }
@@ -85,7 +116,7 @@ public partial class CobraInterpreter
             }
         }
 
-        return result;
+        return currentObject;
     }
 
     public override object? VisitBinaryExpression(CobraParser.BinaryExpressionContext context)
@@ -121,17 +152,44 @@ public partial class CobraInterpreter
         if (context.assignmentExpression() != null) return Visit(context.assignmentExpression());
         if (context.literal() != null) return Visit(context.literal());
         if (context.ID() != null) return _currentEnvironment.GetVariable(context.ID().GetText());
+        if (context.THIS() != null) return _currentEnvironment.GetVariable("this");
+        if (context.newExpression() != null) return VisitNewExpression(context.newExpression());
         if (context.arrayLiteral() != null) return Visit(context.arrayLiteral());
         if (context.dictLiteral() != null) return Visit(context.dictLiteral());
         if (context.functionExpression() != null) return Visit(context.functionExpression());
         throw new NotSupportedException("This primary form is not supported yet.");
     }
+    
+    public override object? VisitNewExpression(CobraParser.NewExpressionContext context)
+    {
+        var className = context.ID().GetText();
+        var classDefinition = _currentEnvironment.GetVariable(className) as CobraClass;
 
+        if (classDefinition == null)
+            throw new Exception($"Type '{className}' not found or is not a class.");
+
+        var instance = new CobraInstance(classDefinition);
+        
+        foreach (var field in classDefinition.Fields)
+        {
+            instance.Fields.DefineVariable(field.Key, field.Value.InitialValue);
+        }
+
+        var args = context.argumentList()?.assignmentExpression().Select(Visit).ToList() ?? new List<object?>();
+
+        if (classDefinition.Constructor != null)
+        {
+            ExecuteFunctionCall(classDefinition.Constructor, args, className, instance);
+        }
+        
+        return instance;
+    }
+    
     public override object VisitFunctionExpression(CobraParser.FunctionExpressionContext context)
     {
         var parameters = context.parameterList()?.parameter()
-                             .Select(p => (Environment.CobraRuntimeTypes.Void, p.ID().GetText())).ToList() ??
-                         new List<(Environment.CobraRuntimeTypes, string)>();
-        return new Environment.CobraUserDefinedFunction("", parameters, context.block(), _currentEnvironment);
+                             .Select(p => (CobraRuntimeTypes.Void, p.ID().GetText())).ToList() ??
+                         [];
+        return new CobraUserDefinedFunction("", parameters, context.block(), _currentEnvironment);
     }
 }

@@ -1,6 +1,7 @@
 using Cobra.Environment;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using Antlr4.Runtime;
 
 namespace Cobra.Interpreter;
 
@@ -8,23 +9,28 @@ public partial class CobraInterpreter
 {
     private CobraLValue EvaluateLValue(CobraParser.LeftHandSideContext context)
     {
-        object? container = Visit(context.primary());
-        if (context.children.Count == 1) throw new Exception("Invalid LValue target.");
-        for (int i = 1; i < context.ChildCount - 1;)
+        var container = Visit(context.primary());
+        if (context.children.Count == 1)
+        {
+            // Handle simple variable assignment
+            return context.primary().ID() == null
+                ? throw new Exception("Invalid LValue target.")
+                : new CobraLValue(_currentEnvironment, context.primary().ID().GetText());
+        }
+
+        for (var i = 1; i < context.ChildCount - 2; i++)
         {
             var op = context.GetChild(i);
             if (op.GetText() == "[")
             {
-                container = GetIndex(container, Visit(context.assignmentExpression((i - 1) / 2)));
+                container = GetIndex(container, Visit(context.assignmentExpression(i / 2)));
                 i += 2;
             }
             else if (op.GetText() == ".")
             {
-                container = GetMember(container, context.ID((i - 1) / 2).GetText());
-                i++;
+                container = GetMember(container, context.ID(i / 2).GetText());
+                i += 1;
             }
-
-            i++;
         }
 
         var lastOp = context.GetChild(context.ChildCount - 2);
@@ -38,13 +44,20 @@ public partial class CobraInterpreter
         return new CobraLValue(container, idExpr.GetText());
     }
 
-    private int GetPostfixOperatorIndex(CobraParser.PostfixExpressionContext context, int opNodeIndex)
+    private int GetPostfixOperatorIndex(CobraParser.PostfixExpressionContext context, int opNodeIndex, int opType = -1)
     {
         int count = 0;
+        var opText = opType == -1 ? context.GetChild(opNodeIndex).GetText() : new CommonToken(opType).Text;
+
         for (int i = 1; i < opNodeIndex; i++)
         {
-            if (context.GetChild(i).GetText() == context.GetChild(opNodeIndex).GetText())
-                count++;
+            var child = context.GetChild(i);
+            if (child is Antlr4.Runtime.Tree.ITerminalNode terminalNode &&
+                (opType == -1 || terminalNode.Symbol.Type == opType))
+            {
+                if (terminalNode.GetText() == opText)
+                    count++;
+            }
         }
 
         return count;
@@ -67,20 +80,37 @@ public partial class CobraInterpreter
         throw new Exception("Object is not indexable or key is of wrong type.");
     }
 
-    private object? GetMember(object? collection, string key)
+    private object? GetMember(object? obj, string key)
     {
-        switch (collection)
+        switch (obj)
         {
-            case Dictionary<string, object?> dict:
-                return dict.GetValueOrDefault(key);
+            case CobraInstance instance:
+                try
+                {
+                    return instance.Fields.GetVariable(key);
+                }
+                catch
+                {
+                    // ignored
+                }
+
+                return !instance.ClassDefinition.Methods.TryGetValue(key, out var method)
+                    ? throw new Exception($"Member '{key}' not found on instance of '{instance.ClassDefinition.Name}'.")
+                    : method;
+
+            case CobraClass classDef:
+                return classDef.StaticEnvironment.GetVariable(key);
+
             case CobraNamespace ns:
                 return ns.Environment.GetVariable(key);
+
             default:
                 throw new Exception("Object does not have members access with '.' operator.");
         }
     }
 
-    private object? ExecuteFunctionCall(object? funcObject, List<object?> args, string funcNameForError)
+    public object? ExecuteFunctionCall(object? funcObject, List<object?> args, string funcNameForError,
+        CobraInstance? instanceContext = null)
     {
         switch (funcObject)
         {
@@ -89,10 +119,17 @@ public partial class CobraInterpreter
                 if (args.Count != userFunc.Parameters.Count)
                     throw new Exception(
                         $"Function '{userFunc.Name}' expects {userFunc.Parameters.Count} arguments but got {args.Count}.");
+
                 var previous = _currentEnvironment;
                 _currentEnvironment = new CobraEnvironment(userFunc.Closure);
+
                 try
                 {
+                    if (instanceContext != null)
+                    {
+                        _currentEnvironment.DefineVariable("this", instanceContext, isConst: true);
+                    }
+
                     for (var i = 0; i < userFunc.Parameters.Count; i++)
                     {
                         _currentEnvironment.DefineVariable(userFunc.Parameters[i].Name, args[i]);

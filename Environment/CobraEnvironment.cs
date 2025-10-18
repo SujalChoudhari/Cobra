@@ -1,3 +1,5 @@
+using Cobra.Interpreter;
+
 namespace Cobra.Environment;
 
 public class CobraEnvironment(CobraEnvironment? parent = null)
@@ -16,7 +18,24 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
             return null;
         });
 
+        var destroyFunc = new CobraBuiltinFunction("destroy", (args) =>
+        {
+            if (args.Count != 1)
+                throw new Exception("destroy() expects exactly one argument.");
+
+            if (args[0] is not CobraInstance instance)
+                throw new Exception("destroy() can only be called on a class instance.");
+
+            var destructor = instance.ClassDefinition.Destructor;
+            if (destructor == null) return null;
+            var interpreter = new CobraInterpreter();
+            interpreter.ExecuteFunctionCall(destructor, [], "destructor", instance);
+
+            return null;
+        });
+
         env.DefineVariable("print", printFunc, isConst: true);
+        env.DefineVariable("destroy", destroyFunc, isConst: true);
 
         return env;
     }
@@ -45,6 +64,8 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
             CobraMarkup => CobraRuntimeTypes.Markup,
             CobraNamespace => CobraRuntimeTypes.Namespace,
             CobraHandle => CobraRuntimeTypes.Handle,
+            CobraClass => CobraRuntimeTypes.Class,
+            CobraInstance => CobraRuntimeTypes.Instance,
             _ => throw new Exception($"Unsupported runtime type: {value.GetType().Name}")
         };
     }
@@ -60,13 +81,8 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
             return;
         }
 
-        if (Parent != null)
-        {
-            Parent.AssignVariable(name, value);
-            return;
-        }
-
-        throw new Exception($"Variable '{name}' not defined.");
+        if (Parent == null) throw new Exception($"Variable '{name}' not defined.");
+        Parent.AssignVariable(name, value);
     }
 
     public object? GetVariable(string name)
@@ -76,12 +92,7 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
             return variable.Value;
         }
 
-        if (Parent != null)
-        {
-            return Parent.GetVariable(name);
-        }
-
-        throw new Exception($"Variable '{name}' not found.");
+        return Parent == null ? throw new Exception($"Variable '{name}' not found.") : Parent.GetVariable(name);
     }
 
     public CobraVariableDefinition GetVariableDefinition(string name)
@@ -89,10 +100,7 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
         if (_variables.TryGetValue(name, out var variable))
             return variable;
 
-        if (Parent != null)
-            return Parent.GetVariableDefinition(name);
-
-        throw new Exception($"Variable '{name}' not found.");
+        return Parent == null ? throw new Exception($"Variable '{name}' not found.") : Parent.GetVariableDefinition(name);
     }
 
     public bool IsFunction(string name)
