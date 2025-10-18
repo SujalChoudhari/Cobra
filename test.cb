@@ -1,28 +1,18 @@
 import "str";
 
 namespace App.Main {
+        
+    int a  = 10;
     
-    string greeting = String.new("Hello");
-    string subject = String.new("World");
-
-    string full_greeting = greeting.concatWrapper(subject); 
-    string with_punctuation = full_greeting.concat("!");
-    string shouting = with_punctuation.toUpper();
+    a++;
     
-    print(full_greeting.toString());
-    print(with_punctuation.toString());
+    a--;
     
-    print(shouting.toString());
-    print("Length: " + shouting.length()); 
-
-    bool are_equal = shouting.equals("HELLO_WORLD!");
-    print("Are they equal? " + are_equal); 
-
-    greeting.delete();
-    subject.delete();
-    full_greeting.delete();
-    with_punctuation.delete();
-    shouting.delete();
-
-    print("String manipulation complete.");
+    float x = 10.4;
+    
+    float y = 17.4;
+    
+    print(a);
+    
+    print(x * y);
 }
