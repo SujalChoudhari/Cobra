@@ -1,18 +1,74 @@
-import "str";
-
 namespace App.Main {
-        
-    int a  = 10;
+    // --- Test 1: do-while loop ---
+    print("--- Testing do-while ---");
+    int i = 5;
+    do {
+        print("i is " + i);
+        i = i - 1;
+    } while (i > 0);
+    print("do-while loop finished.");
+    print("");
+
+    // Test do-while that executes only once
+    int j = 0;
+    do {
+        print("j is " + j);
+        j = j - 1;
+    } while (j > 0);
+    print("Second do-while loop finished.");
+    print("");
+
+
+    // --- Test 2: foreach loop ---
+    print("--- Testing foreach ---");
+    int[] numbers = [10, 20, 30, 40, 50];
+    for (int num in numbers) {
+        print("num from list is " + num);
+    }
+    print("foreach loop finished.");
+    print("");
+
+
+    // --- Test 3: switch statement ---
+    print("--- Testing switch ---");
     
-    a++;
+    // Test case with a break
+    string fruit = "apple";
+    print("Testing fruit: " + fruit);
+    switch (fruit) {
+        case "banana": print("It's a banana."); break;
+        case "apple": print("It's an apple."); break;
+        default: print("It's some other fruit.");
+    }
+    print("");
     
-    a--;
-    
-    float x = 10.4;
-    
-    float y = 17.4;
-    
-    print(a);
-    
-    print(x * y);
+    // Test case with fall-through
+    int day = 3;
+    print("Testing day: " + day);
+    switch (day) {
+        case 1: print("Monday");
+        case 2: print("Tuesday");
+        case 3: print("Wednesday - starting point"); // Should print this
+        case 4: print("Thursday - fall-through");    // And this
+        case 5: print("Friday - fall-through");      // And this
+            print("It's a weekday.");
+            break;
+        case 6:
+        case 7:
+            print("It's the weekend.");
+            break;
+    }
+    print("");
+
+    // Test case with default
+    string color = "blue";
+    print("Testing color: " + color);
+    switch (color) {
+        case "red": print("Color is red."); break;
+        case "green": print("Color is green."); break;
+        default: print("Default: Unknown color.");
+    }
+    print("");
+
+    print("All control flow tests complete.");
 }
