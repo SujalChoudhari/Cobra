@@ -26,20 +26,29 @@ public abstract class CobraCommandLine
     {
         if (!File.Exists(opts.File))
         {
-            Log.Error($"File not found: {opts.File}");
+            // Use Console.Error for file not found
+            Console.Error.WriteLine($"File not found: {opts.File}");
             return 1;
         }
 
         Log.Info($"Running: {opts.File}");
-        foreach (var lib in opts.LibPaths)
-            Log.Info($"  {lib}");
-        foreach (var def in opts.Defines)
-            Log.Info($"  {def}");
 
-        CobraRunner runner = new();
-        runner.Run(File.ReadAllText(opts.File), opts.File);
+        try
+        {
+            CobraRunner runner = new();
+            runner.Run(File.ReadAllText(opts.File), opts.File);
+        }
+        catch (Exception ex)
+        {
+            // This now catches both internal errors and unhandled Cobra exceptions
+            var previousColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(ex.Message);
+            Console.ForegroundColor = previousColor;
+            return 1; // Indicate failure
+        }
 
-        return 0;
+        return 0; // Indicate success
     }
 
     private static int StartRepl(ReplOptions opts)

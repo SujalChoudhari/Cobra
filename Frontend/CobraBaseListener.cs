@@ -456,6 +456,18 @@ public partial class CobraBaseListener : ICobraListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitJumpStatement([NotNull] CobraParser.JumpStatementContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.throwStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterThrowStatement([NotNull] CobraParser.ThrowStatementContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.throwStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitThrowStatement([NotNull] CobraParser.ThrowStatementContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="CobraParser.expressionStatement"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

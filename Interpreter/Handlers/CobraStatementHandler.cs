@@ -1,3 +1,5 @@
+using Cobra.Environment;
+
 namespace Cobra.Interpreter;
 
 public partial class CobraInterpreter
@@ -28,7 +30,7 @@ public partial class CobraInterpreter
         while (CobraLiteralHelper.IsTruthy(Visit(context.assignmentExpression())))
         {
             var result = Visit(context.statement());
-            if (result is CobraReturnValue) return result;
+            if (result is CobraReturnValue or CobraThrowValue) return result;
             if (result is CobraBreakValue) break;
             if (result is CobraContinueValue) continue;
         }
@@ -41,7 +43,7 @@ public partial class CobraInterpreter
         do
         {
             var result = Visit(context.statement());
-            if (result is CobraReturnValue) return result;
+            if (result is CobraReturnValue or CobraThrowValue) return result;
             if (result is CobraBreakValue) break;
             if (result is CobraContinueValue) continue;
         } while (CobraLiteralHelper.IsTruthy(Visit(context.assignmentExpression())));
@@ -57,12 +59,11 @@ public partial class CobraInterpreter
         {
             if (context.varDeclaration() != null) Visit(context.varDeclaration());
             else if (context.expressionStatement() != null) Visit(context.expressionStatement());
-
-            while (context.assignmentExpression(0) == null ||
-                   CobraLiteralHelper.IsTruthy(Visit(context.assignmentExpression(0))))
+            
+            while (context.assignmentExpression(0) == null || CobraLiteralHelper.IsTruthy(Visit(context.assignmentExpression(0))))
             {
                 var result = Visit(context.statement());
-                if (result is CobraReturnValue) return result;
+                if (result is CobraReturnValue or CobraThrowValue) return result;
                 if (result is CobraBreakValue) break;
                 if (result is CobraContinueValue)
                 {
@@ -100,7 +101,7 @@ public partial class CobraInterpreter
                 _currentEnvironment.DefineVariable(context.ID().GetText(), item);
                 var result = Visit(context.statement());
 
-                if (result is CobraReturnValue) return result;
+                if (result is CobraReturnValue or CobraThrowValue) return result;
                 if (result is CobraBreakValue) break;
                 if (result is CobraContinueValue) continue;
             }
@@ -142,7 +143,7 @@ public partial class CobraInterpreter
             }
         }
 
-        FoundStartBlock:
+    FoundStartBlock:
         if (startBlockIndex == -1)
         {
             if (defaultBlockIndex.HasValue)
@@ -161,12 +162,54 @@ public partial class CobraInterpreter
             foreach (var stmt in block.statement())
             {
                 var result = Visit(stmt);
-                if (result is CobraReturnValue) return result;
+                if (result is CobraReturnValue or CobraThrowValue) return result;
                 if (result is CobraBreakValue) return null; // Exit switch
             }
         }
 
         return null;
+    }
+
+    public override object? VisitTryStatement(CobraParser.TryStatementContext context)
+    {
+        object? result = Visit(context.block(0)); // Execute the 'try' block
+
+        if (result is CobraThrowValue thrownValue)
+        {
+            if (context.CATCH() != null)
+            {
+                var catchBlock = context.block(1);
+                var previous = _currentEnvironment;
+                _currentEnvironment = _currentEnvironment.CreateChild();
+                try
+                {
+                    var param = context.parameter();
+                    var varName = param.ID().GetText();
+                    _currentEnvironment.DefineVariable(varName, thrownValue.ThrownObject);
+
+                    // The result of the catch block replaces the thrown value
+                    result = Visit(catchBlock);
+                }
+                finally
+                {
+                    _currentEnvironment = previous;
+                }
+            }
+        }
+
+        if (context.FINALLY() != null)
+        {
+            int finallyBlockIndex = context.CATCH() != null ? 2 : 1;
+            var finallyResult = Visit(context.block(finallyBlockIndex));
+
+            // If 'finally' throws or returns, it overrides any previous result
+            if (finallyResult is CobraReturnValue or CobraThrowValue)
+            {
+                return finallyResult;
+            }
+        }
+
+        return result;
     }
 
     public override object? VisitJumpStatement(CobraParser.JumpStatementContext context)
@@ -180,6 +223,13 @@ public partial class CobraInterpreter
 
         if (context.BREAK() != null) return CobraBreakValue.Instance;
         if (context.CONTINUE() != null) return CobraContinueValue.Instance;
+        
+        if (context.throwStatement() != null)
+        {
+            var thrownObject = Visit(context.throwStatement().assignmentExpression());
+            if (thrownObject != null) return new CobraThrowValue(thrownObject);
+        }
+
         return null;
     }
 }

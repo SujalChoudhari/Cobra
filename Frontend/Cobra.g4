@@ -87,7 +87,7 @@ externDeclaration
 type
   : primitiveType (LBRACKET RBRACKET)*
   | secondaryType (LBRACKET RBRACKET)*
-  | ID // For class types
+  | qualifiedName // Changed from ID to qualifiedName
   ;
 
 secondaryType
@@ -178,7 +178,12 @@ jumpStatement
   : RETURN assignmentExpression? SEMICOLON
   | BREAK SEMICOLON
   | CONTINUE SEMICOLON
+  | throwStatement
   ;
+
+throwStatement
+    : THROW assignmentExpression SEMICOLON
+    ;
 
 expressionStatement
   : assignmentExpression SEMICOLON
@@ -256,7 +261,7 @@ primary
   ;
 
 newExpression
-  : NEW ID LPAREN argumentList? RPAREN
+  : NEW qualifiedName LPAREN argumentList? RPAREN // Changed from ID to qualifiedName
   ;
 
 argumentList
@@ -319,6 +324,7 @@ FINALLY:    'finally';
 RETURN:     'return';
 BREAK:      'break';
 CONTINUE:   'continue';
+THROW:      'throw';
 
 CLASS:      'class';
 NEW:        'new';

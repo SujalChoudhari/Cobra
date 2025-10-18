@@ -48,8 +48,13 @@ public partial class CobraInterpreter
         {
             foreach (var decl in context.children)
             {
-                if (decl is not Antlr4.Runtime.Tree.ITerminalNode)
-                    Visit(decl);
+                if (decl is Antlr4.Runtime.Tree.ITerminalNode) continue;
+                
+                var result = Visit(decl);
+                if (result is CobraThrowValue or CobraReturnValue)
+                {
+                    return result;
+                }
             }
         }
         finally

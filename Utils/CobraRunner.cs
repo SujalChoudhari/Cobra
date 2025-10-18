@@ -6,7 +6,6 @@ namespace Cobra.Utils;
 public class CobraRunner
 {
     private readonly CobraInterpreter _interpreter;
-    private CobraLogger Log => CobraLogger.GetLogger<CobraRunner>();
 
     public CobraRunner()
     {
@@ -22,7 +21,12 @@ public class CobraRunner
 
         var tree = parser.program();
 
-        _interpreter.Interpret(tree, sourcePath);
+        var finalResult = _interpreter.Interpret(tree, sourcePath);
+
+        if (finalResult is CobraThrowValue throwValue)
+        {
+            throw new CobraRuntimeException($"Unhandled Exception: {throwValue.ThrownObject}");
+        }
     }
 
     public void StartRepl()
@@ -43,7 +47,6 @@ public class CobraRunner
             }
             catch (Exception ex)
             {
-                // Use a non-throwing logger for REPL errors
                 var previousColor = Console.ForegroundColor;
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Error: {ex.Message}");

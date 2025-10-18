@@ -381,6 +381,16 @@ public interface ICobraListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitJumpStatement([NotNull] CobraParser.JumpStatementContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.throwStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterThrowStatement([NotNull] CobraParser.ThrowStatementContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.throwStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitThrowStatement([NotNull] CobraParser.ThrowStatementContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="CobraParser.expressionStatement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

@@ -1,7 +1,8 @@
-using Cobra.Environment;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using Antlr4.Runtime;
+using Antlr4.Runtime.Tree;
+using Cobra.Environment;
 
 namespace Cobra.Interpreter;
 
@@ -12,10 +13,12 @@ public partial class CobraInterpreter
         var container = Visit(context.primary());
         if (context.children.Count == 1)
         {
-            // Handle simple variable assignment
-            return context.primary().ID() == null
-                ? throw new Exception("Invalid LValue target.")
-                : new CobraLValue(_currentEnvironment, context.primary().ID().GetText());
+            if (context.primary().ID() != null)
+            {
+                return new CobraLValue(_currentEnvironment, context.primary().ID().GetText());
+            }
+
+            throw new Exception("Invalid LValue target.");
         }
 
         for (var i = 1; i < context.ChildCount - 2; i++)
@@ -44,6 +47,28 @@ public partial class CobraInterpreter
         return new CobraLValue(container, idExpr.GetText());
     }
 
+
+    private object? ResolveQualifiedName(CobraParser.QualifiedNameContext context)
+    {
+        var ids = context.ID();
+        var currentObject = _currentEnvironment.GetVariable(ids[0].GetText());
+
+        for (int i = 1; i < ids.Length; i++)
+        {
+            if (currentObject is CobraNamespace ns)
+            {
+                currentObject = ns.Environment.GetVariable(ids[i].GetText());
+            }
+            else
+            {
+                // If it's not a namespace, we can't go deeper
+                throw new Exception($"Identifier '{ids[i - 1].GetText()}' is not a namespace.");
+            }
+        }
+
+        return currentObject;
+    }
+
     private int GetPostfixOperatorIndex(CobraParser.PostfixExpressionContext context, int opNodeIndex, int opType = -1)
     {
         int count = 0;
@@ -52,8 +77,7 @@ public partial class CobraInterpreter
         for (int i = 1; i < opNodeIndex; i++)
         {
             var child = context.GetChild(i);
-            if (child is Antlr4.Runtime.Tree.ITerminalNode terminalNode &&
-                (opType == -1 || terminalNode.Symbol.Type == opType))
+            if (child is ITerminalNode terminalNode && (opType == -1 || terminalNode.Symbol.Type == opType))
             {
                 if (terminalNode.GetText() == opText)
                     count++;
@@ -94,9 +118,10 @@ public partial class CobraInterpreter
                     // ignored
                 }
 
-                return !instance.ClassDefinition.Methods.TryGetValue(key, out var method)
-                    ? throw new Exception($"Member '{key}' not found on instance of '{instance.ClassDefinition.Name}'.")
-                    : method;
+                if (instance.ClassDefinition.Methods.TryGetValue(key, out var method))
+                    return method;
+
+                throw new Exception($"Member '{key}' not found on instance of '{instance.ClassDefinition.Name}'.");
 
             case CobraClass classDef:
                 return classDef.StaticEnvironment.GetVariable(key);
@@ -112,6 +137,7 @@ public partial class CobraInterpreter
     public object? ExecuteFunctionCall(object? funcObject, List<object?> args, string funcNameForError,
         CobraInstance? instanceContext = null)
     {
+        object? result = null;
         switch (funcObject)
         {
             case CobraUserDefinedFunction userFunc:
@@ -135,26 +161,40 @@ public partial class CobraInterpreter
                         _currentEnvironment.DefineVariable(userFunc.Parameters[i].Name, args[i]);
                     }
 
-                    var result = ExecuteBlockStmts(userFunc.Body);
-                    if (result is CobraReturnValue rv) return rv.Value;
-                    return null;
+                    result = ExecuteBlockStmts(userFunc.Body);
                 }
                 finally
                 {
                     _currentEnvironment = previous;
                 }
+
+                break;
             }
             case CobraBuiltinFunction builtinFunc:
             {
-                return builtinFunc.Action(args);
+                result = builtinFunc.Action(args);
+                break;
             }
             case CobraExternalFunction externalFunc:
             {
-                return CallExternalFunction(externalFunc, args);
+                result = CallExternalFunction(externalFunc, args);
+                break;
             }
             default:
                 throw new Exception($"'{funcNameForError}' is not a function.");
         }
+
+        if (result is CobraReturnValue returnValue)
+        {
+            return returnValue.Value;
+        }
+
+        if (result is CobraThrowValue)
+        {
+            return result;
+        }
+
+        return null; 
     }
 
     private object? CallExternalFunction(CobraExternalFunction func, List<object?> args)

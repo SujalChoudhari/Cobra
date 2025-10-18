@@ -37,7 +37,7 @@ namespace Cobra.Interpreter
             }
         }
 
-        public void Interpret(IParseTree tree, string? sourcePath)
+        public object? Interpret(IParseTree tree, string? sourcePath)
         {
             string? fullPath = null;
             if (!string.IsNullOrEmpty(sourcePath))
@@ -49,7 +49,7 @@ namespace Cobra.Interpreter
 
             try
             {
-                Visit(tree);
+                return Visit(tree);
             }
             finally
             {
@@ -64,7 +64,12 @@ namespace Cobra.Interpreter
         {
             foreach (var statement in context.children)
             {
-                Visit(statement);
+                var result = Visit(statement);
+                if (result is CobraThrowValue)
+                {
+                    // An uncaught exception reached the top level. Stop everything.
+                    return result;
+                }
             }
 
             return null;

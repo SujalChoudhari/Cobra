@@ -26,7 +26,8 @@ public partial class CobraInterpreter
         foreach (var statement in context.statement() ?? [])
         {
             var result = Visit(statement);
-            if (result is CobraReturnValue or CobraBreakValue or CobraContinueValue)
+            // If any statement returns a control flow breaker, stop execution and propagate it.
+            if (result is CobraReturnValue or CobraBreakValue or CobraContinueValue or CobraThrowValue)
             {
                 return result;
             }

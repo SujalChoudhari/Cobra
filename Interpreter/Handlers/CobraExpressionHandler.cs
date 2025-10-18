@@ -160,13 +160,13 @@ public partial class CobraInterpreter
         throw new NotSupportedException("This primary form is not supported yet.");
     }
     
-    public override object? VisitNewExpression(CobraParser.NewExpressionContext context)
+    public object? VisitNewExpression(CobraParser.NewExpressionContext context)
     {
-        var className = context.ID().GetText();
-        var classDefinition = _currentEnvironment.GetVariable(className) as CobraClass;
+        var qualifiedNameCtx = context.qualifiedName();
+        var classDefinition = ResolveQualifiedName(qualifiedNameCtx) as CobraClass;
 
         if (classDefinition == null)
-            throw new Exception($"Type '{className}' not found or is not a class.");
+            throw new Exception($"Type '{qualifiedNameCtx.GetText()}' not found or is not a class.");
 
         var instance = new CobraInstance(classDefinition);
         
@@ -179,7 +179,7 @@ public partial class CobraInterpreter
 
         if (classDefinition.Constructor != null)
         {
-            ExecuteFunctionCall(classDefinition.Constructor, args, className, instance);
+            ExecuteFunctionCall(classDefinition.Constructor, args, qualifiedNameCtx.GetText(), instance);
         }
         
         return instance;

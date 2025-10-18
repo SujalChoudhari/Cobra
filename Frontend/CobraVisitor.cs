@@ -242,6 +242,12 @@ public interface ICobraVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitJumpStatement([NotNull] CobraParser.JumpStatementContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.throwStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitThrowStatement([NotNull] CobraParser.ThrowStatementContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.expressionStatement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
