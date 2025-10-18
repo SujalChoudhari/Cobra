@@ -22,50 +22,38 @@ Cobra is an educational project for learning about interpreters and language des
 *   [ANTLR4](https://www.antlr.org/) for parsing
 *   [CommandLineParser](https://github.com/commandlineparser/commandline) for CLI handling
 
-## ✅ Implemented Features
 
-### Core Syntax & Semantics
-- **Variable & Constant Declarations**: `var`, `const`.
-- **Primitive Data Types**: `int`, `float`, `bool`, `string`, `handle`.
-- **Expression Evaluation**: Full support for arithmetic, logical, and bitwise operators with correct precedence.
-- **Functions**: First-class function declarations and calls.
+### Progress
 
-### Control Flow
-- **Conditional Logic**: `if-else` statements.
-- **Looping**: `for`, `while`, `do-while`, and `foreach` loops.
-- **Branching**: `switch-case` statements.
-- **Jump Statements**: `return`, `break`, `continue`.
+* [x] Variable and constant declarations (`var`, `const`)
+* [x] Primitive types (`int`, `float`, `bool`, `string`, `handle`)
+* [x] Expression evaluation (arithmetic, logical, bitwise)
+* [x] Function declarations and calls
+* [x] Conditional logic (`if-else`)
+* [x] Looping (`for`, `while`, `do-while`, `foreach`)
+* [x] Branching (`switch-case`)
+* [x] Jump statements (`return`, `break`, `continue`)
+* [x] Object-oriented programming
+    * [x] Class definitions
+    * [x] Constructors and destructors
+    * [x] Access modifiers (`public`, `private`)
+    * [x] Static members
+    * [x] Instance context (`this`)
+* [x] Array literals
+* [x] Dictionary literals
+* [x] Namespaces
+* [x] Module imports
+* [x] Native FFI (`link`, `external`)
+* [x] Functional core interpreter complete
+* [x] Implement `try-catch-finally` error handling
+* [ ] Expand standard library
+    * [ ] Math library (vector, matrix, trig)
+    * [ ] Utility libraries (random, string, etc.)
+    * [ ] Exception classes
+    * [ ] File I/O
+* [ ] Expose high-level graphics API
+* [ ] Implement “Cobra Canvas” for simple windowed drawing
 
-### Object-Oriented Programming
-- **Classes**: `class` definitions for encapsulating data and behavior.
-- **Constructors & Destructors**: `constructor` for initialization and `destructor` for manual cleanup via the `destroy()` function.
-- **Access Modifiers**: `public` and `private` members.
-- **Static Members**: `static` fields and methods for class-level data and functionality.
-- **Instance Context**: The `this` keyword for accessing the current object instance.
-
-### Data Structures
-- **Array Literals**: e.g., `[1, "two", 3.0]`
-- **Dictionary Literals**: e.g., `{ key1: 10, "key2": "value" }`
-
-### Modularity & Interoperability
-- **Namespaces**: Organize code into logical blocks with `namespace`.
-- **Modules**: `import` other `.cb` files.
-- **Native FFI**: `link` and execute functions from native C/C++ libraries (`.dll`, `.so`) using `external`.
-
-## 🚧 Roadmap & Future Goals
-
-### Core Language Enhancements
-- **Error Handling**: Implement `try-catch-finally` for robust runtime error management.
-- **Improved Diagnostics**: Provide detailed runtime error messages with file names, line numbers, and code context.
-- **Standard Library Expansion**:
-    - **Math Library**: Add a `Math` namespace with comprehensive vector, matrix, and trigonometry functions.
-    - **Utility Libraries**: Functions for color manipulation, random number generation, and noise algorithms.
-
-### Cobra Graphics Engine
-- **Rendering Backend**: Integrate a C# graphics library (like SkiaSharp for 2D or Veldrid for 3D) as the rendering backend.
-- **Graphics API**: Expose a high-level Cobra API for drawing shapes, setting colors, applying transforms, and handling user input.
-- **The "Cobra Canvas"**: A core goal is to enable a simple script to open a window and draw to it with just a few lines of Cobra code.
-- **Event Handling**: Create a simple event loop for handling `mouse_moved`, `key_pressed`, etc.
 
 ## 🚀 Why This Matters
 
