@@ -10,20 +10,20 @@ namespace Cobra.Interpreter
             return cobraType switch
             {
                 CobraRuntimeTypes.Void => typeof(void),
-                CobraRuntimeTypes.Int => typeof(long),
-                CobraRuntimeTypes.Float => typeof(double),
+                CobraRuntimeTypes.Int8 => typeof(sbyte),
+                CobraRuntimeTypes.UInt8 => typeof(byte),
+                CobraRuntimeTypes.Int16 => typeof(short),
+                CobraRuntimeTypes.UInt16 => typeof(ushort),
+                CobraRuntimeTypes.Int32 => typeof(int),
+                CobraRuntimeTypes.UInt32 => typeof(uint),
+                CobraRuntimeTypes.Int64 => typeof(long),
+                CobraRuntimeTypes.UInt64 => typeof(ulong),
+                CobraRuntimeTypes.Float32 => typeof(float),
+                CobraRuntimeTypes.Float64 => typeof(double),
                 CobraRuntimeTypes.Bool => typeof(bool),
                 CobraRuntimeTypes.String => typeof(string),
                 CobraRuntimeTypes.Handle => typeof(IntPtr),
-                CobraRuntimeTypes.Null or
-                    CobraRuntimeTypes.Dict or
-                    CobraRuntimeTypes.List or
-                    CobraRuntimeTypes.Function or
-                    CobraRuntimeTypes.Markup or
-                    CobraRuntimeTypes.Namespace =>
-                    throw new NotSupportedException(
-                        $"The complex type '{cobraType}' cannot be used in an external function signature. Only primitive types (int, float, bool, string, handle) are supported."),
-                _ => throw new NotSupportedException($"Marshalling of type {cobraType} is not supported.")
+                _ => throw new NotSupportedException($"The type '{cobraType}' cannot be used in an external function signature.")
             };
         }
     }

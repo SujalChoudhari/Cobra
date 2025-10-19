@@ -1,4 +1,3 @@
-using System.Globalization;
 using System.Runtime.InteropServices;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
@@ -67,24 +66,6 @@ public partial class CobraInterpreter
         }
 
         return currentObject;
-    }
-
-    private int GetPostfixOperatorIndex(CobraParser.PostfixExpressionContext context, int opNodeIndex, int opType = -1)
-    {
-        int count = 0;
-        var opText = opType == -1 ? context.GetChild(opNodeIndex).GetText() : new CommonToken(opType).Text;
-
-        for (int i = 1; i < opNodeIndex; i++)
-        {
-            var child = context.GetChild(i);
-            if (child is ITerminalNode terminalNode && (opType == -1 || terminalNode.Symbol.Type == opType))
-            {
-                if (terminalNode.GetText() == opText)
-                    count++;
-            }
-        }
-
-        return count;
     }
 
     private string GetLValueName(CobraParser.PrimaryContext context)
@@ -294,9 +275,16 @@ public partial class CobraInterpreter
         {
             case "+": return value;
             case "-":
-                if (value is long lv) return -lv;
-                if (value is double dv) return -dv;
-                throw new Exception($"Unary '-' not supported for {value?.GetType().Name}");
+                return value switch
+                {
+                    sbyte v => -v,
+                    short v => -v,
+                    int v => -v,
+                    long v => -v,
+                    float v => -v,
+                    double v => -v,
+                    _ => throw new CobraRuntimeException($"Unary '-' not supported for type {value?.GetType().Name}")
+                };
             case "!":
                 return !CobraLiteralHelper.IsTruthy(value);
             default:
@@ -308,73 +296,71 @@ public partial class CobraInterpreter
     {
         if (op == "+" && (left is string || right is string))
             return (left?.ToString() ?? "") + (right?.ToString() ?? "");
-        if (op is "==" or "!=" or "<" or ">" or "<=" or ">=")
+        
+        if (op is "==" or "!=" && (left == null || right == null))
         {
-            if (left is CobraEnumMember lMember && right is CobraEnumMember rMember)
-            {
-                left = lMember.Value;
-                right = rMember.Value;
-            }
-            
-            if (left == null || right == null)
-            {
-                return op switch
-                {
-                    "==" => left == right, "!=" => left != right,
-                    _ => throw new Exception("Cannot compare null with '<', '>', '<=', or '>='.")
-                };
-            }
-
-            if (left is string lStr && right is string rStr)
-            {
-                var comparison = string.Compare(lStr, rStr, StringComparison.Ordinal);
-                return op switch
-                {
-                    "==" => comparison == 0, "!=" => comparison != 0, "<" => comparison < 0, ">" => comparison > 0,
-                    "<=" => comparison <= 0, ">=" => comparison >= 0,
-                    _ => throw new InvalidOperationException()
-                };
-            }
-
-            if (CobraLiteralHelper.IsNumeric(left) && CobraLiteralHelper.IsNumeric(right))
-            {
-            }
-            else if (left.GetType() != right.GetType())
-            {
-                if (!CobraLiteralHelper.IsNumeric(left) || !CobraLiteralHelper.IsNumeric(right))
-                    throw new Exception(
-                        $"Cannot compare values of different types: {left.GetType().Name} and {right.GetType().Name}");
-            }
+            return op == "==" ? left == right : left != right;
         }
+        
+        if (left is CobraEnumMember lMember) left = lMember.Value;
+        if (right is CobraEnumMember rMember) right = rMember.Value;
 
-        if (!CobraLiteralHelper.IsNumeric(left) || !CobraLiteralHelper.IsNumeric(right))
-            throw new Exception($"Operator '{op}' requires numeric operands for operands '{left}' and '{right}'.");
-        if (left is double || right is double || op == "/")
+        if (!CobraTypeHelper.IsNumeric(left) || !CobraTypeHelper.IsNumeric(right))
+            throw new CobraRuntimeException($"Operator '{op}' cannot be applied to non-numeric types '{left?.GetType().Name}' and '{right?.GetType().Name}'.");
+
+        var (pLeft, pRight, resultType) = CobraTypeHelper.PromoteNumericsForBinaryOp(left, right);
+        
+        if (CobraTypeHelper.IsFloatingPoint(pLeft))
         {
-            double l = Convert.ToDouble(left, CultureInfo.InvariantCulture);
-            double r = Convert.ToDouble(right, CultureInfo.InvariantCulture);
+            var l = Convert.ToDouble(pLeft);
+            var r = Convert.ToDouble(pRight);
             return op switch
             {
-                "+" => l + r, "-" => l - r, "*" => l * r,
+                "+" => l + r,
+                "-" => l - r,
+                "*" => l * r,
                 "/" => r == 0 ? throw new DivideByZeroException() : l / r,
                 "%" => r == 0 ? throw new DivideByZeroException() : l % r,
-                ">" => l > r, "<" => l < r, ">=" => l >= r, "<=" => l <= r, "==" => Math.Abs(l - r) < 0.000001,
+                ">" => l > r,
+                "<" => l < r,
+                ">=" => l >= r,
+                "<=" => l <= r,
+                "==" => Math.Abs(l - r) < 0.000001,
                 "!=" => Math.Abs(l - r) > 0.000001,
-                _ => throw new NotSupportedException($"Operator '{op}' not supported.")
+                _ => throw new NotSupportedException($"Operator '{op}' not supported for floating-point numbers.")
             };
         }
-        else
+
+        if (pLeft is ulong) // Special case for ulong
         {
-            long l = Convert.ToInt64(left, CultureInfo.InvariantCulture);
-            long r = Convert.ToInt64(right, CultureInfo.InvariantCulture);
+            var l = Convert.ToUInt64(pLeft);
+            var r = Convert.ToUInt64(pRight);
             return op switch
             {
-                "+" => l + r, "-" => l - r, "*" => l * r,
-                "/" => r == 0 ? throw new DivideByZeroException() : (double)l / r,
+                "+" => l + r,
+                "-" => l - r,
+                "*" => l * r,
+                "/" => r == 0 ? throw new DivideByZeroException() : l / r,
                 "%" => r == 0 ? throw new DivideByZeroException() : l % r,
-                ">" => l > r, "<" => l < r, ">=" => l >= r, "<=" => l <= r, "==" => l == r, "!=" => l != r,
-                _ => throw new NotSupportedException($"Operator '{op}' not supported.")
+                ">" => l > r, "<" => l < r, ">=" => l >= r, "<=" => l <= r,
+                "==" => l == r, "!=" => l != r,
+                _ => throw new NotSupportedException($"Operator '{op}' not supported for ulong.")
             };
         }
+
+        // Standard signed long operations
+        var sl = Convert.ToInt64(pLeft);
+        var sr = Convert.ToInt64(pRight);
+        return op switch
+        {
+            "+" => sl + sr,
+            "-" => sl - sr,
+            "*" => sl * sr,
+            "/" => sr == 0 ? throw new DivideByZeroException() : sl / sr,
+            "%" => sr == 0 ? throw new DivideByZeroException() : sl % sr,
+            ">" => sl > sr, "<" => sl < sr, ">=" => sl >= sr, "<=" => sl <= sr,
+            "==" => sl == sr, "!=" => sl != sr,
+            _ => throw new NotSupportedException($"Operator '{op}' not supported for integers.")
+        };
     }
 }

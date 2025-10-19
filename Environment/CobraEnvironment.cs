@@ -59,10 +59,12 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
     private CobraRuntimeTypes InferRuntimeType(object? value)
     {
         if (value == null) return CobraRuntimeTypes.Null;
+
+        if (CobraTypeHelper.IsNumeric(value))
+            return CobraTypeHelper.GetRuntimeType(value);
+        
         return value switch
         {
-            int or long => CobraRuntimeTypes.Int,
-            float or double => CobraRuntimeTypes.Float,
             bool => CobraRuntimeTypes.Bool,
             string => CobraRuntimeTypes.String,
             Dictionary<string, object> => CobraRuntimeTypes.Dict,
@@ -86,7 +88,9 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
             if (variable.IsConst)
                 throw new Exception($"Cannot assign to constant '{name}'.");
 
-            variable.Value = value;
+            // Perform type cast on assignment
+            var castedValue = CobraTypeHelper.Cast(value, variable.RuntimeType);
+            variable.Value = castedValue;
             return;
         }
 

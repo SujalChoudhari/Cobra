@@ -1,38 +1,18 @@
-enum Color {
-    Red,
-    Green,
-    Blue
-}
+i8 tinyNum = 10;
+u64 bigNum = 10000000000000000000;
+f32 pi = 3.14;
+double morePi = 3.141592653589793;
 
-enum Status {
-    Pending = 10,
-    InProgress,
-    Completed = 20,
-    Failed
-}
+int a = 100;
+i32 b = 200;
+var c = a + b;
 
-const Status currentStatus = Status.InProgress;
-print(currentStatus);
+double x = 5.5;
+int y = 10;
+var z = x * y;
 
-print(currentStatus.name);
-print(currentStatus.value);
+print(c);
+print(z);
 
-if (currentStatus == Status.InProgress) {
-    print("The task is still running.");
-}
-
-print("All available colors:");
-for (any member in Color) {
-    print(member.name + " = " + member.value);
-}
-
-switch(currentStatus) {
-    case Status.Pending:
-        print("Waiting to start.");
-        break;
-    case Status.InProgress:
-        print("Working on it!");
-        break;
-    default:
-        print("Task is finished.");
-}
+u8 small = 255;
+print(small, bigNum);

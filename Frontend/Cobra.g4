@@ -110,8 +110,10 @@ secondaryType
   ;
 
 primitiveType
-  : INT
-  | FLOAT
+  : INT | I8 | I16 | I32 | I64
+  | UINT | U8 | U16 | U32 | U64
+  | FLOAT | F32 | F64 | DOUBLE
+  | LONG
   | BOOL
   | STRING
   | VOID
@@ -351,7 +353,20 @@ DESTRUCTOR:  'destructor';
 
 
 INT:    'int';
+LONG:   'long';
+I8:     'i8';
+I16:    'i16';
+I32:    'i32';
+I64:    'i64';
+UINT:   'uint';
+U8:     'u8';
+U16:    'u16';
+U32:    'u32';
+U64:    'u64';
 FLOAT:  'float';
+DOUBLE: 'double';
+F32:    'f32';
+F64:    'f64';
 STRING: 'string';
 BOOL:   'bool';
 VOID:   'void';

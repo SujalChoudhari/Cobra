@@ -123,13 +123,21 @@ public partial class CobraInterpreter
         return context.GetText() switch
         {
             "void" => CobraRuntimeTypes.Void,
-            "int" => CobraRuntimeTypes.Int,
-            "float" => CobraRuntimeTypes.Float,
             "bool" => CobraRuntimeTypes.Bool,
             "string" => CobraRuntimeTypes.String,
             "handle" => CobraRuntimeTypes.Handle,
+            "i8" => CobraRuntimeTypes.Int8,
+            "u8" or "byte" => CobraRuntimeTypes.UInt8,
+            "i16" or "short" => CobraRuntimeTypes.Int16,
+            "u16" or "ushort" => CobraRuntimeTypes.UInt16,
+            "int" or "i32" => CobraRuntimeTypes.Int32,
+            "uint" or "u32" => CobraRuntimeTypes.UInt32,
+            "long" or "i64" => CobraRuntimeTypes.Int64,
+            "ulong" or "u64" => CobraRuntimeTypes.UInt64,
+            "float" or "f32" => CobraRuntimeTypes.Float32,
+            "double" or "f64" => CobraRuntimeTypes.Float64,
             _ => throw new NotSupportedException(
-                $"Type '{context.GetText()}' is not supported for external functions.")
+                $"Type '{context.GetText()}' is not a valid primitive type.")
         };
     }
 
