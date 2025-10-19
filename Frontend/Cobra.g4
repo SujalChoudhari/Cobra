@@ -273,6 +273,9 @@ primary
   | functionExpression
   | arrayLiteral
   | dictLiteral
+  | DUNDER_FILE
+  | DUNDER_LINE
+  | DUNDER_FUNC
   ;
 
 newExpression
@@ -350,6 +353,10 @@ PUBLIC:     'public';
 PRIVATE:    'private';
 CONSTRUCTOR: 'constructor';
 DESTRUCTOR:  'destructor';
+
+DUNDER_FILE: '__FILE__';
+DUNDER_LINE: '__LINE__';
+DUNDER_FUNC: '__FUNC__';
 
 
 INT:    'int';

@@ -9,7 +9,7 @@ public partial class CobraInterpreter
     public override object? VisitAssignmentExpression(CobraParser.AssignmentExpressionContext context)
     {
         if (context.leftHandSide() == null) return Visit(context.binaryExpression());
-
+        
         var lhs = context.leftHandSide();
         var valueToAssign = Visit(context.assignmentExpression(0));
         var op = context.assignmentOperator().GetText();
@@ -56,7 +56,7 @@ public partial class CobraInterpreter
         var argListIndex = 0;
         var exprIndex = 0;
 
-        for (var i = 1; i < context.ChildCount;)
+        for (var i = 1; i < context.ChildCount; )
         {
             var opNode = context.GetChild(i);
             var opToken = (opNode as ITerminalNode)?.Symbol;
@@ -83,15 +83,11 @@ public partial class CobraInterpreter
                     var memberName = context.ID(idIndex++).GetText();
                     var member = GetMember(currentObject, memberName);
 
-                    if (i + 2 < context.ChildCount && context.GetChild(i + 2) is Antlr4.Runtime.Tree.ITerminalNode
-                        {
-                            Symbol: { Type: CobraLexer.LPAREN }
-                        } nextOp)
+                    if (i + 2 < context.ChildCount && context.GetChild(i + 2) is Antlr4.Runtime.Tree.ITerminalNode { Symbol: { Type: CobraLexer.LPAREN } } nextOp)
                     {
                         var argListCtx = context.argumentList(argListIndex++);
                         var args = argListCtx?.assignmentExpression().Select(Visit).ToList() ?? new List<object?>();
-                        currentObject = ExecuteFunctionCall(member, args, memberName, currentObject as CobraInstance,
-                            nextOp.Symbol);
+                        currentObject = ExecuteFunctionCall(member, args, memberName, currentObject as CobraInstance, nextOp.Symbol);
                         i += argListCtx != null ? 4 : 3;
                     }
                     else
@@ -99,7 +95,6 @@ public partial class CobraInterpreter
                         currentObject = member;
                         i += 2;
                     }
-
                     break;
                 }
                 case Antlr4.Runtime.Tree.ITerminalNode op when op.Symbol.Type is CobraLexer.INC or CobraLexer.DEC:
@@ -166,9 +161,19 @@ public partial class CobraInterpreter
         if (context.arrayLiteral() != null) return Visit(context.arrayLiteral());
         if (context.dictLiteral() != null) return Visit(context.dictLiteral());
         if (context.functionExpression() != null) return Visit(context.functionExpression());
+        
+        if (context.DUNDER_FILE() != null)
+            return _sourceFileStack.Count > 0 ? _sourceFileStack.Peek() : "REPL";
+        
+        if (context.DUNDER_LINE() != null)
+            return (long)context.Start.Line;
+        
+        if (context.DUNDER_FUNC() != null)
+            return _stackTrace.Peek()?.FunctionName ?? "<script>";
+
         throw new NotSupportedException("This primary form is not supported yet.");
     }
-
+    
     public object? VisitNewExpression(CobraParser.NewExpressionContext context)
     {
         var qualifiedNameCtx = context.qualifiedName();
@@ -179,7 +184,7 @@ public partial class CobraInterpreter
             throw new Exception($"Type '{qualifiedNameCtx.GetText()}' not found or is not a class.");
 
         var instance = new CobraInstance(classDefinition);
-
+        
         foreach (var field in classDefinition.Fields)
         {
             instance.Fields.DefineVariable(field.Key, field.Value.InitialValue);
@@ -191,10 +196,10 @@ public partial class CobraInterpreter
         {
             ExecuteFunctionCall(classDefinition.Constructor, args, qualifiedNameCtx.GetText(), instance, callToken);
         }
-
+        
         return instance;
     }
-
+    
     public override object VisitFunctionExpression(CobraParser.FunctionExpressionContext context)
     {
         var parameters = context.parameterList()?.parameter()
