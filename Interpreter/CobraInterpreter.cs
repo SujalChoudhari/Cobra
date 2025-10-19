@@ -6,12 +6,18 @@ namespace Cobra.Interpreter
 {
     public partial class CobraInterpreter : CobraBaseVisitor<object?>
     {
-        private CobraEnvironment _currentEnvironment = CobraEnvironment.CreateGlobalEnvironment();
+        
+        private CobraEnvironment _currentEnvironment;
         private readonly Stack<string> _sourceFileStack = new();
         private readonly HashSet<string> _alreadyImported = new();
 
         private readonly Dictionary<string, IntPtr> _loadedLibraries = new();
         private string? _currentLinkingLibraryPath;
+
+        public CobraInterpreter(CobraEnvironment globalEnvironment)
+        {
+            _currentEnvironment = globalEnvironment;
+        }
 
         private class CobraLValue(object? container, object? key)
         {

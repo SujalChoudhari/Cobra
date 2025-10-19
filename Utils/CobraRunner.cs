@@ -1,19 +1,17 @@
 using Antlr4.Runtime;
+using Cobra.Environment;
 using Cobra.Interpreter;
 
 namespace Cobra.Utils;
 
 public class CobraRunner
 {
-    private readonly CobraInterpreter _interpreter;
-
-    public CobraRunner()
+    public void Run(string code, string? sourcePath = null, string[]? scriptArgs = null)
     {
-        _interpreter = new CobraInterpreter();
-    }
-
-    public void Run(string code, string? sourcePath = null)
-    {
+        scriptArgs ??= Array.Empty<string>();
+        var globalEnvironment = CobraEnvironment.CreateGlobalEnvironment(scriptArgs);
+        var interpreter = new CobraInterpreter(globalEnvironment);
+        
         var inputStream = new AntlrInputStream(code);
         var lexer = new CobraLexer(inputStream);
         var tokenStream = new CommonTokenStream(lexer);
@@ -21,7 +19,7 @@ public class CobraRunner
 
         var tree = parser.program();
 
-        var finalResult = _interpreter.Interpret(tree, sourcePath);
+        var finalResult = interpreter.Interpret(tree, sourcePath);
 
         if (finalResult is CobraThrowValue throwValue)
         {
@@ -31,7 +29,10 @@ public class CobraRunner
 
     public void StartRepl()
     {
-        Console.WriteLine("Cobra REPL started. Type 'exit' to quit.");
+        // For REPL, args are always empty
+        var globalEnvironment = CobraEnvironment.CreateGlobalEnvironment(Array.Empty<string>());
+        var interpreter = new CobraInterpreter(globalEnvironment);
+
         while (true)
         {
             Console.Write("> ");
@@ -43,7 +44,12 @@ public class CobraRunner
 
             try
             {
-                Run(code);
+                var inputStream = new AntlrInputStream(code);
+                var lexer = new CobraLexer(inputStream);
+                var tokenStream = new CommonTokenStream(lexer);
+                var parser = new CobraParser(tokenStream);
+                var tree = parser.program();
+                interpreter.Interpret(tree, null);
             }
             catch (Exception ex)
             {

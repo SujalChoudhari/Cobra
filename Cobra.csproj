@@ -9,11 +9,9 @@
 
     <ItemGroup>
         <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1"/>
-        <PackageReference Include="CommandLineParser" Version="2.9.1"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="bin\Debug\net9.0\Cobra.exe"/>
         <Content Include="CobraStdLib\.idea\.gitignore"/>
         <Content Include="CobraStdLib\.idea\CobraStdLib.iml"/>
         <Content Include="CobraStdLib\.idea\editor.xml"/>
@@ -40,6 +38,18 @@
         <Folder Include="CobraStdLib\cmake-build-debug\CMakeFiles\CMakeScratch\"/>
         <Folder Include="CobraStdLib\cmake-build-debug\CMakeFiles\CobraStdLib.dir\"/>
         <Folder Include="CobraStdLib\cmake-build-debug\CMakeFiles\pkgRedirects\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="bin\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="bin\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="bin\**" />
     </ItemGroup>
 
 

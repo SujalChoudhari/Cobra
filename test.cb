@@ -1,67 +1,9 @@
-import "exception";
-
-namespace App.Main {
-
-    // A function that might throw an exception
-    void checkValue(int val) {
-        if (val < 0) {
-            throw new System.Exception("Value cannot be negative!");
-        }
-        print("Value " + val + " is OK.");
-    }
-
-    // --- Test 1: Basic try-catch ---
-    print("--- Test 1: Basic try-catch ---");
-    try {
-        print("Entering try block...");
-        checkValue(-5);
-        print("This should not be printed.");
-    } catch (System.Exception e) {
-        print("Caught an exception!");
-        print("Message: " + e.getMessage());
-    }
-    print("Test 1 complete.\n");
-
-
-    // --- Test 2: try-catch with no exception ---
-    print("--- Test 2: try-catch with no exception ---");
-    try {
-        print("Entering try block...");
-        checkValue(10);
-        print("This should be printed.");
-    } catch (System.Exception e) {
-        print("Caught an exception! (This should not happen)");
-    }
-    print("Test 2 complete.\n");
-
-
-    // --- Test 3: try-finally ---
-    print("--- Test 3: try-finally ---");
-    try {
-        print("Entering try block...");
-    } finally {
-        print("Executing finally block.");
-    }
-    print("Test 3 complete.\n");
-    
-
-    // --- Test 4: try-catch-finally with an exception ---
-    print("--- Test 4: try-catch-finally ---");
-    try {
-        print("Entering try block...");
-        checkValue(-99);
-        print("This should not be printed.");
-    } catch (System.Exception e) {
-        print("Caught exception: " + e.toString());
-    } finally {
-        print("Executing finally block, regardless of exception.");
-    }
-    print("Test 4 complete.\n");
-    
-    
-    // --- Test 5: Uncaught exception (will terminate the script) ---
-    // Uncomment the following lines to test this. The script should stop here.
-    print("--- Test 5: Uncaught exception ---");
-    checkValue(-1);
-    print("This will not be reached.");
+void heavyComputation() {
+  int total = 0;
+  for (int i = 1000000; i > 0; i--) {
+    total += i;
+  }
+  return total;
 }
+
+print(heavyComputation());

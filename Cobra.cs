@@ -4,8 +4,8 @@ namespace Cobra;
 
 public abstract class Cobra
 {
-    public static void Main(string[] args)
+    public static int Main(string[] args)
     {
-        CobraCommandLine.Run(args);
+        return CobraCli.Run(args);
     }
 }

@@ -7,10 +7,11 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
     private readonly Dictionary<string, CobraVariableDefinition> _variables = new();
     private CobraEnvironment? Parent { get; } = parent;
 
-    public static CobraEnvironment CreateGlobalEnvironment()
+    public static CobraEnvironment CreateGlobalEnvironment(string[] scriptArgs)
     {
         var env = new CobraEnvironment();
 
+        // --- Built-in Functions ---
         var printFunc = new CobraBuiltinFunction("print", (args) =>
         {
             var output = string.Join(" ", args.Select(a => a?.ToString() ?? "null"));
@@ -27,15 +28,21 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
                 throw new Exception("destroy() can only be called on a class instance.");
 
             var destructor = instance.ClassDefinition.Destructor;
-            if (destructor == null) return null;
-            var interpreter = new CobraInterpreter();
-            interpreter.ExecuteFunctionCall(destructor, [], "destructor", instance);
+            if (destructor != null)
+            {
+                var interpreter = new CobraInterpreter(CreateGlobalEnvironment(new string[] { }));
+                interpreter.ExecuteFunctionCall(destructor, new List<object?>(), "destructor", instance);
+            }
 
             return null;
         });
 
         env.DefineVariable("print", printFunc, isConst: true);
         env.DefineVariable("destroy", destroyFunc, isConst: true);
+
+        // --- Global Variables ---
+        var argsList = scriptArgs.Select(s => (object)s).ToList<object?>();
+        env.DefineVariable("ARGS", argsList, isConst: true);
 
         return env;
     }
@@ -100,7 +107,9 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
         if (_variables.TryGetValue(name, out var variable))
             return variable;
 
-        return Parent == null ? throw new Exception($"Variable '{name}' not found.") : Parent.GetVariableDefinition(name);
+        return Parent == null
+            ? throw new Exception($"Variable '{name}' not found.")
+            : Parent.GetVariableDefinition(name);
     }
 
     public bool IsFunction(string name)
