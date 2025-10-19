@@ -10,7 +10,6 @@ namespace Cobra.Utils
 
             if (args.Length == 0)
             {
-                Console.WriteLine("Cobra REPL. Type 'exit' to quit.");
                 runner.StartRepl();
                 return 0;
             }
@@ -31,17 +30,17 @@ namespace Cobra.Utils
                 var code = File.ReadAllText(scriptPath);
                 runner.Run(code, scriptPath, scriptArgs);
             }
-            catch (CobraRuntimeException ex)
+            catch (CobraRuntimeException)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Error.WriteLine(ex.Message);
-                Console.ResetColor();
+                // The error handler in CobraRunner already printed the details.
+                // We just need to return the error code.
                 return 1;
             }
             catch (Exception ex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Error.WriteLine($"Internal Interpreter Error: {ex.Message}");
+                Console.Error.WriteLine(ex.StackTrace);
                 Console.ResetColor();
                 return 1;
             }

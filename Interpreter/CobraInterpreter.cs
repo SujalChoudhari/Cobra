@@ -6,10 +6,10 @@ namespace Cobra.Interpreter
 {
     public partial class CobraInterpreter : CobraBaseVisitor<object?>
     {
-        
         private CobraEnvironment _currentEnvironment;
         private readonly Stack<string> _sourceFileStack = new();
         private readonly HashSet<string> _alreadyImported = new();
+        private readonly CobraStackTrace _stackTrace = new();
 
         private readonly Dictionary<string, IntPtr> _loadedLibraries = new();
         private string? _currentLinkingLibraryPath;
@@ -70,11 +70,22 @@ namespace Cobra.Interpreter
         {
             foreach (var statement in context.children)
             {
-                var result = Visit(statement);
-                if (result is CobraThrowValue)
+                try
                 {
-                    // An uncaught exception reached the top level. Stop everything.
-                    return result;
+                    var result = Visit(statement);
+                    if (result is CobraThrowValue)
+                    {
+                        // An uncaught exception reached the top level. Stop everything.
+                        return result;
+                    }
+                }
+                catch (CobraRuntimeException ex)
+                {
+                    return CreateAndThrowCobraException(ex.Message, ex.StackTraceValue);
+                }
+                catch (Exception ex)
+                {
+                    return CreateAndThrowCobraException(ex.Message);
                 }
             }
 

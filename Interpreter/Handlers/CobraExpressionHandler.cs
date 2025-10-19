@@ -1,4 +1,6 @@
 using Cobra.Environment;
+using Antlr4.Runtime;
+using Antlr4.Runtime.Tree;
 
 namespace Cobra.Interpreter;
 
@@ -7,7 +9,7 @@ public partial class CobraInterpreter
     public override object? VisitAssignmentExpression(CobraParser.AssignmentExpressionContext context)
     {
         if (context.leftHandSide() == null) return Visit(context.binaryExpression());
-        
+
         var lhs = context.leftHandSide();
         var valueToAssign = Visit(context.assignmentExpression(0));
         var op = context.assignmentOperator().GetText();
@@ -54,16 +56,18 @@ public partial class CobraInterpreter
         var argListIndex = 0;
         var exprIndex = 0;
 
-        for (var i = 1; i < context.ChildCount; )
+        for (var i = 1; i < context.ChildCount;)
         {
             var opNode = context.GetChild(i);
+            var opToken = (opNode as ITerminalNode)?.Symbol;
+
             switch (opNode)
             {
                 case Antlr4.Runtime.Tree.ITerminalNode { Symbol: { Type: CobraLexer.LPAREN } }:
                 {
                     var argListCtx = context.argumentList(argListIndex++);
                     var args = argListCtx?.assignmentExpression().Select(Visit).ToList() ?? [];
-                    currentObject = ExecuteFunctionCall(currentObject, args, "function");
+                    currentObject = ExecuteFunctionCall(currentObject, args, "function", null, opToken);
                     i += argListCtx != null ? 3 : 2;
                     break;
                 }
@@ -79,11 +83,15 @@ public partial class CobraInterpreter
                     var memberName = context.ID(idIndex++).GetText();
                     var member = GetMember(currentObject, memberName);
 
-                    if (i + 2 < context.ChildCount && context.GetChild(i + 2) is Antlr4.Runtime.Tree.ITerminalNode { Symbol: { Type: CobraLexer.LPAREN } })
+                    if (i + 2 < context.ChildCount && context.GetChild(i + 2) is Antlr4.Runtime.Tree.ITerminalNode
+                        {
+                            Symbol: { Type: CobraLexer.LPAREN }
+                        } nextOp)
                     {
                         var argListCtx = context.argumentList(argListIndex++);
                         var args = argListCtx?.assignmentExpression().Select(Visit).ToList() ?? new List<object?>();
-                        currentObject = ExecuteFunctionCall(member, args, memberName, currentObject as CobraInstance);
+                        currentObject = ExecuteFunctionCall(member, args, memberName, currentObject as CobraInstance,
+                            nextOp.Symbol);
                         i += argListCtx != null ? 4 : 3;
                     }
                     else
@@ -91,6 +99,7 @@ public partial class CobraInterpreter
                         currentObject = member;
                         i += 2;
                     }
+
                     break;
                 }
                 case Antlr4.Runtime.Tree.ITerminalNode op when op.Symbol.Type is CobraLexer.INC or CobraLexer.DEC:
@@ -159,17 +168,18 @@ public partial class CobraInterpreter
         if (context.functionExpression() != null) return Visit(context.functionExpression());
         throw new NotSupportedException("This primary form is not supported yet.");
     }
-    
+
     public object? VisitNewExpression(CobraParser.NewExpressionContext context)
     {
         var qualifiedNameCtx = context.qualifiedName();
         var classDefinition = ResolveQualifiedName(qualifiedNameCtx) as CobraClass;
+        var callToken = (context.GetChild(2) as ITerminalNode)!.Symbol; // The '(' token
 
         if (classDefinition == null)
             throw new Exception($"Type '{qualifiedNameCtx.GetText()}' not found or is not a class.");
 
         var instance = new CobraInstance(classDefinition);
-        
+
         foreach (var field in classDefinition.Fields)
         {
             instance.Fields.DefineVariable(field.Key, field.Value.InitialValue);
@@ -179,12 +189,12 @@ public partial class CobraInterpreter
 
         if (classDefinition.Constructor != null)
         {
-            ExecuteFunctionCall(classDefinition.Constructor, args, qualifiedNameCtx.GetText(), instance);
+            ExecuteFunctionCall(classDefinition.Constructor, args, qualifiedNameCtx.GetText(), instance, callToken);
         }
-        
+
         return instance;
     }
-    
+
     public override object VisitFunctionExpression(CobraParser.FunctionExpressionContext context)
     {
         var parameters = context.parameterList()?.parameter()

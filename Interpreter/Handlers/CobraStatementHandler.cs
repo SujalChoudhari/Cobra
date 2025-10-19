@@ -186,7 +186,19 @@ public partial class CobraInterpreter
 
     public override object? VisitTryStatement(CobraParser.TryStatementContext context)
     {
-        object? result = Visit(context.block(0)); // Execute the 'try' block
+        object? result = null;
+        try
+        {
+           result = Visit(context.block(0)); // Execute the 'try' block
+        }
+        catch (CobraRuntimeException ex)
+        {
+            result = CreateAndThrowCobraException(ex.Message, ex.StackTraceValue);
+        }
+        catch (Exception ex)
+        {
+            result = CreateAndThrowCobraException(ex.Message);
+        }
 
         if (result is CobraThrowValue thrownValue)
         {
@@ -240,8 +252,20 @@ public partial class CobraInterpreter
         
         if (context.throwStatement() != null)
         {
-            var thrownObject = Visit(context.throwStatement().assignmentExpression());
-            if (thrownObject != null) return new CobraThrowValue(thrownObject);
+            var throwStmt = context.throwStatement();
+            var thrownObject = Visit(throwStmt.assignmentExpression());
+            if (thrownObject != null)
+            {
+                // Capture the current location of the 'throw' keyword
+                var stack = new CobraStackTrace(_stackTrace);
+                if (_sourceFileStack.Count > 0)
+                {
+                    // Determine a name for the current context
+                    var contextName = stack.Peek()?.FunctionName ?? "<script>";
+                    stack.Push(new CallFrame(contextName, _sourceFileStack.Peek(), throwStmt.THROW().Symbol));
+                }
+                return new CobraThrowValue(thrownObject, stack);
+            }
         }
 
         return null;

@@ -1,18 +1,31 @@
-i8 tinyNum = 10;
-u64 bigNum = 10000000000000000000;
-f32 pi = 3.14;
-double morePi = 3.141592653589793;
+import "exception";
 
-int a = 100;
-i32 b = 200;
-var c = a + b;
 
-double x = 5.5;
-int y = 10;
-var z = x * y;
+namespace App {
 
-print(c);
-print(z);
+    void main() {
+        i8 tinyNum = 10;
+        u64 bigNum = 10000000000000000000;
+        f32 pi = 3.14;
+        double morePi = 3.141592653589793;
+        
+        int a = 100;
+        i32 b = 200;
+        var c = a + b;
+        
+        double x = 5.5;
+        int y = 10;
+        var z = x * y;
+        
+        print(c);
+        print(z);
+        
+        u8 small = 255;
+        print(small);
+        
+        throw new System.Exception("This is the second time, I am happy seeing an error occurred!");
+    }
+}
 
-u8 small = 255;
-print(small, bigNum);
+
+App.main();

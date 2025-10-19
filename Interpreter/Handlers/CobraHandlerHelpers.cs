@@ -1,6 +1,5 @@
 using System.Runtime.InteropServices;
 using Antlr4.Runtime;
-using Antlr4.Runtime.Tree;
 using Cobra.Environment;
 
 namespace Cobra.Interpreter;
@@ -129,22 +128,31 @@ public partial class CobraInterpreter
     }
 
     public object? ExecuteFunctionCall(object? funcObject, List<object?> args, string funcNameForError,
-        CobraInstance? instanceContext = null)
+        CobraInstance? instanceContext = null, IToken? callSiteToken = null)
     {
-        object? result = null;
-        switch (funcObject)
+        var functionDefinition = funcObject as CobraFunctionDefinition;
+        var funcName = functionDefinition?.Name ?? funcNameForError;
+        
+        if (callSiteToken != null && _sourceFileStack.Count > 0)
         {
-            case CobraUserDefinedFunction userFunc:
+            var frame = new CallFrame(funcName, _sourceFileStack.Peek(), callSiteToken);
+            _stackTrace.Push(frame);
+        }
+
+        try
+        {
+            object? result = null;
+            switch (funcObject)
             {
-                if (args.Count != userFunc.Parameters.Count)
-                    throw new Exception(
-                        $"Function '{userFunc.Name}' expects {userFunc.Parameters.Count} arguments but got {args.Count}.");
-
-                var previous = _currentEnvironment;
-                _currentEnvironment = new CobraEnvironment(userFunc.Closure);
-
-                try
+                case CobraUserDefinedFunction userFunc:
                 {
+                    if (args.Count != userFunc.Parameters.Count)
+                        throw new CobraRuntimeException(
+                            $"Function '{userFunc.Name}' expects {userFunc.Parameters.Count} arguments but got {args.Count}.");
+
+                    var previous = _currentEnvironment;
+                    _currentEnvironment = new CobraEnvironment(userFunc.Closure);
+
                     if (instanceContext != null)
                     {
                         _currentEnvironment.DefineVariable("this", instanceContext, isConst: true);
@@ -156,40 +164,82 @@ public partial class CobraInterpreter
                     }
 
                     result = ExecuteBlockStmts(userFunc.Body);
+                    break;
                 }
-                finally
+                case CobraBuiltinFunction builtinFunc:
                 {
-                    _currentEnvironment = previous;
+                    result = builtinFunc.Action(args);
+                    break;
                 }
-
-                break;
+                case CobraExternalFunction externalFunc:
+                {
+                    result = CallExternalFunction(externalFunc, args);
+                    break;
+                }
+                default:
+                    throw new CobraRuntimeException($"'{funcNameForError}' is not a function.");
             }
-            case CobraBuiltinFunction builtinFunc:
+
+            if (result is CobraReturnValue returnValue)
             {
-                result = builtinFunc.Action(args);
-                break;
+                return returnValue.Value;
             }
-            case CobraExternalFunction externalFunc:
-            {
-                result = CallExternalFunction(externalFunc, args);
-                break;
-            }
-            default:
-                throw new Exception($"'{funcNameForError}' is not a function.");
-        }
-
-        if (result is CobraReturnValue returnValue)
-        {
-            return returnValue.Value;
-        }
-
-        if (result is CobraThrowValue)
-        {
+            
             return result;
         }
-
-        return null; 
+        catch (CobraRuntimeException ex)
+        {
+            return CreateAndThrowCobraException(ex.Message, ex.StackTraceValue);
+        }
+        catch (Exception ex)
+        {
+            // Wrap any unexpected C# exception into a Cobra exception
+            return CreateAndThrowCobraException(ex.Message);
+        }
+        finally
+        {
+            if (callSiteToken != null && _sourceFileStack.Count > 0)
+            {
+                _stackTrace.Pop();
+            }
+        }
     }
+    
+    private CobraThrowValue CreateAndThrowCobraException(string message, CobraStackTrace? existingStackTrace = null)
+    {
+        var stackTrace = existingStackTrace ?? new CobraStackTrace(_stackTrace);
+        try
+        {
+            // Attempt to find the user-defined System.Exception class
+            var systemNs = _currentEnvironment.GetVariable("System") as CobraNamespace;
+            var exceptionClass = systemNs?.Environment.GetVariable("Exception") as CobraClass;
+
+            if (exceptionClass != null)
+            {
+                var instance = new CobraInstance(exceptionClass);
+
+                // Manually set the 'message' field as the constructor might not be simple
+                if (exceptionClass.Fields.ContainsKey("message"))
+                    instance.Fields.DefineVariable("message", message);
+                
+                // If there's a constructor, call it.
+                if (exceptionClass.Constructor != null)
+                {
+                    ExecuteFunctionCall(exceptionClass.Constructor, new List<object?> { message }, "Exception", instance);
+                }
+                
+                return new CobraThrowValue(instance, stackTrace);
+            }
+        }
+        catch
+        {
+            // Fallback if we can't create a Cobra Exception instance for any reason
+        }
+
+        // Fallback to throwing the raw string if the Exception class isn't available
+        return new CobraThrowValue($"Internal Error: {message}", stackTrace);
+    }
+
 
     private object? CallExternalFunction(CobraExternalFunction func, List<object?> args)
     {

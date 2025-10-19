@@ -23,7 +23,8 @@ public class CobraContinueValue
     }
 }
 
-public class CobraThrowValue(object thrownObject)
+public class CobraThrowValue(object thrownObject, CobraStackTrace? stackTrace)
 {
     public readonly object ThrownObject = thrownObject;
+    public readonly CobraStackTrace? StackTrace = stackTrace;
 }
