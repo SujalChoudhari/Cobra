@@ -73,6 +73,8 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
             CobraHandle => CobraRuntimeTypes.Handle,
             CobraClass => CobraRuntimeTypes.Class,
             CobraInstance => CobraRuntimeTypes.Instance,
+            CobraEnum => CobraRuntimeTypes.Enum,
+            CobraEnumMember => CobraRuntimeTypes.EnumMember,
             _ => throw new Exception($"Unsupported runtime type: {value.GetType().Name}")
         };
     }

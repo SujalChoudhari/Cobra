@@ -1,9 +1,38 @@
-void heavyComputation() {
-  int total = 0;
-  for (int i = 1000000; i > 0; i--) {
-    total += i;
-  }
-  return total;
+enum Color {
+    Red,
+    Green,
+    Blue
 }
 
-print(heavyComputation());
+enum Status {
+    Pending = 10,
+    InProgress,
+    Completed = 20,
+    Failed
+}
+
+const Status currentStatus = Status.InProgress;
+print(currentStatus);
+
+print(currentStatus.name);
+print(currentStatus.value);
+
+if (currentStatus == Status.InProgress) {
+    print("The task is still running.");
+}
+
+print("All available colors:");
+for (any member in Color) {
+    print(member.name + " = " + member.value);
+}
+
+switch(currentStatus) {
+    case Status.Pending:
+        print("Waiting to start.");
+        break;
+    case Status.InProgress:
+        print("Working on it!");
+        break;
+    default:
+        print("Task is finished.");
+}

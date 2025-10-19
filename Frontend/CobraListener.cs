@@ -91,6 +91,36 @@ public interface ICobraListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitTopLevelDeclaration([NotNull] CobraParser.TopLevelDeclarationContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.enumDeclaration"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterEnumDeclaration([NotNull] CobraParser.EnumDeclarationContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.enumDeclaration"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitEnumDeclaration([NotNull] CobraParser.EnumDeclarationContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.enumMemberList"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterEnumMemberList([NotNull] CobraParser.EnumMemberListContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.enumMemberList"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitEnumMemberList([NotNull] CobraParser.EnumMemberListContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.enumMember"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterEnumMember([NotNull] CobraParser.EnumMemberContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.enumMember"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitEnumMember([NotNull] CobraParser.EnumMemberContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="CobraParser.classDeclaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

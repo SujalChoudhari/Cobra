@@ -125,6 +125,19 @@ public partial class CobraInterpreter
 
             case CobraClass classDef:
                 return classDef.StaticEnvironment.GetVariable(key);
+            
+            case CobraEnum enumDef:
+                if (enumDef.Members.TryGetValue(key, out var member))
+                    return member;
+                throw new Exception($"Member '{key}' not found in enum '{enumDef.Name}'.");
+            
+            case CobraEnumMember enumMember:
+                return key switch
+                {
+                    "name" => enumMember.Name,
+                    "value" => enumMember.Value,
+                    _ => throw new Exception($"'{enumMember.EnumType.Name}.{enumMember.Name}' has no property '{key}'. Did you mean 'name' or 'value'?")
+                };
 
             case CobraNamespace ns:
                 return ns.Environment.GetVariable(key);
@@ -297,6 +310,12 @@ public partial class CobraInterpreter
             return (left?.ToString() ?? "") + (right?.ToString() ?? "");
         if (op is "==" or "!=" or "<" or ">" or "<=" or ">=")
         {
+            if (left is CobraEnumMember lMember && right is CobraEnumMember rMember)
+            {
+                left = lMember.Value;
+                right = rMember.Value;
+            }
+            
             if (left == null || right == null)
             {
                 return op switch

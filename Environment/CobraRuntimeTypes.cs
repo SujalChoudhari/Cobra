@@ -15,5 +15,7 @@ public enum CobraRuntimeTypes
     Handle,
     Namespace,
     Class,
-    Instance
+    Instance,
+    Enum,
+    EnumMember
 }

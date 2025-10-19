@@ -108,6 +108,42 @@ public partial class CobraBaseListener : ICobraListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitTopLevelDeclaration([NotNull] CobraParser.TopLevelDeclarationContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.enumDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterEnumDeclaration([NotNull] CobraParser.EnumDeclarationContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.enumDeclaration"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitEnumDeclaration([NotNull] CobraParser.EnumDeclarationContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.enumMemberList"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterEnumMemberList([NotNull] CobraParser.EnumMemberListContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.enumMemberList"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitEnumMemberList([NotNull] CobraParser.EnumMemberListContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="CobraParser.enumMember"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterEnumMember([NotNull] CobraParser.EnumMemberContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="CobraParser.enumMember"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitEnumMember([NotNull] CobraParser.EnumMemberContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="CobraParser.classDeclaration"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

@@ -25,6 +25,41 @@ public partial class CobraInterpreter
         return null;
     }
 
+    public override object? VisitEnumDeclaration(CobraParser.EnumDeclarationContext context)
+    {
+        var enumName = context.ID().GetText();
+        var members = new Dictionary<string, CobraEnumMember>();
+        var enumType = new CobraEnum(enumName, members);
+        long currentValue = 0;
+
+        var memberContexts = context.enumMemberList()?.enumMember();
+        if (memberContexts != null)
+        {
+            foreach (var memberCtx in memberContexts)
+            {
+                var memberName = memberCtx.ID().GetText();
+                if (memberCtx.assignmentExpression() != null)
+                {
+                    var val = Visit(memberCtx.assignmentExpression());
+                    if (val is not long and not int)
+                        throw new Exception("Enum values must be integers.");
+                    currentValue = Convert.ToInt64(val);
+                }
+
+                if (members.ContainsKey(memberName))
+                    throw new Exception($"Enum member '{memberName}' is already defined in '{enumName}'.");
+
+                var member = new CobraEnumMember(memberName, currentValue, enumType);
+                members[memberName] = member;
+                currentValue++;
+            }
+        }
+        
+        _currentEnvironment.DefineVariable(enumName, enumType, isConst: true);
+
+        return null;
+    }
+
     public override object? VisitFunctionDeclaration(CobraParser.FunctionDeclarationContext context)
     {
         var funcName = context.ID().GetText();

@@ -35,6 +35,19 @@ topLevelDeclaration
   | functionDeclaration
   | externDeclaration
   | classDeclaration
+  | enumDeclaration
+  ;
+
+enumDeclaration
+  : ENUM ID LBRACE enumMemberList? RBRACE
+  ;
+
+enumMemberList
+  : enumMember (COMMA enumMember)* COMMA?
+  ;
+
+enumMember
+  : ID (ASSIGN assignmentExpression)?
   ;
 
 classDeclaration
@@ -327,6 +340,7 @@ CONTINUE:   'continue';
 THROW:      'throw';
 
 CLASS:      'class';
+ENUM:       'enum';
 NEW:        'new';
 THIS:       'this';
 STATIC:     'static';

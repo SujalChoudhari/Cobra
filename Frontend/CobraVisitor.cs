@@ -68,6 +68,24 @@ public interface ICobraVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitTopLevelDeclaration([NotNull] CobraParser.TopLevelDeclarationContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.enumDeclaration"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEnumDeclaration([NotNull] CobraParser.EnumDeclarationContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.enumMemberList"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEnumMemberList([NotNull] CobraParser.EnumMemberListContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="CobraParser.enumMember"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEnumMember([NotNull] CobraParser.EnumMemberContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="CobraParser.classDeclaration"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

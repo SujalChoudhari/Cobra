@@ -85,12 +85,20 @@ public partial class CobraInterpreter
     public override object? VisitForEachStatement(CobraParser.ForEachStatementContext context)
     {
         var collection = Visit(context.assignmentExpression());
-        if (collection is not List<object?> list)
+        
+        IEnumerable<object?>? iterable = collection switch
         {
-            throw new Exception("foreach loop can only iterate over a list.");
+            List<object?> list => list,
+            CobraEnum enumType => enumType.Members.Values,
+            _ => null
+        };
+
+        if (iterable == null)
+        {
+            throw new Exception("foreach loop can only iterate over a list or an enum.");
         }
 
-        foreach (var item in list)
+        foreach (var item in iterable)
         {
             var loopScope = _currentEnvironment.CreateChild();
             var previous = _currentEnvironment;
@@ -117,6 +125,9 @@ public partial class CobraInterpreter
     public override object? VisitSwitchStatement(CobraParser.SwitchStatementContext context)
     {
         object? switchValue = Visit(context.assignmentExpression());
+        if (switchValue is CobraEnumMember member)
+            switchValue = member.Value;
+        
         var switchBlocks = context.switchBlock();
 
         int? defaultBlockIndex = null;
@@ -130,6 +141,9 @@ public partial class CobraInterpreter
                 if (label.CASE() != null)
                 {
                     var caseValue = Visit(label.assignmentExpression());
+                    if (caseValue is CobraEnumMember caseMember)
+                        caseValue = caseMember.Value;
+                    
                     if (Equals(switchValue, caseValue))
                     {
                         startBlockIndex = i;
