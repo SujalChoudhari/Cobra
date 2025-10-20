@@ -1,17 +1,11 @@
-// test.cb
+import "str"; // Assuming the loader will map this correctly
 
-void log(string message) {
-    print(__FILE__ + ":" + __LINE__ + " in " + __FUNC__ + "() -> " + message);
-}
+var s1 = new String("   hello world   ");
 
-void main() {
-    log("Starting main function.");
-    print("This is line " + __LINE__);
-    
-    // Some other code...
-    log("About to finish.");
-}
+// Chainable, immutable operations
+var s2 = s1.trim().toUpperCase().replace("WORLD", "COBRA");
 
-print("This is top-level code in file: " + __FILE__);
-log("This is a log from the top level.");
-main();
+print("Original: '" + s1.toString() + "'");
+print("Modified: '" + s2.toString() + "'");
+print("Length of modified: " + s2.length());
+print("Does it start with 'HELLO'? " + s2.startsWith("HELLO"));
