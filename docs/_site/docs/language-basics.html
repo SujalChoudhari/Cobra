@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Language Basics | cobra </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Language Basics | cobra ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/SujalChoudhari/Cobra/blob/main/docs/docs/language-basics.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="cobra">
+            cobra
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="language-basics">Language Basics</h1>
+
+<p>This guide covers the fundamental syntax and features of the Cobra language.</p>
+<h3 id="comments">Comments</h3>
+<p>Cobra supports two types of comments, just like C++ and C#:</p>
+<pre><code class="lang-csharp">// This is a single-line comment.
+
+/*
+  This is a
+  multi-line block comment.
+*/
+</code></pre>
+<h3 id="variables-and-constants">Variables and Constants</h3>
+<p>Variables are declared with the <code>var</code> keyword and can be reassigned. Constants are declared with <code>const</code> and must be initialized upon declaration.</p>
+<pre><code class="lang-csharp">// A variable of type 'int'
+int score = 0;
+score = 100; // This is valid.
+
+// A constant of type 'float'
+const float PI = 3.14;
+// PI = 3.14159; // This would cause a compiler error.
+</code></pre>
+<h3 id="data-types">Data Types</h3>
+<p>Cobra has a rich set of primitive data types for handling numbers, text, and logic.</p>
+<h4 id="integer-types">Integer Types</h4>
+<p>Cobra provides fixed-width integer types for precise control over data.</p>
+<ul>
+<li><strong>Signed Integers:</strong> <code>i8</code>, <code>i16</code>, <code>i32</code> (or <code>int</code>), <code>i64</code> (or <code>long</code>)</li>
+<li><strong>Unsigned Integers:</strong> <code>u8</code>, <code>u16</code>, <code>u32</code> (or <code>uint</code>), <code>u64</code> (or <code>ulong</code>)</li>
+</ul>
+<pre><code class="lang-csharp">i8 temperature = -5;
+u32 population = 4000000;
+long stars_in_galaxy = 100000000000;
+</code></pre>
+<h4 id="floating-point-types">Floating-Point Types</h4>
+<p>For numbers with fractional components.</p>
+<ul>
+<li><code>f32</code> (or <code>float</code>): 32-bit single-precision float.</li>
+<li><code>f64</code> (or <code>double</code>): 64-bit double-precision float.</li>
+</ul>
+<pre><code class="lang-csharp">float speed = 9.81;
+double planck_constant = 6.62607015e-34;
+</code></pre>
+<h4 id="other-primitives">Other Primitives</h4>
+<ul>
+<li><code>bool</code>: Can be <code>true</code> or <code>false</code>.</li>
+<li><code>string</code>: A sequence of text characters, enclosed in double quotes.</li>
+</ul>
+<pre><code class="lang-csharp">bool is_active = true;
+string message = &quot;Welcome to Cobra!&quot;;
+</code></pre>
+<h3 id="operators">Operators</h3>
+<p>Cobra supports standard arithmetic, comparison, and logical operators.</p>
+<ul>
+<li><strong>Arithmetic:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> (modulo)</li>
+<li><strong>Comparison:</strong> <code>==</code> (equals), <code>!=</code> (not equals), <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></li>
+<li><strong>Logical:</strong> <code>&amp;&amp;</code> (and), <code>||</code> (or), <code>!</code> (not)</li>
+</ul>
+<pre><code class="lang-csharp">int health = 100;
+health = health - 25; // 75
+
+bool is_alive = health &gt; 0; // true
+bool can_proceed = is_alive &amp;&amp; has_key;
+</code></pre>
+<h3 id="control-flow">Control Flow</h3>
+<h4 id="if--else">If / Else</h4>
+<p>Execute code conditionally.</p>
+<pre><code class="lang-csharp">if (score &gt; 1000) {
+    print(&quot;High score!&quot;);
+} else if (score &gt; 500) {
+    print(&quot;Good job!&quot;);
+} else {
+    print(&quot;Keep trying!&quot;);
+}
+</code></pre>
+<h4 id="loops">Loops</h4>
+<p>Cobra supports <code>for</code>, <code>foreach</code>, <code>while</code>, and <code>do-while</code> loops.</p>
+<pre><code class="lang-csharp">// C-style for loop
+for (int i = 0; i &lt; 5; i++) {
+    print(i);
+}
+
+// while loop
+int countdown = 3;
+while (countdown &gt; 0) {
+    print(countdown);
+    countdown--;
+}
+
+// foreach loop (for lists and arrays)
+int[] numbers =;
+for (int num in numbers) {
+    print(&quot;Number: &quot; + num);
+}
+</code></pre>
+<h3 id="functions">Functions</h3>
+<p>Functions are blocks of reusable code. You must specify the return type and the types of all parameters.</p>
+<pre><code class="lang-csharp">// A function that takes two integers and returns an integer.
+int add(int a, int b) {
+    return a + b;
+}
+
+// A function that does not return a value.
+void greet(string name) {
+    print(&quot;Hello, &quot; + name);
+}
+
+// Calling the functions
+int sum = add(5, 10);
+greet(&quot;Alice&quot;);
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/SujalChoudhari/Cobra/blob/main/docs/docs/language-basics.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

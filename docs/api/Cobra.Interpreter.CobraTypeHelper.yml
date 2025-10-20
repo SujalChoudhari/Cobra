@@ -1,0 +1,690 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cobra.Interpreter.CobraTypeHelper
+  commentId: T:Cobra.Interpreter.CobraTypeHelper
+  id: CobraTypeHelper
+  parent: Cobra.Interpreter
+  children:
+  - Cobra.Interpreter.CobraTypeHelper.Cast(System.Object,Cobra.Environment.CobraRuntimeTypes)
+  - Cobra.Interpreter.CobraTypeHelper.GetRuntimeType(System.Object)
+  - Cobra.Interpreter.CobraTypeHelper.IsFloatingPoint(System.Object)
+  - Cobra.Interpreter.CobraTypeHelper.IsInteger(System.Object)
+  - Cobra.Interpreter.CobraTypeHelper.IsNumeric(System.Object)
+  - Cobra.Interpreter.CobraTypeHelper.PromoteNumericsForBinaryOp(System.Object,System.Object)
+  langs:
+  - csharp
+  - vb
+  name: CobraTypeHelper
+  nameWithType: CobraTypeHelper
+  fullName: Cobra.Interpreter.CobraTypeHelper
+  type: Class
+  source:
+    remote:
+      path: Interpreter/CobraTypeHelper.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: CobraTypeHelper
+    path: ../Interpreter/CobraTypeHelper.cs
+    startLine: 6
+  assemblies:
+  - Cobra
+  namespace: Cobra.Interpreter
+  syntax:
+    content: public static class CobraTypeHelper
+    content.vb: Public Module CobraTypeHelper
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Cobra.Interpreter.CobraTypeHelper.IsNumeric(System.Object)
+  commentId: M:Cobra.Interpreter.CobraTypeHelper.IsNumeric(System.Object)
+  id: IsNumeric(System.Object)
+  parent: Cobra.Interpreter.CobraTypeHelper
+  langs:
+  - csharp
+  - vb
+  name: IsNumeric(object?)
+  nameWithType: CobraTypeHelper.IsNumeric(object?)
+  fullName: Cobra.Interpreter.CobraTypeHelper.IsNumeric(object?)
+  type: Method
+  source:
+    remote:
+      path: Interpreter/CobraTypeHelper.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: IsNumeric
+    path: ../Interpreter/CobraTypeHelper.cs
+    startLine: 8
+  assemblies:
+  - Cobra
+  namespace: Cobra.Interpreter
+  syntax:
+    content: public static bool IsNumeric(object? obj)
+    parameters:
+    - id: obj
+      type: System.Object
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsNumeric(obj As Object) As Boolean
+  overload: Cobra.Interpreter.CobraTypeHelper.IsNumeric*
+  nameWithType.vb: CobraTypeHelper.IsNumeric(Object)
+  fullName.vb: Cobra.Interpreter.CobraTypeHelper.IsNumeric(Object)
+  name.vb: IsNumeric(Object)
+- uid: Cobra.Interpreter.CobraTypeHelper.IsInteger(System.Object)
+  commentId: M:Cobra.Interpreter.CobraTypeHelper.IsInteger(System.Object)
+  id: IsInteger(System.Object)
+  parent: Cobra.Interpreter.CobraTypeHelper
+  langs:
+  - csharp
+  - vb
+  name: IsInteger(object?)
+  nameWithType: CobraTypeHelper.IsInteger(object?)
+  fullName: Cobra.Interpreter.CobraTypeHelper.IsInteger(object?)
+  type: Method
+  source:
+    remote:
+      path: Interpreter/CobraTypeHelper.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: IsInteger
+    path: ../Interpreter/CobraTypeHelper.cs
+    startLine: 9
+  assemblies:
+  - Cobra
+  namespace: Cobra.Interpreter
+  syntax:
+    content: public static bool IsInteger(object? obj)
+    parameters:
+    - id: obj
+      type: System.Object
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsInteger(obj As Object) As Boolean
+  overload: Cobra.Interpreter.CobraTypeHelper.IsInteger*
+  nameWithType.vb: CobraTypeHelper.IsInteger(Object)
+  fullName.vb: Cobra.Interpreter.CobraTypeHelper.IsInteger(Object)
+  name.vb: IsInteger(Object)
+- uid: Cobra.Interpreter.CobraTypeHelper.IsFloatingPoint(System.Object)
+  commentId: M:Cobra.Interpreter.CobraTypeHelper.IsFloatingPoint(System.Object)
+  id: IsFloatingPoint(System.Object)
+  parent: Cobra.Interpreter.CobraTypeHelper
+  langs:
+  - csharp
+  - vb
+  name: IsFloatingPoint(object?)
+  nameWithType: CobraTypeHelper.IsFloatingPoint(object?)
+  fullName: Cobra.Interpreter.CobraTypeHelper.IsFloatingPoint(object?)
+  type: Method
+  source:
+    remote:
+      path: Interpreter/CobraTypeHelper.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: IsFloatingPoint
+    path: ../Interpreter/CobraTypeHelper.cs
+    startLine: 10
+  assemblies:
+  - Cobra
+  namespace: Cobra.Interpreter
+  syntax:
+    content: public static bool IsFloatingPoint(object? obj)
+    parameters:
+    - id: obj
+      type: System.Object
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsFloatingPoint(obj As Object) As Boolean
+  overload: Cobra.Interpreter.CobraTypeHelper.IsFloatingPoint*
+  nameWithType.vb: CobraTypeHelper.IsFloatingPoint(Object)
+  fullName.vb: Cobra.Interpreter.CobraTypeHelper.IsFloatingPoint(Object)
+  name.vb: IsFloatingPoint(Object)
+- uid: Cobra.Interpreter.CobraTypeHelper.GetRuntimeType(System.Object)
+  commentId: M:Cobra.Interpreter.CobraTypeHelper.GetRuntimeType(System.Object)
+  id: GetRuntimeType(System.Object)
+  parent: Cobra.Interpreter.CobraTypeHelper
+  langs:
+  - csharp
+  - vb
+  name: GetRuntimeType(object?)
+  nameWithType: CobraTypeHelper.GetRuntimeType(object?)
+  fullName: Cobra.Interpreter.CobraTypeHelper.GetRuntimeType(object?)
+  type: Method
+  source:
+    remote:
+      path: Interpreter/CobraTypeHelper.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: GetRuntimeType
+    path: ../Interpreter/CobraTypeHelper.cs
+    startLine: 12
+  assemblies:
+  - Cobra
+  namespace: Cobra.Interpreter
+  syntax:
+    content: public static CobraRuntimeTypes GetRuntimeType(object? val)
+    parameters:
+    - id: val
+      type: System.Object
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+    content.vb: Public Shared Function GetRuntimeType(val As Object) As CobraRuntimeTypes
+  overload: Cobra.Interpreter.CobraTypeHelper.GetRuntimeType*
+  nameWithType.vb: CobraTypeHelper.GetRuntimeType(Object)
+  fullName.vb: Cobra.Interpreter.CobraTypeHelper.GetRuntimeType(Object)
+  name.vb: GetRuntimeType(Object)
+- uid: Cobra.Interpreter.CobraTypeHelper.Cast(System.Object,Cobra.Environment.CobraRuntimeTypes)
+  commentId: M:Cobra.Interpreter.CobraTypeHelper.Cast(System.Object,Cobra.Environment.CobraRuntimeTypes)
+  id: Cast(System.Object,Cobra.Environment.CobraRuntimeTypes)
+  parent: Cobra.Interpreter.CobraTypeHelper
+  langs:
+  - csharp
+  - vb
+  name: Cast(object?, CobraRuntimeTypes)
+  nameWithType: CobraTypeHelper.Cast(object?, CobraRuntimeTypes)
+  fullName: Cobra.Interpreter.CobraTypeHelper.Cast(object?, Cobra.Environment.CobraRuntimeTypes)
+  type: Method
+  source:
+    remote:
+      path: Interpreter/CobraTypeHelper.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Cast
+    path: ../Interpreter/CobraTypeHelper.cs
+    startLine: 33
+  assemblies:
+  - Cobra
+  namespace: Cobra.Interpreter
+  syntax:
+    content: public static object? Cast(object? value, CobraRuntimeTypes targetType)
+    parameters:
+    - id: value
+      type: System.Object
+    - id: targetType
+      type: Cobra.Environment.CobraRuntimeTypes
+    return:
+      type: System.Object
+    content.vb: Public Shared Function Cast(value As Object, targetType As CobraRuntimeTypes) As Object
+  overload: Cobra.Interpreter.CobraTypeHelper.Cast*
+  nameWithType.vb: CobraTypeHelper.Cast(Object, CobraRuntimeTypes)
+  fullName.vb: Cobra.Interpreter.CobraTypeHelper.Cast(Object, Cobra.Environment.CobraRuntimeTypes)
+  name.vb: Cast(Object, CobraRuntimeTypes)
+- uid: Cobra.Interpreter.CobraTypeHelper.PromoteNumericsForBinaryOp(System.Object,System.Object)
+  commentId: M:Cobra.Interpreter.CobraTypeHelper.PromoteNumericsForBinaryOp(System.Object,System.Object)
+  id: PromoteNumericsForBinaryOp(System.Object,System.Object)
+  parent: Cobra.Interpreter.CobraTypeHelper
+  langs:
+  - csharp
+  - vb
+  name: PromoteNumericsForBinaryOp(object?, object?)
+  nameWithType: CobraTypeHelper.PromoteNumericsForBinaryOp(object?, object?)
+  fullName: Cobra.Interpreter.CobraTypeHelper.PromoteNumericsForBinaryOp(object?, object?)
+  type: Method
+  source:
+    remote:
+      path: Interpreter/CobraTypeHelper.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: PromoteNumericsForBinaryOp
+    path: ../Interpreter/CobraTypeHelper.cs
+    startLine: 66
+  assemblies:
+  - Cobra
+  namespace: Cobra.Interpreter
+  syntax:
+    content: public static (object Left, object Right, CobraRuntimeTypes ResultType) PromoteNumericsForBinaryOp(object? left, object? right)
+    parameters:
+    - id: left
+      type: System.Object
+    - id: right
+      type: System.Object
+    return:
+      type: System.ValueTuple{System.Object,System.Object,Cobra.Environment.CobraRuntimeTypes}
+    content.vb: Public Shared Function PromoteNumericsForBinaryOp(left As Object, right As Object) As (Left As Object, Right As Object, ResultType As CobraRuntimeTypes)
+  overload: Cobra.Interpreter.CobraTypeHelper.PromoteNumericsForBinaryOp*
+  nameWithType.vb: CobraTypeHelper.PromoteNumericsForBinaryOp(Object, Object)
+  fullName.vb: Cobra.Interpreter.CobraTypeHelper.PromoteNumericsForBinaryOp(Object, Object)
+  name.vb: PromoteNumericsForBinaryOp(Object, Object)
+references:
+- uid: Cobra.Interpreter
+  commentId: N:Cobra.Interpreter
+  href: Cobra.html
+  name: Cobra.Interpreter
+  nameWithType: Cobra.Interpreter
+  fullName: Cobra.Interpreter
+  spec.csharp:
+  - uid: Cobra
+    name: Cobra
+    href: Cobra.html
+  - name: .
+  - uid: Cobra.Interpreter
+    name: Interpreter
+    href: Cobra.Interpreter.html
+  spec.vb:
+  - uid: Cobra
+    name: Cobra
+    href: Cobra.html
+  - name: .
+  - uid: Cobra.Interpreter
+    name: Interpreter
+    href: Cobra.Interpreter.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Cobra.Interpreter.CobraTypeHelper.IsNumeric*
+  commentId: Overload:Cobra.Interpreter.CobraTypeHelper.IsNumeric
+  href: Cobra.Interpreter.CobraTypeHelper.html#Cobra_Interpreter_CobraTypeHelper_IsNumeric_System_Object_
+  name: IsNumeric
+  nameWithType: CobraTypeHelper.IsNumeric
+  fullName: Cobra.Interpreter.CobraTypeHelper.IsNumeric
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Cobra.Interpreter.CobraTypeHelper.IsInteger*
+  commentId: Overload:Cobra.Interpreter.CobraTypeHelper.IsInteger
+  href: Cobra.Interpreter.CobraTypeHelper.html#Cobra_Interpreter_CobraTypeHelper_IsInteger_System_Object_
+  name: IsInteger
+  nameWithType: CobraTypeHelper.IsInteger
+  fullName: Cobra.Interpreter.CobraTypeHelper.IsInteger
+- uid: Cobra.Interpreter.CobraTypeHelper.IsFloatingPoint*
+  commentId: Overload:Cobra.Interpreter.CobraTypeHelper.IsFloatingPoint
+  href: Cobra.Interpreter.CobraTypeHelper.html#Cobra_Interpreter_CobraTypeHelper_IsFloatingPoint_System_Object_
+  name: IsFloatingPoint
+  nameWithType: CobraTypeHelper.IsFloatingPoint
+  fullName: Cobra.Interpreter.CobraTypeHelper.IsFloatingPoint
+- uid: Cobra.Interpreter.CobraTypeHelper.GetRuntimeType*
+  commentId: Overload:Cobra.Interpreter.CobraTypeHelper.GetRuntimeType
+  href: Cobra.Interpreter.CobraTypeHelper.html#Cobra_Interpreter_CobraTypeHelper_GetRuntimeType_System_Object_
+  name: GetRuntimeType
+  nameWithType: CobraTypeHelper.GetRuntimeType
+  fullName: Cobra.Interpreter.CobraTypeHelper.GetRuntimeType
+- uid: Cobra.Environment.CobraRuntimeTypes
+  commentId: T:Cobra.Environment.CobraRuntimeTypes
+  parent: Cobra.Environment
+  href: Cobra.Environment.CobraRuntimeTypes.html
+  name: CobraRuntimeTypes
+  nameWithType: CobraRuntimeTypes
+  fullName: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment
+  commentId: N:Cobra.Environment
+  href: Cobra.html
+  name: Cobra.Environment
+  nameWithType: Cobra.Environment
+  fullName: Cobra.Environment
+  spec.csharp:
+  - uid: Cobra
+    name: Cobra
+    href: Cobra.html
+  - name: .
+  - uid: Cobra.Environment
+    name: Environment
+    href: Cobra.Environment.html
+  spec.vb:
+  - uid: Cobra
+    name: Cobra
+    href: Cobra.html
+  - name: .
+  - uid: Cobra.Environment
+    name: Environment
+    href: Cobra.Environment.html
+- uid: Cobra.Interpreter.CobraTypeHelper.Cast*
+  commentId: Overload:Cobra.Interpreter.CobraTypeHelper.Cast
+  href: Cobra.Interpreter.CobraTypeHelper.html#Cobra_Interpreter_CobraTypeHelper_Cast_System_Object_Cobra_Environment_CobraRuntimeTypes_
+  name: Cast
+  nameWithType: CobraTypeHelper.Cast
+  fullName: Cobra.Interpreter.CobraTypeHelper.Cast
+- uid: Cobra.Interpreter.CobraTypeHelper.PromoteNumericsForBinaryOp*
+  commentId: Overload:Cobra.Interpreter.CobraTypeHelper.PromoteNumericsForBinaryOp
+  href: Cobra.Interpreter.CobraTypeHelper.html#Cobra_Interpreter_CobraTypeHelper_PromoteNumericsForBinaryOp_System_Object_System_Object_
+  name: PromoteNumericsForBinaryOp
+  nameWithType: CobraTypeHelper.PromoteNumericsForBinaryOp
+  fullName: Cobra.Interpreter.CobraTypeHelper.PromoteNumericsForBinaryOp
+- uid: System.ValueTuple{System.Object,System.Object,Cobra.Environment.CobraRuntimeTypes}
+  commentId: T:System.ValueTuple{System.Object,System.Object,Cobra.Environment.CobraRuntimeTypes}
+  parent: System
+  definition: System.ValueTuple`3
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: (object Left, object Right, CobraRuntimeTypes ResultType)
+  nameWithType: (object Left, object Right, CobraRuntimeTypes ResultType)
+  fullName: (object Left, object Right, Cobra.Environment.CobraRuntimeTypes ResultType)
+  nameWithType.vb: (Left As Object, Right As Object, ResultType As CobraRuntimeTypes)
+  fullName.vb: (Left As Object, Right As Object, ResultType As Cobra.Environment.CobraRuntimeTypes)
+  name.vb: (Left As Object, Right As Object, ResultType As CobraRuntimeTypes)
+  spec.csharp:
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: " "
+  - uid: System.ValueTuple{System.Object,System.Object,Cobra.Environment.CobraRuntimeTypes}.Left
+    name: Left
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.object,system.object,cobra.environment.cobraruntimetypes-.left
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: " "
+  - uid: System.ValueTuple{System.Object,System.Object,Cobra.Environment.CobraRuntimeTypes}.Right
+    name: Right
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.object,system.object,cobra.environment.cobraruntimetypes-.right
+  - name: ','
+  - name: " "
+  - uid: Cobra.Environment.CobraRuntimeTypes
+    name: CobraRuntimeTypes
+    href: Cobra.Environment.CobraRuntimeTypes.html
+  - name: " "
+  - uid: System.ValueTuple{System.Object,System.Object,Cobra.Environment.CobraRuntimeTypes}.ResultType
+    name: ResultType
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.object,system.object,cobra.environment.cobraruntimetypes-.resulttype
+  - name: )
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{System.Object,System.Object,Cobra.Environment.CobraRuntimeTypes}.Left
+    name: Left
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.object,system.object,cobra.environment.cobraruntimetypes-.left
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Object,System.Object,Cobra.Environment.CobraRuntimeTypes}.Right
+    name: Right
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.object,system.object,cobra.environment.cobraruntimetypes-.right
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Object,System.Object,Cobra.Environment.CobraRuntimeTypes}.ResultType
+    name: ResultType
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.object,system.object,cobra.environment.cobraruntimetypes-.resulttype
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: Cobra.Environment.CobraRuntimeTypes
+    name: CobraRuntimeTypes
+    href: Cobra.Environment.CobraRuntimeTypes.html
+  - name: )
+- uid: System.ValueTuple`3
+  commentId: T:System.ValueTuple`3
+  name: (T1, T2, T3)
+  nameWithType: (T1, T2, T3)
+  fullName: (T1, T2, T3)
+  spec.csharp:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+  spec.vb:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )

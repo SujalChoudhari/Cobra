@@ -1,0 +1,684 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cobra.Environment.CobraEnvironment
+  commentId: T:Cobra.Environment.CobraEnvironment
+  id: CobraEnvironment
+  parent: Cobra.Environment
+  children:
+  - Cobra.Environment.CobraEnvironment.#ctor(Cobra.Environment.CobraEnvironment)
+  - Cobra.Environment.CobraEnvironment.AssignVariable(System.String,System.Object)
+  - Cobra.Environment.CobraEnvironment.CreateChild
+  - Cobra.Environment.CobraEnvironment.CreateGlobalEnvironment(System.String[])
+  - Cobra.Environment.CobraEnvironment.DefineVariable(System.String,System.Object,System.Boolean,System.Boolean)
+  - Cobra.Environment.CobraEnvironment.GetVariable(System.String)
+  - Cobra.Environment.CobraEnvironment.GetVariableDefinition(System.String)
+  - Cobra.Environment.CobraEnvironment.IsFunction(System.String)
+  langs:
+  - csharp
+  - vb
+  name: CobraEnvironment
+  nameWithType: CobraEnvironment
+  fullName: Cobra.Environment.CobraEnvironment
+  type: Class
+  source:
+    remote:
+      path: Environment/CobraEnvironment.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: CobraEnvironment
+    path: ../Environment/CobraEnvironment.cs
+    startLine: 4
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: public class CobraEnvironment
+    content.vb: Public Class CobraEnvironment
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Cobra.Environment.CobraEnvironment.#ctor(Cobra.Environment.CobraEnvironment)
+  commentId: M:Cobra.Environment.CobraEnvironment.#ctor(Cobra.Environment.CobraEnvironment)
+  id: '#ctor(Cobra.Environment.CobraEnvironment)'
+  parent: Cobra.Environment.CobraEnvironment
+  langs:
+  - csharp
+  - vb
+  name: CobraEnvironment(CobraEnvironment?)
+  nameWithType: CobraEnvironment.CobraEnvironment(CobraEnvironment?)
+  fullName: Cobra.Environment.CobraEnvironment.CobraEnvironment(Cobra.Environment.CobraEnvironment?)
+  type: Constructor
+  source:
+    remote:
+      path: Environment/CobraEnvironment.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: .ctor
+    path: ../Environment/CobraEnvironment.cs
+    startLine: 4
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: public CobraEnvironment(CobraEnvironment? parent = null)
+    parameters:
+    - id: parent
+      type: Cobra.Environment.CobraEnvironment
+    content.vb: Public Sub New(parent As CobraEnvironment = Nothing)
+  overload: Cobra.Environment.CobraEnvironment.#ctor*
+  nameWithType.vb: CobraEnvironment.New(CobraEnvironment)
+  fullName.vb: Cobra.Environment.CobraEnvironment.New(Cobra.Environment.CobraEnvironment)
+  name.vb: New(CobraEnvironment)
+- uid: Cobra.Environment.CobraEnvironment.CreateGlobalEnvironment(System.String[])
+  commentId: M:Cobra.Environment.CobraEnvironment.CreateGlobalEnvironment(System.String[])
+  id: CreateGlobalEnvironment(System.String[])
+  parent: Cobra.Environment.CobraEnvironment
+  langs:
+  - csharp
+  - vb
+  name: CreateGlobalEnvironment(string[])
+  nameWithType: CobraEnvironment.CreateGlobalEnvironment(string[])
+  fullName: Cobra.Environment.CobraEnvironment.CreateGlobalEnvironment(string[])
+  type: Method
+  source:
+    remote:
+      path: Environment/CobraEnvironment.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: CreateGlobalEnvironment
+    path: ../Environment/CobraEnvironment.cs
+    startLine: 9
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: public static CobraEnvironment CreateGlobalEnvironment(string[] scriptArgs)
+    parameters:
+    - id: scriptArgs
+      type: System.String[]
+    return:
+      type: Cobra.Environment.CobraEnvironment
+    content.vb: Public Shared Function CreateGlobalEnvironment(scriptArgs As String()) As CobraEnvironment
+  overload: Cobra.Environment.CobraEnvironment.CreateGlobalEnvironment*
+  nameWithType.vb: CobraEnvironment.CreateGlobalEnvironment(String())
+  fullName.vb: Cobra.Environment.CobraEnvironment.CreateGlobalEnvironment(String())
+  name.vb: CreateGlobalEnvironment(String())
+- uid: Cobra.Environment.CobraEnvironment.DefineVariable(System.String,System.Object,System.Boolean,System.Boolean)
+  commentId: M:Cobra.Environment.CobraEnvironment.DefineVariable(System.String,System.Object,System.Boolean,System.Boolean)
+  id: DefineVariable(System.String,System.Object,System.Boolean,System.Boolean)
+  parent: Cobra.Environment.CobraEnvironment
+  langs:
+  - csharp
+  - vb
+  name: DefineVariable(string, object?, bool, bool)
+  nameWithType: CobraEnvironment.DefineVariable(string, object?, bool, bool)
+  fullName: Cobra.Environment.CobraEnvironment.DefineVariable(string, object?, bool, bool)
+  type: Method
+  source:
+    remote:
+      path: Environment/CobraEnvironment.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: DefineVariable
+    path: ../Environment/CobraEnvironment.cs
+    startLine: 49
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: public void DefineVariable(string name, object? value, bool isConst = false, bool isArray = false)
+    parameters:
+    - id: name
+      type: System.String
+    - id: value
+      type: System.Object
+    - id: isConst
+      type: System.Boolean
+    - id: isArray
+      type: System.Boolean
+    content.vb: Public Sub DefineVariable(name As String, value As Object, isConst As Boolean = False, isArray As Boolean = False)
+  overload: Cobra.Environment.CobraEnvironment.DefineVariable*
+  nameWithType.vb: CobraEnvironment.DefineVariable(String, Object, Boolean, Boolean)
+  fullName.vb: Cobra.Environment.CobraEnvironment.DefineVariable(String, Object, Boolean, Boolean)
+  name.vb: DefineVariable(String, Object, Boolean, Boolean)
+- uid: Cobra.Environment.CobraEnvironment.AssignVariable(System.String,System.Object)
+  commentId: M:Cobra.Environment.CobraEnvironment.AssignVariable(System.String,System.Object)
+  id: AssignVariable(System.String,System.Object)
+  parent: Cobra.Environment.CobraEnvironment
+  langs:
+  - csharp
+  - vb
+  name: AssignVariable(string, object?)
+  nameWithType: CobraEnvironment.AssignVariable(string, object?)
+  fullName: Cobra.Environment.CobraEnvironment.AssignVariable(string, object?)
+  type: Method
+  source:
+    remote:
+      path: Environment/CobraEnvironment.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: AssignVariable
+    path: ../Environment/CobraEnvironment.cs
+    startLine: 83
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: public void AssignVariable(string name, object? value)
+    parameters:
+    - id: name
+      type: System.String
+    - id: value
+      type: System.Object
+    content.vb: Public Sub AssignVariable(name As String, value As Object)
+  overload: Cobra.Environment.CobraEnvironment.AssignVariable*
+  nameWithType.vb: CobraEnvironment.AssignVariable(String, Object)
+  fullName.vb: Cobra.Environment.CobraEnvironment.AssignVariable(String, Object)
+  name.vb: AssignVariable(String, Object)
+- uid: Cobra.Environment.CobraEnvironment.GetVariable(System.String)
+  commentId: M:Cobra.Environment.CobraEnvironment.GetVariable(System.String)
+  id: GetVariable(System.String)
+  parent: Cobra.Environment.CobraEnvironment
+  langs:
+  - csharp
+  - vb
+  name: GetVariable(string)
+  nameWithType: CobraEnvironment.GetVariable(string)
+  fullName: Cobra.Environment.CobraEnvironment.GetVariable(string)
+  type: Method
+  source:
+    remote:
+      path: Environment/CobraEnvironment.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: GetVariable
+    path: ../Environment/CobraEnvironment.cs
+    startLine: 100
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: public object? GetVariable(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: System.Object
+    content.vb: Public Function GetVariable(name As String) As Object
+  overload: Cobra.Environment.CobraEnvironment.GetVariable*
+  nameWithType.vb: CobraEnvironment.GetVariable(String)
+  fullName.vb: Cobra.Environment.CobraEnvironment.GetVariable(String)
+  name.vb: GetVariable(String)
+- uid: Cobra.Environment.CobraEnvironment.GetVariableDefinition(System.String)
+  commentId: M:Cobra.Environment.CobraEnvironment.GetVariableDefinition(System.String)
+  id: GetVariableDefinition(System.String)
+  parent: Cobra.Environment.CobraEnvironment
+  langs:
+  - csharp
+  - vb
+  name: GetVariableDefinition(string)
+  nameWithType: CobraEnvironment.GetVariableDefinition(string)
+  fullName: Cobra.Environment.CobraEnvironment.GetVariableDefinition(string)
+  type: Method
+  source:
+    remote:
+      path: Environment/CobraEnvironment.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: GetVariableDefinition
+    path: ../Environment/CobraEnvironment.cs
+    startLine: 110
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: public CobraVariableDefinition GetVariableDefinition(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: Cobra.Environment.CobraVariableDefinition
+    content.vb: Public Function GetVariableDefinition(name As String) As CobraVariableDefinition
+  overload: Cobra.Environment.CobraEnvironment.GetVariableDefinition*
+  nameWithType.vb: CobraEnvironment.GetVariableDefinition(String)
+  fullName.vb: Cobra.Environment.CobraEnvironment.GetVariableDefinition(String)
+  name.vb: GetVariableDefinition(String)
+- uid: Cobra.Environment.CobraEnvironment.IsFunction(System.String)
+  commentId: M:Cobra.Environment.CobraEnvironment.IsFunction(System.String)
+  id: IsFunction(System.String)
+  parent: Cobra.Environment.CobraEnvironment
+  langs:
+  - csharp
+  - vb
+  name: IsFunction(string)
+  nameWithType: CobraEnvironment.IsFunction(string)
+  fullName: Cobra.Environment.CobraEnvironment.IsFunction(string)
+  type: Method
+  source:
+    remote:
+      path: Environment/CobraEnvironment.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: IsFunction
+    path: ../Environment/CobraEnvironment.cs
+    startLine: 120
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: public bool IsFunction(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsFunction(name As String) As Boolean
+  overload: Cobra.Environment.CobraEnvironment.IsFunction*
+  nameWithType.vb: CobraEnvironment.IsFunction(String)
+  fullName.vb: Cobra.Environment.CobraEnvironment.IsFunction(String)
+  name.vb: IsFunction(String)
+- uid: Cobra.Environment.CobraEnvironment.CreateChild
+  commentId: M:Cobra.Environment.CobraEnvironment.CreateChild
+  id: CreateChild
+  parent: Cobra.Environment.CobraEnvironment
+  langs:
+  - csharp
+  - vb
+  name: CreateChild()
+  nameWithType: CobraEnvironment.CreateChild()
+  fullName: Cobra.Environment.CobraEnvironment.CreateChild()
+  type: Method
+  source:
+    remote:
+      path: Environment/CobraEnvironment.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: CreateChild
+    path: ../Environment/CobraEnvironment.cs
+    startLine: 126
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: public CobraEnvironment CreateChild()
+    return:
+      type: Cobra.Environment.CobraEnvironment
+    content.vb: Public Function CreateChild() As CobraEnvironment
+  overload: Cobra.Environment.CobraEnvironment.CreateChild*
+references:
+- uid: Cobra.Environment
+  commentId: N:Cobra.Environment
+  href: Cobra.html
+  name: Cobra.Environment
+  nameWithType: Cobra.Environment
+  fullName: Cobra.Environment
+  spec.csharp:
+  - uid: Cobra
+    name: Cobra
+    href: Cobra.html
+  - name: .
+  - uid: Cobra.Environment
+    name: Environment
+    href: Cobra.Environment.html
+  spec.vb:
+  - uid: Cobra
+    name: Cobra
+    href: Cobra.html
+  - name: .
+  - uid: Cobra.Environment
+    name: Environment
+    href: Cobra.Environment.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Cobra.Environment.CobraEnvironment.#ctor*
+  commentId: Overload:Cobra.Environment.CobraEnvironment.#ctor
+  href: Cobra.Environment.CobraEnvironment.html#Cobra_Environment_CobraEnvironment__ctor_Cobra_Environment_CobraEnvironment_
+  name: CobraEnvironment
+  nameWithType: CobraEnvironment.CobraEnvironment
+  fullName: Cobra.Environment.CobraEnvironment.CobraEnvironment
+  nameWithType.vb: CobraEnvironment.New
+  fullName.vb: Cobra.Environment.CobraEnvironment.New
+  name.vb: New
+- uid: Cobra.Environment.CobraEnvironment
+  commentId: T:Cobra.Environment.CobraEnvironment
+  parent: Cobra.Environment
+  href: Cobra.Environment.CobraEnvironment.html
+  name: CobraEnvironment
+  nameWithType: CobraEnvironment
+  fullName: Cobra.Environment.CobraEnvironment
+- uid: Cobra.Environment.CobraEnvironment.CreateGlobalEnvironment*
+  commentId: Overload:Cobra.Environment.CobraEnvironment.CreateGlobalEnvironment
+  href: Cobra.Environment.CobraEnvironment.html#Cobra_Environment_CobraEnvironment_CreateGlobalEnvironment_System_String___
+  name: CreateGlobalEnvironment
+  nameWithType: CobraEnvironment.CreateGlobalEnvironment
+  fullName: Cobra.Environment.CobraEnvironment.CreateGlobalEnvironment
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: Cobra.Environment.CobraEnvironment.DefineVariable*
+  commentId: Overload:Cobra.Environment.CobraEnvironment.DefineVariable
+  href: Cobra.Environment.CobraEnvironment.html#Cobra_Environment_CobraEnvironment_DefineVariable_System_String_System_Object_System_Boolean_System_Boolean_
+  name: DefineVariable
+  nameWithType: CobraEnvironment.DefineVariable
+  fullName: Cobra.Environment.CobraEnvironment.DefineVariable
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Cobra.Environment.CobraEnvironment.AssignVariable*
+  commentId: Overload:Cobra.Environment.CobraEnvironment.AssignVariable
+  href: Cobra.Environment.CobraEnvironment.html#Cobra_Environment_CobraEnvironment_AssignVariable_System_String_System_Object_
+  name: AssignVariable
+  nameWithType: CobraEnvironment.AssignVariable
+  fullName: Cobra.Environment.CobraEnvironment.AssignVariable
+- uid: Cobra.Environment.CobraEnvironment.GetVariable*
+  commentId: Overload:Cobra.Environment.CobraEnvironment.GetVariable
+  href: Cobra.Environment.CobraEnvironment.html#Cobra_Environment_CobraEnvironment_GetVariable_System_String_
+  name: GetVariable
+  nameWithType: CobraEnvironment.GetVariable
+  fullName: Cobra.Environment.CobraEnvironment.GetVariable
+- uid: Cobra.Environment.CobraEnvironment.GetVariableDefinition*
+  commentId: Overload:Cobra.Environment.CobraEnvironment.GetVariableDefinition
+  href: Cobra.Environment.CobraEnvironment.html#Cobra_Environment_CobraEnvironment_GetVariableDefinition_System_String_
+  name: GetVariableDefinition
+  nameWithType: CobraEnvironment.GetVariableDefinition
+  fullName: Cobra.Environment.CobraEnvironment.GetVariableDefinition
+- uid: Cobra.Environment.CobraVariableDefinition
+  commentId: T:Cobra.Environment.CobraVariableDefinition
+  parent: Cobra.Environment
+  href: Cobra.Environment.CobraVariableDefinition.html
+  name: CobraVariableDefinition
+  nameWithType: CobraVariableDefinition
+  fullName: Cobra.Environment.CobraVariableDefinition
+- uid: Cobra.Environment.CobraEnvironment.IsFunction*
+  commentId: Overload:Cobra.Environment.CobraEnvironment.IsFunction
+  href: Cobra.Environment.CobraEnvironment.html#Cobra_Environment_CobraEnvironment_IsFunction_System_String_
+  name: IsFunction
+  nameWithType: CobraEnvironment.IsFunction
+  fullName: Cobra.Environment.CobraEnvironment.IsFunction
+- uid: Cobra.Environment.CobraEnvironment.CreateChild*
+  commentId: Overload:Cobra.Environment.CobraEnvironment.CreateChild
+  href: Cobra.Environment.CobraEnvironment.html#Cobra_Environment_CobraEnvironment_CreateChild
+  name: CreateChild
+  nameWithType: CobraEnvironment.CreateChild
+  fullName: Cobra.Environment.CobraEnvironment.CreateChild

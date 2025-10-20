@@ -1,0 +1,74 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cobra.Utils
+  commentId: N:Cobra.Utils
+  id: Cobra.Utils
+  children:
+  - Cobra.Utils.CobraCli
+  - Cobra.Utils.CobraConstants
+  - Cobra.Utils.CobraErrorHandler
+  - Cobra.Utils.CobraLogger
+  - Cobra.Utils.CobraRunner
+  langs:
+  - csharp
+  - vb
+  name: Cobra.Utils
+  nameWithType: Cobra.Utils
+  fullName: Cobra.Utils
+  type: Namespace
+  assemblies:
+  - Cobra
+references:
+- uid: Cobra.Utils.CobraCli
+  commentId: T:Cobra.Utils.CobraCli
+  href: Cobra.Utils.CobraCli.html
+  name: CobraCli
+  nameWithType: CobraCli
+  fullName: Cobra.Utils.CobraCli
+- uid: Cobra.Utils.CobraConstants
+  commentId: T:Cobra.Utils.CobraConstants
+  href: Cobra.Utils.CobraConstants.html
+  name: CobraConstants
+  nameWithType: CobraConstants
+  fullName: Cobra.Utils.CobraConstants
+- uid: Cobra.Utils.CobraErrorHandler
+  commentId: T:Cobra.Utils.CobraErrorHandler
+  href: Cobra.Utils.CobraErrorHandler.html
+  name: CobraErrorHandler
+  nameWithType: CobraErrorHandler
+  fullName: Cobra.Utils.CobraErrorHandler
+- uid: Cobra.Utils.CobraLogger
+  commentId: T:Cobra.Utils.CobraLogger
+  parent: Cobra.Utils
+  href: Cobra.Utils.CobraLogger.html
+  name: CobraLogger
+  nameWithType: CobraLogger
+  fullName: Cobra.Utils.CobraLogger
+- uid: Cobra.Utils.CobraRunner
+  commentId: T:Cobra.Utils.CobraRunner
+  href: Cobra.Utils.CobraRunner.html
+  name: CobraRunner
+  nameWithType: CobraRunner
+  fullName: Cobra.Utils.CobraRunner
+- uid: Cobra.Utils
+  commentId: N:Cobra.Utils
+  href: Cobra.html
+  name: Cobra.Utils
+  nameWithType: Cobra.Utils
+  fullName: Cobra.Utils
+  spec.csharp:
+  - uid: Cobra
+    name: Cobra
+    href: Cobra.html
+  - name: .
+  - uid: Cobra.Utils
+    name: Utils
+    href: Cobra.Utils.html
+  spec.vb:
+  - uid: Cobra
+    name: Cobra
+    href: Cobra.html
+  - name: .
+  - uid: Cobra.Utils
+    name: Utils
+    href: Cobra.Utils.html

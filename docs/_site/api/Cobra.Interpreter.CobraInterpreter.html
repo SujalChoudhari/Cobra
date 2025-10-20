@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class CobraInterpreter | cobra </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class CobraInterpreter | cobra ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/SujalChoudhari/Cobra/new/main/apiSpec/new?filename=Cobra_Interpreter_CobraInterpreter.md&amp;value=---%0Auid%3A%20Cobra.Interpreter.CobraInterpreter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="cobra">
+            cobra
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Cobra.Interpreter.CobraInterpreter">
+
+
+
+  <h1 id="Cobra_Interpreter_CobraInterpreter" data-uid="Cobra.Interpreter.CobraInterpreter" class="text-break">
+Class CobraInterpreter  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraStatementHandler.cs/#L5"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Cobra.html">Cobra</a>.<a class="xref" href="Cobra.Interpreter.html">Interpreter</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Cobra.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CobraInterpreter : CobraBaseVisitor&lt;object?&gt;, ICobraVisitor&lt;object?&gt;, IParseTreeVisitor&lt;object?&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AbstractParseTreeVisitor</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</div>
+      <div><a class="xref" href="CobraBaseVisitor-1.html">CobraBaseVisitor</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</div>
+      <div><span class="xref">CobraInterpreter</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="ICobraVisitor-1.html">ICobraVisitor</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</div>
+      <div><span class="xref">IParseTreeVisitor</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitQualifiedName_CobraParser_QualifiedNameContext_">CobraBaseVisitor&lt;object&gt;.VisitQualifiedName(CobraParser.QualifiedNameContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitTopLevelDeclaration_CobraParser_TopLevelDeclarationContext_">CobraBaseVisitor&lt;object&gt;.VisitTopLevelDeclaration(CobraParser.TopLevelDeclarationContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitEnumMemberList_CobraParser_EnumMemberListContext_">CobraBaseVisitor&lt;object&gt;.VisitEnumMemberList(CobraParser.EnumMemberListContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitEnumMember_CobraParser_EnumMemberContext_">CobraBaseVisitor&lt;object&gt;.VisitEnumMember(CobraParser.EnumMemberContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitMemberDeclaration_CobraParser_MemberDeclarationContext_">CobraBaseVisitor&lt;object&gt;.VisitMemberDeclaration(CobraParser.MemberDeclarationContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitAccessModifier_CobraParser_AccessModifierContext_">CobraBaseVisitor&lt;object&gt;.VisitAccessModifier(CobraParser.AccessModifierContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitFieldDeclaration_CobraParser_FieldDeclarationContext_">CobraBaseVisitor&lt;object&gt;.VisitFieldDeclaration(CobraParser.FieldDeclarationContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitMethodDeclaration_CobraParser_MethodDeclarationContext_">CobraBaseVisitor&lt;object&gt;.VisitMethodDeclaration(CobraParser.MethodDeclarationContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitConstructorDeclaration_CobraParser_ConstructorDeclarationContext_">CobraBaseVisitor&lt;object&gt;.VisitConstructorDeclaration(CobraParser.ConstructorDeclarationContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitDestructorDeclaration_CobraParser_DestructorDeclarationContext_">CobraBaseVisitor&lt;object&gt;.VisitDestructorDeclaration(CobraParser.DestructorDeclarationContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitType_CobraParser_TypeContext_">CobraBaseVisitor&lt;object&gt;.VisitType(CobraParser.TypeContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitSecondaryType_CobraParser_SecondaryTypeContext_">CobraBaseVisitor&lt;object&gt;.VisitSecondaryType(CobraParser.SecondaryTypeContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitPrimitiveType_CobraParser_PrimitiveTypeContext_">CobraBaseVisitor&lt;object&gt;.VisitPrimitiveType(CobraParser.PrimitiveTypeContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitParameterList_CobraParser_ParameterListContext_">CobraBaseVisitor&lt;object&gt;.VisitParameterList(CobraParser.ParameterListContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitParameter_CobraParser_ParameterContext_">CobraBaseVisitor&lt;object&gt;.VisitParameter(CobraParser.ParameterContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitStatement_CobraParser_StatementContext_">CobraBaseVisitor&lt;object&gt;.VisitStatement(CobraParser.StatementContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitDeclarationStatement_CobraParser_DeclarationStatementContext_">CobraBaseVisitor&lt;object&gt;.VisitDeclarationStatement(CobraParser.DeclarationStatementContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitSwitchBlock_CobraParser_SwitchBlockContext_">CobraBaseVisitor&lt;object&gt;.VisitSwitchBlock(CobraParser.SwitchBlockContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitSwitchLabel_CobraParser_SwitchLabelContext_">CobraBaseVisitor&lt;object&gt;.VisitSwitchLabel(CobraParser.SwitchLabelContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitThrowStatement_CobraParser_ThrowStatementContext_">CobraBaseVisitor&lt;object&gt;.VisitThrowStatement(CobraParser.ThrowStatementContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitUnaryOp_CobraParser_UnaryOpContext_">CobraBaseVisitor&lt;object&gt;.VisitUnaryOp(CobraParser.UnaryOpContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitLeftHandSide_CobraParser_LeftHandSideContext_">CobraBaseVisitor&lt;object&gt;.VisitLeftHandSide(CobraParser.LeftHandSideContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitArgumentList_CobraParser_ArgumentListContext_">CobraBaseVisitor&lt;object&gt;.VisitArgumentList(CobraParser.ArgumentListContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitDictEntry_CobraParser_DictEntryContext_">CobraBaseVisitor&lt;object&gt;.VisitDictEntry(CobraParser.DictEntryContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="CobraBaseVisitor-1.html#CobraBaseVisitor_1_VisitAssignmentOperator_CobraParser_AssignmentOperatorContext_">CobraBaseVisitor&lt;object&gt;.VisitAssignmentOperator(CobraParser.AssignmentOperatorContext)</a>
+    </div>
+    <div>
+      <span class="xref">AbstractParseTreeVisitor&lt;object&gt;.Visit(IParseTree)</span>
+    </div>
+    <div>
+      <span class="xref">AbstractParseTreeVisitor&lt;object&gt;.VisitChildren(IRuleNode)</span>
+    </div>
+    <div>
+      <span class="xref">AbstractParseTreeVisitor&lt;object&gt;.VisitTerminal(ITerminalNode)</span>
+    </div>
+    <div>
+      <span class="xref">AbstractParseTreeVisitor&lt;object&gt;.VisitErrorNode(IErrorNode)</span>
+    </div>
+    <div>
+      <span class="xref">AbstractParseTreeVisitor&lt;object&gt;.AggregateResult(object, object)</span>
+    </div>
+    <div>
+      <span class="xref">AbstractParseTreeVisitor&lt;object&gt;.ShouldVisitNextChild(IRuleNode, object)</span>
+    </div>
+    <div>
+      <span class="xref">AbstractParseTreeVisitor&lt;object&gt;.DefaultResult</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter__ctor_" data-uid="Cobra.Interpreter.CobraInterpreter.#ctor*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter__ctor_Cobra_Environment_CobraEnvironment_" data-uid="Cobra.Interpreter.CobraInterpreter.#ctor(Cobra.Environment.CobraEnvironment)">
+  CobraInterpreter(CobraEnvironment)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/CobraInterpreter.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Constructor to the Interpreter</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CobraInterpreter(CobraEnvironment globalEnvironment)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>globalEnvironment</code> <a class="xref" href="Cobra.Environment.CobraEnvironment.html">CobraEnvironment</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_ExecuteFunctionCall_" data-uid="Cobra.Interpreter.CobraInterpreter.ExecuteFunctionCall*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_ExecuteFunctionCall_System_Object_System_Collections_Generic_List_System_Object__System_String_Cobra_Environment_CobraInstance_Antlr4_Runtime_IToken_" data-uid="Cobra.Interpreter.CobraInterpreter.ExecuteFunctionCall(System.Object,System.Collections.Generic.List{System.Object},System.String,Cobra.Environment.CobraInstance,Antlr4.Runtime.IToken)">
+  ExecuteFunctionCall(object?, List&lt;object?&gt;, string, CobraInstance?, IToken?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraHandlerHelpers.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object? ExecuteFunctionCall(object? funcObject, List&lt;object?&gt; args, string funcNameForError, CobraInstance? instanceContext = null, IToken? callSiteToken = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>funcObject</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>funcNameForError</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>instanceContext</code> <a class="xref" href="Cobra.Environment.CobraInstance.html">CobraInstance</a></dt>
+    <dd></dd>
+    <dt><code>callSiteToken</code> <span class="xref">IToken</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_Interpret_" data-uid="Cobra.Interpreter.CobraInterpreter.Interpret*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_Interpret_Antlr4_Runtime_Tree_IParseTree_System_String_" data-uid="Cobra.Interpreter.CobraInterpreter.Interpret(Antlr4.Runtime.Tree.IParseTree,System.String)">
+  Interpret(IParseTree, string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/CobraInterpreter.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object? Interpret(IParseTree tree, string? sourcePath)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tree</code> <span class="xref">IParseTree</span></dt>
+    <dd></dd>
+    <dt><code>sourcePath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitArrayLiteral_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitArrayLiteral*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitArrayLiteral_CobraParser_ArrayLiteralContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitArrayLiteral(CobraParser.ArrayLiteralContext)">
+  VisitArrayLiteral(ArrayLiteralContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraLiteralHandler.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_arrayLiteral">arrayLiteral()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object VisitArrayLiteral(CobraParser.ArrayLiteralContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.ArrayLiteralContext.html">ArrayLiteralContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitAssignmentExpression_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitAssignmentExpression*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitAssignmentExpression_CobraParser_AssignmentExpressionContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitAssignmentExpression(CobraParser.AssignmentExpressionContext)">
+  VisitAssignmentExpression(AssignmentExpressionContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraExpressionHandler.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_assignmentExpression">assignmentExpression()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitAssignmentExpression(CobraParser.AssignmentExpressionContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.AssignmentExpressionContext.html">AssignmentExpressionContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitBinaryExpression_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitBinaryExpression*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitBinaryExpression_CobraParser_BinaryExpressionContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitBinaryExpression(CobraParser.BinaryExpressionContext)">
+  VisitBinaryExpression(BinaryExpressionContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraExpressionHandler.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_binaryExpression">binaryExpression()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitBinaryExpression(CobraParser.BinaryExpressionContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.BinaryExpressionContext.html">BinaryExpressionContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitBlock_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitBlock*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitBlock_CobraParser_BlockContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitBlock(CobraParser.BlockContext)">
+  VisitBlock(BlockContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraScopeHandler.cs/#L5"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_block">block()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitBlock(CobraParser.BlockContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.BlockContext.html">BlockContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitClassDeclaration_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitClassDeclaration*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitClassDeclaration_CobraParser_ClassDeclarationContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitClassDeclaration(CobraParser.ClassDeclarationContext)">
+  VisitClassDeclaration(ClassDeclarationContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraDeclarationHandler.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_classDeclaration">classDeclaration()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitClassDeclaration(CobraParser.ClassDeclarationContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.ClassDeclarationContext.html">ClassDeclarationContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitConstDeclaration_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitConstDeclaration*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitConstDeclaration_CobraParser_ConstDeclarationContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitConstDeclaration(CobraParser.ConstDeclarationContext)">
+  VisitConstDeclaration(ConstDeclarationContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraDeclarationHandler.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_constDeclaration">constDeclaration()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitConstDeclaration(CobraParser.ConstDeclarationContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.ConstDeclarationContext.html">ConstDeclarationContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitDictLiteral_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitDictLiteral*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitDictLiteral_CobraParser_DictLiteralContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitDictLiteral(CobraParser.DictLiteralContext)">
+  VisitDictLiteral(DictLiteralContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraLiteralHandler.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_dictLiteral">dictLiteral()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object VisitDictLiteral(CobraParser.DictLiteralContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.DictLiteralContext.html">DictLiteralContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitDoWhileStatement_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitDoWhileStatement*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitDoWhileStatement_CobraParser_DoWhileStatementContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitDoWhileStatement(CobraParser.DoWhileStatementContext)">
+  VisitDoWhileStatement(DoWhileStatementContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraStatementHandler.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_doWhileStatement">doWhileStatement()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitDoWhileStatement(CobraParser.DoWhileStatementContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.DoWhileStatementContext.html">DoWhileStatementContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitEnumDeclaration_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitEnumDeclaration*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitEnumDeclaration_CobraParser_EnumDeclarationContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitEnumDeclaration(CobraParser.EnumDeclarationContext)">
+  VisitEnumDeclaration(EnumDeclarationContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraDeclarationHandler.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_enumDeclaration">enumDeclaration()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitEnumDeclaration(CobraParser.EnumDeclarationContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.EnumDeclarationContext.html">EnumDeclarationContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitExpressionStatement_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitExpressionStatement*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitExpressionStatement_CobraParser_ExpressionStatementContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitExpressionStatement(CobraParser.ExpressionStatementContext)">
+  VisitExpressionStatement(ExpressionStatementContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraStatementHandler.cs/#L7"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_expressionStatement">expressionStatement()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitExpressionStatement(CobraParser.ExpressionStatementContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.ExpressionStatementContext.html">ExpressionStatementContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitExternDeclaration_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitExternDeclaration*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitExternDeclaration_CobraParser_ExternDeclarationContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitExternDeclaration(CobraParser.ExternDeclarationContext)">
+  VisitExternDeclaration(ExternDeclarationContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraModuleHandler.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_externDeclaration">externDeclaration()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitExternDeclaration(CobraParser.ExternDeclarationContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.ExternDeclarationContext.html">ExternDeclarationContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitForEachStatement_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitForEachStatement*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitForEachStatement_CobraParser_ForEachStatementContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitForEachStatement(CobraParser.ForEachStatementContext)">
+  VisitForEachStatement(ForEachStatementContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraStatementHandler.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_forEachStatement">forEachStatement()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitForEachStatement(CobraParser.ForEachStatementContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.ForEachStatementContext.html">ForEachStatementContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitForStatement_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitForStatement*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitForStatement_CobraParser_ForStatementContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitForStatement(CobraParser.ForStatementContext)">
+  VisitForStatement(ForStatementContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraStatementHandler.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_forStatement">forStatement()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitForStatement(CobraParser.ForStatementContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.ForStatementContext.html">ForStatementContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitFunctionDeclaration_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitFunctionDeclaration*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitFunctionDeclaration_CobraParser_FunctionDeclarationContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitFunctionDeclaration(CobraParser.FunctionDeclarationContext)">
+  VisitFunctionDeclaration(FunctionDeclarationContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraDeclarationHandler.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_functionDeclaration">functionDeclaration()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitFunctionDeclaration(CobraParser.FunctionDeclarationContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.FunctionDeclarationContext.html">FunctionDeclarationContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitFunctionExpression_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitFunctionExpression*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitFunctionExpression_CobraParser_FunctionExpressionContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitFunctionExpression(CobraParser.FunctionExpressionContext)">
+  VisitFunctionExpression(FunctionExpressionContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraExpressionHandler.cs/#L203"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_functionExpression">functionExpression()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object VisitFunctionExpression(CobraParser.FunctionExpressionContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.FunctionExpressionContext.html">FunctionExpressionContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitIfStatement_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitIfStatement*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitIfStatement_CobraParser_IfStatementContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitIfStatement(CobraParser.IfStatementContext)">
+  VisitIfStatement(IfStatementContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraStatementHandler.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_ifStatement">ifStatement()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitIfStatement(CobraParser.IfStatementContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.IfStatementContext.html">IfStatementContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitImportStatement_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitImportStatement*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitImportStatement_CobraParser_ImportStatementContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitImportStatement(CobraParser.ImportStatementContext)">
+  VisitImportStatement(ImportStatementContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraModuleHandler.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_importStatement">importStatement()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitImportStatement(CobraParser.ImportStatementContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.ImportStatementContext.html">ImportStatementContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitJumpStatement_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitJumpStatement*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitJumpStatement_CobraParser_JumpStatementContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitJumpStatement(CobraParser.JumpStatementContext)">
+  VisitJumpStatement(JumpStatementContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraStatementHandler.cs/#L241"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_jumpStatement">jumpStatement()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitJumpStatement(CobraParser.JumpStatementContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.JumpStatementContext.html">JumpStatementContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitLinkStatement_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitLinkStatement*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitLinkStatement_CobraParser_LinkStatementContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitLinkStatement(CobraParser.LinkStatementContext)">
+  VisitLinkStatement(LinkStatementContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraModuleHandler.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_linkStatement">linkStatement()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitLinkStatement(CobraParser.LinkStatementContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.LinkStatementContext.html">LinkStatementContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitLiteral_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitLiteral*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitLiteral_CobraParser_LiteralContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitLiteral(CobraParser.LiteralContext)">
+  VisitLiteral(LiteralContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraLiteralHandler.cs/#L7"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_literal">literal()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitLiteral(CobraParser.LiteralContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.LiteralContext.html">LiteralContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitNamespaceDeclaration_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitNamespaceDeclaration*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitNamespaceDeclaration_CobraParser_NamespaceDeclarationContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitNamespaceDeclaration(CobraParser.NamespaceDeclarationContext)">
+  VisitNamespaceDeclaration(NamespaceDeclarationContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraModuleHandler.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_namespaceDeclaration">namespaceDeclaration()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitNamespaceDeclaration(CobraParser.NamespaceDeclarationContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.NamespaceDeclarationContext.html">NamespaceDeclarationContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitNewExpression_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitNewExpression*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitNewExpression_CobraParser_NewExpressionContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitNewExpression(CobraParser.NewExpressionContext)">
+  VisitNewExpression(NewExpressionContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraExpressionHandler.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object? VisitNewExpression(CobraParser.NewExpressionContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.NewExpressionContext.html">NewExpressionContext</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitPostfixExpression_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitPostfixExpression*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitPostfixExpression_CobraParser_PostfixExpressionContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitPostfixExpression(CobraParser.PostfixExpressionContext)">
+  VisitPostfixExpression(PostfixExpressionContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraExpressionHandler.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_postfixExpression">postfixExpression()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitPostfixExpression(CobraParser.PostfixExpressionContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.PostfixExpressionContext.html">PostfixExpressionContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitPrimary_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitPrimary*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitPrimary_CobraParser_PrimaryContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitPrimary(CobraParser.PrimaryContext)">
+  VisitPrimary(PrimaryContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraExpressionHandler.cs/#L154"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_primary">primary()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitPrimary(CobraParser.PrimaryContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.PrimaryContext.html">PrimaryContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitProgram_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitProgram*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitProgram_CobraParser_ProgramContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitProgram(CobraParser.ProgramContext)">
+  VisitProgram(ProgramContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/CobraInterpreter.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_program">program()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitProgram(CobraParser.ProgramContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.ProgramContext.html">ProgramContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitSwitchStatement_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitSwitchStatement*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitSwitchStatement_CobraParser_SwitchStatementContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitSwitchStatement(CobraParser.SwitchStatementContext)">
+  VisitSwitchStatement(SwitchStatementContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraStatementHandler.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_switchStatement">switchStatement()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitSwitchStatement(CobraParser.SwitchStatementContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.SwitchStatementContext.html">SwitchStatementContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitTryStatement_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitTryStatement*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitTryStatement_CobraParser_TryStatementContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitTryStatement(CobraParser.TryStatementContext)">
+  VisitTryStatement(TryStatementContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraStatementHandler.cs/#L187"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_tryStatement">tryStatement()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitTryStatement(CobraParser.TryStatementContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.TryStatementContext.html">TryStatementContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitVarDeclaration_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitVarDeclaration*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitVarDeclaration_CobraParser_VarDeclarationContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitVarDeclaration(CobraParser.VarDeclarationContext)">
+  VisitVarDeclaration(VarDeclarationContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraDeclarationHandler.cs/#L7"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_varDeclaration">varDeclaration()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitVarDeclaration(CobraParser.VarDeclarationContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.VarDeclarationContext.html">VarDeclarationContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cobra_Interpreter_CobraInterpreter_VisitWhileStatement_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitWhileStatement*"></a>
+
+  <h3 id="Cobra_Interpreter_CobraInterpreter_VisitWhileStatement_CobraParser_WhileStatementContext_" data-uid="Cobra.Interpreter.CobraInterpreter.VisitWhileStatement(CobraParser.WhileStatementContext)">
+  VisitWhileStatement(WhileStatementContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraStatementHandler.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="CobraParser.html#CobraParser_whileStatement">whileStatement()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object? VisitWhileStatement(CobraParser.WhileStatementContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="CobraParser.html">CobraParser</a>.<a class="xref" href="CobraParser.WhileStatementContext.html">WhileStatementContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/SujalChoudhari/Cobra/blob/main/Interpreter/Handlers/CobraStatementHandler.cs/#L5" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

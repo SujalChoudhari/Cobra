@@ -1,0 +1,706 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cobra.Environment.CobraRuntimeTypes
+  commentId: T:Cobra.Environment.CobraRuntimeTypes
+  id: CobraRuntimeTypes
+  parent: Cobra.Environment
+  children:
+  - Cobra.Environment.CobraRuntimeTypes.Bool
+  - Cobra.Environment.CobraRuntimeTypes.Class
+  - Cobra.Environment.CobraRuntimeTypes.Dict
+  - Cobra.Environment.CobraRuntimeTypes.Enum
+  - Cobra.Environment.CobraRuntimeTypes.EnumMember
+  - Cobra.Environment.CobraRuntimeTypes.Float32
+  - Cobra.Environment.CobraRuntimeTypes.Float64
+  - Cobra.Environment.CobraRuntimeTypes.Function
+  - Cobra.Environment.CobraRuntimeTypes.Handle
+  - Cobra.Environment.CobraRuntimeTypes.Instance
+  - Cobra.Environment.CobraRuntimeTypes.Int16
+  - Cobra.Environment.CobraRuntimeTypes.Int32
+  - Cobra.Environment.CobraRuntimeTypes.Int64
+  - Cobra.Environment.CobraRuntimeTypes.Int8
+  - Cobra.Environment.CobraRuntimeTypes.List
+  - Cobra.Environment.CobraRuntimeTypes.Markup
+  - Cobra.Environment.CobraRuntimeTypes.Namespace
+  - Cobra.Environment.CobraRuntimeTypes.Null
+  - Cobra.Environment.CobraRuntimeTypes.String
+  - Cobra.Environment.CobraRuntimeTypes.UInt16
+  - Cobra.Environment.CobraRuntimeTypes.UInt32
+  - Cobra.Environment.CobraRuntimeTypes.UInt64
+  - Cobra.Environment.CobraRuntimeTypes.UInt8
+  - Cobra.Environment.CobraRuntimeTypes.Void
+  langs:
+  - csharp
+  - vb
+  name: CobraRuntimeTypes
+  nameWithType: CobraRuntimeTypes
+  fullName: Cobra.Environment.CobraRuntimeTypes
+  type: Enum
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: CobraRuntimeTypes
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 2
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: public enum CobraRuntimeTypes
+    content.vb: Public Enum CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Void
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Void
+  id: Void
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: Void
+  nameWithType: CobraRuntimeTypes.Void
+  fullName: Cobra.Environment.CobraRuntimeTypes.Void
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Void
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 4
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Void = 0
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Null
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Null
+  id: "Null"
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: "Null"
+  nameWithType: CobraRuntimeTypes.Null
+  fullName: Cobra.Environment.CobraRuntimeTypes.Null
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: "Null"
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 5
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Null = 1
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Int8
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Int8
+  id: Int8
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: Int8
+  nameWithType: CobraRuntimeTypes.Int8
+  fullName: Cobra.Environment.CobraRuntimeTypes.Int8
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Int8
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 6
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Int8 = 2
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Int16
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Int16
+  id: Int16
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: Int16
+  nameWithType: CobraRuntimeTypes.Int16
+  fullName: Cobra.Environment.CobraRuntimeTypes.Int16
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Int16
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 7
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Int16 = 3
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Int32
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Int32
+  id: Int32
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: Int32
+  nameWithType: CobraRuntimeTypes.Int32
+  fullName: Cobra.Environment.CobraRuntimeTypes.Int32
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Int32
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 8
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Int32 = 4
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Int64
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Int64
+  id: Int64
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: Int64
+  nameWithType: CobraRuntimeTypes.Int64
+  fullName: Cobra.Environment.CobraRuntimeTypes.Int64
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Int64
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 9
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Int64 = 5
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.UInt8
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.UInt8
+  id: UInt8
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: UInt8
+  nameWithType: CobraRuntimeTypes.UInt8
+  fullName: Cobra.Environment.CobraRuntimeTypes.UInt8
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: UInt8
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 10
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: UInt8 = 6
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.UInt16
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.UInt16
+  id: UInt16
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: UInt16
+  nameWithType: CobraRuntimeTypes.UInt16
+  fullName: Cobra.Environment.CobraRuntimeTypes.UInt16
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: UInt16
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 11
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: UInt16 = 7
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.UInt32
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.UInt32
+  id: UInt32
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: UInt32
+  nameWithType: CobraRuntimeTypes.UInt32
+  fullName: Cobra.Environment.CobraRuntimeTypes.UInt32
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: UInt32
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 12
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: UInt32 = 8
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.UInt64
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.UInt64
+  id: UInt64
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: UInt64
+  nameWithType: CobraRuntimeTypes.UInt64
+  fullName: Cobra.Environment.CobraRuntimeTypes.UInt64
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: UInt64
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 13
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: UInt64 = 9
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Float32
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Float32
+  id: Float32
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: Float32
+  nameWithType: CobraRuntimeTypes.Float32
+  fullName: Cobra.Environment.CobraRuntimeTypes.Float32
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Float32
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 14
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Float32 = 10
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Float64
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Float64
+  id: Float64
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: Float64
+  nameWithType: CobraRuntimeTypes.Float64
+  fullName: Cobra.Environment.CobraRuntimeTypes.Float64
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Float64
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 15
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Float64 = 11
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Bool
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Bool
+  id: Bool
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: Bool
+  nameWithType: CobraRuntimeTypes.Bool
+  fullName: Cobra.Environment.CobraRuntimeTypes.Bool
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Bool
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 16
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Bool = 12
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.String
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.String
+  id: String
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: String
+  nameWithType: CobraRuntimeTypes.String
+  fullName: Cobra.Environment.CobraRuntimeTypes.String
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: String
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 17
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: String = 13
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Dict
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Dict
+  id: Dict
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: Dict
+  nameWithType: CobraRuntimeTypes.Dict
+  fullName: Cobra.Environment.CobraRuntimeTypes.Dict
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Dict
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 18
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Dict = 14
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.List
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.List
+  id: List
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: List
+  nameWithType: CobraRuntimeTypes.List
+  fullName: Cobra.Environment.CobraRuntimeTypes.List
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: List
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 19
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: List = 15
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Function
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Function
+  id: Function
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: Function
+  nameWithType: CobraRuntimeTypes.Function
+  fullName: Cobra.Environment.CobraRuntimeTypes.Function
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Function
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 20
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Function = 16
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Markup
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Markup
+  id: Markup
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: Markup
+  nameWithType: CobraRuntimeTypes.Markup
+  fullName: Cobra.Environment.CobraRuntimeTypes.Markup
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Markup
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 21
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Markup = 17
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Handle
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Handle
+  id: Handle
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: Handle
+  nameWithType: CobraRuntimeTypes.Handle
+  fullName: Cobra.Environment.CobraRuntimeTypes.Handle
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Handle
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 22
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Handle = 18
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Namespace
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Namespace
+  id: Namespace
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: Namespace
+  nameWithType: CobraRuntimeTypes.Namespace
+  fullName: Cobra.Environment.CobraRuntimeTypes.Namespace
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Namespace
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 23
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Namespace = 19
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Class
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Class
+  id: Class
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: Class
+  nameWithType: CobraRuntimeTypes.Class
+  fullName: Cobra.Environment.CobraRuntimeTypes.Class
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Class
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 24
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Class = 20
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Instance
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Instance
+  id: Instance
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: Instance
+  nameWithType: CobraRuntimeTypes.Instance
+  fullName: Cobra.Environment.CobraRuntimeTypes.Instance
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Instance
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 25
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Instance = 21
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.Enum
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.Enum
+  id: Enum
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: Enum
+  nameWithType: CobraRuntimeTypes.Enum
+  fullName: Cobra.Environment.CobraRuntimeTypes.Enum
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: Enum
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 26
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: Enum = 22
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraRuntimeTypes.EnumMember
+  commentId: F:Cobra.Environment.CobraRuntimeTypes.EnumMember
+  id: EnumMember
+  parent: Cobra.Environment.CobraRuntimeTypes
+  langs:
+  - csharp
+  - vb
+  name: EnumMember
+  nameWithType: CobraRuntimeTypes.EnumMember
+  fullName: Cobra.Environment.CobraRuntimeTypes.EnumMember
+  type: Field
+  source:
+    remote:
+      path: Environment/CobraRuntimeTypes.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: EnumMember
+    path: ../Environment/CobraRuntimeTypes.cs
+    startLine: 27
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: EnumMember = 23
+    return:
+      type: Cobra.Environment.CobraRuntimeTypes
+references:
+- uid: Cobra.Environment
+  commentId: N:Cobra.Environment
+  href: Cobra.html
+  name: Cobra.Environment
+  nameWithType: Cobra.Environment
+  fullName: Cobra.Environment
+  spec.csharp:
+  - uid: Cobra
+    name: Cobra
+    href: Cobra.html
+  - name: .
+  - uid: Cobra.Environment
+    name: Environment
+    href: Cobra.Environment.html
+  spec.vb:
+  - uid: Cobra
+    name: Cobra
+    href: Cobra.html
+  - name: .
+  - uid: Cobra.Environment
+    name: Environment
+    href: Cobra.Environment.html
+- uid: Cobra.Environment.CobraRuntimeTypes
+  commentId: T:Cobra.Environment.CobraRuntimeTypes
+  parent: Cobra.Environment
+  href: Cobra.Environment.CobraRuntimeTypes.html
+  name: CobraRuntimeTypes
+  nameWithType: CobraRuntimeTypes
+  fullName: Cobra.Environment.CobraRuntimeTypes

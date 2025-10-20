@@ -1,0 +1,612 @@
+{
+  "source_base_path": "F:/Workspace/Cobra/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Cobra.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Cobra.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Cobra",
+      "Summary": "<p sourcefile=\"api/Cobra.Cobra.yml\" sourcestartlinenumber=\"1\">Main Class that initiates the interpreter toolchain</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Environment.CobraBuiltinFunction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Environment.CobraBuiltinFunction.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Environment.CobraBuiltinFunction",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Environment.CobraClass.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Environment.CobraClass.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Environment.CobraClass",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Environment.CobraEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Environment.CobraEnum.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Environment.CobraEnum",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Environment.CobraEnumMember.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Environment.CobraEnumMember.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Environment.CobraEnumMember",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Environment.CobraEnvironment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Environment.CobraEnvironment.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Environment.CobraEnvironment",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Environment.CobraExternalFunction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Environment.CobraExternalFunction.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Environment.CobraExternalFunction",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Environment.CobraFunctionDefinition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Environment.CobraFunctionDefinition.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Environment.CobraFunctionDefinition",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Environment.CobraHandle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Environment.CobraHandle.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Environment.CobraHandle",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Environment.CobraInstance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Environment.CobraInstance.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Environment.CobraInstance",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Environment.CobraMarkup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Environment.CobraMarkup.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Environment.CobraMarkup",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Environment.CobraNamespace.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Environment.CobraNamespace.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Environment.CobraNamespace",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Environment.CobraRuntimeTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Environment.CobraRuntimeTypes.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Environment.CobraRuntimeTypes",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Environment.CobraUserDefinedFunction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Environment.CobraUserDefinedFunction.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Environment.CobraUserDefinedFunction",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Environment.CobraVariableDefinition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Environment.CobraVariableDefinition.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Environment.CobraVariableDefinition",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Environment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Environment.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Environment",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Interpreter.CallFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Interpreter.CallFrame.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Interpreter.CallFrame",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Interpreter.CobraBreakValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Interpreter.CobraBreakValue.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Interpreter.CobraBreakValue",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Interpreter.CobraContinueValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Interpreter.CobraContinueValue.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Interpreter.CobraContinueValue",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Interpreter.CobraDelegateFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Interpreter.CobraDelegateFactory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Interpreter.CobraDelegateFactory",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Interpreter.CobraInterpreter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Interpreter.CobraInterpreter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Interpreter.CobraInterpreter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Interpreter.CobraLiteralHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Interpreter.CobraLiteralHelper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Interpreter.CobraLiteralHelper",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Interpreter.CobraReturnValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Interpreter.CobraReturnValue.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Interpreter.CobraReturnValue",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Interpreter.CobraRuntimeException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Interpreter.CobraRuntimeException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Interpreter.CobraRuntimeException",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Interpreter.CobraStackTrace.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Interpreter.CobraStackTrace.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Interpreter.CobraStackTrace",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Interpreter.CobraThrowValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Interpreter.CobraThrowValue.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Interpreter.CobraThrowValue",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Interpreter.CobraTypeHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Interpreter.CobraTypeHelper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Interpreter.CobraTypeHelper",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Interpreter.CobraTypeMarshaller.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Interpreter.CobraTypeMarshaller.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Interpreter.CobraTypeMarshaller",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Interpreter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Interpreter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Interpreter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Utils.CobraCli.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Utils.CobraCli.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Utils.CobraCli",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Utils.CobraConstants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Utils.CobraConstants.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Utils.CobraConstants",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Utils.CobraErrorHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Utils.CobraErrorHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Utils.CobraErrorHandler",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Utils.CobraLogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Utils.CobraLogger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Utils.CobraLogger",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Utils.CobraRunner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Utils.CobraRunner.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Utils.CobraRunner",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.Utils.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra.Utils",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cobra.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cobra.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cobra",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/intro.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/language-basics.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/language-basics.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

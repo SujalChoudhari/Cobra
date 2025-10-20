@@ -38,6 +38,7 @@
         <Folder Include="CobraStdLib\cmake-build-debug\CMakeFiles\CMakeScratch\"/>
         <Folder Include="CobraStdLib\cmake-build-debug\CMakeFiles\CobraStdLib.dir\"/>
         <Folder Include="CobraStdLib\cmake-build-debug\CMakeFiles\pkgRedirects\"/>
+        <Folder Include="docs\" />
     </ItemGroup>
 
     <ItemGroup>

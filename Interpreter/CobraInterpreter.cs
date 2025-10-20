@@ -14,6 +14,10 @@ namespace Cobra.Interpreter
         private readonly Dictionary<string, IntPtr> _loadedLibraries = new();
         private string? _currentLinkingLibraryPath;
 
+        /// <summary>
+        /// Constructor to the Interpreter
+        /// </summary>
+        /// <param name="globalEnvironment"></param>
         public CobraInterpreter(CobraEnvironment globalEnvironment)
         {
             _currentEnvironment = globalEnvironment;

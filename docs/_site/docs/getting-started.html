@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Getting Started | cobra </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Getting Started | cobra ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/SujalChoudhari/Cobra/blob/main/docs/docs/getting-started.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="cobra">
+            cobra
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="getting-started">Getting Started</h1>
+
+<p>Welcome to Cobra! This guide will walk you through setting up your environment, building the interpreter, and running your first Cobra program.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>Before you begin, you will need the <strong>.NET 9 SDK</strong>. You can download it from the official Microsoft website:</p>
+<ul>
+<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet/9.0">Download .NET 9</a></li>
+</ul>
+<p>You will also need <code>git</code> to clone the project repository.</p>
+<h3 id="step-1-get-the-cobra-source-code">Step 1: Get the Cobra Source Code</h3>
+<p>Open your terminal or command prompt and clone the Cobra repository from GitHub:</p>
+<pre><code class="lang-bash">git clone https://github.com/SujalChoudhari/Cobra.git
+cd Cobra
+</code></pre>
+<p>This will download the entire project, including the interpreter source code and sample files.</p>
+<h3 id="step-2-build-the-interpreter">Step 2: Build the Interpreter</h3>
+<p>Cobra is a .NET project. To build the interpreter executable, run the following command from the root of the <code>Cobra</code> directory:</p>
+<pre><code class="lang-bash">dotnet build -c Release
+</code></pre>
+<p>This command compiles the C# source code and places the final <code>Cobra.exe</code> (on Windows) or <code>Cobra</code> (on Linux/macOS) executable in the <code>bin/Release/net9.0/</code> directory.</p>
+<h3 id="step-3-write-your-first-program">Step 3: Write Your First Program</h3>
+<p>Let's start with the classic &quot;Hello, World!&quot;.</p>
+<ol>
+<li>Create a new file named <code>hello.cb</code> in the root of the <code>Cobra</code> project directory.</li>
+<li>Open <code>hello.cb</code> in your favorite text editor and add the following line:</li>
+</ol>
+<pre><code class="lang-csharp">// hello.cb
+print(&quot;Hello, World from Cobra!&quot;);
+</code></pre>
+<p>The <code>print()</code> function is a built-in that outputs text to the console. All statements in Cobra must end with a semicolon <code>;</code>.</p>
+<h3 id="step-4-run-your-program">Step 4: Run Your Program</h3>
+<p>To run your script, you execute the Cobra interpreter and pass the path to your file as an argument.</p>
+<p><strong>On Windows:</strong></p>
+<pre><code class="lang-bash">.\bin\Release\net9.0\Cobra.exe hello.cb```
+
+**On Linux or macOS:**
+```bash
+./bin/Release/net9.0/Cobra hello.cb
+</code></pre>
+<p>You should see the following output in your terminal:</p>
+<pre><code>Hello, World from Cobra!
+</code></pre>
+<h3 id="a-more-detailed-example">A More Detailed Example</h3>
+<p>Let's try something that shows off a few more features, like variables and loops. Create a file named <code>countdown.cb</code>:</p>
+<pre><code class="lang-csharp">// countdown.cb
+
+// This is a for loop, similar to C or Java.
+for (int i = 10; i &gt; 0; i--) {
+    print(&quot;Countdown: &quot; + i);
+}
+
+print(&quot;Liftoff!&quot;);
+</code></pre>
+<p>Run it the same way as before:</p>
+<pre><code class="lang-bash">.\bin\Release\net9.0\Cobra.exe countdown.cb
+</code></pre>
+<h3 id="next-steps">Next Steps</h3>
+<p>Congratulations! You've successfully built the Cobra interpreter and run your first scripts.</p>
+<p>Now that you have the basics down, it's time to learn more about the language itself. Head over to our <strong><a href="language-basics.html">Language Basics</a></strong> guide to learn about variables, data types, and control flow.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/SujalChoudhari/Cobra/blob/main/docs/docs/getting-started.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

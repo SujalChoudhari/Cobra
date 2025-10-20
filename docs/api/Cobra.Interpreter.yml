@@ -1,0 +1,127 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cobra.Interpreter
+  commentId: N:Cobra.Interpreter
+  id: Cobra.Interpreter
+  children:
+  - Cobra.Interpreter.CallFrame
+  - Cobra.Interpreter.CobraBreakValue
+  - Cobra.Interpreter.CobraContinueValue
+  - Cobra.Interpreter.CobraDelegateFactory
+  - Cobra.Interpreter.CobraInterpreter
+  - Cobra.Interpreter.CobraLiteralHelper
+  - Cobra.Interpreter.CobraReturnValue
+  - Cobra.Interpreter.CobraRuntimeException
+  - Cobra.Interpreter.CobraStackTrace
+  - Cobra.Interpreter.CobraThrowValue
+  - Cobra.Interpreter.CobraTypeHelper
+  - Cobra.Interpreter.CobraTypeMarshaller
+  langs:
+  - csharp
+  - vb
+  name: Cobra.Interpreter
+  nameWithType: Cobra.Interpreter
+  fullName: Cobra.Interpreter
+  type: Namespace
+  assemblies:
+  - Cobra
+references:
+- uid: Cobra.Interpreter.CallFrame
+  commentId: T:Cobra.Interpreter.CallFrame
+  parent: Cobra.Interpreter
+  href: Cobra.Interpreter.CallFrame.html
+  name: CallFrame
+  nameWithType: CallFrame
+  fullName: Cobra.Interpreter.CallFrame
+- uid: Cobra.Interpreter.CobraReturnValue
+  commentId: T:Cobra.Interpreter.CobraReturnValue
+  href: Cobra.Interpreter.CobraReturnValue.html
+  name: CobraReturnValue
+  nameWithType: CobraReturnValue
+  fullName: Cobra.Interpreter.CobraReturnValue
+- uid: Cobra.Interpreter.CobraBreakValue
+  commentId: T:Cobra.Interpreter.CobraBreakValue
+  parent: Cobra.Interpreter
+  href: Cobra.Interpreter.CobraBreakValue.html
+  name: CobraBreakValue
+  nameWithType: CobraBreakValue
+  fullName: Cobra.Interpreter.CobraBreakValue
+- uid: Cobra.Interpreter.CobraContinueValue
+  commentId: T:Cobra.Interpreter.CobraContinueValue
+  parent: Cobra.Interpreter
+  href: Cobra.Interpreter.CobraContinueValue.html
+  name: CobraContinueValue
+  nameWithType: CobraContinueValue
+  fullName: Cobra.Interpreter.CobraContinueValue
+- uid: Cobra.Interpreter.CobraThrowValue
+  commentId: T:Cobra.Interpreter.CobraThrowValue
+  parent: Cobra.Interpreter
+  href: Cobra.Interpreter.CobraThrowValue.html
+  name: CobraThrowValue
+  nameWithType: CobraThrowValue
+  fullName: Cobra.Interpreter.CobraThrowValue
+- uid: Cobra.Interpreter.CobraDelegateFactory
+  commentId: T:Cobra.Interpreter.CobraDelegateFactory
+  href: Cobra.Interpreter.CobraDelegateFactory.html
+  name: CobraDelegateFactory
+  nameWithType: CobraDelegateFactory
+  fullName: Cobra.Interpreter.CobraDelegateFactory
+- uid: Cobra.Interpreter.CobraInterpreter
+  commentId: T:Cobra.Interpreter.CobraInterpreter
+  href: Cobra.Interpreter.CobraInterpreter.html
+  name: CobraInterpreter
+  nameWithType: CobraInterpreter
+  fullName: Cobra.Interpreter.CobraInterpreter
+- uid: Cobra.Interpreter.CobraLiteralHelper
+  commentId: T:Cobra.Interpreter.CobraLiteralHelper
+  href: Cobra.Interpreter.CobraLiteralHelper.html
+  name: CobraLiteralHelper
+  nameWithType: CobraLiteralHelper
+  fullName: Cobra.Interpreter.CobraLiteralHelper
+- uid: Cobra.Interpreter.CobraRuntimeException
+  commentId: T:Cobra.Interpreter.CobraRuntimeException
+  href: Cobra.Interpreter.CobraRuntimeException.html
+  name: CobraRuntimeException
+  nameWithType: CobraRuntimeException
+  fullName: Cobra.Interpreter.CobraRuntimeException
+- uid: Cobra.Interpreter.CobraStackTrace
+  commentId: T:Cobra.Interpreter.CobraStackTrace
+  parent: Cobra.Interpreter
+  href: Cobra.Interpreter.CobraStackTrace.html
+  name: CobraStackTrace
+  nameWithType: CobraStackTrace
+  fullName: Cobra.Interpreter.CobraStackTrace
+- uid: Cobra.Interpreter.CobraTypeHelper
+  commentId: T:Cobra.Interpreter.CobraTypeHelper
+  href: Cobra.Interpreter.CobraTypeHelper.html
+  name: CobraTypeHelper
+  nameWithType: CobraTypeHelper
+  fullName: Cobra.Interpreter.CobraTypeHelper
+- uid: Cobra.Interpreter.CobraTypeMarshaller
+  commentId: T:Cobra.Interpreter.CobraTypeMarshaller
+  href: Cobra.Interpreter.CobraTypeMarshaller.html
+  name: CobraTypeMarshaller
+  nameWithType: CobraTypeMarshaller
+  fullName: Cobra.Interpreter.CobraTypeMarshaller
+- uid: Cobra.Interpreter
+  commentId: N:Cobra.Interpreter
+  href: Cobra.html
+  name: Cobra.Interpreter
+  nameWithType: Cobra.Interpreter
+  fullName: Cobra.Interpreter
+  spec.csharp:
+  - uid: Cobra
+    name: Cobra
+    href: Cobra.html
+  - name: .
+  - uid: Cobra.Interpreter
+    name: Interpreter
+    href: Cobra.Interpreter.html
+  spec.vb:
+  - uid: Cobra
+    name: Cobra
+    href: Cobra.html
+  - name: .
+  - uid: Cobra.Interpreter
+    name: Interpreter
+    href: Cobra.Interpreter.html

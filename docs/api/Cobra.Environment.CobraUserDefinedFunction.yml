@@ -1,0 +1,568 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cobra.Environment.CobraUserDefinedFunction
+  commentId: T:Cobra.Environment.CobraUserDefinedFunction
+  id: CobraUserDefinedFunction
+  parent: Cobra.Environment
+  children:
+  - Cobra.Environment.CobraUserDefinedFunction.#ctor(System.String,System.Collections.Generic.List{System.ValueTuple{Cobra.Environment.CobraRuntimeTypes,System.String}},CobraParser.BlockContext,Cobra.Environment.CobraEnvironment)
+  langs:
+  - csharp
+  - vb
+  name: CobraUserDefinedFunction
+  nameWithType: CobraUserDefinedFunction
+  fullName: Cobra.Environment.CobraUserDefinedFunction
+  type: Class
+  source:
+    remote:
+      path: Environment/CobraUserDefinedFunction.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: CobraUserDefinedFunction
+    path: ../Environment/CobraUserDefinedFunction.cs
+    startLine: 2
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: 'public class CobraUserDefinedFunction : CobraFunctionDefinition'
+    content.vb: Public Class CobraUserDefinedFunction Inherits CobraFunctionDefinition
+  inheritance:
+  - System.Object
+  - Cobra.Environment.CobraFunctionDefinition
+  inheritedMembers:
+  - Cobra.Environment.CobraFunctionDefinition.Name
+  - Cobra.Environment.CobraFunctionDefinition.ReturnType
+  - Cobra.Environment.CobraFunctionDefinition.Parameters
+  - Cobra.Environment.CobraFunctionDefinition.Body
+  - Cobra.Environment.CobraFunctionDefinition.Closure
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Cobra.Environment.CobraUserDefinedFunction.#ctor(System.String,System.Collections.Generic.List{System.ValueTuple{Cobra.Environment.CobraRuntimeTypes,System.String}},CobraParser.BlockContext,Cobra.Environment.CobraEnvironment)
+  commentId: M:Cobra.Environment.CobraUserDefinedFunction.#ctor(System.String,System.Collections.Generic.List{System.ValueTuple{Cobra.Environment.CobraRuntimeTypes,System.String}},CobraParser.BlockContext,Cobra.Environment.CobraEnvironment)
+  id: '#ctor(System.String,System.Collections.Generic.List{System.ValueTuple{Cobra.Environment.CobraRuntimeTypes,System.String}},CobraParser.BlockContext,Cobra.Environment.CobraEnvironment)'
+  parent: Cobra.Environment.CobraUserDefinedFunction
+  langs:
+  - csharp
+  - vb
+  name: CobraUserDefinedFunction(string, List<(CobraRuntimeTypes Type, string Name)>, BlockContext, CobraEnvironment)
+  nameWithType: CobraUserDefinedFunction.CobraUserDefinedFunction(string, List<(CobraRuntimeTypes Type, string Name)>, CobraParser.BlockContext, CobraEnvironment)
+  fullName: Cobra.Environment.CobraUserDefinedFunction.CobraUserDefinedFunction(string, System.Collections.Generic.List<(Cobra.Environment.CobraRuntimeTypes Type, string Name)>, CobraParser.BlockContext, Cobra.Environment.CobraEnvironment)
+  type: Constructor
+  source:
+    remote:
+      path: Environment/CobraUserDefinedFunction.cs
+      branch: main
+      repo: https://github.com/SujalChoudhari/Cobra.git
+    id: .ctor
+    path: ../Environment/CobraUserDefinedFunction.cs
+    startLine: 2
+  assemblies:
+  - Cobra
+  namespace: Cobra.Environment
+  syntax:
+    content: public CobraUserDefinedFunction(string name, List<(CobraRuntimeTypes Type, string Name)> parameters, CobraParser.BlockContext body, CobraEnvironment closure)
+    parameters:
+    - id: name
+      type: System.String
+    - id: parameters
+      type: System.Collections.Generic.List{System.ValueTuple{Cobra.Environment.CobraRuntimeTypes,System.String}}
+    - id: body
+      type: CobraParser.BlockContext
+    - id: closure
+      type: Cobra.Environment.CobraEnvironment
+    content.vb: Public Sub New(name As String, parameters As List(Of (Type As CobraRuntimeTypes, Name As String)), body As CobraParser.BlockContext, closure As CobraEnvironment)
+  overload: Cobra.Environment.CobraUserDefinedFunction.#ctor*
+  nameWithType.vb: CobraUserDefinedFunction.New(String, List(Of (Type As CobraRuntimeTypes, Name As String)), CobraParser.BlockContext, CobraEnvironment)
+  fullName.vb: Cobra.Environment.CobraUserDefinedFunction.New(String, System.Collections.Generic.List(Of (Type As Cobra.Environment.CobraRuntimeTypes, Name As String)), CobraParser.BlockContext, Cobra.Environment.CobraEnvironment)
+  name.vb: New(String, List(Of (Type As CobraRuntimeTypes, Name As String)), BlockContext, CobraEnvironment)
+references:
+- uid: Cobra.Environment
+  commentId: N:Cobra.Environment
+  href: Cobra.html
+  name: Cobra.Environment
+  nameWithType: Cobra.Environment
+  fullName: Cobra.Environment
+  spec.csharp:
+  - uid: Cobra
+    name: Cobra
+    href: Cobra.html
+  - name: .
+  - uid: Cobra.Environment
+    name: Environment
+    href: Cobra.Environment.html
+  spec.vb:
+  - uid: Cobra
+    name: Cobra
+    href: Cobra.html
+  - name: .
+  - uid: Cobra.Environment
+    name: Environment
+    href: Cobra.Environment.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Cobra.Environment.CobraFunctionDefinition
+  commentId: T:Cobra.Environment.CobraFunctionDefinition
+  parent: Cobra.Environment
+  href: Cobra.Environment.CobraFunctionDefinition.html
+  name: CobraFunctionDefinition
+  nameWithType: CobraFunctionDefinition
+  fullName: Cobra.Environment.CobraFunctionDefinition
+- uid: Cobra.Environment.CobraFunctionDefinition.Name
+  commentId: P:Cobra.Environment.CobraFunctionDefinition.Name
+  parent: Cobra.Environment.CobraFunctionDefinition
+  href: Cobra.Environment.CobraFunctionDefinition.html#Cobra_Environment_CobraFunctionDefinition_Name
+  name: Name
+  nameWithType: CobraFunctionDefinition.Name
+  fullName: Cobra.Environment.CobraFunctionDefinition.Name
+- uid: Cobra.Environment.CobraFunctionDefinition.ReturnType
+  commentId: P:Cobra.Environment.CobraFunctionDefinition.ReturnType
+  parent: Cobra.Environment.CobraFunctionDefinition
+  href: Cobra.Environment.CobraFunctionDefinition.html#Cobra_Environment_CobraFunctionDefinition_ReturnType
+  name: ReturnType
+  nameWithType: CobraFunctionDefinition.ReturnType
+  fullName: Cobra.Environment.CobraFunctionDefinition.ReturnType
+- uid: Cobra.Environment.CobraFunctionDefinition.Parameters
+  commentId: P:Cobra.Environment.CobraFunctionDefinition.Parameters
+  parent: Cobra.Environment.CobraFunctionDefinition
+  href: Cobra.Environment.CobraFunctionDefinition.html#Cobra_Environment_CobraFunctionDefinition_Parameters
+  name: Parameters
+  nameWithType: CobraFunctionDefinition.Parameters
+  fullName: Cobra.Environment.CobraFunctionDefinition.Parameters
+- uid: Cobra.Environment.CobraFunctionDefinition.Body
+  commentId: P:Cobra.Environment.CobraFunctionDefinition.Body
+  parent: Cobra.Environment.CobraFunctionDefinition
+  href: Cobra.Environment.CobraFunctionDefinition.html#Cobra_Environment_CobraFunctionDefinition_Body
+  name: Body
+  nameWithType: CobraFunctionDefinition.Body
+  fullName: Cobra.Environment.CobraFunctionDefinition.Body
+- uid: Cobra.Environment.CobraFunctionDefinition.Closure
+  commentId: P:Cobra.Environment.CobraFunctionDefinition.Closure
+  parent: Cobra.Environment.CobraFunctionDefinition
+  href: Cobra.Environment.CobraFunctionDefinition.html#Cobra_Environment_CobraFunctionDefinition_Closure
+  name: Closure
+  nameWithType: CobraFunctionDefinition.Closure
+  fullName: Cobra.Environment.CobraFunctionDefinition.Closure
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Cobra.Environment.CobraUserDefinedFunction.#ctor*
+  commentId: Overload:Cobra.Environment.CobraUserDefinedFunction.#ctor
+  href: Cobra.Environment.CobraUserDefinedFunction.html#Cobra_Environment_CobraUserDefinedFunction__ctor_System_String_System_Collections_Generic_List_System_ValueTuple_Cobra_Environment_CobraRuntimeTypes_System_String___CobraParser_BlockContext_Cobra_Environment_CobraEnvironment_
+  name: CobraUserDefinedFunction
+  nameWithType: CobraUserDefinedFunction.CobraUserDefinedFunction
+  fullName: Cobra.Environment.CobraUserDefinedFunction.CobraUserDefinedFunction
+  nameWithType.vb: CobraUserDefinedFunction.New
+  fullName.vb: Cobra.Environment.CobraUserDefinedFunction.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Collections.Generic.List{System.ValueTuple{Cobra.Environment.CobraRuntimeTypes,System.String}}
+  commentId: T:System.Collections.Generic.List{System.ValueTuple{Cobra.Environment.CobraRuntimeTypes,System.String}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<(CobraRuntimeTypes Type, string Name)>
+  nameWithType: List<(CobraRuntimeTypes Type, string Name)>
+  fullName: System.Collections.Generic.List<(Cobra.Environment.CobraRuntimeTypes Type, string Name)>
+  nameWithType.vb: List(Of (Type As CobraRuntimeTypes, Name As String))
+  fullName.vb: System.Collections.Generic.List(Of (Type As Cobra.Environment.CobraRuntimeTypes, Name As String))
+  name.vb: List(Of (Type As CobraRuntimeTypes, Name As String))
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: (
+  - uid: Cobra.Environment.CobraRuntimeTypes
+    name: CobraRuntimeTypes
+    href: Cobra.Environment.CobraRuntimeTypes.html
+  - name: " "
+  - uid: System.ValueTuple{Cobra.Environment.CobraRuntimeTypes,System.String}.Type
+    name: Type
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-cobra.environment.cobraruntimetypes,system.string-.type
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{Cobra.Environment.CobraRuntimeTypes,System.String}.Name
+    name: Name
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-cobra.environment.cobraruntimetypes,system.string-.name
+  - name: )
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: (
+  - uid: System.ValueTuple{Cobra.Environment.CobraRuntimeTypes,System.String}.Type
+    name: Type
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-cobra.environment.cobraruntimetypes,system.string-.type
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: Cobra.Environment.CobraRuntimeTypes
+    name: CobraRuntimeTypes
+    href: Cobra.Environment.CobraRuntimeTypes.html
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{Cobra.Environment.CobraRuntimeTypes,System.String}.Name
+    name: Name
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-cobra.environment.cobraruntimetypes,system.string-.name
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: CobraParser.BlockContext
+  commentId: T:CobraParser.BlockContext
+  href: CobraParser.html
+  name: CobraParser.BlockContext
+  nameWithType: CobraParser.BlockContext
+  fullName: CobraParser.BlockContext
+  spec.csharp:
+  - uid: CobraParser
+    name: CobraParser
+    href: CobraParser.html
+  - name: .
+  - uid: CobraParser.BlockContext
+    name: BlockContext
+    href: CobraParser.BlockContext.html
+  spec.vb:
+  - uid: CobraParser
+    name: CobraParser
+    href: CobraParser.html
+  - name: .
+  - uid: CobraParser.BlockContext
+    name: BlockContext
+    href: CobraParser.BlockContext.html
+- uid: Cobra.Environment.CobraEnvironment
+  commentId: T:Cobra.Environment.CobraEnvironment
+  parent: Cobra.Environment
+  href: Cobra.Environment.CobraEnvironment.html
+  name: CobraEnvironment
+  nameWithType: CobraEnvironment
+  fullName: Cobra.Environment.CobraEnvironment
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

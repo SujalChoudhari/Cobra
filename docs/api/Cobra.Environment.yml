@@ -1,0 +1,144 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cobra.Environment
+  commentId: N:Cobra.Environment
+  id: Cobra.Environment
+  children:
+  - Cobra.Environment.CobraBuiltinFunction
+  - Cobra.Environment.CobraClass
+  - Cobra.Environment.CobraEnum
+  - Cobra.Environment.CobraEnumMember
+  - Cobra.Environment.CobraEnvironment
+  - Cobra.Environment.CobraExternalFunction
+  - Cobra.Environment.CobraFunctionDefinition
+  - Cobra.Environment.CobraHandle
+  - Cobra.Environment.CobraInstance
+  - Cobra.Environment.CobraMarkup
+  - Cobra.Environment.CobraNamespace
+  - Cobra.Environment.CobraRuntimeTypes
+  - Cobra.Environment.CobraUserDefinedFunction
+  - Cobra.Environment.CobraVariableDefinition
+  langs:
+  - csharp
+  - vb
+  name: Cobra.Environment
+  nameWithType: Cobra.Environment
+  fullName: Cobra.Environment
+  type: Namespace
+  assemblies:
+  - Cobra
+references:
+- uid: Cobra.Environment.CobraBuiltinFunction
+  commentId: T:Cobra.Environment.CobraBuiltinFunction
+  href: Cobra.Environment.CobraBuiltinFunction.html
+  name: CobraBuiltinFunction
+  nameWithType: CobraBuiltinFunction
+  fullName: Cobra.Environment.CobraBuiltinFunction
+- uid: Cobra.Environment.CobraClass
+  commentId: T:Cobra.Environment.CobraClass
+  parent: Cobra.Environment
+  href: Cobra.Environment.CobraClass.html
+  name: CobraClass
+  nameWithType: CobraClass
+  fullName: Cobra.Environment.CobraClass
+- uid: Cobra.Environment.CobraEnum
+  commentId: T:Cobra.Environment.CobraEnum
+  parent: Cobra.Environment
+  href: Cobra.Environment.CobraEnum.html
+  name: CobraEnum
+  nameWithType: CobraEnum
+  fullName: Cobra.Environment.CobraEnum
+- uid: Cobra.Environment.CobraEnumMember
+  commentId: T:Cobra.Environment.CobraEnumMember
+  href: Cobra.Environment.CobraEnumMember.html
+  name: CobraEnumMember
+  nameWithType: CobraEnumMember
+  fullName: Cobra.Environment.CobraEnumMember
+- uid: Cobra.Environment.CobraEnvironment
+  commentId: T:Cobra.Environment.CobraEnvironment
+  parent: Cobra.Environment
+  href: Cobra.Environment.CobraEnvironment.html
+  name: CobraEnvironment
+  nameWithType: CobraEnvironment
+  fullName: Cobra.Environment.CobraEnvironment
+- uid: Cobra.Environment.CobraExternalFunction
+  commentId: T:Cobra.Environment.CobraExternalFunction
+  href: Cobra.Environment.CobraExternalFunction.html
+  name: CobraExternalFunction
+  nameWithType: CobraExternalFunction
+  fullName: Cobra.Environment.CobraExternalFunction
+- uid: Cobra.Environment.CobraFunctionDefinition
+  commentId: T:Cobra.Environment.CobraFunctionDefinition
+  parent: Cobra.Environment
+  href: Cobra.Environment.CobraFunctionDefinition.html
+  name: CobraFunctionDefinition
+  nameWithType: CobraFunctionDefinition
+  fullName: Cobra.Environment.CobraFunctionDefinition
+- uid: Cobra.Environment.CobraHandle
+  commentId: T:Cobra.Environment.CobraHandle
+  href: Cobra.Environment.CobraHandle.html
+  name: CobraHandle
+  nameWithType: CobraHandle
+  fullName: Cobra.Environment.CobraHandle
+- uid: Cobra.Environment.CobraInstance
+  commentId: T:Cobra.Environment.CobraInstance
+  parent: Cobra.Environment
+  href: Cobra.Environment.CobraInstance.html
+  name: CobraInstance
+  nameWithType: CobraInstance
+  fullName: Cobra.Environment.CobraInstance
+- uid: Cobra.Environment.CobraMarkup
+  commentId: T:Cobra.Environment.CobraMarkup
+  href: Cobra.Environment.CobraMarkup.html
+  name: CobraMarkup
+  nameWithType: CobraMarkup
+  fullName: Cobra.Environment.CobraMarkup
+- uid: Cobra.Environment.CobraNamespace
+  commentId: T:Cobra.Environment.CobraNamespace
+  href: Cobra.Environment.CobraNamespace.html
+  name: CobraNamespace
+  nameWithType: CobraNamespace
+  fullName: Cobra.Environment.CobraNamespace
+- uid: Cobra.Environment.CobraRuntimeTypes
+  commentId: T:Cobra.Environment.CobraRuntimeTypes
+  parent: Cobra.Environment
+  href: Cobra.Environment.CobraRuntimeTypes.html
+  name: CobraRuntimeTypes
+  nameWithType: CobraRuntimeTypes
+  fullName: Cobra.Environment.CobraRuntimeTypes
+- uid: Cobra.Environment.CobraUserDefinedFunction
+  commentId: T:Cobra.Environment.CobraUserDefinedFunction
+  parent: Cobra.Environment
+  href: Cobra.Environment.CobraUserDefinedFunction.html
+  name: CobraUserDefinedFunction
+  nameWithType: CobraUserDefinedFunction
+  fullName: Cobra.Environment.CobraUserDefinedFunction
+- uid: Cobra.Environment.CobraVariableDefinition
+  commentId: T:Cobra.Environment.CobraVariableDefinition
+  parent: Cobra.Environment
+  href: Cobra.Environment.CobraVariableDefinition.html
+  name: CobraVariableDefinition
+  nameWithType: CobraVariableDefinition
+  fullName: Cobra.Environment.CobraVariableDefinition
+- uid: Cobra.Environment
+  commentId: N:Cobra.Environment
+  href: Cobra.html
+  name: Cobra.Environment
+  nameWithType: Cobra.Environment
+  fullName: Cobra.Environment
+  spec.csharp:
+  - uid: Cobra
+    name: Cobra
+    href: Cobra.html
+  - name: .
+  - uid: Cobra.Environment
+    name: Environment
+    href: Cobra.Environment.html
+  spec.vb:
+  - uid: Cobra
+    name: Cobra
+    href: Cobra.html
+  - name: .
+  - uid: Cobra.Environment
+    name: Environment
+    href: Cobra.Environment.html

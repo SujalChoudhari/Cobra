@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cobra
+  commentId: N:Cobra
+  id: Cobra
+  children:
+  - Cobra.Cobra
+  langs:
+  - csharp
+  - vb
+  name: Cobra
+  nameWithType: Cobra
+  fullName: Cobra
+  type: Namespace
+  assemblies:
+  - Cobra
+references:
+- uid: Cobra.Cobra
+  commentId: T:Cobra.Cobra
+  href: Cobra.Cobra.html
+  name: Cobra
+  nameWithType: Cobra
+  fullName: Cobra.Cobra
