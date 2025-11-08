@@ -1,0 +1,26 @@
+// Test for switch statements and the break keyword.
+
+print("--- Switch Statement ---");
+var value = 2;
+switch (value) {
+    case 1:
+        print("Switch case 1");
+        break;
+    case 2:
+        print("Switch case 2 - Correct");
+        break;
+    case 3:
+        print("Switch case 3");
+        break;
+    default:
+        print("Switch default");
+}
+
+print("--- Break in Loop ---");
+for (var i = 0; i < 10; i = i + 1) {
+    if (i == 3) {
+        print("Breaking loop at i = 3");
+        break;
+    }
+    print("Loop iteration: " + i);
+}

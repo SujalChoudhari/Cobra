@@ -1,0 +1,47 @@
+// Test for enum declarations and usage
+
+print("--- Enum Tests ---");
+
+enum Color {
+    Red,
+    Green,
+    Blue
+}
+
+// Test 1: Basic enum usage
+print("Test 1: Basic enum usage");
+Color myColor = Color.Green;
+print("My color is: " + myColor); // Expected: Green (or its integer value if stringification isn't implemented)
+print("Red is: " + Color.Red);
+print("Blue is: " + Color.Blue);
+print("");
+
+// Test 2: Enum members have implicit integer values
+print("Test 2: Enum members have implicit integer values");
+print("Value of Red: " + Color.Red.value);     // Expected: 0
+print("Value of Green: " + Color.Green.value); // Expected: 1
+print("Value of Blue: " + Color.Blue.value);   // Expected: 2
+print("");
+
+// Test 3: Enum members have names
+print("Test 3: Enum members have names");
+print("Name of Red: " + Color.Red.name);     // Expected: Red
+print("Name of Green: " + Color.Green.name); // Expected: Green
+print("Name of Blue: " + Color.Blue.name);   // Expected: Blue
+print("");
+
+enum Planet {
+    Mercury = 1,
+    Venus,
+    Earth,
+    Mars
+}
+
+// Test 4: Enums with explicit start values
+print("Test 4: Enums with explicit start values");
+print("Value of Mercury: " + Planet.Mercury.value); // Expected: 1
+print("Value of Venus: " + Planet.Venus.value);     // Expected: 2
+print("Value of Earth: " + Planet.Earth.value);     // Expected: 3
+print("");
+
+print("--- All enum tests complete ---");

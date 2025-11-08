@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace Cobra.Interpreter;
 
 public static class CobraLiteralHelper
@@ -40,5 +42,43 @@ public static class CobraLiteralHelper
     {
         var inner = token.Substring(1, token.Length - 2);
         return inner.Replace("``", "`");
+    }
+
+    public static string Stringify(object? obj)
+    {
+        if (obj == null) return "null";
+
+        switch (obj)
+        {
+            case List<object?> list:
+                var listBuilder = new StringBuilder("[");
+                for (int j = 0; j < list.Count; j++)
+                {
+                    listBuilder.Append(Stringify(list[j]));
+                    if (j < list.Count - 1)
+                        listBuilder.Append(", ");
+                }
+                listBuilder.Append("]");
+                return listBuilder.ToString();
+
+            case Dictionary<string, object?> dict:
+                var dictBuilder = new StringBuilder("{");
+                var i = 0;
+                foreach (var (key, value) in dict)
+                {
+                    dictBuilder.Append($"\"{key}\": {Stringify(value)}");
+                    if (i < dict.Count - 1)
+                        dictBuilder.Append(", ");
+                    i++;
+                }
+                dictBuilder.Append("}");
+                return dictBuilder.ToString();
+            
+            case string s:
+                return s;
+
+            default:
+                return obj.ToString() ?? "null";
+        }
     }
 }

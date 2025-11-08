@@ -1,0 +1,16 @@
+// Test for array literals and indexing
+
+print("--- Array Tests ---");
+
+int[] numbers = [10, 20, 30, 40];
+
+print("First element (numbers[0]): " + numbers[0]);
+print("Third element (numbers[2]): " + numbers[2]);
+
+print("Assigning numbers[1] = 99...");
+numbers[1] = 99;
+print("Assignment complete.");
+
+print("Verifying assignment, second element should be 99: " + numbers[1]);
+
+print("Final array state (if supported by print): " + numbers);

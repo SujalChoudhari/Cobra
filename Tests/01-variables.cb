@@ -1,0 +1,18 @@
+// Test for variable and constant declarations and assignments.
+
+// Global scope
+var globalVar = 10;
+const int GLOBAL_CONST = 100;
+
+print("Initial globalVar: " + globalVar);
+print("GLOBAL_CONST: " + GLOBAL_CONST);
+
+globalVar = 20;
+print("Modified globalVar: " + globalVar);
+
+// Local scope inside a block
+{
+    var localVar = "hello";
+    print("localVar: " + localVar);
+    print("Accessing global from inner scope: " + globalVar);
+}

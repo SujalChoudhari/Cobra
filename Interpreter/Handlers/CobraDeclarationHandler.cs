@@ -1,4 +1,6 @@
 using Cobra.Environment;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Cobra.Interpreter;
 
@@ -77,7 +79,7 @@ public partial class CobraInterpreter
         var methods = new Dictionary<string, CobraFunctionDefinition>();
         var fields = new Dictionary<string, (object? InitialValue, bool IsPublic)>();
         var staticEnv = new CobraEnvironment();
-        CobraUserDefinedFunction? constructor = null;
+        var constructors = new List<CobraUserDefinedFunction>();
         CobraUserDefinedFunction? destructor = null;
 
         foreach (var member in context.memberDeclaration())
@@ -91,7 +93,11 @@ public partial class CobraInterpreter
                 var parameters = ctorCtx.parameterList()?.parameter()
                                      .Select(p => (CobraRuntimeTypes.Void, p.ID().GetText())).ToList() ??
                                  [];
-                constructor = new CobraUserDefinedFunction(className, parameters, ctorCtx.block(), _currentEnvironment);
+                var constructor = new CobraUserDefinedFunction(className, parameters, ctorCtx.block(), _currentEnvironment);
+                if (constructors.Any(c => c.Parameters.Count == parameters.Count))
+                    throw new CobraRuntimeException($"Class '{className}' already defines a constructor with {parameters.Count} parameters.");
+                
+                constructors.Add(constructor);
             }
             else if (member.destructorDeclaration() != null)
             {
@@ -130,7 +136,7 @@ public partial class CobraInterpreter
             }
         }
 
-        var classDefinition = new CobraClass(className, constructor, destructor, methods, fields, staticEnv);
+        var classDefinition = new CobraClass(className, constructors, destructor, methods, fields, staticEnv);
         _currentEnvironment.DefineVariable(className, classDefinition, isConst: true);
 
         return null;

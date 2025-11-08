@@ -43,6 +43,7 @@
 
     <ItemGroup>
       <Compile Remove="bin\**" />
+      <Compile Remove="Utils\ObjectDumper.cs" />
     </ItemGroup>
 
     <ItemGroup>

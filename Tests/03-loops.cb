@@ -1,0 +1,25 @@
+// Test for various loop structures.
+
+print("--- While Loop ---");
+var i = 0;
+while (i < 3) {
+    print("while i = " + i);
+    i = i + 1;
+}
+
+print("--- Do-While Loop ---");
+var j = 0;
+do {
+    print("do-while j = " + j);
+    j = j + 1;
+} while (j < 3);
+
+print("--- For Loop ---");
+for (var k = 0; k < 3; k = k + 1) {
+    if (k == 1) {
+        print("continuing at k=1");
+        continue;
+    }
+    print("for k = " + k);
+}
+print("Loop finished, break not tested here.");

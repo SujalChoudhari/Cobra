@@ -1,0 +1,18 @@
+// Test for if-else control flow.
+
+var a = 10;
+var b = 20;
+
+print("a = 10, b = 20");
+
+if (a < b) {
+    print("a < b is true");
+} else {
+    print("a < b is false");
+}
+
+if (a > b) {
+    print("a > b is true");
+} else {
+    print("a > b is false");
+}

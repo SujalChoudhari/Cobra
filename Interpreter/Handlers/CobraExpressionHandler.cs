@@ -191,10 +191,16 @@ public partial class CobraInterpreter
         }
 
         var args = context.argumentList()?.assignmentExpression().Select(Visit).ToList() ?? new List<object?>();
+        
+        var constructor = classDefinition.GetConstructor(args.Count);
 
-        if (classDefinition.Constructor != null)
+        if (constructor != null)
         {
-            ExecuteFunctionCall(classDefinition.Constructor, args, qualifiedNameCtx.GetText(), instance, callToken);
+            ExecuteFunctionCall(constructor, args, qualifiedNameCtx.GetText(), instance, callToken);
+        }
+        else if (args.Count > 0)
+        {
+            throw new CobraRuntimeException($"No constructor for class '{classDefinition.Name}' takes {args.Count} arguments.");
         }
         
         return instance;

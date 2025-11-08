@@ -1,0 +1,17 @@
+// Test for class and object instantiation.
+// This is likely to fail based on the reported error.
+
+class Greeter {
+    string greeting;
+
+    constructor(string message) {
+        this.greeting = message;
+    }
+
+    void sayHello() {
+        print(this.greeting);
+    }
+}
+
+var greeter = new Greeter("Hello from a Cobra class!");
+greeter.sayHello(); // This line uses the '.' operator.

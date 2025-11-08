@@ -1,0 +1,41 @@
+// Test for dictionary literals and usage
+
+print("--- Dictionary Tests ---");
+
+// Test 1: Basic dictionary creation and access
+print("Test 1: Basic dictionary creation and access");
+var person = {
+    "name": "John Doe",
+    "age": 30,
+    "isStudent": false
+};
+
+print("Person's name: " + person["name"]);   // Expected: John Doe
+print("Person's age: " + person["age"]);     // Expected: 30
+print("Is a student: " + person["isStudent"]); // Expected: false
+print("");
+
+// Test 2: Dictionary assignment
+print("Test 2: Dictionary assignment");
+person["age"] = 31;
+print("Person's new age: " + person["age"]); // Expected: 31
+person["city"] = "New York";
+print("Person's city: " + person["city"]);   // Expected: New York
+print("");
+
+// Test 3: Printing a whole dictionary
+print("Test 3: Printing a whole dictionary");
+print("Full person object: " + person);
+print("");
+
+// Test 4: Dictionary with non-string literal keys
+print("Test 4: Dictionary with non-string literal keys");
+var constants = {
+    PI: 3.14,
+    E: 2.71
+};
+print("Value of PI: " + constants["PI"]); // Expected: 3.14
+print("");
+
+
+print("--- All dictionary tests complete ---");

@@ -14,7 +14,7 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
         // --- Built-in Functions ---
         var printFunc = new CobraBuiltinFunction("print", (args) =>
         {
-            var output = string.Join(" ", args.Select(a => a?.ToString() ?? "null"));
+            var output = string.Join(" ", args.Select(CobraLiteralHelper.Stringify));
             Console.WriteLine(output);
             return null;
         });
@@ -67,8 +67,8 @@ public class CobraEnvironment(CobraEnvironment? parent = null)
         {
             bool => CobraRuntimeTypes.Bool,
             string => CobraRuntimeTypes.String,
-            Dictionary<string, object> => CobraRuntimeTypes.Dict,
-            List<object> => CobraRuntimeTypes.List,
+            Dictionary<string, object?> => CobraRuntimeTypes.Dict,
+            List<object?> => CobraRuntimeTypes.List,
             CobraFunctionDefinition => CobraRuntimeTypes.Function,
             CobraMarkup => CobraRuntimeTypes.Markup,
             CobraNamespace => CobraRuntimeTypes.Namespace,

@@ -1,0 +1,64 @@
+// Test for switch statements
+
+print("--- Switch Statement Tests ---");
+
+// Test 1: Basic switch with integer
+print("Test 1: Basic switch with integer");
+int day = 3;
+string dayName = "";
+switch (day) {
+    case 1:
+        dayName = "Monday";
+        break;
+    case 2:
+        dayName = "Tuesday";
+        break;
+    case 3:
+        dayName = "Wednesday";
+        break;
+    case 4:
+        dayName = "Thursday";
+        break;
+    case 5:
+        dayName = "Friday";
+        break;
+    default:
+        dayName = "Weekend";
+        break;
+}
+print("Day 3 is " + dayName); // Expected: Wednesday
+print("");
+
+// Test 2: Switch with fall-through
+print("Test 2: Switch with fall-through");
+int val = 2;
+string result = "";
+switch (val) {
+    case 1:
+        result = result + "One, ";
+    case 2:
+        result = result + "Two, ";
+    case 3:
+        result = result + "Three";
+}
+print("Fall-through result for 2: " + result); // Expected: Two, Three
+print("");
+
+// Test 3: Switch with default
+print("Test 3: Switch with default");
+string fruit = "Apple";
+string fruitType = "";
+switch (fruit) {
+    case "Banana":
+        fruitType = "Yellow";
+        break;
+    case "Orange":
+        fruitType = "Orange";
+        break;
+    default:
+        fruitType = "Unknown";
+}
+print("Fruit 'Apple' is of type: " + fruitType); // Expected: Unknown
+print("");
+
+print("--- All switch tests complete ---");

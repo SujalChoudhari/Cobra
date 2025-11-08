@@ -1,0 +1,28 @@
+// Test for various operators
+
+print("--- Arithmetic Operators ---");
+int a = 10;
+int b = 4;
+print("10 + 4 = " + (a + b));
+print("10 - 4 = " + (a - b));
+print("10 * 4 = " + (a * b));
+print("10 / 4 = " + (a / b)); // Note: This will likely be integer division
+print("10 % 4 = " + (a % b));
+
+print("--- Unary, Logical, and Relational Operators ---");
+bool t = true;
+bool f = false;
+print("!true is " + !t);
+print("true && false is " + (t && f));
+print("true || false is " + (t || f));
+print("10 > 4 is " + (a > b));
+print("10 == 4 is " + (a == b));
+
+print("--- Assignment Operators ---");
+int c = 5;
+c += 10; // 15
+print("c starts at 5, after c += 10, c is " + c);
+c -= 3; // 12
+print("after c -= 3, c is " + c);
+c *= 2; // 24
+print("after c *= 2, c is " + c);

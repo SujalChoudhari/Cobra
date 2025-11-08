@@ -1,0 +1,35 @@
+import "stdlib.cb";
+
+print("--- Standard Library: System.String Tests ---");
+
+// Test 1: Constructors and toString()
+String s1 = new System.String("Hello, World!");
+String s2 = new System.String();
+print("s1.toString(): " + s1.toString());
+print("s2.toString(): " + s2.toString());
+
+// Test 2: length() and isEmpty()
+print("s1.length(): " + s1.length());
+print("s2.isEmpty(): " + s2.isEmpty());
+print("s1.isEmpty(): " + s1.isEmpty());
+
+// Test 3: toUpper() and toLower()
+var upper = s1.toUpper();
+var lower = upper.toLower();
+print("s1.toUpper(): " + upper.toString());
+print("upper.toLower(): " + lower.toString());
+
+// Test 4: contains()
+print("s1.contains('World'): " + s1.contains("World"));
+print("s1.contains('Cobra'): " + s1.contains("Cobra"));
+
+// Test 5: substring()
+var sub = s1.substring(7, 5);
+print("s1.substring(7, 5): " + sub.toString());
+
+// Test 6: replace()
+var replaced = s1.replace("World", "Cobra");
+print("s1.replace('World', 'Cobra'): " + replaced.toString());
+
+print("");
+print("--- String tests complete ---");

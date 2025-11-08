@@ -1,0 +1,27 @@
+import "stdlib.cb";
+
+print("--- Standard Library: System.Math Tests ---");
+
+// Test 1: Constants
+print("Math.PI: " + System.Math.PI);
+print("Math.E: " + System.Math.E);
+
+// Test 2: Basic Functions
+print("Math.abs(-12.34): " + System.Math.abs(-12.34));
+print("Math.ceil(9.1): " + System.Math.ceil(9.1));
+print("Math.floor(9.9): " + System.Math.floor(9.9));
+print("Math.round(9.5): " + System.Math.round(9.5));
+
+// Test 3: Trigonometry
+print("Math.sin(Math.PI / 2): " + System.Math.sin(System.Math.PI / 2));
+print("Math.cos(Math.PI): " + System.Math.cos(System.Math.PI));
+
+// Test 4: Number Theory
+print("Math.isPrime(29): " + System.Math.isPrime(29));
+print("Math.isPrime(30): " + System.Math.isPrime(30));
+
+// Test 5: Interpolation
+print("Math.lerp(0, 100, 0.75): " + System.Math.lerp(0, 100, 0.75));
+
+print("");
+print("--- Math tests complete ---");

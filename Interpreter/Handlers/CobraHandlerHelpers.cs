@@ -1,6 +1,7 @@
 using System.Runtime.InteropServices;
 using Antlr4.Runtime;
 using Cobra.Environment;
+using Antlr4.Runtime.Tree;
 
 namespace Cobra.Interpreter;
 
@@ -8,41 +9,87 @@ public partial class CobraInterpreter
 {
     private CobraLValue EvaluateLValue(CobraParser.LeftHandSideContext context)
     {
-        var container = Visit(context.primary());
-        if (context.children.Count == 1)
+        // Handle the simple case: `x = ...`
+        if (context.primary() != null && context.children.Count == 1)
         {
             if (context.primary().ID() != null)
             {
+                // This is a variable in the current scope. The container is the environment.
                 return new CobraLValue(_currentEnvironment, context.primary().ID().GetText());
             }
-
             throw new Exception("Invalid LValue target.");
         }
 
-        for (var i = 1; i < context.ChildCount - 2; i++)
+        // Handle complex cases: `a.b`, `a[0]`, `a.b[0]`, etc.
+        object? currentObject = Visit(context.primary());
+
+        int childIndex = 1;
+        int exprParseIndex = 0;
+        int idParseIndex = 0;
+
+        // Loop through the chain of accessors (e.g., .b, [0]) until the second-to-last one.
+        // This loop resolves the container that holds the final value to be assigned.
+        while (childIndex < context.ChildCount - 1)
         {
-            var op = context.GetChild(i);
-            if (op.GetText() == "[")
+            var node = context.GetChild(childIndex);
+            if (!(node is ITerminalNode termNode))
             {
-                container = GetIndex(container, Visit(context.assignmentExpression(i / 2)));
-                i += 2;
+                childIndex++;
+                continue;
             }
-            else if (op.GetText() == ".")
+
+            bool isLastAccessor;
+            if (termNode.Symbol.Type == CobraLexer.DOT)
             {
-                container = GetMember(container, context.ID(i / 2).GetText());
-                i += 1;
+                isLastAccessor = childIndex >= context.ChildCount - 2;
+            }
+            else if (termNode.Symbol.Type == CobraLexer.LBRACKET)
+            {
+                isLastAccessor = childIndex >= context.ChildCount - 3;
+            }
+            else
+            {
+                childIndex++;
+                continue;
+            }
+
+            if (isLastAccessor)
+            {
+                break; // Exit loop to handle the final accessor, which gives us the key.
+            }
+
+            // If not the last accessor, resolve it and update currentObject.
+            if (termNode.Symbol.Type == CobraLexer.DOT)
+            {
+                var memberName = context.ID(idParseIndex++).GetText();
+                currentObject = GetMember(currentObject, memberName);
+                childIndex += 2; // move past '.' and ID
+            }
+            else if (termNode.Symbol.Type == CobraLexer.LBRACKET)
+            {
+                var index = Visit(context.assignmentExpression(exprParseIndex++));
+                currentObject = GetIndex(currentObject, index);
+                childIndex += 3; // move past '[', expr, and ']'
             }
         }
 
-        var lastOp = context.GetChild(context.ChildCount - 2);
-        if (lastOp.GetText() == "[")
+        // Now, handle the last accessor to get the key for the LValue.
+        var lastOpNode = context.GetChild(childIndex);
+        if (lastOpNode is ITerminalNode lastTermNode)
         {
-            var indexExpr = context.assignmentExpression().Last();
-            return new CobraLValue(container, Visit(indexExpr));
+            if (lastTermNode.Symbol.Type == CobraLexer.DOT)
+            {
+                var key = context.ID(idParseIndex).GetText();
+                return new CobraLValue(currentObject, key);
+            }
+            else if (lastTermNode.Symbol.Type == CobraLexer.LBRACKET)
+            {
+                var key = Visit(context.assignmentExpression(exprParseIndex));
+                return new CobraLValue(currentObject, key);
+            }
         }
 
-        var idExpr = context.ID().Last();
-        return new CobraLValue(container, idExpr.GetText());
+        throw new Exception("Invalid LValue structure.");
     }
 
 
@@ -223,9 +270,10 @@ public partial class CobraInterpreter
                     instance.Fields.DefineVariable("message", message);
                 
                 // If there's a constructor, call it.
-                if (exceptionClass.Constructor != null)
+                var constructor = exceptionClass.GetConstructor(1);
+                if (constructor != null)
                 {
-                    ExecuteFunctionCall(exceptionClass.Constructor, new List<object?> { message }, "Exception", instance);
+                    ExecuteFunctionCall(constructor, new List<object?> { message }, "Exception", instance);
                 }
                 
                 return new CobraThrowValue(instance, stackTrace);
@@ -250,49 +298,40 @@ public partial class CobraInterpreter
             throw new EntryPointNotFoundException(
                 $"Function '{func.Name}' not found in library '{func.LibraryPath}'.");
 
+        var returnType = CobraTypeMarshaller.ToDotNetType(func.ReturnType);
+        var paramTypes = func.Parameters.Select(p => CobraTypeMarshaller.ToDotNetType(p.Type)).ToArray();
+        
+        var delegateType = CobraDelegateFactory.Create(returnType, paramTypes);
+        var delegateInstance = Marshal.GetDelegateForFunctionPointer(funcPtr, delegateType);
+
+        object?[] marshalledArgs = new object[args.Count];
+        for (int i = 0; i < args.Count; i++)
+        {
+            marshalledArgs[i] = args[i] switch
+            {
+                CobraHandle handle => handle.Pointer,
+                string s when func.Parameters[i].Type == CobraRuntimeTypes.String => s,
+                _ => args[i]
+            };
+        }
+        
         if (func.ReturnType == CobraRuntimeTypes.String)
         {
-            var delegateType = CobraDelegateFactory.Create(typeof(IntPtr),
-                func.Parameters.Select(p => CobraTypeMarshaller.ToDotNetType(p.Type)).ToArray());
-            var delegateInstance = Marshal.GetDelegateForFunctionPointer(funcPtr, delegateType);
-
-            object?[] marshalledArgs = new object[args.Count];
-            for (int i = 0; i < args.Count; i++)
-            {
-                marshalledArgs[i] = args[i] is CobraHandle handle ? handle.Pointer : args[i];
-            }
-
             var stringPtr = (IntPtr)delegateInstance.DynamicInvoke(marshalledArgs)!;
-            if (stringPtr == IntPtr.Zero)
-            {
-                return "";
-            }
+            if (stringPtr == IntPtr.Zero) return "";
 
             var result = Marshal.PtrToStringAnsi(stringPtr);
 
-            if (!NativeLibrary.TryGetExport(libHandle, "str_free_string", out var freeFuncPtr)) return result;
-            var freeDelegateType = CobraDelegateFactory.Create(typeof(void), typeof(IntPtr));
-            var freeDelegate = Marshal.GetDelegateForFunctionPointer(freeFuncPtr, freeDelegateType);
-            freeDelegate.DynamicInvoke(stringPtr);
+            if (NativeLibrary.TryGetExport(libHandle, "str_free_string", out var freeFuncPtr))
+            {
+                var freeDelegateType = CobraDelegateFactory.Create(typeof(void), typeof(IntPtr));
+                var freeDelegate = Marshal.GetDelegateForFunctionPointer(freeFuncPtr, freeDelegateType);
+                freeDelegate.DynamicInvoke(stringPtr);
+            }
             return result;
         }
 
-        var returnType = CobraTypeMarshaller.ToDotNetType(func.ReturnType);
-        var paramTypes = func.Parameters.Select(p => CobraTypeMarshaller.ToDotNetType(p.Type)).ToArray();
-
-        var defaultDelegateType = CobraDelegateFactory.Create(returnType, paramTypes);
-        var defaultDelegateInstance = Marshal.GetDelegateForFunctionPointer(funcPtr, defaultDelegateType);
-
-        object?[] defaultMarshalledArgs = new object[args.Count];
-        for (int i = 0; i < args.Count; i++)
-        {
-            if (args[i] is CobraHandle handle)
-                defaultMarshalledArgs[i] = handle.Pointer;
-            else
-                defaultMarshalledArgs[i] = args[i]!;
-        }
-
-        object? resultObj = defaultDelegateInstance.DynamicInvoke(defaultMarshalledArgs);
+        object? resultObj = delegateInstance.DynamicInvoke(marshalledArgs);
 
         if (func.ReturnType == CobraRuntimeTypes.Handle && resultObj is IntPtr ptr)
             return new CobraHandle(ptr);
@@ -345,7 +384,7 @@ public partial class CobraInterpreter
     private object? ApplyBinaryOperator(string op, object? left, object? right)
     {
         if (op == "+" && (left is string || right is string))
-            return (left?.ToString() ?? "") + (right?.ToString() ?? "");
+            return CobraLiteralHelper.Stringify(left) + CobraLiteralHelper.Stringify(right);
         
         if (op is "==" or "!=" && (left == null || right == null))
         {
@@ -407,7 +446,7 @@ public partial class CobraInterpreter
             "-" => sl - sr,
             "*" => sl * sr,
             "/" => sr == 0 ? throw new DivideByZeroException() : sl / sr,
-            "%" => sr == 0 ? throw new DivideByZeroException() : sl % sr,
+            "%" => sr == 0 ? throw new DivideByZeroException() : sl / sr,
             ">" => sl > sr, "<" => sl < sr, ">=" => sl >= sr, "<=" => sl <= sr,
             "==" => sl == sr, "!=" => sl != sr,
             _ => throw new NotSupportedException($"Operator '{op}' not supported for integers.")
